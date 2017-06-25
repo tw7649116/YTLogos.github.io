@@ -93,15 +93,57 @@
 
 
 
-<meta name="description" content="R&amp;Data Science&amp;Bioinformatics">
-<meta property="og:type" content="website">
-<meta property="og:title" content="TaoYan">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="本文主要利用ggpubr包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。1library(ggpubr)#加载包 TCGA是一个包含大量癌症数据的数据库，由Marcin Kosinski创建的RTCGA包可以让我们很方便的获取这些数据。主要有三个包：RTCGA、RTCGA.clininal、RTCGA.mRNA。安装方法如下：1234567#Load the bioconducto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R语言可视化学习笔记之基因组数据可视">
+<meta property="og:url" content="http://yoursite.com/2017/06/25/R语言可视化学习笔记之基因组数据可视化/index.html">
 <meta property="og:site_name" content="TaoYan">
-<meta property="og:description" content="R&amp;Data Science&amp;Bioinformatics">
+<meta property="og:description" content="本文主要利用ggpubr包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。1library(ggpubr)#加载包 TCGA是一个包含大量癌症数据的数据库，由Marcin Kosinski创建的RTCGA包可以让我们很方便的获取这些数据。主要有三个包：RTCGA、RTCGA.clininal、RTCGA.mRNA。安装方法如下：1234567#Load the bioconducto">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-b34678958936acea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-d4a71b05d7b47010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-af94785de32b871b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-08c6ecf624be4f0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4bb5efef9d761338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-ad563d41e1fa856d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-afe413c51f1795d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-5e292cfe7f0d5e3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-b61b9b569685a032.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-bb70ab12668b7010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-387bd27a2b95a30c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-bef1e0aa4148b8be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-ccb18f7da8288c6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4598a0d2c3d4f402.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-46f6e3b2c093c6c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-3562a99a0a400f3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-d90335d2c9e74f13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-efc44aeb7221760f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-5659d5845c1699f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8111c788c1ceba23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-38d068706ad3b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-a24be637c1b4db89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-845354aeeec09083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-52925943216eac0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-80f7238f464bba66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-5f6de57b9d6109d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-2495e6aa4b3f106f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-c020bff5daa5174a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-357acb14cd62ea30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-9f4facdd2b3bbe8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8d0a6cf618230ec0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-cf2dac791630c3ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-be8c87506d85f929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-a0ae7fae20c787bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-709bc0692833b95c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-08d17067003638cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-0e291051fdf8709b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-3e69df4a748c733c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-438ad8dd5a855bae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-edb0e229e75a1e2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-06-25T08:47:51.915Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TaoYan">
-<meta name="twitter:description" content="R&amp;Data Science&amp;Bioinformatics">
+<meta name="twitter:title" content="R语言可视化学习笔记之基因组数据可视">
+<meta name="twitter:description" content="本文主要利用ggpubr包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。1library(ggpubr)#加载包 TCGA是一个包含大量癌症数据的数据库，由Marcin Kosinski创建的RTCGA包可以让我们很方便的获取这些数据。主要有三个包：RTCGA、RTCGA.clininal、RTCGA.mRNA。安装方法如下：1234567#Load the bioconducto">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-b34678958936acea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -129,13 +171,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/25/R语言可视化学习笔记之基因组数据可视化/"/>
 
 
 
 
 
-  <title>TaoYan</title>
+  <title>R语言可视化学习笔记之基因组数据可视 | TaoYan</title>
   
 
 
@@ -160,9 +202,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -245,129 +285,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="TaoYan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="TaoYan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/25/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T15:35:01+08:00">
-                2017-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
 
   
 
@@ -393,9 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/25/R语言可视化学习笔记之基因组数据可视化/" itemprop="url">R语言可视化学习笔记之基因组数据可视</a></h1>
+          <h1 class="post-title" itemprop="name headline">R语言可视化学习笔记之基因组数据可视</h1>
         
 
         <div class="post-meta">
@@ -442,9 +360,7 @@
       
 
       
-        
-          
-            <p>本文主要利用<strong>ggpubr</strong>包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">library(ggpubr)#加载包</div></pre></td></tr></table></figure></p>
+        <p>本文主要利用<strong>ggpubr</strong>包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">library(ggpubr)#加载包</div></pre></td></tr></table></figure></p>
 <p>TCGA是一个包含大量癌症数据的数据库，由Marcin Kosinski创建的RTCGA包可以让我们很方便的获取这些数据。主要有三个包：RTCGA、RTCGA.clininal、RTCGA.mRNA。安装方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#Load the bioconductor installersource</div><div class="line">(&quot;http://bioconductor.org/biocLite.R&quot;&quot;)</div><div class="line">#设置镜像，这里我们选择中科大的镜像options(BioC_mirror=&quot;http://ustc.edu.cn/bioc&quot;)</div><div class="line">#下载包</div><div class="line">biocLite(&quot;RTCGA&quot;)</div><div class="line">biocLite(&quot;RTCGA.clininal&quot;)</div><div class="line">biocLite(&quot;RTCGA.mRNA&quot;)</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(RTCGA)</div><div class="line">#查看每一种癌症的数据集</div><div class="line">infoTCGA()</div></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-b34678958936acea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这里只显示部分"></p>
@@ -497,20 +413,43 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-edb0e229e75a1e2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>#sessionInfo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-pc-linux-gnu (64-bit)</div><div class="line">## Running under: Ubuntu 16.04.2 LTS</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## BLAS: /usr/lib/libblas/libblas.so.3.6.0</div><div class="line">## LAPACK: /usr/lib/lapack/liblapack.so.3.6.0</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_CTYPE=en_US.UTF-8 LC_NUMERIC=C </div><div class="line">## [3] LC_TIME=zh_CN.UTF-8 LC_COLLATE=en_US.UTF-8 </div><div class="line">## [5] LC_MONETARY=zh_CN.UTF-8 LC_MESSAGES=en_US.UTF-8</div><div class="line">## [7] LC_PAPER=zh_CN.UTF-8 LC_NAME=C </div><div class="line">## [9] LC_ADDRESS=C LC_TELEPHONE=C </div><div class="line">## [11] LC_MEASUREMENT=zh_CN.UTF-8 LC_IDENTIFICATION=C </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] bindrcpp_0.2 RTCGA.mRNA_1.4.0 RTCGA_1.6.0 ggpubr_0.1.3 </div><div class="line">## [5] magrittr_1.5 ggplot2_2.2.1 </div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] zoo_1.8-0 reshape2_1.4.2 purrr_0.2.2.2 </div><div class="line">## [4] splines_3.4.0 ggthemes_3.4.0 lattice_0.20-35 </div><div class="line">## [7] colorspace_1.3-2 htmltools_0.3.6 viridisLite_0.2.0</div><div class="line">## [10] yaml_2.1.14 survival_2.41-3 XML_3.98-1.9 </div><div class="line">## [13] survMisc_0.5.4 rlang_0.1.1 foreign_0.8-68 </div><div class="line">## [16] glue_1.1.0 bindr_0.1 plyr_1.8.4 </div><div class="line">## [19] stringr_1.2.0 ggsignif_0.2.0 munsell_0.4.3 </div><div class="line">## [22] gtable_0.2.0 ggsci_2.7 rvest_0.3.2 </div><div class="line">## [25] psych_1.7.5 evaluate_0.10 labeling_0.3 </div><div class="line">## [28] knitr_1.16 parallel_3.4.0 broom_0.4.2 </div><div class="line">## [31] Rcpp_0.12.11 xtable_1.8-2 scales_0.4.1</div><div class="line">## [34] backports_1.1.0 cmprsk_2.2-7 km.ci_0.5-2 </div><div class="line">## [37] gridExtra_2.2.1 mnormt_1.5-5 digest_0.6.12 </div><div class="line">## [40] stringi_1.1.5 ggrepel_0.6.5 dplyr_0.7.0 </div><div class="line">## [43] KMsurv_0.1-5 grid_3.4.0 rprojroot_1.2 </div><div class="line">## [46] tools_3.4.0 lazyeval_0.2.0 tibble_1.3.3 </div><div class="line">## [49] tidyr_0.6.3 Matrix_1.2-10 data.table_1.10.4</div><div class="line">## [52] xml2_1.1.1 survminer_0.4.0 assertthat_0.2.0 </div><div class="line">## [55] rmarkdown_1.6 httr_1.2.1 viridis_0.4.0 </div><div class="line">## [58] R6_2.2.2 nlme_3.1-131 compiler_3.4.0</div></pre></td></tr></table></figure></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://raw.githubusercontent.com/YTLogos/YTLogos.github.io/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170625163544.jpg" alt="TaoYan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
     </div>
+  </div>
 
-    <div>
+
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
@@ -518,21 +457,38 @@
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/25/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -540,6 +496,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -724,10 +684,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
