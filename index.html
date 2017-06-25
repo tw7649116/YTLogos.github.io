@@ -287,6 +287,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
 
       
     </ul>
@@ -917,7 +927,7 @@ cluster
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TaoYan">
@@ -936,7 +946,7 @@ cluster
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/" itemprop="url">ggplot2学习笔记系列之主题（theme）设置 </a></h1>
+                <a class="post-title-link" href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/" itemprop="url">ggplot2学习笔记系列之利用ggplot2绘制条形图</a></h1>
         
 
         <div class="post-meta">
@@ -985,11 +995,12 @@ cluster
       
         
           
-          上次提了下theme(),本文将专门讲解一下。凡是与数据无关的图形设置可以归为主题类，ggplot2中主题设置十分多，根本不可能讲解完，只能稍微讲点皮毛，灵活运用才是关键，本文只是总体上略作介绍。正如R语言大神Hadley Wickham所讲的，ggplot2只是提供了一个平台，可以根据自己的需要无限创造。理论上来讲，只要能想到的图形，ggplot2都能实现。1234567891011121314
+          #简介条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。
+#绘制条形图使用ggplot()函数与geom_bar(stat=&quot;identity&quot;)，绘制条形图，我们将利用g
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/#more" rel="contents">
+            <a class="btn" href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1154,7 +1165,7 @@ cluster
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TaoYan">
@@ -1173,7 +1184,7 @@ cluster
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/" itemprop="url">ggplot2学习笔记系列之利用ggplot2绘制条形图</a></h1>
+                <a class="post-title-link" href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/" itemprop="url">ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记</a></h1>
         
 
         <div class="post-meta">
@@ -1222,12 +1233,11 @@ cluster
       
         
           
-          #简介条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。
-#绘制条形图使用ggplot()函数与geom_bar(stat=&quot;identity&quot;)，绘制条形图，我们将利用g
+          #绘制带有误差棒的条形图123456789101112131415library(ggplot2)# 创建数据集df &lt;- data.frame(treatment = factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3)),                  response = c(2, 5, 4, 6, 9, 7, 3, 5, 8),                 
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/#more" rel="contents">
+            <a class="btn" href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
