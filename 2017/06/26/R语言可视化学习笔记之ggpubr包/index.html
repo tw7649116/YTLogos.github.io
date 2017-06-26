@@ -95,7 +95,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="R&Cluster analysis&visualization," />
+  <meta name="keywords" content="R&ggpubr&visualization," />
 
 
 
@@ -113,33 +113,33 @@
 
 
 
-<meta name="description" content="使用k-means聚类所需的包：  factoextra cluster  #加载包12library(factoextra)library(cluster) #数据准备使用内置的R数据集USArrests123456#load the datasetdata(&amp;quot;USArrests&amp;quot;)#remove any missing value (i.e, NA values for n">
-<meta name="keywords" content="R&amp;Cluster analysis&amp;visualization">
+<meta name="description" content="Hadley Wickham创建的可视化包ggplot2可以流畅地进行优美的可视化，但是如果要通过ggplot2定制一套图形，尤其是适用于杂志期刊等出版物的图形，对于那些没有深入了解ggplot2的人来说就有点困难了，ggplot2的部分语法是很晦涩的。为此Alboukadel Kassambara创建了基于ggplot2的可视化包ggpubr用于绘制符合出版物要求的图形。 #安装及加载ggpub">
+<meta name="keywords" content="R&amp;ggpubr&amp;visualization">
 <meta property="og:type" content="article">
-<meta property="og:title" content="R语言学习笔记之聚类分析">
-<meta property="og:url" content="https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/index.html">
+<meta property="og:title" content="R语言可视化学习笔记之ggpubr包">
+<meta property="og:url" content="https://ytlogos.github.io/2017/06/26/R语言可视化学习笔记之ggpubr包/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="使用k-means聚类所需的包：  factoextra cluster  #加载包12library(factoextra)library(cluster) #数据准备使用内置的R数据集USArrests123456#load the datasetdata(&amp;quot;USArrests&amp;quot;)#remove any missing value (i.e, NA values for n">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-c28a99b3efe41ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-7ab1c23eb38f6cb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-64e6e37dc513b2be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-61fe2e1a139e3b9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-2e39c93b63af2161.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-e2752fd444968a90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-a01f551c35d38d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-b2554b235caf0420.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-448668d5d66b746c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8abcb70ddd53cc9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-ef8922f5d288768f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-cdae172ce885358a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-be9e7cd89ccec3bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-26T11:39:38.558Z">
+<meta property="og:description" content="Hadley Wickham创建的可视化包ggplot2可以流畅地进行优美的可视化，但是如果要通过ggplot2定制一套图形，尤其是适用于杂志期刊等出版物的图形，对于那些没有深入了解ggplot2的人来说就有点困难了，ggplot2的部分语法是很晦涩的。为此Alboukadel Kassambara创建了基于ggplot2的可视化包ggpubr用于绘制符合出版物要求的图形。 #安装及加载ggpub">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-652675daa1359146.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-d37833ffb4e3102b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-418d9194e641dd71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8bb64a310e2d8a4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-fbe5b444e2efcb8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4ded50c82b9f83fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-823a0b71c2e85b6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-5c28f6c53248e8f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-34debe47e570b508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8957ea525c3d8853.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-253e214a34cb73c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-a9f7fbd0c12c122c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-bfce6842b2744304.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-fdc31b81879bbbd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-1c31d9e203d4810a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-06-26T11:44:35.496Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R语言学习笔记之聚类分析">
-<meta name="twitter:description" content="使用k-means聚类所需的包：  factoextra cluster  #加载包12library(factoextra)library(cluster) #数据准备使用内置的R数据集USArrests123456#load the datasetdata(&amp;quot;USArrests&amp;quot;)#remove any missing value (i.e, NA values for n">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="R语言可视化学习笔记之ggpubr包">
+<meta name="twitter:description" content="Hadley Wickham创建的可视化包ggplot2可以流畅地进行优美的可视化，但是如果要通过ggplot2定制一套图形，尤其是适用于杂志期刊等出版物的图形，对于那些没有深入了解ggplot2的人来说就有点困难了，ggplot2的部分语法是很晦涩的。为此Alboukadel Kassambara创建了基于ggplot2的可视化包ggpubr用于绘制符合出版物要求的图形。 #安装及加载ggpub">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-652675daa1359146.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -167,7 +167,7 @@
 
 
 
-  <link rel="canonical" href="https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/"/>
+  <link rel="canonical" href="https://ytlogos.github.io/2017/06/26/R语言可视化学习笔记之ggpubr包/"/>
 
 
 
@@ -188,7 +188,7 @@
     }
 </style>
 
-  <title>R语言学习笔记之聚类分析 | Logos</title>
+  <title>R语言可视化学习笔记之ggpubr包 | Logos</title>
   
 
 
@@ -391,7 +391,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/26/R语言可视化学习笔记之ggpubr包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TaoYan">
@@ -408,7 +408,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">R语言学习笔记之聚类分析</h1>
+          <h1 class="post-title" itemprop="name headline">R语言可视化学习笔记之ggpubr包</h1>
         
 
         <div class="post-meta">
@@ -420,8 +420,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
-                2017-06-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-26T19:43:11+08:00">
+                2017-06-26
               </time>
             
 
@@ -439,7 +439,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/25/R语言学习笔记之聚类分析/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/06/26/R语言可视化学习笔记之ggpubr包/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -462,7 +462,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  752
+                  1,158
                 </span>
               
 
@@ -478,7 +478,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4
+                  6
                 </span>
               
             </div>
@@ -496,67 +496,53 @@
       
 
       
-        <p>使用<code>k-means</code>聚类所需的包：</p>
+        <p><a href="http://docs.ggplot2.org/current/" target="_blank" rel="external">Hadley Wickham</a>创建的可视化包ggplot2可以流畅地进行优美的可视化，但是如果要通过ggplot2定制一套图形，尤其是适用于杂志期刊等出版物的图形，对于那些没有深入了解<strong>ggplot2</strong>的人来说就有点困难了，<strong>ggplot2</strong>的部分语法是很晦涩的。为此<a href="http://www.sthda.com/english/rpkgs/ggpubr/index.html" target="_blank" rel="external">Alboukadel Kassambara</a>创建了基于<strong>ggplot2</strong>的可视化包<strong>ggpubr</strong>用于绘制符合出版物要求的图形。</p>
+<p>#安装及加载<strong>ggpubr</strong>包<br>安装方式有两种：</p>
 <ul>
-<li>factoextra</li>
-<li>cluster</li>
-</ul>
-<p>#加载包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(factoextra)</div><div class="line">library(cluster)</div></pre></td></tr></table></figure></p>
-<p>#数据准备<br>使用内置的R数据集<code>USArrests</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#load the dataset</div><div class="line">data(&quot;USArrests&quot;)</div><div class="line">#remove any missing value (i.e, NA values for not available)</div><div class="line">#That might be present in the data</div><div class="line">USArrests &lt;- na.omit(USArrests)#view the first 6 rows of the data</div><div class="line">head(USArrests, n=6)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong>在此数据集中，列是变量，行是观测值</strong><br>在聚类之前我们可以先进行一些必要的数据检查即数据描述性统计，如平均值、标准差等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">desc_stats &lt;- data.frame( Min=apply(USArrests, 2, min),#minimum</div><div class="line">Med=apply(USArrests, 2, median),#median </div><div class="line">Mean=apply(USArrests, 2, mean),#mean </div><div class="line">SD=apply(USArrests, 2, sd),#Standard deviation </div><div class="line">Max=apply(USArrests, 2, max)#maximum</div><div class="line">)</div><div class="line">desc_stats &lt;- round(desc_stats, 1)#保留小数点后一位head(desc_stats)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c28a99b3efe41ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong>变量有很大的方差及均值时需进行标准化</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df &lt;- scale(USArrests)</div></pre></td></tr></table></figure></p>
-<p>#数据集群性评估<br>使用<code>get_clust_tendency()</code>计算<code>Hopkins</code>统计量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">res &lt;- get_clust_tendency(df, 40, graph = TRUE)</div><div class="line">res$hopkins_stat</div><div class="line">## [1] 0.3440875</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Visualize the dissimilarity matrix</div><div class="line">res$plot</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7ab1c23eb38f6cb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>Hopkins统计量的值&lt;0.5，表明数据是高度可聚合的。另外，从图中也可以看出数据可聚合。</p>
-</blockquote>
-<p>#估计聚合簇数<br>由于k均值聚类需要指定要生成的聚类数量，因此我们将使用函数<code>clusGap()</code>来计算用于估计最优聚类数。函数<code>fviz_gap_stat()</code>用于可视化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set.seed(123)</div><div class="line">## Compute the gap statistic</div><div class="line">gap_stat &lt;- clusGap(df, FUN = kmeans, nstart = 25, K.max = 10, B = 500) </div><div class="line"># Plot the result</div><div class="line">fviz_gap_stat(gap_stat)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-64e6e37dc513b2be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>图中显示最佳为聚成四类（k=4）</p>
-</blockquote>
-<p>#进行聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set.seed(123)</div><div class="line">km.res &lt;- kmeans(df, 4, nstart = 25)</div><div class="line">head(km.res$cluster, 20)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-61fe2e1a139e3b9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Visualize clusters using factoextra</div><div class="line">fviz_cluster(km.res, USArrests)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2e39c93b63af2161.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#检查<code>cluster silhouette</code>图</p>
-<blockquote>
-<p>Recall that the silhouette measures (SiSi) how similar an object ii is to the the other objects in its own cluster versus those in the neighbor cluster. SiSi values range from 1 to - 1:</p>
-</blockquote>
-<ul>
-<li>A value of SiSi close to 1 indicates that the object is well clustered. In the other words, the object ii is similar to the other objects in its group.</li>
-<li>A value of SiSi close to -1 indicates that the object is poorly clustered, and that assignment to some other cluster would probably improve the overall results.<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sil &lt;- silhouette(km.res$cluster, dist(df))</div><div class="line">rownames(sil) &lt;- rownames(USArrests)</div><div class="line">head(sil[, 1:3])</div></pre></td></tr></table></figure>
+<li><p>直接从<strong>CRAN</strong>安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install.packages(&quot;ggpubr&quot;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>从<strong>GitHub</strong>上安装最新版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if(!require(devtools)) install.packages(&quot;devtools&quot;)</div><div class="line"> devtools::install_github(&quot;kassambara/ggpubr&quot;)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e2752fd444968a90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Visualize </div><div class="line">fviz_silhouette(sil)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a01f551c35d38d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b2554b235caf0420.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>图中可以看出有负值，可以通过函数<code>silhouette()</code>确定是哪个观测值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">neg_sil_index &lt;- which(sil[, &quot;sil_width&quot;] &lt; 0)</div><div class="line">sil[neg_sil_index, , drop = FALSE]</div><div class="line">##          cluster    neighbor     sil_width</div><div class="line">## Missouri    3          2        -0.07318144</div></pre></td></tr></table></figure></p>
-<p>#<strong>eclust()</strong>:增强的聚类分析</p>
-<blockquote>
-<p>与其他聚类分析包相比，<code>eclust()</code>有以下优点：</p>
-</blockquote>
-<ul>
-<li>简化了聚类分析的工作流程</li>
-<li>可以用于计算层次聚类和分区聚类</li>
-<li>eclust()自动计算最佳聚类簇数。</li>
-<li>自动提供Silhouette plot</li>
-<li>可以结合ggplot2绘制优美的图形</li>
-</ul>
-<p>#使用eclust()的<strong>K</strong>均值聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Compute k-means</div><div class="line">res.km &lt;- eclust(df, &quot;kmeans&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-448668d5d66b746c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Gap statistic plot</div><div class="line">fviz_gap_stat(res.km$gap_stat)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8abcb70ddd53cc9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Silhouette plotfviz_silhouette(res.km)</div><div class="line"></div><div class="line">##    cluster size ave.sil.width</div><div class="line">## 1     1     13      0.31</div><div class="line">## 2     2     29      0.38</div><div class="line">## 3     3      8      0.39</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ef8922f5d288768f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#使用<strong>eclust（）</strong>的层次聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Enhanced hierarchical clustering</div><div class="line">res.hc &lt;- eclust(df, &quot;hclust&quot;) # compute hclust</div><div class="line">fviz_dend(res.hc, rect = TRUE) # dendrogam</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#下面的R代码生成Silhouette plot和分层聚类散点图。</div><div class="line">fviz_silhouette(res.hc) # silhouette plot</div><div class="line">##   cluster size ave.sil.width</div><div class="line">## 1    1     19      0.26</div><div class="line">## 2    2     19      0.28</div><div class="line">## 3    3     12      0.43</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-cdae172ce885358a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fviz_cluster(res.hc) # scatter plot</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-be9e7cd89ccec3bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#Infos</p>
-<blockquote>
-<p>This analysis has been performed using R software (R version 3.3.2)</p>
-</blockquote>
-
+<p>安装完之后直接加载就行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">library(ggpubr)</div></pre></td></tr></table></figure></p>
+<p>#<strong>ggpubr</strong>可绘制图形：<br><strong>ggpubr</strong>可绘制大部分我们常用的图形，下面一一介绍。</p>
+<p>##分布图(Distribution)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#构建数据集</div><div class="line">set.seed(1234)</div><div class="line">df &lt;- data.frame( sex=factor(rep(c(&quot;f&quot;, &quot;M&quot;), each=200)), </div><div class="line">weight=c(rnorm(200, 55), rnorm(200, 58)))</div><div class="line">head(df)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">##   sex   weight</div><div class="line">## 1  f   53.79293</div><div class="line">## 2  f   55.27743</div><div class="line">## 3  f   56.08444</div><div class="line">## 4  f   52.65430</div><div class="line">## 5  f   55.42912</div><div class="line">## 6  f   55.50606</div></pre></td></tr></table></figure>
+<p>###密度分布图以及边际地毯线并添加平均值线<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggdensity(df, x=&quot;weight&quot;, add = &quot;mean&quot;, rug = TRUE, color = &quot;sex&quot;, fill = &quot;sex&quot;,</div><div class="line">palette = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-652675daa1359146.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>###带有均值线和边际地毯线的直方图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gghistogram(df, x=&quot;weight&quot;, add = &quot;mean&quot;, rug = TRUE, color = &quot;sex&quot;, fill = &quot;sex&quot;,</div><div class="line">palette = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-d37833ffb4e3102b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>###箱线图与小提琴图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#加载数据集ToothGrowth</div><div class="line">data(&quot;ToothGrowth&quot;)</div><div class="line">df1 &lt;- ToothGrowth</div><div class="line">head(df1)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">##    len  supp  dose</div><div class="line">## 1  4.2   VC    0.5</div><div class="line">## 2  11.5  VC    0.5</div><div class="line">## 3  7.3   VC    0.5</div><div class="line">## 4  5.8   VC    0.5</div><div class="line">## 5  6.4   VC    0.5</div><div class="line">## 6  10.0  VC    0.5</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">p &lt;- ggboxplot(df1, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, </div><div class="line">palette = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;#FC4E07&quot;), </div><div class="line">add = &quot;jitter&quot;, shape=&quot;dose&quot;)#增加了jitter点，点shape由dose映射p</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-418d9194e641dd71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>增加不同组间的p-value值，可以自定义需要标注的组间比较<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">my_comparisons &lt;- list(c(&quot;0.5&quot;, &quot;1&quot;), c(&quot;1&quot;, &quot;2&quot;), c(&quot;0.5&quot;, &quot;2&quot;))</div><div class="line">p+stat_compare_means(comparisons = my_comparisons)+#不同组间的比较</div><div class="line">stat_compare_means(label.y = 50)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8bb64a310e2d8a4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>###内有箱线图的小提琴图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ggviolin(df1, x=&quot;dose&quot;, y=&quot;len&quot;, fill = &quot;dose&quot;, </div><div class="line">palette = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;#FC4E07&quot;), </div><div class="line">add = &quot;boxplot&quot;, add.params = list(fill=&quot;white&quot;))+ </div><div class="line">stat_compare_means(comparisons = my_comparisons, label = &quot;p.signif&quot;)+#label这里表示选择显著性标记（星号） </div><div class="line">stat_compare_means(label.y = 50)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-fbe5b444e2efcb8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>###条形图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">data(&quot;mtcars&quot;)</div><div class="line">df2 &lt;- mtcars</div><div class="line">df2$cyl &lt;- factor(df2$cyl)</div><div class="line">df2$name &lt;- rownames(df2)#添加一行name</div><div class="line">head(df2[, c(&quot;name&quot;, &quot;wt&quot;, &quot;mpg&quot;, &quot;cyl&quot;)])</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4ded50c82b9f83fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>按从小到大顺序绘制条形图（不分组排序）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ggbarplot(df2, x=&quot;name&quot;, y=&quot;mpg&quot;, fill = &quot;cyl&quot;, color = &quot;white&quot;, </div><div class="line">palette = &quot;jco&quot;,#杂志jco的配色 </div><div class="line">sort.val = &quot;desc&quot;,#下降排序 </div><div class="line">sort.by.groups=FALSE,#不按组排序 </div><div class="line">x.text.angle=60)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-823a0b71c2e85b6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>按组进行排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ggbarplot(df2, x=&quot;name&quot;, y=&quot;mpg&quot;, fill = &quot;cyl&quot;, color = &quot;white&quot;, </div><div class="line">palette = &quot;jco&quot;,#杂志jco的配色 </div><div class="line">sort.val = &quot;asc&quot;,#上升排序,区别于desc，具体看图演示 </div><div class="line">sort.by.groups=TRUE,#按组排序 </div><div class="line">x.text.angle=90)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5c28f6c53248e8f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>###偏差图<br>偏差图展示了与参考值之间的偏差<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">df2$mpg_z &lt;- (df2$mpg-mean(df2$mpg))/sd(df2$mpg)</div><div class="line">df2$mpg_grp &lt;- factor(ifelse(df2$mpg_z&lt;0, &quot;low&quot;, &quot;high&quot;), levels = c(&quot;low&quot;, &quot;high&quot;))</div><div class="line">head(df2[, c(&quot;name&quot;, &quot;wt&quot;, &quot;mpg&quot;, &quot;mpg_grp&quot;, &quot;cyl&quot;)])</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-34debe47e570b508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>绘制排序过的条形图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggbarplot(df2, x=&quot;name&quot;, y=&quot;mpg_z&quot;, fill = &quot;mpg_grp&quot;, color = &quot;white&quot;, </div><div class="line">palette = &quot;jco&quot;, sort.val = &quot;asc&quot;, sort.by.groups = FALSE, x.text.angle=60, </div><div class="line">ylab = &quot;MPG z-score&quot;, xlab = FALSE, legend.title=&quot;MPG Group&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8957ea525c3d8853.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>坐标轴变换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ggbarplot(df2, x=&quot;name&quot;, y=&quot;mpg_z&quot;, fill = &quot;mpg_grp&quot;, color = &quot;white&quot;, </div><div class="line">palette = &quot;jco&quot;, sort.val = &quot;desc&quot;, sort.by.groups = FALSE, </div><div class="line">x.text.angle=90, ylab = &quot;MPG z-score&quot;, xlab = FALSE, </div><div class="line">legend.title=&quot;MPG Group&quot;, rotate=TRUE, ggtheme = theme_minimal())</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-253e214a34cb73c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##点图(<strong>Dot charts</strong>)</p>
+<p>###棒棒糖图(<strong>Lollipop chart</strong>)<br>棒棒图可以代替条形图展示数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggdotchart(df2, x=&quot;name&quot;, y=&quot;mpg&quot;, color = &quot;cyl&quot;, </div><div class="line">palette = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;#FC4E07&quot;), sorting = &quot;ascending&quot;, </div><div class="line">add = &quot;segments&quot;, ggtheme = theme_pubr())</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a9f7fbd0c12c122c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>可以自设置各种参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ggdotchart(df2, x=&quot;name&quot;, y=&quot;mpg&quot;, color = &quot;cyl&quot;, </div><div class="line">palette = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;#FC4E07&quot;), sorting = &quot;descending&quot;, </div><div class="line">add = &quot;segments&quot;, rotate = TRUE, group = &quot;cyl&quot;, dot.size = 6, </div><div class="line">label = round(df2$mpg), font.label = list(color=&quot;white&quot;, size=9, vjust=0.5), </div><div class="line">ggtheme = theme_pubr())</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bfce6842b2744304.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>###偏差图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ggdotchart(df2, x=&quot;name&quot;, y=&quot;mpg_z&quot;, color = &quot;cyl&quot;, </div><div class="line">palette = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;#FC4E07&quot;), sorting = &quot;descending&quot;, </div><div class="line">add = &quot;segment&quot;, add.params = list(color=&quot;lightgray&quot;, size=2), </div><div class="line">group = &quot;cyl&quot;, dot.size = 6, label = round(df2$mpg_z, 1), </div><div class="line">font.label = list(color=&quot;white&quot;, size=9, vjust=0.5), ggtheme = theme_pubr())+ </div><div class="line">geom_line(yintercept=0, linetype=2, color=&quot;lightgray&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-fdc31b81879bbbd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>###<strong>Cleveland</strong>点图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ggdotchart(df2, x=&quot;name&quot;, y=&quot;mpg&quot;, color = &quot;cyl&quot;, </div><div class="line">palette = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;#FC4E07&quot;), sorting = &quot;descending&quot;, </div><div class="line">rotate = TRUE, dot.size = 2, y.text.col=TRUE, ggtheme = theme_pubr())+ </div><div class="line">theme_cleveland()</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-1c31d9e203d4810a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""> </p>
+<p>#<strong>SessionInfo</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] ggpubr_0.1.3 magrittr_1.5 ggplot2_2.2.1</div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] Rcpp_0.12.11 knitr_1.16 munsell_0.4.3 colorspace_1.3-2</div><div class="line">## [5] R6_2.2.1 rlang_0.1.1 stringr_1.2.0 plyr_1.8.4 </div><div class="line">## [9] dplyr_0.5.0 tools_3.4.0 grid_3.4.0 gtable_0.2.0 </div><div class="line">## [13] DBI_0.6-1 htmltools_0.3.6 yaml_2.1.14 lazyeval_0.2.0 </div><div class="line">## [17] rprojroot_1.2 digest_0.6.12 assertthat_0.2.0 tibble_1.3.3 </div><div class="line">## [21] ggsignif_0.2.0 ggsci_2.4 purrr_0.2.2.2 evaluate_0.10 </div><div class="line">## [25] rmarkdown_1.5 labeling_0.3 stringi_1.1.5 compiler_3.4.0 </div><div class="line">## [29] scales_0.4.1 backports_1.1.0</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -606,7 +592,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/R-Cluster-analysis-visualization/" rel="tag"># R&Cluster analysis&visualization</a>
+            <a href="/tags/R-ggpubr-visualization/" rel="tag"># R&ggpubr&visualization</a>
           
         </div>
       
@@ -619,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/" rel="next" title="ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记">
-                <i class="fa fa-chevron-left"></i> ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记
+              <a href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制散点图/" rel="next" title="ggplot2学习笔记系列之利用ggplot2绘制散点图">
+                <i class="fa fa-chevron-left"></i> ggplot2学习笔记系列之利用ggplot2绘制散点图
               </a>
             
           </div>
@@ -628,10 +614,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/25/R语言可视化学习笔记之基因组数据可视化/" rel="prev" title="R语言可视化学习笔记之基因组数据可视">
-                R语言可视化学习笔记之基因组数据可视 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
