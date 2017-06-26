@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-06-26T11:33:41.437Z</updated>
+  <updated>2017-06-25T10:54:36.747Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -14,20 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>ggpl</title>
-    <link href="https://ytlogos.github.io/2017/06/26/ggpl/"/>
-    <id>https://ytlogos.github.io/2017/06/26/ggpl/</id>
-    <published>2017-06-26T11:33:41.000Z</published>
-    <updated>2017-06-26T11:33:41.437Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>ggplot2学习笔记系列之利用ggplot2绘制散点图</title>
@@ -267,6 +253,38 @@
     <summary type="html">
     
       &lt;p&gt;本文主要利用&lt;strong&gt;ggpubr&lt;/strong&gt;包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>R语言可视化学习笔记之相关矩阵可视化包ggcorrplot</title>
+    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%9B%B8%E5%85%B3%E7%9F%A9%E9%98%B5%E5%8F%AF%E8%A7%86%E5%8C%96%E5%8C%85ggcorrplot/"/>
+    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之相关矩阵可视化包ggcorrplot/</id>
+    <published>2017-06-24T16:00:00.000Z</published>
+    <updated>2017-06-25T11:06:09.990Z</updated>
+    
+    <content type="html"><![CDATA[<p>基于<strong>ggplot2</strong>包以及<strong>corrplot</strong>包的相关矩阵可视化包<strong>ggcorrplot</strong>，<strong>ggcorrplot</strong>包提供对相关矩阵重排序以及在相关图中展示显著性水平的方法，同时也能计算相关性p-value</p>
+<p>安装方法就不提了，不懂的可以浏览我以前的<a href="http://www.jianshu.com/p/678213d605a5" target="_blank" rel="external"><strong>文章</strong></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggcorrplot)</div><div class="line">#计算相关矩阵(cor()计算结果不提供p-value)</div><div class="line">data(&quot;mtcars&quot;)</div><div class="line">corr &lt;- round(cor(mtcars), 1)</div><div class="line">head(corr[, 1:6])</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a56840974454525.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#用ggcorrplot包提供的函数cor_pmat()</div><div class="line">p.mat &lt;- cor_pmat(mtcars)</div><div class="line">head(p.mat[, 1:4])</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-885ea263533e51b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>可视化相关性矩阵<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggcorrplot(corr)#method默认为square</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-679f0410e8d706fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#方法为circle</div><div class="line">ggcorrplot(corr, method = &quot;circle&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e6cc2527561a9df5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#重排矩阵，使用分等级聚类</div><div class="line">ggcorrplot(corr, hc.order = TRUE, outline.color = &quot;white&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bc7ef6b733b0010d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#控制矩阵形状</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, outline.color = &quot;white&quot;)#下三角形</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-3841c6dd4591f121.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#上三角形</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;upper&quot;, outline.color = &quot;white&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-582e2120663d452c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#更改颜色以及主题</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, outline.color = &quot;white&quot;, </div><div class="line">ggtheme = ggplot2::theme_gray, colors = c(&quot;#6D9EC1&quot;, &quot;white&quot;, &quot;#E46726&quot;))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-abbab5e291738694.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#添加相关系数</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, lab = TRUE)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a7b9c76f1b9177c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#增加显著性水平，不显著的话就不添加了</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, p.mat = p.mat)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-38b016110a10b84b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#将不显著的色块设置成空白</div><div class="line">ggcorrplot(corr, p.mat = p.mat, hc.order=TRUE, type = &quot;lower&quot;, insig = &quot;blank&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-582c67d095d8e1aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;基于&lt;strong&gt;ggplot2&lt;/strong&gt;包以及&lt;strong&gt;corrplot&lt;/strong&gt;包的相关矩阵可视化包&lt;strong&gt;ggcorrplot&lt;/strong&gt;，&lt;strong&gt;ggcorrplot&lt;/strong&gt;包提供对相关矩阵重排序以及在相关图中
     
     </summary>
     
@@ -792,38 +810,6 @@
     <summary type="html">
     
       &lt;p&gt;上篇文章中提了一下如何通过&lt;strong&gt;ggpubr&lt;/strong&gt;包为&lt;code&gt;ggplot&lt;/code&gt;图添加&lt;code&gt;p-value&lt;/code&gt;以及显著性标记,本文将详细介绍。利用数据集&lt;strong&gt;ToothGrowth&lt;/strong&gt;进行演示&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>R语言可视化学习笔记之相关矩阵可视化包ggcorrplot</title>
-    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%9B%B8%E5%85%B3%E7%9F%A9%E9%98%B5%E5%8F%AF%E8%A7%86%E5%8C%96%E5%8C%85ggcorrplot/"/>
-    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之相关矩阵可视化包ggcorrplot/</id>
-    <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-25T11:06:09.990Z</updated>
-    
-    <content type="html"><![CDATA[<p>基于<strong>ggplot2</strong>包以及<strong>corrplot</strong>包的相关矩阵可视化包<strong>ggcorrplot</strong>，<strong>ggcorrplot</strong>包提供对相关矩阵重排序以及在相关图中展示显著性水平的方法，同时也能计算相关性p-value</p>
-<p>安装方法就不提了，不懂的可以浏览我以前的<a href="http://www.jianshu.com/p/678213d605a5" target="_blank" rel="external"><strong>文章</strong></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggcorrplot)</div><div class="line">#计算相关矩阵(cor()计算结果不提供p-value)</div><div class="line">data(&quot;mtcars&quot;)</div><div class="line">corr &lt;- round(cor(mtcars), 1)</div><div class="line">head(corr[, 1:6])</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a56840974454525.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#用ggcorrplot包提供的函数cor_pmat()</div><div class="line">p.mat &lt;- cor_pmat(mtcars)</div><div class="line">head(p.mat[, 1:4])</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-885ea263533e51b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>可视化相关性矩阵<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggcorrplot(corr)#method默认为square</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-679f0410e8d706fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#方法为circle</div><div class="line">ggcorrplot(corr, method = &quot;circle&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e6cc2527561a9df5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#重排矩阵，使用分等级聚类</div><div class="line">ggcorrplot(corr, hc.order = TRUE, outline.color = &quot;white&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bc7ef6b733b0010d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#控制矩阵形状</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, outline.color = &quot;white&quot;)#下三角形</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-3841c6dd4591f121.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#上三角形</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;upper&quot;, outline.color = &quot;white&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-582e2120663d452c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#更改颜色以及主题</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, outline.color = &quot;white&quot;, </div><div class="line">ggtheme = ggplot2::theme_gray, colors = c(&quot;#6D9EC1&quot;, &quot;white&quot;, &quot;#E46726&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-abbab5e291738694.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#添加相关系数</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, lab = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a7b9c76f1b9177c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#增加显著性水平，不显著的话就不添加了</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, p.mat = p.mat)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-38b016110a10b84b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#将不显著的色块设置成空白</div><div class="line">ggcorrplot(corr, p.mat = p.mat, hc.order=TRUE, type = &quot;lower&quot;, insig = &quot;blank&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-582c67d095d8e1aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;基于&lt;strong&gt;ggplot2&lt;/strong&gt;包以及&lt;strong&gt;corrplot&lt;/strong&gt;包的相关矩阵可视化包&lt;strong&gt;ggcorrplot&lt;/strong&gt;，&lt;strong&gt;ggcorrplot&lt;/strong&gt;包提供对相关矩阵重排序以及在相关图中
     
     </summary>
     
