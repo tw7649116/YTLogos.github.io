@@ -113,18 +113,18 @@
 
 
 
-<meta name="description" content="数据分析中数据处理也就是data manipulation是十分繁琐的，为此我将在博客里特意建一个分类：Data Manipulation。本文将讲讲如何在R语言中创建变量、重命名以及merge。 #create a dataset12345678910111213fy &amp;lt;- c(2010,2011,2012,2010,2011,2012,2010,2011,2012)company &amp;lt">
+<meta name="description" content="数据分析中数据处理也就是data manipulation是十分繁琐的，为此我将在博客里特意建一个分类：Data Manipulation。本文将讲讲如何在R语言中创建变量、重命名以及merge。">
 <meta name="keywords" content="manipulation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R语言data manipulation学习笔记之创建变量、重命名、数据融合">
 <meta property="og:url" content="https://ytlogos.github.io/2017/06/28/R语言data-manipulation学习笔记之创建变量、重命名、数据融合/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="数据分析中数据处理也就是data manipulation是十分繁琐的，为此我将在博客里特意建一个分类：Data Manipulation。本文将讲讲如何在R语言中创建变量、重命名以及merge。 #create a dataset12345678910111213fy &amp;lt;- c(2010,2011,2012,2010,2011,2012,2010,2011,2012)company &amp;lt">
+<meta property="og:description" content="数据分析中数据处理也就是data manipulation是十分繁琐的，为此我将在博客里特意建一个分类：Data Manipulation。本文将讲讲如何在R语言中创建变量、重命名以及merge。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4a45f75977c58bb5.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-28T08:21:39.268Z">
+<meta property="og:updated_time" content="2017-06-28T14:00:01.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R语言data manipulation学习笔记之创建变量、重命名、数据融合">
-<meta name="twitter:description" content="数据分析中数据处理也就是data manipulation是十分繁琐的，为此我将在博客里特意建一个分类：Data Manipulation。本文将讲讲如何在R语言中创建变量、重命名以及merge。 #create a dataset12345678910111213fy &amp;lt;- c(2010,2011,2012,2010,2011,2012,2010,2011,2012)company &amp;lt">
+<meta name="twitter:description" content="数据分析中数据处理也就是data manipulation是十分繁琐的，为此我将在博客里特意建一个分类：Data Manipulation。本文将讲讲如何在R语言中创建变量、重命名以及merge。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-4a45f75977c58bb5.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -496,7 +496,7 @@
       
 
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-4a45f75977c58bb5.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>数据分析中数据处理也就是data manipulation是十分繁琐的，为此我将在博客里特意建一个分类：Data Manipulation。本文将讲讲如何在R语言中创建变量、重命名以及merge。</p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-4a45f75977c58bb5.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>数据分析中数据处理也就是data manipulation是十分繁琐的，为此我将在博客里特意建一个分类：Data Manipulation。本文将讲讲如何在R语言中创建变量、重命名以及merge。<br><a id="more"></a></p>
 <p>#create a dataset<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">fy &lt;- c(2010,2011,2012,2010,2011,2012,2010,2011,2012)</div><div class="line">company &lt;- c(&quot;Apple&quot;,&quot;Apple&quot;,&quot;Apple&quot;,&quot;Google&quot;,&quot;Google&quot;,&quot;Google&quot;,&quot;Microsoft&quot;,&quot;Microsoft&quot;,&quot;Microsoft&quot;)</div><div class="line">revenue &lt;- c(65225,108249,156508,29321,37905,50175,62484,69943,73723)</div><div class="line">profit &lt;- c(14013,25922,41733,8505,9737,10737,18760,23150,16978) </div><div class="line">companiesData &lt;- data.frame(fy, company, revenue, profit)</div><div class="line">head(companiesData)</div><div class="line">##     fy   company revenue profit</div><div class="line">## 1  2010   Apple   65225  14013</div><div class="line">## 2  2011   Apple  108249  25922</div><div class="line">## 3  2012   Apple  156508  41733</div><div class="line">## 4  2010  Google   29321   8505</div><div class="line">## 5  2011  Google   37905   9737</div><div class="line">## 6  2012  Google   50175  10737</div></pre></td></tr></table></figure></p>
 <p>接下来我们需要查看数据集的结构，用str()函数查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">str(companiesData)</div><div class="line">## &apos;data.frame&apos;:    9 obs. of  4 variables:</div><div class="line">##  $ fy     : num  2010 2011 2012 2010 2011 ...</div><div class="line">##  $ company: Factor w/ 3 levels &quot;Apple&quot;,&quot;Google&quot;,..: 1 1 1 2 2 2 3 3 3</div><div class="line">##  $ revenue: num  65225 108249 156508 29321 37905 ...</div><div class="line">##  $ profit : num  14013 25922 41733 8505 9737 ...</div></pre></td></tr></table></figure></p>
 <p>可以看到年份fy这里是是数值型，我们需要更改为因子型，方便后期处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">companiesData$fy &lt;- factor(companiesData$fy, ordered = TRUE)</div></pre></td></tr></table></figure></p>
