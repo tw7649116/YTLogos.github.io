@@ -600,13 +600,10 @@
     <link href="https://ytlogos.github.io/2017/06/25/%E7%94%A8circlize%E5%8C%85%E7%BB%98%E5%88%B6circos-plot/"/>
     <id>https://ytlogos.github.io/2017/06/25/用circlize包绘制circos-plot/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-28T14:19:18.197Z</updated>
+    <updated>2017-06-28T14:20:20.945Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4b332e9275d7088e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#<code>circlize</code>包</p>
-<blockquote>
-<p><code>circlize</code>包在德国癌症中心的华人博士Zuguang Gu开发的，有兴趣的可以去看看他的<a href="https://github.com/jokergoo" target="_blank" rel="external">Github主页</a>。这个包有两个文档，一个是介绍基本原理的绘制简单<a href="https://cran.r-project.org/web/packages/circlize/vignettes/circlize.pdf" target="_blank" rel="external">圈圈图</a>的，也是本次要介绍的。另外一份文档专门介绍基因组数据绘制圈圈图<a href="https://cran.r-project.org/web/packages/circlize/vignettes/genomic_plot.pdf" target="_blank" rel="external">Genomic Circos Plot</a>,我自己还没看完，下次再介绍。<br>根据我的学习发现这个包与<code>ggplot2</code>很相似，也是先创建一个图层，然后不断的添加图形元素（<code>point</code>、<code>line</code>、<code>bar</code>等），这些简单的图形元素都有<code>circos.</code>这个前缀进行绘制，比如要绘制点，则用<code>circos.points()</code>。具体的下面一一介绍。<br><a id="more"></a></p>
-</blockquote>
+<p>#<code>circlize</code>包<br><code>circlize</code>包在德国癌症中心的华人博士Zuguang Gu开发的，有兴趣的可以去看看他的<a href="https://github.com/jokergoo" target="_blank" rel="external">Github主页</a>。这个包有两个文档，一个是介绍基本原理的绘制简单<a href="https://cran.r-project.org/web/packages/circlize/vignettes/circlize.pdf" target="_blank" rel="external">圈圈图</a>的，也是本次要介绍的。另外一份文档专门介绍基因组数据绘制圈圈图<a href="https://cran.r-project.org/web/packages/circlize/vignettes/genomic_plot.pdf" target="_blank" rel="external">Genomic Circos Plot</a>,我自己还没看完，下次再介绍。<br>根据我的学习发现这个包与<code>ggplot2</code>很相似，也是先创建一个图层，然后不断的添加图形元素（<code>point</code>、<code>line</code>、<code>bar</code>等），这些简单的图形元素都有<code>circos.</code>这个前缀进行绘制，比如要绘制点，则用<code>circos.points()</code>。具体的下面一一介绍。<br><a id="more"></a></p>
 <p>#用<code>circlize</code>绘制圈圈图</p>
 <blockquote>
 <p>照例，没有安装这个包的先安装：<code>install.packages(&quot;circlize&quot;)</code>或者<code>devtools::install_github(&quot;jokergoo/circlize&quot;)</code>。绘图第一步是先初始化(<code>circos.initialize</code>),接下来绘制<code>track</code>，再添加基本元素。需要提一下的是，由于<code>circlize</code>绘制图是不断叠加的，因此如果我们一大段代码下来我们只能看到最终的图形，这里为了演示每端代码的结果，所以每次我都得初始化以及<code>circlize.clear</code>。</p>
@@ -668,9 +665,7 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-4b332e9275d7088e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;#&lt;code&gt;circlize&lt;/code&gt;包&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;circlize&lt;/code&gt;包在德国癌症中心的华人博士Zuguang Gu开发的，有兴趣的可以去看看他的&lt;a href=&quot;https://github.com/jokergoo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github主页&lt;/a&gt;。这个包有两个文档，一个是介绍基本原理的绘制简单&lt;a href=&quot;https://cran.r-project.org/web/packages/circlize/vignettes/circlize.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;圈圈图&lt;/a&gt;的，也是本次要介绍的。另外一份文档专门介绍基因组数据绘制圈圈图&lt;a href=&quot;https://cran.r-project.org/web/packages/circlize/vignettes/genomic_plot.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Genomic Circos Plot&lt;/a&gt;,我自己还没看完，下次再介绍。&lt;br&gt;根据我的学习发现这个包与&lt;code&gt;ggplot2&lt;/code&gt;很相似，也是先创建一个图层，然后不断的添加图形元素（&lt;code&gt;point&lt;/code&gt;、&lt;code&gt;line&lt;/code&gt;、&lt;code&gt;bar&lt;/code&gt;等），这些简单的图形元素都有&lt;code&gt;circos.&lt;/code&gt;这个前缀进行绘制，比如要绘制点，则用&lt;code&gt;circos.points()&lt;/code&gt;。具体的下面一一介绍。&lt;br&gt;
+&lt;p&gt;#&lt;code&gt;circlize&lt;/code&gt;包&lt;br&gt;&lt;code&gt;circlize&lt;/code&gt;包在德国癌症中心的华人博士Zuguang Gu开发的，有兴趣的可以去看看他的&lt;a href=&quot;https://github.com/jokergoo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github主页&lt;/a&gt;。这个包有两个文档，一个是介绍基本原理的绘制简单&lt;a href=&quot;https://cran.r-project.org/web/packages/circlize/vignettes/circlize.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;圈圈图&lt;/a&gt;的，也是本次要介绍的。另外一份文档专门介绍基因组数据绘制圈圈图&lt;a href=&quot;https://cran.r-project.org/web/packages/circlize/vignettes/genomic_plot.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Genomic Circos Plot&lt;/a&gt;,我自己还没看完，下次再介绍。&lt;br&gt;根据我的学习发现这个包与&lt;code&gt;ggplot2&lt;/code&gt;很相似，也是先创建一个图层，然后不断的添加图形元素（&lt;code&gt;point&lt;/code&gt;、&lt;code&gt;line&lt;/code&gt;、&lt;code&gt;bar&lt;/code&gt;等），这些简单的图形元素都有&lt;code&gt;circos.&lt;/code&gt;这个前缀进行绘制，比如要绘制点，则用&lt;code&gt;circos.points()&lt;/code&gt;。具体的下面一一介绍。&lt;br&gt;
     
     </summary>
     
