@@ -600,13 +600,16 @@
     <link href="https://ytlogos.github.io/2017/06/25/%E7%94%A8circlize%E5%8C%85%E7%BB%98%E5%88%B6circos-plot/"/>
     <id>https://ytlogos.github.io/2017/06/25/用circlize包绘制circos-plot/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-28T14:15:03.203Z</updated>
+    <updated>2017-06-28T14:19:18.197Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4b332e9275d7088e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>#<code>circlize</code>包</p>
 <blockquote>
 <p><code>circlize</code>包在德国癌症中心的华人博士Zuguang Gu开发的，有兴趣的可以去看看他的<a href="https://github.com/jokergoo" target="_blank" rel="external">Github主页</a>。这个包有两个文档，一个是介绍基本原理的绘制简单<a href="https://cran.r-project.org/web/packages/circlize/vignettes/circlize.pdf" target="_blank" rel="external">圈圈图</a>的，也是本次要介绍的。另外一份文档专门介绍基因组数据绘制圈圈图<a href="https://cran.r-project.org/web/packages/circlize/vignettes/genomic_plot.pdf" target="_blank" rel="external">Genomic Circos Plot</a>,我自己还没看完，下次再介绍。<br>根据我的学习发现这个包与<code>ggplot2</code>很相似，也是先创建一个图层，然后不断的添加图形元素（<code>point</code>、<code>line</code>、<code>bar</code>等），这些简单的图形元素都有<code>circos.</code>这个前缀进行绘制，比如要绘制点，则用<code>circos.points()</code>。具体的下面一一介绍。<br><a id="more"></a></p>
-<p>#用<code>circlize</code>绘制圈圈图<br>照例，没有安装这个包的先安装：<code>install.packages(&quot;circlize&quot;)</code>或者<code>devtools::install_github(&quot;jokergoo/circlize&quot;)</code>。绘图第一步是先初始化(<code>circos.initialize</code>),接下来绘制<code>track</code>，再添加基本元素。需要提一下的是，由于<code>circlize</code>绘制图是不断叠加的，因此如果我们一大段代码下来我们只能看到最终的图形，这里为了演示每端代码的结果，所以每次我都得初始化以及<code>circlize.clear</code>。</p>
+</blockquote>
+<p>#用<code>circlize</code>绘制圈圈图</p>
+<blockquote>
+<p>照例，没有安装这个包的先安装：<code>install.packages(&quot;circlize&quot;)</code>或者<code>devtools::install_github(&quot;jokergoo/circlize&quot;)</code>。绘图第一步是先初始化(<code>circos.initialize</code>),接下来绘制<code>track</code>，再添加基本元素。需要提一下的是，由于<code>circlize</code>绘制图是不断叠加的，因此如果我们一大段代码下来我们只能看到最终的图形，这里为了演示每端代码的结果，所以每次我都得初始化以及<code>circlize.clear</code>。</p>
 </blockquote>
 <p>##绘制第一个<code>track</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">par(mar = c(1, 1, 1, 1), lwd = 0.1, cex = 0.6)</div><div class="line">circos.par(track.height = 0.1)</div><div class="line">circos.initialize(factors = a$factors, x = a$x) #初始化，factors来控制track数目，初始化里只有x， 没有y。这一步相当于ggplot()</div><div class="line">circos.trackPlotRegion(factors = a$factors, y = a$y, </div><div class="line">panel.fun = function(x, y) &#123; </div><div class="line">circos.axis()&#125;)</div><div class="line">col &lt;- rep(c(&quot;#FF0000&quot;, &quot;#00FF00&quot;), 4) #自定义一下颜色# 这里先解释一下，一个track有好几个cell，具体数目由factors决定的，向本数据集中factors有八个，因此绘制一个track，其包含八个cell。含有前缀circos.track的函数会在所有的cel里添加基本元素，而只有前缀circos.的函数可以在特定的track、cell里添加基本元素。具体看下演示。</div><div class="line">circos.trackPoints(a$factors, a$x, a$y, col = col, pch = 16, cex = 0.5) #所有的cell里都绘制点图</div><div class="line">circos.text(-1, 0.5, &quot;left&quot;, sector.index = &quot;a&quot;, track.index = 1) #在track 1中的标记为a的cell里添加</div><div class="line">textcircos.text(1, 0.5, &quot;right&quot;, sector.index = &quot;a&quot;)</div><div class="line">circos.clear()</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-d3f6e3b63528471a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
