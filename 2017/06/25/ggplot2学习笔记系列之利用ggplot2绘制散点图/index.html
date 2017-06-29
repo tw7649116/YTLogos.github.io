@@ -113,13 +113,14 @@
 
 
 
-<meta name="description" content="1 简介散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包ggplot2可以绘制十分漂亮的散点图。 利用ggplot2绘图前先确保我们所使用的数据集是data.frame形式。ggplot2绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包ggplot2 即library(ggplot2)。12#Load pack">
+<meta name="description" content="1 简介散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包ggplot2可以绘制十分漂亮的散点图。 利用ggplot2绘图前先确保我们所使用的数据集是data.frame形式。ggplot2绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包ggplot2 即library(ggplot2)。">
 <meta name="keywords" content="R&amp;ggcorrplot&amp;visualization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ggplot2学习笔记系列之利用ggplot2绘制散点图">
 <meta property="og:url" content="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制散点图/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="1 简介散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包ggplot2可以绘制十分漂亮的散点图。 利用ggplot2绘图前先确保我们所使用的数据集是data.frame形式。ggplot2绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包ggplot2 即library(ggplot2)。12#Load pack">
+<meta property="og:description" content="1 简介散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包ggplot2可以绘制十分漂亮的散点图。 利用ggplot2绘图前先确保我们所使用的数据集是data.frame形式。ggplot2绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包ggplot2 即library(ggplot2)。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-d1d4d773b39fb55a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-92b206d9539bc599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-468edde6998fbc45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -134,11 +135,11 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4fa6e3822fcf9a7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8a8be783c2d23499.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-141622fb2f69c5f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-27T08:53:24.612Z">
+<meta property="og:updated_time" content="2017-06-29T03:20:50.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ggplot2学习笔记系列之利用ggplot2绘制散点图">
-<meta name="twitter:description" content="1 简介散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包ggplot2可以绘制十分漂亮的散点图。 利用ggplot2绘图前先确保我们所使用的数据集是data.frame形式。ggplot2绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包ggplot2 即library(ggplot2)。12#Load pack">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-d1d4d773b39fb55a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="1 简介散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包ggplot2可以绘制十分漂亮的散点图。 利用ggplot2绘图前先确保我们所使用的数据集是data.frame形式。ggplot2绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包ggplot2 即library(ggplot2)。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -509,7 +510,7 @@
       
 
       
-        <p>1 简介<br>散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包<strong>ggplot2</strong>可以绘制十分漂亮的散点图。 利用<strong>ggplot2</strong>绘图前先确保我们所使用的数据集是<strong>data.frame</strong>形式。<strong>ggplot2</strong>绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包<strong>ggplot2</strong> 即<strong>library(ggplot2)</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Load packages</div><div class="line">library(ggplot2)#visualization</div></pre></td></tr></table></figure></p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>1 简介<br>散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包<strong>ggplot2</strong>可以绘制十分漂亮的散点图。 利用<strong>ggplot2</strong>绘图前先确保我们所使用的数据集是<strong>data.frame</strong>形式。<strong>ggplot2</strong>绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包<strong>ggplot2</strong> 即<strong>library(ggplot2)</strong>。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Load packages</div><div class="line">library(ggplot2)#visualization</div></pre></td></tr></table></figure></p>
 <p>加载完包之后，本文利用数据集<strong>mtcars</strong>来演示散点图绘制。 先查看数据集的前几行来了解<strong>mtcars</strong>数据集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#check data</div><div class="line">head(mtcars)</div></pre></td></tr></table></figure></p>
 <p>2 绘制简单的散点图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg)) + geom_point()</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-d1d4d773b39fb55a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>2.1 <strong>shape</strong>参数修改图形的形状<br>                                         <strong>可选点图形形状</strong>:<br><img src="http://upload-images.jianshu.io/upload_images/2084719-92b206d9539bc599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg)) +geom_point(shape=17)</div></pre></td></tr></table></figure></p>

@@ -113,13 +113,14 @@
 
 
 
-<meta name="description" content="#绘制带有误差棒的条形图123456789101112131415library(ggplot2)# 创建数据集df &amp;lt;- data.frame(treatment = factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3)),                  response = c(2, 5, 4, 6, 9, 7, 3, 5, 8),">
+<meta name="description" content="绘制带有误差棒的条形图">
 <meta name="keywords" content="R&amp;ggplot2&amp;visualization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记">
 <meta property="og:url" content="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="#绘制带有误差棒的条形图123456789101112131415library(ggplot2)# 创建数据集df &amp;lt;- data.frame(treatment = factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3)),                  response = c(2, 5, 4, 6, 9, 7, 3, 5, 8),">
+<meta property="og:description" content="绘制带有误差棒的条形图">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-0d1a0cc2f8ac5129.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-d7a71cdebe7aaecb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-fd824d52ccfd97f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -129,11 +130,11 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-01c06eb52b6848d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-11d43dfb82953994.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-27T08:54:05.731Z">
+<meta property="og:updated_time" content="2017-06-29T03:16:29.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记">
-<meta name="twitter:description" content="#绘制带有误差棒的条形图123456789101112131415library(ggplot2)# 创建数据集df &amp;lt;- data.frame(treatment = factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3)),                  response = c(2, 5, 4, 6, 9, 7, 3, 5, 8),">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-0d1a0cc2f8ac5129.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="绘制带有误差棒的条形图">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -504,7 +505,9 @@
       
 
       
-        <p>#绘制带有误差棒的条形图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line"># 创建数据集</div><div class="line">df &lt;- data.frame(treatment = factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3)), </div><div class="line">                 response = c(2, 5, 4, 6, 9, 7, 3, 5, 8), </div><div class="line">                 group = factor(c(1, 2, 3, 1, 2, 3, 1, 2, 3)), </div><div class="line">                 se = c(0.4, 0.2, 0.4, 0.5, 0.3, 0.2, 0.4, 0.6, 0.7))</div><div class="line">head(df) #查看数据集</div><div class="line"></div><div class="line">##   treatment response group  se</div><div class="line">## 1    1         2       1    0.4</div><div class="line">## 2    1         5       2    0.2</div><div class="line">## 3    1         4       3    0.4</div><div class="line">## 4    2         6       1    0.5</div><div class="line">## 5    2         9       2    0.3</div><div class="line">## 6    2         7       3    0.2</div></pre></td></tr></table></figure></p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="绘制带有误差棒的条形图"><a href="#绘制带有误差棒的条形图" class="headerlink" title="绘制带有误差棒的条形图"></a>绘制带有误差棒的条形图</h2><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line"># 创建数据集</div><div class="line">df &lt;- data.frame(treatment = factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3)), </div><div class="line">                 response = c(2, 5, 4, 6, 9, 7, 3, 5, 8), </div><div class="line">                 group = factor(c(1, 2, 3, 1, 2, 3, 1, 2, 3)), </div><div class="line">                 se = c(0.4, 0.2, 0.4, 0.5, 0.3, 0.2, 0.4, 0.6, 0.7))</div><div class="line">head(df) #查看数据集</div><div class="line"></div><div class="line">##   treatment response group  se</div><div class="line">## 1    1         2       1    0.4</div><div class="line">## 2    1         5       2    0.2</div><div class="line">## 3    1         4       3    0.4</div><div class="line">## 4    2         6       1    0.5</div><div class="line">## 5    2         9       2    0.3</div><div class="line">## 6    2         7       3    0.2</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 使用geom_errorbar()绘制带有误差棒的条形图</div><div class="line"># 这里一定要注意position要与`geom_bar()`保持一致，由于系统默认dodge是0.9，</div><div class="line"># 因此geom_errorbar()里面position需要设置0.9，width设置误差棒的大小</div><div class="line">ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)</div></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-0d1a0cc2f8ac5129.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>#绘制带有显著性标记的条形图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">label &lt;- c(&quot;&quot;, &quot;*&quot;, &quot;**&quot;, &quot;&quot;, &quot;**&quot;, &quot;*&quot;, &quot;&quot;, &quot;&quot;, &quot;*&quot;) #这里随便设置的显著性，还有abcdef等显著性标记符号，原理一样，这里不再重复。</div><div class="line"># 添加显著性标记跟上次讲的添加数据标签是一样的，这里我们假设1是对照</div><div class="line">ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">geom_text(aes(y = response +  1.5 * se, label = label, group = group), </div><div class="line">position = position_dodge(0.9), size = 5, fontface = &quot;bold&quot;) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;) #这里的label就是刚才设置的，group是数据集中的，fontface设置字体。</div></pre></td></tr></table></figure></p>
@@ -677,8 +680,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/17811440?v=3&s=460"
@@ -776,6 +788,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制带有误差棒的条形图"><span class="nav-number">1.</span> <span class="nav-text">绘制带有误差棒的条形图</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

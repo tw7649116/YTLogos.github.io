@@ -113,13 +113,14 @@
 
 
 
-<meta name="description" content="当我们在图形中添加标签时，标签之间很容易相互重叠，包ggrepel就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：12345library(ggplot2)#使用数据集mtcars演示ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&amp;quot;red&amp;quot;)+ geom_text(aes(wt, mpg, la">
+<meta name="description" content="当我们在图形中添加标签时，标签之间很容易相互重叠，包ggrepel就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：">
 <meta name="keywords" content="R&amp;ggrepel&amp;visualization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R语言可视化学习笔记之ggrepel包">
 <meta property="og:url" content="https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之ggrepel包/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="当我们在图形中添加标签时，标签之间很容易相互重叠，包ggrepel就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：12345library(ggplot2)#使用数据集mtcars演示ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&amp;quot;red&amp;quot;)+ geom_text(aes(wt, mpg, la">
+<meta property="og:description" content="当我们在图形中添加标签时，标签之间很容易相互重叠，包ggrepel就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-0110517941711504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-7f9edd980e5504ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-5e60c14166f9c915.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -130,11 +131,11 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-771214ebd632ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-771214ebd632ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-9b5718dafd8b2739.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-27T08:54:21.260Z">
+<meta property="og:updated_time" content="2017-06-29T03:13:42.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R语言可视化学习笔记之ggrepel包">
-<meta name="twitter:description" content="当我们在图形中添加标签时，标签之间很容易相互重叠，包ggrepel就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：12345library(ggplot2)#使用数据集mtcars演示ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&amp;quot;red&amp;quot;)+ geom_text(aes(wt, mpg, la">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-0110517941711504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="当我们在图形中添加标签时，标签之间很容易相互重叠，包ggrepel就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -505,7 +506,7 @@
       
 
       
-        <p>当我们在图形中添加标签时，标签之间很容易相互重叠，包<a href="https://github.com/slowkow/ggrepel" target="_blank" rel="external"><strong>ggrepel</strong></a>就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#使用数据集mtcars演示</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text(aes(wt, mpg, label=rownames(mtcars)))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当我们在图形中添加标签时，标签之间很容易相互重叠，包<a href="https://github.com/slowkow/ggrepel" target="_blank" rel="external"><strong>ggrepel</strong></a>就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#使用数据集mtcars演示</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text(aes(wt, mpg, label=rownames(mtcars)))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-0110517941711504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>可以看到可视化效果不是很好。接下来看看包<strong>ggrepel</strong>的效果。<br>geom_text_repel()是基于geom_text()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggrepel)</div><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text_repel(aes(wt, mpg, label=rownames(mtcars)))+</div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-7f9edd980e5504ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>

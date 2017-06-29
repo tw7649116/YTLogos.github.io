@@ -113,13 +113,14 @@
 
 
 
-<meta name="description" content="#简介本文将绘制静态与交互式热图，需要使用到以下R包和函数：heatmap():用于绘制简单热图的函数heatmap.2():绘制增强热图的函数d3heatmap:用于绘制交互式热图的R包ComplexHeatmap:用于绘制、注释和排列复杂热图的R&amp;amp;bioconductor包（非常适用于基因组数据分析） #数据准备使用R内置数据集mtcars1df &amp;lt;- as.matrix((sc">
+<meta name="description" content="简介本文将绘制静态与交互式热图，需要使用到以下R包和函数：heatmap():用于绘制简单热图的函数heatmap.2():绘制增强热图的函数d3heatmap:用于绘制交互式热图的R包ComplexHeatmap:用于绘制、注释和排列复杂热图的R&amp;amp;bioconductor包（非常适用于基因组数据分析）">
 <meta name="keywords" content="R&amp;Heatmap&amp;visualization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R语言学习笔记之热图绘制">
 <meta property="og:url" content="https://ytlogos.github.io/2017/06/25/R语言学习笔记之热图绘制/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="#简介本文将绘制静态与交互式热图，需要使用到以下R包和函数：heatmap():用于绘制简单热图的函数heatmap.2():绘制增强热图的函数d3heatmap:用于绘制交互式热图的R包ComplexHeatmap:用于绘制、注释和排列复杂热图的R&amp;amp;bioconductor包（非常适用于基因组数据分析） #数据准备使用R内置数据集mtcars1df &amp;lt;- as.matrix((sc">
+<meta property="og:description" content="简介本文将绘制静态与交互式热图，需要使用到以下R包和函数：heatmap():用于绘制简单热图的函数heatmap.2():绘制增强热图的函数d3heatmap:用于绘制交互式热图的R包ComplexHeatmap:用于绘制、注释和排列复杂热图的R&amp;amp;bioconductor包（非常适用于基因组数据分析）">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-076503522b98e6a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-c7bea2866745dab0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-ebc5d8bff1232cd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4d1b42636045984b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -155,11 +156,11 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-e348e9abf5f7cf82.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-076503522b98e6a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-de948c8b938cfa9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-27T08:53:59.909Z">
+<meta property="og:updated_time" content="2017-06-29T03:17:18.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R语言学习笔记之热图绘制">
-<meta name="twitter:description" content="#简介本文将绘制静态与交互式热图，需要使用到以下R包和函数：heatmap():用于绘制简单热图的函数heatmap.2():绘制增强热图的函数d3heatmap:用于绘制交互式热图的R包ComplexHeatmap:用于绘制、注释和排列复杂热图的R&amp;amp;bioconductor包（非常适用于基因组数据分析） #数据准备使用R内置数据集mtcars1df &amp;lt;- as.matrix((sc">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-c7bea2866745dab0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="简介本文将绘制静态与交互式热图，需要使用到以下R包和函数：heatmap():用于绘制简单热图的函数heatmap.2():绘制增强热图的函数d3heatmap:用于绘制交互式热图的R包ComplexHeatmap:用于绘制、注释和排列复杂热图的R&amp;amp;bioconductor包（非常适用于基因组数据分析）">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-076503522b98e6a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -530,7 +531,8 @@
       
 
       
-        <p>#简介<br>本文将绘制静态与交互式热图，需要使用到以下R包和函数：<br><code>heatmap()</code>:用于绘制简单热图的函数<br><code>heatmap.2()</code>:绘制增强热图的函数<br><code>d3heatmap</code>:用于绘制交互式热图的R包<br><code>ComplexHeatmap</code>:用于绘制、注释和排列复杂热图的R&amp;bioconductor包（非常适用于基因组数据分析）</p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-076503522b98e6a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文将绘制静态与交互式热图，需要使用到以下R包和函数：<br><code>heatmap()</code>:用于绘制简单热图的函数<br><code>heatmap.2()</code>:绘制增强热图的函数<br><code>d3heatmap</code>:用于绘制交互式热图的R包<br><code>ComplexHeatmap</code>:用于绘制、注释和排列复杂热图的R&amp;bioconductor包（非常适用于基因组数据分析）<br><a id="more"></a></p>
 <p>#数据准备<br>使用R内置数据集<code>mtcars</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df &lt;- as.matrix((scale(mtcars)))#归一化、矩阵化</div></pre></td></tr></table></figure></p>
 <p>#使用基本函数绘制简单简单热图<br>主要是函数<code>heatmap(x, scale=&quot;row&quot;)</code></p>
 <ul>
@@ -803,8 +805,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/17811440?v=3&s=460"
@@ -902,6 +913,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -58,10 +58,10 @@
     <link href="https://ytlogos.github.io/2017/06/26/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggpubr%E5%8C%85/"/>
     <id>https://ytlogos.github.io/2017/06/26/R语言可视化学习笔记之ggpubr包/</id>
     <published>2017-06-26T11:43:11.000Z</published>
-    <updated>2017-06-27T08:52:57.331Z</updated>
+    <updated>2017-06-29T03:18:30.617Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="http://docs.ggplot2.org/current/" target="_blank" rel="external">Hadley Wickham</a>创建的可视化包ggplot2可以流畅地进行优美的可视化，但是如果要通过ggplot2定制一套图形，尤其是适用于杂志期刊等出版物的图形，对于那些没有深入了解<strong>ggplot2</strong>的人来说就有点困难了，<strong>ggplot2</strong>的部分语法是很晦涩的。为此<a href="http://www.sthda.com/english/rpkgs/ggpubr/index.html" target="_blank" rel="external">Alboukadel Kassambara</a>创建了基于<strong>ggplot2</strong>的可视化包<strong>ggpubr</strong>用于绘制符合出版物要求的图形。</p>
-<p>#安装及加载<strong>ggpubr</strong>包<br>安装方式有两种：</p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-fbe5b444e2efcb8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><a href="http://docs.ggplot2.org/current/" target="_blank" rel="external">Hadley Wickham</a>创建的可视化包ggplot2可以流畅地进行优美的可视化，但是如果要通过ggplot2定制一套图形，尤其是适用于杂志期刊等出版物的图形，对于那些没有深入了解<strong>ggplot2</strong>的人来说就有点困难了，<strong>ggplot2</strong>的部分语法是很晦涩的。为此<a href="http://www.sthda.com/english/rpkgs/ggpubr/index.html" target="_blank" rel="external">Alboukadel Kassambara</a>创建了基于<strong>ggplot2</strong>的可视化包<strong>ggpubr</strong>用于绘制符合出版物要求的图形。<br><a id="more"></a></p>
+<h2 id="安装及加载ggpubr包"><a href="#安装及加载ggpubr包" class="headerlink" title="安装及加载ggpubr包"></a>安装及加载<strong>ggpubr</strong>包</h2><p>安装方式有两种：</p>
 <ul>
 <li><p>直接从<strong>CRAN</strong>安装：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install.packages(&quot;ggpubr&quot;)</div></pre></td></tr></table></figure>
@@ -110,7 +110,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;http://docs.ggplot2.org/current/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hadley Wickham&lt;/a&gt;创建的可视化包ggplot2可以流畅地进行优美的可视化，但是如果要通过ggplot2定制一
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-fbe5b444e2efcb8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a href=&quot;http://docs.ggplot2.org/current/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hadley Wickham&lt;/a&gt;创建的可视化包ggplot2可以流畅地进行优美的可视化，但是如果要通过ggplot2定制一套图形，尤其是适用于杂志期刊等出版物的图形，对于那些没有深入了解&lt;strong&gt;ggplot2&lt;/strong&gt;的人来说就有点困难了，&lt;strong&gt;ggplot2&lt;/strong&gt;的部分语法是很晦涩的。为此&lt;a href=&quot;http://www.sthda.com/english/rpkgs/ggpubr/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Alboukadel Kassambara&lt;/a&gt;创建了基于&lt;strong&gt;ggplot2&lt;/strong&gt;的可视化包&lt;strong&gt;ggpubr&lt;/strong&gt;用于绘制符合出版物要求的图形。&lt;br&gt;
     
     </summary>
     
@@ -126,9 +126,9 @@
     <link href="https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E6%95%A3%E7%82%B9%E5%9B%BE/"/>
     <id>https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制散点图/</id>
     <published>2017-06-25T10:53:51.479Z</published>
-    <updated>2017-06-27T08:53:24.612Z</updated>
+    <updated>2017-06-29T03:20:50.904Z</updated>
     
-    <content type="html"><![CDATA[<p>1 简介<br>散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包<strong>ggplot2</strong>可以绘制十分漂亮的散点图。 利用<strong>ggplot2</strong>绘图前先确保我们所使用的数据集是<strong>data.frame</strong>形式。<strong>ggplot2</strong>绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包<strong>ggplot2</strong> 即<strong>library(ggplot2)</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Load packages</div><div class="line">library(ggplot2)#visualization</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>1 简介<br>散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包<strong>ggplot2</strong>可以绘制十分漂亮的散点图。 利用<strong>ggplot2</strong>绘图前先确保我们所使用的数据集是<strong>data.frame</strong>形式。<strong>ggplot2</strong>绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包<strong>ggplot2</strong> 即<strong>library(ggplot2)</strong>。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Load packages</div><div class="line">library(ggplot2)#visualization</div></pre></td></tr></table></figure></p>
 <p>加载完包之后，本文利用数据集<strong>mtcars</strong>来演示散点图绘制。 先查看数据集的前几行来了解<strong>mtcars</strong>数据集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#check data</div><div class="line">head(mtcars)</div></pre></td></tr></table></figure></p>
 <p>2 绘制简单的散点图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg)) + geom_point()</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-d1d4d773b39fb55a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>2.1 <strong>shape</strong>参数修改图形的形状<br>                                         <strong>可选点图形形状</strong>:<br><img src="http://upload-images.jianshu.io/upload_images/2084719-92b206d9539bc599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg)) +geom_point(shape=17)</div></pre></td></tr></table></figure></p>
@@ -154,7 +154,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;1 简介&lt;br&gt;散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包&lt;strong&gt;ggplot2&lt;/strong&gt;可以绘制十分漂亮的散点图。 利用&lt;strong&gt;ggplot2&lt;/strong&gt;绘图前先确保我们所
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;1 简介&lt;br&gt;散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包&lt;strong&gt;ggplot2&lt;/strong&gt;可以绘制十分漂亮的散点图。 利用&lt;strong&gt;ggplot2&lt;/strong&gt;绘图前先确保我们所使用的数据集是&lt;strong&gt;data.frame&lt;/strong&gt;形式。&lt;strong&gt;ggplot2&lt;/strong&gt;绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包&lt;strong&gt;ggplot2&lt;/strong&gt; 即&lt;strong&gt;library(ggplot2)&lt;/strong&gt;。&lt;br&gt;
     
     </summary>
     
@@ -170,9 +170,10 @@
     <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%83%AD%E5%9B%BE%E7%BB%98%E5%88%B6/"/>
     <id>https://ytlogos.github.io/2017/06/25/R语言学习笔记之热图绘制/</id>
     <published>2017-06-25T09:02:08.727Z</published>
-    <updated>2017-06-27T08:53:59.909Z</updated>
+    <updated>2017-06-29T03:17:18.993Z</updated>
     
-    <content type="html"><![CDATA[<p>#简介<br>本文将绘制静态与交互式热图，需要使用到以下R包和函数：<br><code>heatmap()</code>:用于绘制简单热图的函数<br><code>heatmap.2()</code>:绘制增强热图的函数<br><code>d3heatmap</code>:用于绘制交互式热图的R包<br><code>ComplexHeatmap</code>:用于绘制、注释和排列复杂热图的R&amp;bioconductor包（非常适用于基因组数据分析）</p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-076503522b98e6a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文将绘制静态与交互式热图，需要使用到以下R包和函数：<br><code>heatmap()</code>:用于绘制简单热图的函数<br><code>heatmap.2()</code>:绘制增强热图的函数<br><code>d3heatmap</code>:用于绘制交互式热图的R包<br><code>ComplexHeatmap</code>:用于绘制、注释和排列复杂热图的R&amp;bioconductor包（非常适用于基因组数据分析）<br><a id="more"></a></p>
 <p>#数据准备<br>使用R内置数据集<code>mtcars</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df &lt;- as.matrix((scale(mtcars)))#归一化、矩阵化</div></pre></td></tr></table></figure></p>
 <p>#使用基本函数绘制简单简单热图<br>主要是函数<code>heatmap(x, scale=&quot;row&quot;)</code></p>
 <ul>
@@ -290,7 +291,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;#简介&lt;br&gt;本文将绘制静态与交互式热图，需要使用到以下R包和函数：&lt;br&gt;&lt;code&gt;heatmap()&lt;/code&gt;:用于绘制简单热图的函数&lt;br&gt;&lt;code&gt;heatmap.2()&lt;/code&gt;:绘制增强热图的函数&lt;br&gt;&lt;code&gt;d3heatmap&lt;/code&gt;:
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-076503522b98e6a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;本文将绘制静态与交互式热图，需要使用到以下R包和函数：&lt;br&gt;&lt;code&gt;heatmap()&lt;/code&gt;:用于绘制简单热图的函数&lt;br&gt;&lt;code&gt;heatmap.2()&lt;/code&gt;:绘制增强热图的函数&lt;br&gt;&lt;code&gt;d3heatmap&lt;/code&gt;:用于绘制交互式热图的R包&lt;br&gt;&lt;code&gt;ComplexHeatmap&lt;/code&gt;:用于绘制、注释和排列复杂热图的R&amp;amp;bioconductor包（非常适用于基因组数据分析）&lt;br&gt;
     
     </summary>
     
@@ -306,9 +308,9 @@
     <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之基因组数据可视化/</id>
     <published>2017-06-25T08:46:15.088Z</published>
-    <updated>2017-06-27T08:52:47.275Z</updated>
+    <updated>2017-06-29T03:19:54.208Z</updated>
     
-    <content type="html"><![CDATA[<p>本文主要利用<strong>ggpubr</strong>包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">library(ggpubr)#加载包</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-38d068706ad3b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>本文主要利用<strong>ggpubr</strong>包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">library(ggpubr)#加载包</div></pre></td></tr></table></figure></p>
 <p>TCGA是一个包含大量癌症数据的数据库，由Marcin Kosinski创建的RTCGA包可以让我们很方便的获取这些数据。主要有三个包：RTCGA、RTCGA.clininal、RTCGA.mRNA。安装方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#Load the bioconductor installersource</div><div class="line">(&quot;http://bioconductor.org/biocLite.R&quot;&quot;)</div><div class="line">#设置镜像，这里我们选择中科大的镜像options(BioC_mirror=&quot;http://ustc.edu.cn/bioc&quot;)</div><div class="line">#下载包</div><div class="line">biocLite(&quot;RTCGA&quot;)</div><div class="line">biocLite(&quot;RTCGA.clininal&quot;)</div><div class="line">biocLite(&quot;RTCGA.mRNA&quot;)</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(RTCGA)</div><div class="line">#查看每一种癌症的数据集</div><div class="line">infoTCGA()</div></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-b34678958936acea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这里只显示部分"></p>
@@ -364,7 +366,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;本文主要利用&lt;strong&gt;ggpubr&lt;/strong&gt;包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div 
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-38d068706ad3b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;本文主要利用&lt;strong&gt;ggpubr&lt;/strong&gt;包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。&lt;br&gt;
     
     </summary>
     
@@ -380,10 +382,9 @@
     <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%9B%B8%E5%85%B3%E7%9F%A9%E9%98%B5%E5%8F%AF%E8%A7%86%E5%8C%96%E5%8C%85ggcorrplot/"/>
     <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之相关矩阵可视化包ggcorrplot/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-27T08:54:31.676Z</updated>
+    <updated>2017-06-29T03:11:59.800Z</updated>
     
-    <content type="html"><![CDATA[<p>基于<strong>ggplot2</strong>包以及<strong>corrplot</strong>包的相关矩阵可视化包<strong>ggcorrplot</strong>，<strong>ggcorrplot</strong>包提供对相关矩阵重排序以及在相关图中展示显著性水平的方法，同时也能计算相关性p-value</p>
-<p>安装方法就不提了，不懂的可以浏览我以前的<a href="http://www.jianshu.com/p/678213d605a5" target="_blank" rel="external"><strong>文章</strong></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggcorrplot)</div><div class="line">#计算相关矩阵(cor()计算结果不提供p-value)</div><div class="line">data(&quot;mtcars&quot;)</div><div class="line">corr &lt;- round(cor(mtcars), 1)</div><div class="line">head(corr[, 1:6])</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a7b9c76f1b9177c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>基于<strong>ggplot2</strong>包以及<strong>corrplot</strong>包的相关矩阵可视化包<strong>ggcorrplot</strong>，<strong>ggcorrplot</strong>包提供对相关矩阵重排序以及在相关图中展示显著性水平的方法，同时也能计算相关性p-value<br><a id="more"></a><br>安装方法就不提了，不懂的可以浏览我以前的<a href="http://www.jianshu.com/p/678213d605a5" target="_blank" rel="external"><strong>文章</strong></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggcorrplot)</div><div class="line">#计算相关矩阵(cor()计算结果不提供p-value)</div><div class="line">data(&quot;mtcars&quot;)</div><div class="line">corr &lt;- round(cor(mtcars), 1)</div><div class="line">head(corr[, 1:6])</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a56840974454525.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#用ggcorrplot包提供的函数cor_pmat()</div><div class="line">p.mat &lt;- cor_pmat(mtcars)</div><div class="line">head(p.mat[, 1:4])</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-885ea263533e51b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>可视化相关性矩阵<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggcorrplot(corr)#method默认为square</div></pre></td></tr></table></figure></p>
@@ -400,7 +401,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;基于&lt;strong&gt;ggplot2&lt;/strong&gt;包以及&lt;strong&gt;corrplot&lt;/strong&gt;包的相关矩阵可视化包&lt;strong&gt;ggcorrplot&lt;/strong&gt;，&lt;strong&gt;ggcorrplot&lt;/strong&gt;包提供对相关矩阵重排序以及在相关图中
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-6a7b9c76f1b9177c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;基于&lt;strong&gt;ggplot2&lt;/strong&gt;包以及&lt;strong&gt;corrplot&lt;/strong&gt;包的相关矩阵可视化包&lt;strong&gt;ggcorrplot&lt;/strong&gt;，&lt;strong&gt;ggcorrplot&lt;/strong&gt;包提供对相关矩阵重排序以及在相关图中展示显著性水平的方法，同时也能计算相关性p-value&lt;br&gt;
     
     </summary>
     
@@ -416,9 +417,11 @@
     <link href="https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E8%AF%AF%E5%B7%AE%E6%A3%92%E5%8F%8A%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/"/>
     <id>https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-27T08:54:05.731Z</updated>
+    <updated>2017-06-29T03:16:29.136Z</updated>
     
-    <content type="html"><![CDATA[<p>#绘制带有误差棒的条形图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line"># 创建数据集</div><div class="line">df &lt;- data.frame(treatment = factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3)), </div><div class="line">                 response = c(2, 5, 4, 6, 9, 7, 3, 5, 8), </div><div class="line">                 group = factor(c(1, 2, 3, 1, 2, 3, 1, 2, 3)), </div><div class="line">                 se = c(0.4, 0.2, 0.4, 0.5, 0.3, 0.2, 0.4, 0.6, 0.7))</div><div class="line">head(df) #查看数据集</div><div class="line"></div><div class="line">##   treatment response group  se</div><div class="line">## 1    1         2       1    0.4</div><div class="line">## 2    1         5       2    0.2</div><div class="line">## 3    1         4       3    0.4</div><div class="line">## 4    2         6       1    0.5</div><div class="line">## 5    2         9       2    0.3</div><div class="line">## 6    2         7       3    0.2</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="绘制带有误差棒的条形图"><a href="#绘制带有误差棒的条形图" class="headerlink" title="绘制带有误差棒的条形图"></a>绘制带有误差棒的条形图</h2><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line"># 创建数据集</div><div class="line">df &lt;- data.frame(treatment = factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3)), </div><div class="line">                 response = c(2, 5, 4, 6, 9, 7, 3, 5, 8), </div><div class="line">                 group = factor(c(1, 2, 3, 1, 2, 3, 1, 2, 3)), </div><div class="line">                 se = c(0.4, 0.2, 0.4, 0.5, 0.3, 0.2, 0.4, 0.6, 0.7))</div><div class="line">head(df) #查看数据集</div><div class="line"></div><div class="line">##   treatment response group  se</div><div class="line">## 1    1         2       1    0.4</div><div class="line">## 2    1         5       2    0.2</div><div class="line">## 3    1         4       3    0.4</div><div class="line">## 4    2         6       1    0.5</div><div class="line">## 5    2         9       2    0.3</div><div class="line">## 6    2         7       3    0.2</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 使用geom_errorbar()绘制带有误差棒的条形图</div><div class="line"># 这里一定要注意position要与`geom_bar()`保持一致，由于系统默认dodge是0.9，</div><div class="line"># 因此geom_errorbar()里面position需要设置0.9，width设置误差棒的大小</div><div class="line">ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)</div></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-0d1a0cc2f8ac5129.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>#绘制带有显著性标记的条形图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">label &lt;- c(&quot;&quot;, &quot;*&quot;, &quot;**&quot;, &quot;&quot;, &quot;**&quot;, &quot;*&quot;, &quot;&quot;, &quot;&quot;, &quot;*&quot;) #这里随便设置的显著性，还有abcdef等显著性标记符号，原理一样，这里不再重复。</div><div class="line"># 添加显著性标记跟上次讲的添加数据标签是一样的，这里我们假设1是对照</div><div class="line">ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">geom_text(aes(y = response +  1.5 * se, label = label, group = group), </div><div class="line">position = position_dodge(0.9), size = 5, fontface = &quot;bold&quot;) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;) #这里的label就是刚才设置的，group是数据集中的，fontface设置字体。</div></pre></td></tr></table></figure></p>
@@ -436,7 +439,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;#绘制带有误差棒的条形图&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;绘制带有误差棒的条形图&quot;&gt;&lt;a href=&quot;#绘制带有误差棒的条形图&quot; class=&quot;headerlink&quot; title=&quot;绘制带有误差棒的条形图&quot;&gt;&lt;/a&gt;绘制带有误差棒的条形图&lt;/h2&gt;
     
     </summary>
     
@@ -452,9 +456,9 @@
     <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggrepel%E5%8C%85/"/>
     <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之ggrepel包/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-27T08:54:21.260Z</updated>
+    <updated>2017-06-29T03:13:42.697Z</updated>
     
-    <content type="html"><![CDATA[<p>当我们在图形中添加标签时，标签之间很容易相互重叠，包<a href="https://github.com/slowkow/ggrepel" target="_blank" rel="external"><strong>ggrepel</strong></a>就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#使用数据集mtcars演示</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text(aes(wt, mpg, label=rownames(mtcars)))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当我们在图形中添加标签时，标签之间很容易相互重叠，包<a href="https://github.com/slowkow/ggrepel" target="_blank" rel="external"><strong>ggrepel</strong></a>就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#使用数据集mtcars演示</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text(aes(wt, mpg, label=rownames(mtcars)))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-0110517941711504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>可以看到可视化效果不是很好。接下来看看包<strong>ggrepel</strong>的效果。<br>geom_text_repel()是基于geom_text()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggrepel)</div><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text_repel(aes(wt, mpg, label=rownames(mtcars)))+</div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-7f9edd980e5504ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
@@ -497,7 +501,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;当我们在图形中添加标签时，标签之间很容易相互重叠，包&lt;a href=&quot;https://github.com/slowkow/ggrepel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;ggrepel&lt;/strong&gt;&lt;/a&gt;就专门用来解决
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;当我们在图形中添加标签时，标签之间很容易相互重叠，包&lt;a href=&quot;https://github.com/slowkow/ggrepel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;ggrepel&lt;/strong&gt;&lt;/a&gt;就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：&lt;br&gt;
     
     </summary>
     
@@ -513,14 +517,15 @@
     <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/"/>
     <id>https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-27T08:54:36.771Z</updated>
+    <updated>2017-06-29T03:11:17.377Z</updated>
     
-    <content type="html"><![CDATA[<p>使用<code>k-means</code>聚类所需的包：</p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>使用<code>k-means</code>聚类所需的包：</p>
 <ul>
 <li>factoextra</li>
-<li>cluster</li>
+<li>cluster<a id="more"></a>
+#加载包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(factoextra)</div><div class="line">library(cluster)</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>#加载包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(factoextra)</div><div class="line">library(cluster)</div></pre></td></tr></table></figure></p>
 <p>#数据准备<br>使用内置的R数据集<code>USArrests</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#load the dataset</div><div class="line">data(&quot;USArrests&quot;)</div><div class="line">#remove any missing value (i.e, NA values for not available)</div><div class="line">#That might be present in the data</div><div class="line">USArrests &lt;- na.omit(USArrests)#view the first 6 rows of the data</div><div class="line">head(USArrests, n=6)</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p><strong>在此数据集中，列是变量，行是观测值</strong><br>在聚类之前我们可以先进行一些必要的数据检查即数据描述性统计，如平均值、标准差等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">desc_stats &lt;- data.frame( Min=apply(USArrests, 2, min),#minimum</div><div class="line">Med=apply(USArrests, 2, median),#median </div><div class="line">Mean=apply(USArrests, 2, mean),#mean </div><div class="line">SD=apply(USArrests, 2, sd),#Standard deviation </div><div class="line">Max=apply(USArrests, 2, max)#maximum</div><div class="line">)</div><div class="line">desc_stats &lt;- round(desc_stats, 1)#保留小数点后一位head(desc_stats)</div></pre></td></tr></table></figure></p>
@@ -579,12 +584,10 @@
     
     <summary type="html">
     
-      &lt;p&gt;使用&lt;code&gt;k-means&lt;/code&gt;聚类所需的包：&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;使用&lt;code&gt;k-means&lt;/code&gt;聚类所需的包：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;factoextra&lt;/li&gt;
-&lt;li&gt;cluster&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;#加载包&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;
+&lt;li&gt;cluster
     
     </summary>
     
@@ -681,9 +684,9 @@
     <link href="https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E4%B8%BB%E9%A2%98%EF%BC%88theme%EF%BC%89%E8%AE%BE%E7%BD%AE/"/>
     <id>https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-27T08:54:16.806Z</updated>
+    <updated>2017-06-29T03:14:39.705Z</updated>
     
-    <content type="html"><![CDATA[<p>上次提了下<code>theme()</code>,本文将专门讲解一下。凡是与数据无关的图形设置可以归为主题类，<strong>ggplot2</strong>中主题设置十分多，根本不可能讲解完，只能稍微讲点皮毛，灵活运用才是关键，本文只是总体上略作介绍。正如R语言大神<strong>Hadley Wickham</strong>所讲的，<strong>ggplot2</strong>只是提供了一个平台，可以根据自己的需要无限创造。理论上来讲，只要能想到的图形，<strong>ggplot2</strong>都能实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#我们先来看看ggplot2默认的主题设置函数theme_gray()的源代码</div><div class="line">theme_gray#函数名不加括号可获得函数源代码</div><div class="line"></div><div class="line">## function (base_size = 11, base_family = &quot;&quot;) </div><div class="line">## &#123;</div><div class="line">## half_line &lt;- base_size/2</div><div class="line">## theme(line = element_line(colour = &quot;black&quot;, size = 0.5, linetype = 1, </div><div class="line">## lineend = &quot;butt&quot;), rect = element_rect(fill = &quot;white&quot;, </div><div class="line">## colour = &quot;black&quot;, size = 0.5, linetype = 1), text = element_text(family = base_family, </div><div class="line">## face = &quot;plain&quot;, colour = &quot;black&quot;, size = base_size, lineheight = 0.9, </div><div class="line">## hjust = 0.5, vjust = 0.5, angle = 0, margin = margin(), </div><div class="line">## debug = FALSE), axis.line = element_blank(), axis.line.x = NULL, </div><div class="line">## axis.line.y = NULL, axis.text = element_text(size = rel(0.8),</div><div class="line">## colour = &quot;grey30&quot;), axis.text.x = element_text(margin = margin(t = 0.8 * </div><div class="line">## half_line/2), vjust = 1), axis.text.x.top = element_text(margin = margin(b = 0.8 * ## half_line/2), vjust = 0), axis.text.y = element_text(margin = margin(r = 0.8 * </div><div class="line">## half_line/2), hjust = 1), axis.text.y.right = element_text(margin = margin(l = 0.8 * ## half_line/2), hjust = 0), axis.ticks = element_line(colour = &quot;grey20&quot;), </div><div class="line">## axis.ticks.length = unit(half_line/2, &quot;pt&quot;), axis.title.x = element_text(margin = margin(t = half_line), </div><div class="line">## vjust = 1), axis.title.x.top = element_text(margin = margin(b = half_line), </div><div class="line">## vjust = 0), axis.title.y = element_text(angle = 90, </div><div class="line">## margin = margin(r = half_line), vjust = 1), axis.title.y.right = element_text(angle = -90, </div><div class="line">## margin = margin(l = half_line), vjust = 0), legend.background = element_rect(colour = NA), </div><div class="line">## legend.spacing = unit(0.4, &quot;cm&quot;), legend.spacing.x = NULL, </div><div class="line">## legend.spacing.y = NULL, legend.margin = margin(0.2, </div><div class="line">## 0.2, 0.2, 0.2, &quot;cm&quot;), legend.key = element_rect(fill = &quot;grey95&quot;, </div><div class="line">## colour = &quot;white&quot;), legend.key.size = unit(1.2, &quot;lines&quot;), </div><div class="line">## legend.key.height = NULL, legend.key.width = NULL, legend.text = element_text(size = rel(0.8)), </div><div class="line">## legend.text.align = NULL, legend.title = element_text(hjust = 0), </div><div class="line">## legend.title.align = NULL, legend.position = &quot;right&quot;, </div><div class="line">## legend.direction = NULL, legend.justification = &quot;center&quot;, </div><div class="line">## legend.box = NULL, legend.box.margin = margin(0, 0, 0, </div><div class="line">## 0, &quot;cm&quot;), legend.box.background = element_blank(),</div><div class="line">## legend.box.spacing = unit(0.4, &quot;cm&quot;), panel.background = element_rect(fill = &quot;grey92&quot;, </div><div class="line">## colour = NA), panel.border = element_blank(), panel.grid.major = element_line(colour = &quot;white&quot;), </div><div class="line">## panel.grid.minor = element_line(colour = &quot;white&quot;, size = 0.25), </div><div class="line">## panel.spacing = unit(half_line, &quot;pt&quot;), panel.spacing.x = NULL, </div><div class="line">## panel.spacing.y = NULL, panel.ontop = FALSE, strip.background = element_rect(fill = &quot;grey85&quot;, </div><div class="line">## colour = NA), strip.text = element_text(colour = &quot;grey10&quot;, </div><div class="line">## size = rel(0.8)), strip.text.x = element_text(margin = margin(t = half_line, </div><div class="line">## b = half_line)), strip.text.y = element_text(angle = -90, </div><div class="line">## margin = margin(l = half_line, r = half_line)), strip.placement = &quot;inside&quot;, </div><div class="line">## strip.placement.x = NULL, strip.placement.y = NULL, strip.switch.pad.grid = unit(0.1, </div><div class="line">## &quot;cm&quot;), strip.switch.pad.wrap = unit(0.1, &quot;cm&quot;), plot.background = element_rect(colour = &quot;white&quot;), </div><div class="line">## plot.title = element_text(size = rel(1.2), hjust = 0, </div><div class="line">## vjust = 1, margin = margin(b = half_line * 1.2)), </div><div class="line">## plot.subtitle = element_text(size = rel(0.9), hjust = 0, </div><div class="line">## vjust = 1, margin = margin(b = half_line * 0.9)),</div><div class="line">## plot.caption = element_text(size = rel(0.9), hjust = 1, </div><div class="line">## vjust = 1, margin = margin(t = half_line * 0.9)),</div><div class="line">## plot.margin = margin(half_line, half_line, half_line, </div><div class="line">## half_line), complete = TRUE)</div><div class="line">## &#125;</div><div class="line">## &lt;environment: namespace:ggplot2&gt;</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-aedad605e759b602.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><a id="more"></a><br>上次提了下<code>theme()</code>,本文将专门讲解一下。凡是与数据无关的图形设置可以归为主题类，<strong>ggplot2</strong>中主题设置十分多，根本不可能讲解完，只能稍微讲点皮毛，灵活运用才是关键，本文只是总体上略作介绍。正如R语言大神<strong>Hadley Wickham</strong>所讲的，<strong>ggplot2</strong>只是提供了一个平台，可以根据自己的需要无限创造。理论上来讲，只要能想到的图形，<strong>ggplot2</strong>都能实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#我们先来看看ggplot2默认的主题设置函数theme_gray()的源代码</div><div class="line">theme_gray#函数名不加括号可获得函数源代码</div><div class="line"></div><div class="line">## function (base_size = 11, base_family = &quot;&quot;) </div><div class="line">## &#123;</div><div class="line">## half_line &lt;- base_size/2</div><div class="line">## theme(line = element_line(colour = &quot;black&quot;, size = 0.5, linetype = 1, </div><div class="line">## lineend = &quot;butt&quot;), rect = element_rect(fill = &quot;white&quot;, </div><div class="line">## colour = &quot;black&quot;, size = 0.5, linetype = 1), text = element_text(family = base_family, </div><div class="line">## face = &quot;plain&quot;, colour = &quot;black&quot;, size = base_size, lineheight = 0.9, </div><div class="line">## hjust = 0.5, vjust = 0.5, angle = 0, margin = margin(), </div><div class="line">## debug = FALSE), axis.line = element_blank(), axis.line.x = NULL, </div><div class="line">## axis.line.y = NULL, axis.text = element_text(size = rel(0.8),</div><div class="line">## colour = &quot;grey30&quot;), axis.text.x = element_text(margin = margin(t = 0.8 * </div><div class="line">## half_line/2), vjust = 1), axis.text.x.top = element_text(margin = margin(b = 0.8 * ## half_line/2), vjust = 0), axis.text.y = element_text(margin = margin(r = 0.8 * </div><div class="line">## half_line/2), hjust = 1), axis.text.y.right = element_text(margin = margin(l = 0.8 * ## half_line/2), hjust = 0), axis.ticks = element_line(colour = &quot;grey20&quot;), </div><div class="line">## axis.ticks.length = unit(half_line/2, &quot;pt&quot;), axis.title.x = element_text(margin = margin(t = half_line), </div><div class="line">## vjust = 1), axis.title.x.top = element_text(margin = margin(b = half_line), </div><div class="line">## vjust = 0), axis.title.y = element_text(angle = 90, </div><div class="line">## margin = margin(r = half_line), vjust = 1), axis.title.y.right = element_text(angle = -90, </div><div class="line">## margin = margin(l = half_line), vjust = 0), legend.background = element_rect(colour = NA), </div><div class="line">## legend.spacing = unit(0.4, &quot;cm&quot;), legend.spacing.x = NULL, </div><div class="line">## legend.spacing.y = NULL, legend.margin = margin(0.2, </div><div class="line">## 0.2, 0.2, 0.2, &quot;cm&quot;), legend.key = element_rect(fill = &quot;grey95&quot;, </div><div class="line">## colour = &quot;white&quot;), legend.key.size = unit(1.2, &quot;lines&quot;), </div><div class="line">## legend.key.height = NULL, legend.key.width = NULL, legend.text = element_text(size = rel(0.8)), </div><div class="line">## legend.text.align = NULL, legend.title = element_text(hjust = 0), </div><div class="line">## legend.title.align = NULL, legend.position = &quot;right&quot;, </div><div class="line">## legend.direction = NULL, legend.justification = &quot;center&quot;, </div><div class="line">## legend.box = NULL, legend.box.margin = margin(0, 0, 0, </div><div class="line">## 0, &quot;cm&quot;), legend.box.background = element_blank(),</div><div class="line">## legend.box.spacing = unit(0.4, &quot;cm&quot;), panel.background = element_rect(fill = &quot;grey92&quot;, </div><div class="line">## colour = NA), panel.border = element_blank(), panel.grid.major = element_line(colour = &quot;white&quot;), </div><div class="line">## panel.grid.minor = element_line(colour = &quot;white&quot;, size = 0.25), </div><div class="line">## panel.spacing = unit(half_line, &quot;pt&quot;), panel.spacing.x = NULL, </div><div class="line">## panel.spacing.y = NULL, panel.ontop = FALSE, strip.background = element_rect(fill = &quot;grey85&quot;, </div><div class="line">## colour = NA), strip.text = element_text(colour = &quot;grey10&quot;, </div><div class="line">## size = rel(0.8)), strip.text.x = element_text(margin = margin(t = half_line, </div><div class="line">## b = half_line)), strip.text.y = element_text(angle = -90, </div><div class="line">## margin = margin(l = half_line, r = half_line)), strip.placement = &quot;inside&quot;, </div><div class="line">## strip.placement.x = NULL, strip.placement.y = NULL, strip.switch.pad.grid = unit(0.1, </div><div class="line">## &quot;cm&quot;), strip.switch.pad.wrap = unit(0.1, &quot;cm&quot;), plot.background = element_rect(colour = &quot;white&quot;), </div><div class="line">## plot.title = element_text(size = rel(1.2), hjust = 0, </div><div class="line">## vjust = 1, margin = margin(b = half_line * 1.2)), </div><div class="line">## plot.subtitle = element_text(size = rel(0.9), hjust = 0, </div><div class="line">## vjust = 1, margin = margin(b = half_line * 0.9)),</div><div class="line">## plot.caption = element_text(size = rel(0.9), hjust = 1, </div><div class="line">## vjust = 1, margin = margin(t = half_line * 0.9)),</div><div class="line">## plot.margin = margin(half_line, half_line, half_line, </div><div class="line">## half_line), complete = TRUE)</div><div class="line">## &#125;</div><div class="line">## &lt;environment: namespace:ggplot2&gt;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>可以看出，源代码主要是<code>theme()</code>函数，设置也很简单：<code>theme(..., complete = FALSE)</code>,但是其内含的参数则十分多。</p>
 </blockquote>
@@ -715,7 +718,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;上次提了下&lt;code&gt;theme()&lt;/code&gt;,本文将专门讲解一下。凡是与数据无关的图形设置可以归为主题类，&lt;strong&gt;ggplot2&lt;/strong&gt;中主题设置十分多，根本不可能讲解完，只能稍微讲点皮毛，灵活运用才是关键，本文只是总体上略作介绍。正如R语言大神&lt;s
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-aedad605e759b602.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;
     
     </summary>
     
@@ -731,9 +734,10 @@
     <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%80%A7%E7%9F%A9%E9%98%B5%E5%88%86%E6%9E%90%E5%8F%8A%E5%85%B6%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     <id>https://ytlogos.github.io/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-27T08:54:41.067Z</updated>
+    <updated>2017-06-29T03:09:43.641Z</updated>
     
-    <content type="html"><![CDATA[<p>#计算相关矩阵<br>R内置函数<code>cor()</code>可以用来计算相关系数：<code>cor(x, method = c(&quot;pearson&quot;, &quot;kendall&quot;, &quot;spearman&quot;))</code>，如果数据有缺失值，用<code>cor(x, method = &quot;pearson&quot;, use = &quot;complete.obs&quot;)</code>。</p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#计算相关矩阵<br>R内置函数<code>cor()</code>可以用来计算相关系数：<code>cor(x, method = c(&quot;pearson&quot;, &quot;kendall&quot;, &quot;spearman&quot;))</code>，如果数据有缺失值，用<code>cor(x, method = &quot;pearson&quot;, use = &quot;complete.obs&quot;)</code>。<br><a id="more"></a></p>
 <p>#导入数据</p>
 <ul>
 <li><p>如果数据格式是txt，用<code>my_data &lt;- read.delim(file.choose())</code></p>
@@ -792,7 +796,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;#计算相关矩阵&lt;br&gt;R内置函数&lt;code&gt;cor()&lt;/code&gt;可以用来计算相关系数：&lt;code&gt;cor(x, method = c(&amp;quot;pearson&amp;quot;, &amp;quot;kendall&amp;quot;, &amp;quot;spearman&amp;quot;))&lt;/co
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;#计算相关矩阵&lt;br&gt;R内置函数&lt;code&gt;cor()&lt;/code&gt;可以用来计算相关系数：&lt;code&gt;cor(x, method = c(&amp;quot;pearson&amp;quot;, &amp;quot;kendall&amp;quot;, &amp;quot;spearman&amp;quot;))&lt;/code&gt;，如果数据有缺失值，用&lt;code&gt;cor(x, method = &amp;quot;pearson&amp;quot;, use = &amp;quot;complete.obs&amp;quot;)&lt;/code&gt;。&lt;br&gt;
     
     </summary>
     
@@ -808,9 +813,10 @@
     <link href="https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E6%9D%A1%E5%BD%A2%E5%9B%BE/"/>
     <id>https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-27T08:54:11.678Z</updated>
+    <updated>2017-06-29T03:15:34.881Z</updated>
     
-    <content type="html"><![CDATA[<p>#简介<br>条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。</p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5c9a37089f4883ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。<br><a id="more"></a></p>
 <p>#绘制条形图<br>使用<code>ggplot()</code>函数与<code>geom_bar(stat=&quot;identity&quot;)</code>，绘制条形图，我们将利用<strong>gcookbook</strong>包中的数据进行绘制。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#没安装包要先安装包gcookbook、ggplot2以及dplyr</div><div class="line">library(gcookbook)#加载gcookbook以使用其包含的数据</div><div class="line">library(ggplot2)#用于可视化</div><div class="line">library(dplyr)#用于数据处理</div><div class="line">这里我们调用**gcookbook**里的数据集绘制条形图</div><div class="line">head(pg_mean)#查看数据集</div><div class="line">## group weigh</div><div class="line"> 1 ctrl 5.032</div><div class="line"> 2 trt1 4.661</div><div class="line"> 3 trt2 5.526</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggplot(data=pg_mean, aes(x=group, y=weight))+#将group、weight分别赋值给x、y轴 </div><div class="line">geom_bar(stat = &quot;identity&quot;)#必须将geom_bar()中的stat(统计变换)参数设置</div><div class="line">为”identity“，即对原始数据集不作任何统计变换，而该参数的默认值为&apos;count&apos;，即观测数量。</div></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-a1a6cfbc69210db2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当x是连续型（数值型）变量时，条形图略有不同，需要略作调整，具体如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">str(BOD)#查看BOD数据集可以发现Time变量是数值型</div><div class="line"></div><div class="line">## &apos;data.frame&apos;:  6 obs. of 2 variables: </div><div class="line">## $ Time : num 1 2 3 4 5 7</div><div class="line">## $ demand: num 8.3 10.3 19 16 15.6 19.8</div><div class="line">## - attr(*, &quot;reference&quot;)= chr &quot;A1.4, p. 270&quot;</div></pre></td></tr></table></figure></p>
@@ -844,7 +850,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;#简介&lt;br&gt;条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。&lt;
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-5c9a37089f4883ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。&lt;br&gt;
     
     </summary>
     
@@ -860,9 +867,9 @@
     <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B7%BB%E5%8A%A0p-value%E5%92%8C%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/"/>
     <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-27T08:54:26.614Z</updated>
+    <updated>2017-06-29T03:12:55.928Z</updated>
     
-    <content type="html"><![CDATA[<p>上篇文章中提了一下如何通过<strong>ggpubr</strong>包为<code>ggplot</code>图添加<code>p-value</code>以及显著性标记,本文将详细介绍。利用数据集<strong>ToothGrowth</strong>进行演示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#先加载包</div><div class="line">library(ggpubr)</div><div class="line">#加载数据集ToothGrowth</div><div class="line">data(&quot;ToothGrowth&quot;)</div><div class="line">head(ToothGrowth)</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上篇文章中提了一下如何通过<strong>ggpubr</strong>包为<code>ggplot</code>图添加<code>p-value</code>以及显著性标记,本文将详细介绍。利用数据集<strong>ToothGrowth</strong>进行演示<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#先加载包</div><div class="line">library(ggpubr)</div><div class="line">#加载数据集ToothGrowth</div><div class="line">data(&quot;ToothGrowth&quot;)</div><div class="line">head(ToothGrowth)</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">##    len  supp  dose</div><div class="line">## 1  4.2   VC   0.5</div><div class="line">## 2  11.5  VC   0.5</div><div class="line">## 3  7.3   VC   0.5</div><div class="line">## 4  5.8   VC   0.5</div><div class="line">## 5  6.4   VC   0.5</div><div class="line">## 6  10.0  VC   0.5</div></pre></td></tr></table></figure>
 <p>#比较方法<br><strong>R</strong>中常用的比较方法主要有下面几种：</p>
 <table>
@@ -1002,7 +1009,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;上篇文章中提了一下如何通过&lt;strong&gt;ggpubr&lt;/strong&gt;包为&lt;code&gt;ggplot&lt;/code&gt;图添加&lt;code&gt;p-value&lt;/code&gt;以及显著性标记,本文将详细介绍。利用数据集&lt;strong&gt;ToothGrowth&lt;/strong&gt;进行演示&lt;br&gt;
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;上篇文章中提了一下如何通过&lt;strong&gt;ggpubr&lt;/strong&gt;包为&lt;code&gt;ggplot&lt;/code&gt;图添加&lt;code&gt;p-value&lt;/code&gt;以及显著性标记,本文将详细介绍。利用数据集&lt;strong&gt;ToothGrowth&lt;/strong&gt;进行演示&lt;br&gt;
     
     </summary>
     

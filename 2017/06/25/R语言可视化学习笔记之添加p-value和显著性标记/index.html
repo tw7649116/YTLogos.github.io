@@ -113,13 +113,14 @@
 
 
 
-<meta name="description" content="上篇文章中提了一下如何通过ggpubr包为ggplot图添加p-value以及显著性标记,本文将详细介绍。利用数据集ToothGrowth进行演示12345#先加载包library(ggpubr)#加载数据集ToothGrowthdata(&amp;quot;ToothGrowth&amp;quot;)head(ToothGrowth) 1234567##    len  supp  dose## 1  4.2">
+<meta name="description" content="上篇文章中提了一下如何通过ggpubr包为ggplot图添加p-value以及显著性标记,本文将详细介绍。利用数据集ToothGrowth进行演示">
 <meta name="keywords" content="R&amp;ggrepel&amp;visualization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R语言可视化学习笔记之添加p-value和显著性标记">
 <meta property="og:url" content="https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="上篇文章中提了一下如何通过ggpubr包为ggplot图添加p-value以及显著性标记,本文将详细介绍。利用数据集ToothGrowth进行演示12345#先加载包library(ggpubr)#加载数据集ToothGrowthdata(&amp;quot;ToothGrowth&amp;quot;)head(ToothGrowth) 1234567##    len  supp  dose## 1  4.2">
+<meta property="og:description" content="上篇文章中提了一下如何通过ggpubr包为ggplot图添加p-value以及显著性标记,本文将详细介绍。利用数据集ToothGrowth进行演示">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-b045b6dd37c6efb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-e218a1edab30a234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-fc20d4bbb39c1377.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -153,11 +154,11 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-9bbc6411123c593a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-b2dd950f78f7a642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-bd2413a61ece0ed2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-27T08:54:26.614Z">
+<meta property="og:updated_time" content="2017-06-29T03:12:55.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R语言可视化学习笔记之添加p-value和显著性标记">
-<meta name="twitter:description" content="上篇文章中提了一下如何通过ggpubr包为ggplot图添加p-value以及显著性标记,本文将详细介绍。利用数据集ToothGrowth进行演示12345#先加载包library(ggpubr)#加载数据集ToothGrowthdata(&amp;quot;ToothGrowth&amp;quot;)head(ToothGrowth) 1234567##    len  supp  dose## 1  4.2">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-b045b6dd37c6efb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="上篇文章中提了一下如何通过ggpubr包为ggplot图添加p-value以及显著性标记,本文将详细介绍。利用数据集ToothGrowth进行演示">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -528,7 +529,7 @@
       
 
       
-        <p>上篇文章中提了一下如何通过<strong>ggpubr</strong>包为<code>ggplot</code>图添加<code>p-value</code>以及显著性标记,本文将详细介绍。利用数据集<strong>ToothGrowth</strong>进行演示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#先加载包</div><div class="line">library(ggpubr)</div><div class="line">#加载数据集ToothGrowth</div><div class="line">data(&quot;ToothGrowth&quot;)</div><div class="line">head(ToothGrowth)</div></pre></td></tr></table></figure></p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上篇文章中提了一下如何通过<strong>ggpubr</strong>包为<code>ggplot</code>图添加<code>p-value</code>以及显著性标记,本文将详细介绍。利用数据集<strong>ToothGrowth</strong>进行演示<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#先加载包</div><div class="line">library(ggpubr)</div><div class="line">#加载数据集ToothGrowth</div><div class="line">data(&quot;ToothGrowth&quot;)</div><div class="line">head(ToothGrowth)</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">##    len  supp  dose</div><div class="line">## 1  4.2   VC   0.5</div><div class="line">## 2  11.5  VC   0.5</div><div class="line">## 3  7.3   VC   0.5</div><div class="line">## 4  5.8   VC   0.5</div><div class="line">## 5  6.4   VC   0.5</div><div class="line">## 6  10.0  VC   0.5</div></pre></td></tr></table></figure>
 <p>#比较方法<br><strong>R</strong>中常用的比较方法主要有下面几种：</p>
 <table>

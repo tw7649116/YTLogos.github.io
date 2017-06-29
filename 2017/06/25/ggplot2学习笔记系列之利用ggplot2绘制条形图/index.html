@@ -113,13 +113,14 @@
 
 
 
-<meta name="description" content="#简介条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。 #绘制条形图使用ggplot()函数与geom_bar(stat=&amp;quot;identity&amp;quot;)，绘制条形图，我们将利用g">
+<meta name="description" content="简介条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。">
 <meta name="keywords" content="R&amp;ggplot2&amp;visualization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ggplot2学习笔记系列之利用ggplot2绘制条形图">
 <meta property="og:url" content="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="#简介条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。 #绘制条形图使用ggplot()函数与geom_bar(stat=&amp;quot;identity&amp;quot;)，绘制条形图，我们将利用g">
+<meta property="og:description" content="简介条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-5c9a37089f4883ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-a1a6cfbc69210db2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-91c3a599b1385e04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-a2cb3446cf895736.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -135,11 +136,11 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-aab91b53fbdb3b5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-72f4b5a03f700c8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-5545ef422328ac23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-27T08:54:11.678Z">
+<meta property="og:updated_time" content="2017-06-29T03:15:34.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ggplot2学习笔记系列之利用ggplot2绘制条形图">
-<meta name="twitter:description" content="#简介条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。 #绘制条形图使用ggplot()函数与geom_bar(stat=&amp;quot;identity&amp;quot;)，绘制条形图，我们将利用g">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-a1a6cfbc69210db2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="简介条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-5c9a37089f4883ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -510,7 +511,8 @@
       
 
       
-        <p>#简介<br>条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。</p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-5c9a37089f4883ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。<br><a id="more"></a></p>
 <p>#绘制条形图<br>使用<code>ggplot()</code>函数与<code>geom_bar(stat=&quot;identity&quot;)</code>，绘制条形图，我们将利用<strong>gcookbook</strong>包中的数据进行绘制。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#没安装包要先安装包gcookbook、ggplot2以及dplyr</div><div class="line">library(gcookbook)#加载gcookbook以使用其包含的数据</div><div class="line">library(ggplot2)#用于可视化</div><div class="line">library(dplyr)#用于数据处理</div><div class="line">这里我们调用**gcookbook**里的数据集绘制条形图</div><div class="line">head(pg_mean)#查看数据集</div><div class="line">## group weigh</div><div class="line"> 1 ctrl 5.032</div><div class="line"> 2 trt1 4.661</div><div class="line"> 3 trt2 5.526</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggplot(data=pg_mean, aes(x=group, y=weight))+#将group、weight分别赋值给x、y轴 </div><div class="line">geom_bar(stat = &quot;identity&quot;)#必须将geom_bar()中的stat(统计变换)参数设置</div><div class="line">为”identity“，即对原始数据集不作任何统计变换，而该参数的默认值为&apos;count&apos;，即观测数量。</div></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-a1a6cfbc69210db2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当x是连续型（数值型）变量时，条形图略有不同，需要略作调整，具体如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">str(BOD)#查看BOD数据集可以发现Time变量是数值型</div><div class="line"></div><div class="line">## &apos;data.frame&apos;:  6 obs. of 2 variables: </div><div class="line">## $ Time : num 1 2 3 4 5 7</div><div class="line">## $ demand: num 8.3 10.3 19 16 15.6 19.8</div><div class="line">## - attr(*, &quot;reference&quot;)= chr &quot;A1.4, p. 270&quot;</div></pre></td></tr></table></figure></p>
@@ -699,8 +701,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/17811440?v=3&s=460"
@@ -798,6 +809,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

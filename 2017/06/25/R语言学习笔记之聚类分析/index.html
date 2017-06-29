@@ -113,13 +113,14 @@
 
 
 
-<meta name="description" content="使用k-means聚类所需的包：  factoextra cluster  #加载包12library(factoextra)library(cluster) #数据准备使用内置的R数据集USArrests123456#load the datasetdata(&amp;quot;USArrests&amp;quot;)#remove any missing value (i.e, NA values for n">
+<meta name="description" content="使用k-means聚类所需的包：  factoextra cluster">
 <meta name="keywords" content="R&amp;Cluster analysis&amp;visualization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R语言学习笔记之聚类分析">
 <meta property="og:url" content="https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="使用k-means聚类所需的包：  factoextra cluster  #加载包12library(factoextra)library(cluster) #数据准备使用内置的R数据集USArrests123456#load the datasetdata(&amp;quot;USArrests&amp;quot;)#remove any missing value (i.e, NA values for n">
+<meta property="og:description" content="使用k-means聚类所需的包：  factoextra cluster">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-c28a99b3efe41ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-7ab1c23eb38f6cb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -135,11 +136,11 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-cdae172ce885358a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-be9e7cd89ccec3bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-27T08:54:36.771Z">
+<meta property="og:updated_time" content="2017-06-29T03:11:17.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R语言学习笔记之聚类分析">
-<meta name="twitter:description" content="使用k-means聚类所需的包：  factoextra cluster  #加载包12library(factoextra)library(cluster) #数据准备使用内置的R数据集USArrests123456#load the datasetdata(&amp;quot;USArrests&amp;quot;)#remove any missing value (i.e, NA values for n">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="使用k-means聚类所需的包：  factoextra cluster">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -510,12 +511,13 @@
       
 
       
-        <p>使用<code>k-means</code>聚类所需的包：</p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>使用<code>k-means</code>聚类所需的包：</p>
 <ul>
 <li>factoextra</li>
-<li>cluster</li>
+<li>cluster<a id="more"></a>
+#加载包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(factoextra)</div><div class="line">library(cluster)</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>#加载包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(factoextra)</div><div class="line">library(cluster)</div></pre></td></tr></table></figure></p>
 <p>#数据准备<br>使用内置的R数据集<code>USArrests</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#load the dataset</div><div class="line">data(&quot;USArrests&quot;)</div><div class="line">#remove any missing value (i.e, NA values for not available)</div><div class="line">#That might be present in the data</div><div class="line">USArrests &lt;- na.omit(USArrests)#view the first 6 rows of the data</div><div class="line">head(USArrests, n=6)</div></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p><strong>在此数据集中，列是变量，行是观测值</strong><br>在聚类之前我们可以先进行一些必要的数据检查即数据描述性统计，如平均值、标准差等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">desc_stats &lt;- data.frame( Min=apply(USArrests, 2, min),#minimum</div><div class="line">Med=apply(USArrests, 2, median),#median </div><div class="line">Mean=apply(USArrests, 2, mean),#mean </div><div class="line">SD=apply(USArrests, 2, sd),#Standard deviation </div><div class="line">Max=apply(USArrests, 2, max)#maximum</div><div class="line">)</div><div class="line">desc_stats &lt;- round(desc_stats, 1)#保留小数点后一位head(desc_stats)</div></pre></td></tr></table></figure></p>
