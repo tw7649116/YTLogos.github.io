@@ -113,13 +113,13 @@
 
 
 
-<meta name="description" content="#计算相关矩阵R内置函数cor()可以用来计算相关系数：cor(x, method = c(&amp;quot;pearson&amp;quot;, &amp;quot;kendall&amp;quot;, &amp;quot;spearman&amp;quot;))，如果数据有缺失值，用cor(x, method = &amp;quot;pearson&amp;quot;, use = &amp;quot;complete.obs&amp;quot;)。">
+<meta name="description" content="计算相关矩阵R内置函数cor()可以用来计算相关系数：cor(x, method = c(&amp;quot;pearson&amp;quot;, &amp;quot;kendall&amp;quot;, &amp;quot;spearman&amp;quot;))，如果数据有缺失值，用cor(x, method = &amp;quot;pearson&amp;quot;, use = &amp;quot;complete.obs&amp;quot;)。">
 <meta name="keywords" content="R&amp;corrplot&amp;visualization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R语言学习笔记之相关性矩阵分析及其可视化">
 <meta property="og:url" content="https://ytlogos.github.io/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="#计算相关矩阵R内置函数cor()可以用来计算相关系数：cor(x, method = c(&amp;quot;pearson&amp;quot;, &amp;quot;kendall&amp;quot;, &amp;quot;spearman&amp;quot;))，如果数据有缺失值，用cor(x, method = &amp;quot;pearson&amp;quot;, use = &amp;quot;complete.obs&amp;quot;)。">
+<meta property="og:description" content="计算相关矩阵R内置函数cor()可以用来计算相关系数：cor(x, method = c(&amp;quot;pearson&amp;quot;, &amp;quot;kendall&amp;quot;, &amp;quot;spearman&amp;quot;))，如果数据有缺失值，用cor(x, method = &amp;quot;pearson&amp;quot;, use = &amp;quot;complete.obs&amp;quot;)。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-b3f1a7b1a3a3e181.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-bafb635e01db2201.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -132,10 +132,10 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-a4b28a80a7dcd3b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8155004e32f38369.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-29T03:09:43.641Z">
+<meta property="og:updated_time" content="2017-06-29T03:23:29.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R语言学习笔记之相关性矩阵分析及其可视化">
-<meta name="twitter:description" content="#计算相关矩阵R内置函数cor()可以用来计算相关系数：cor(x, method = c(&amp;quot;pearson&amp;quot;, &amp;quot;kendall&amp;quot;, &amp;quot;spearman&amp;quot;))，如果数据有缺失值，用cor(x, method = &amp;quot;pearson&amp;quot;, use = &amp;quot;complete.obs&amp;quot;)。">
+<meta name="twitter:description" content="计算相关矩阵R内置函数cor()可以用来计算相关系数：cor(x, method = c(&amp;quot;pearson&amp;quot;, &amp;quot;kendall&amp;quot;, &amp;quot;spearman&amp;quot;))，如果数据有缺失值，用cor(x, method = &amp;quot;pearson&amp;quot;, use = &amp;quot;complete.obs&amp;quot;)。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -508,9 +508,8 @@
 
       
         <p><img src="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#计算相关矩阵<br>R内置函数<code>cor()</code>可以用来计算相关系数：<code>cor(x, method = c(&quot;pearson&quot;, &quot;kendall&quot;, &quot;spearman&quot;))</code>，如果数据有缺失值，用<code>cor(x, method = &quot;pearson&quot;, use = &quot;complete.obs&quot;)</code>。<br><a id="more"></a></p>
-<p>#导入数据</p>
-<ul>
+<h2 id="计算相关矩阵"><a href="#计算相关矩阵" class="headerlink" title="计算相关矩阵"></a>计算相关矩阵</h2><p>R内置函数<code>cor()</code>可以用来计算相关系数：<code>cor(x, method = c(&quot;pearson&quot;, &quot;kendall&quot;, &quot;spearman&quot;))</code>，如果数据有缺失值，用<code>cor(x, method = &quot;pearson&quot;, use = &quot;complete.obs&quot;)</code>。<br><a id="more"></a></p>
+<h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><ul>
 <li><p>如果数据格式是txt，用<code>my_data &lt;- read.delim(file.choose())</code></p>
 </li>
 <li><p>csv则用<code>my_data &lt;- read.csv(file.choose())</code>导入。<br>这里我们利用R内置数据集<em>mtcars</em>。</p>
@@ -722,8 +721,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/17811440?v=3&s=460"
@@ -821,6 +829,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算相关矩阵"><span class="nav-number">1.</span> <span class="nav-text">计算相关矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入数据"><span class="nav-number">2.</span> <span class="nav-text">导入数据</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
