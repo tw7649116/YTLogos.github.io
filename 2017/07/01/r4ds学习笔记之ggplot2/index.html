@@ -95,7 +95,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="可视化," />
 
 
 
@@ -113,16 +113,27 @@
 
 
 
-<meta name="description" content="Resume  个人简介 姓名：严涛 居住地：浙江杭州 籍贯：江西赣州 微信：yt056410 QQ：1051927088 Email：tyan@zju.edu.cn Facebook: TaoYan 简书：TaoYan Twitter: TaoYanLogos GitHub: YTLogos   教育背景 2012.09~2016.06 应用生物科学学士  学校：浙江大学（农业与生物技术学院）">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about me">
-<meta property="og:url" content="https://ytlogos.github.io/about/index.html">
+<meta name="description" content="为了进一步加强以及整合自己data science的能力，最近打算在我的博客开辟一个新类r4ds，专门用来记录学习Hadley Wickham大神的新作R for Data Science的读书笔记。该书推荐我们入门data science可以从可视化开始，这也是该书目录布局的第一章。因此开始学习R语言可视化。">
+<meta name="keywords" content="可视化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="r4ds学习笔记之ggplot2">
+<meta property="og:url" content="https://ytlogos.github.io/2017/07/01/r4ds学习笔记之ggplot2/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="Resume  个人简介 姓名：严涛 居住地：浙江杭州 籍贯：江西赣州 微信：yt056410 QQ：1051927088 Email：tyan@zju.edu.cn Facebook: TaoYan 简书：TaoYan Twitter: TaoYanLogos GitHub: YTLogos   教育背景 2012.09~2016.06 应用生物科学学士  学校：浙江大学（农业与生物技术学院）">
-<meta property="og:updated_time" content="2017-06-26T13:12:54.978Z">
+<meta property="og:description" content="为了进一步加强以及整合自己data science的能力，最近打算在我的博客开辟一个新类r4ds，专门用来记录学习Hadley Wickham大神的新作R for Data Science的读书笔记。该书推荐我们入门data science可以从可视化开始，这也是该书目录布局的第一章。因此开始学习R语言可视化。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-515da9e1fb644123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-08f00cbdb4b66222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8feb017d39aaa075.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8feb017d39aaa075.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-515da9e1fb644123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-75b7814d86b5f5b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-1d6dd6c8cbe3b016.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-53c76d1b9cf0fea6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-742710de940018e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-07-01T09:58:11.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about me">
-<meta name="twitter:description" content="Resume  个人简介 姓名：严涛 居住地：浙江杭州 籍贯：江西赣州 微信：yt056410 QQ：1051927088 Email：tyan@zju.edu.cn Facebook: TaoYan 简书：TaoYan Twitter: TaoYanLogos GitHub: YTLogos   教育背景 2012.09~2016.06 应用生物科学学士  学校：浙江大学（农业与生物技术学院）">
+<meta name="twitter:title" content="r4ds学习笔记之ggplot2">
+<meta name="twitter:description" content="为了进一步加强以及整合自己data science的能力，最近打算在我的博客开辟一个新类r4ds，专门用来记录学习Hadley Wickham大神的新作R for Data Science的读书笔记。该书推荐我们入门data science可以从可视化开始，这也是该书目录布局的第一章。因此开始学习R语言可视化。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-515da9e1fb644123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -150,7 +161,7 @@
 
 
 
-  <link rel="canonical" href="https://ytlogos.github.io/about/"/>
+  <link rel="canonical" href="https://ytlogos.github.io/2017/07/01/r4ds学习笔记之ggplot2/"/>
 
 
 
@@ -171,7 +182,7 @@
     }
 </style>
 
-  <title>about me | Logos</title>
+  <title>r4ds学习笔记之ggplot2 | Logos</title>
   
 
 
@@ -345,90 +356,313 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">about me</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/07/01/r4ds学习笔记之ggplot2/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TaoYan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/17811440?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Logos">
+    </span>
 
     
-    
-      <font color="blue" size="8" face="“黑体”"><center>Resume</center></font>
+      <header class="post-header">
 
-<h2 id="个人简介"><a href="#个人简介" class="headerlink" title="个人简介"></a><strong>个人简介</strong></h2><ul>
-<li>姓名：严涛</li>
-<li>居住地：浙江杭州</li>
-<li>籍贯：江西赣州</li>
-<li>微信：yt056410</li>
-<li>QQ：1051927088</li>
-<li>Email：tyan@zju.edu.cn</li>
-<li>Facebook: <a href="https://www.facebook.com/profile.php?id=100004254949325&amp;ref=bookmarks" target="_blank" rel="external">TaoYan</a></li>
-<li>简书：<a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">TaoYan</a></li>
-<li>Twitter: <a href="https://twitter.com/TaoYANLogos" target="_blank" rel="external">TaoYanLogos</a></li>
-<li>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">YTLogos</a></li>
-</ul>
-<hr>
-<h2 id="教育背景"><a href="#教育背景" class="headerlink" title="教育背景"></a><strong>教育背景</strong></h2><ul>
-<li><p>2012.09~2016.06 应用生物科学学士</p>
-<ul>
-<li>学校：浙江大学（农业与生物技术学院）</li>
-<li>专业：作物科学</li>
-<li>主修课程：生物统计、生物化学、遗传学等</li>
-</ul>
-</li>
-<li><p>2016.09~2019.03 作物遗传育种硕士</p>
-<ul>
-<li>学校：浙江大学（农业与生物技术学院）</li>
-<li>专业：作物遗传育种（生物信息学方向）</li>
-<li>主修课程：线性模型、实验设计与SAS分析、生物信息学、蛋白质组学、基因组学等</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="个人技能"><a href="#个人技能" class="headerlink" title="个人技能"></a><strong>个人技能</strong></h2><ul>
-<li><p>操作系统：</p>
-<ul>
-<li>Windows系统：熟练掌握Office软件Excel、PPT、Word等</li>
-<li>Linux系统：Ubuntu爱好者，能熟练在LinuxL上操作</li>
-<li>争取早日用上苹果系统。。。。</li>
-</ul>
-</li>
-<li><p>编程语言：</p>
-<ul>
-<li>R语言：数据分析、数据可视化、Bioconductors</li>
-<li>Python：主要用于爬虫、机器学习</li>
-<li>SQL：略有涉猎，了解基本语法，与R、Python对接</li>
-<li>SAS：主要用于生物统计，先基本使用开源软件R</li>
-<li>Markdown：熟练掌握Markdown语法</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="兴趣爱好"><a href="#兴趣爱好" class="headerlink" title="兴趣爱好"></a><strong>兴趣爱好</strong></h2><ul>
-<li>数据可视化<ul>
-<li>爱捣鼓各种可视化软件，爱折腾。。</li>
-</ul>
-</li>
-<li>读书<ul>
-<li>这方面涉猎较多，历史、政治、哲学、美学均有涉及</li>
-</ul>
-</li>
-<li>运动<ul>
-<li>骑行</li>
-<li>跑步</li>
-</ul>
-</li>
-</ul>
-<hr>
+        
+        
+          <h1 class="post-title" itemprop="name headline">r4ds学习笔记之ggplot2</h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-01T17:55:59+08:00">
+                2017-07-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-07-01T17:58:11+08:00">
+                2017-07-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/r4ds/" itemprop="url" rel="index">
+                    <span itemprop="name">r4ds</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/07/01/r4ds学习笔记之ggplot2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/07/01/r4ds学习笔记之ggplot2/" class="leancloud_visitors" data-flag-title="r4ds学习笔记之ggplot2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				  <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  993
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
     
-	
-  <div class="comments" id="comments">
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-515da9e1fb644123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>为了进一步加强以及整合自己<strong>data science</strong>的能力，最近打算在<a href="https://ytlogos.github.io/">我的博客</a>开辟一个新类<strong>r4ds</strong>，专门用来记录学习<strong>Hadley Wickham</strong>大神的新作<a href="http://r4ds.had.co.nz/" target="_blank" rel="external">R for Data Science</a>的读书笔记。该书推荐我们入门data science可以从可视化开始，这也是该书目录布局的第一章。因此开始学习R语言可视化。</p>
+<a id="more"></a>
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>本章主要聚焦于可视化包<strong>ggplot2</strong>,为了写这本书，大神专门整合了一系列神包成为一个包<strong>tidyverse</strong>，因此第一步就是要先安装该包并加载。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#install tidyverse</div><div class="line">install.packages(&quot;tidyverse&quot;)</div><div class="line">#load tidyverse</div><div class="line">library(tidyverse)</div></pre></td></tr></table></figure></p>
+<h2 id="ggplot2简介"><a href="#ggplot2简介" class="headerlink" title="ggplot2简介"></a>ggplot2简介</h2><p>利用数据集<strong>mpg</strong>来探究发动机大小跟好友耗油是否存在某种关系，先check一下该数据集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head(mpg)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-08f00cbdb4b66222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在各个变量中：</p>
+<ul>
+<li>disp:车发动机大小</li>
+<li>hwy:衡量耗油率的一个指标，更多信息可？mpg查看</li>
+</ul>
+<p>要探究displ与hwy的关系，最快就是画个图了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mpg)+ geom_point(mapping = aes(x=displ, y=hwy))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8feb017d39aaa075.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>图中显示两者呈现负相关，disp越大，hwy越低。<br><strong>ggplot2</strong>绘图规则主要如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggplot(data=&lt;DATA&gt;)+</div><div class="line">     &lt;GEOM_FUNCTION&gt;(mapping=aes(&gt;MAPPINGS&gt;))</div></pre></td></tr></table></figure></p>
+<p><strong>ggplot()</strong>会创建一个底板，然后可以通过<strong>geom_function()</strong>不断地添加图形元素，进行丰富。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p &lt;- ggplot(mpg)#create an empty graph</div><div class="line">p+geom_point(aes(x=displ, y=hwy))#add a layer to the empty graph</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8feb017d39aaa075.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="美学映射Aesthetic-Mappings"><a href="#美学映射Aesthetic-Mappings" class="headerlink" title="美学映射Aesthetic Mappings"></a>美学映射Aesthetic Mappings</h2><p>美学映射在<strong>ggplot2</strong>中是一个十分重要的概念，比如前文我们将displ、hwy分别映射给x、y轴，同时还可以用来控制图形元素大小、形状、颜色等属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggplot(mpg)+ </div><div class="line">geom_point(aes(x=displ, y=hwy, color=class))#将class映射给颜色属性，这样不同class就表现不同颜色</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-515da9e1fb644123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>可以看到，通过颜色映射<strong>ggplot2</strong>会自动创建一个<strong>legend</strong>，需要注意的是这里颜色颜色我们是利用class，这是一个离散性变量，如果我们将之映射给点的size，则会出现warning,至于原因，看warning。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(mpg)+ geom_point(aes(x=displ, y=hwy, size=class))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-75b7814d86b5f5b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>或者将class映射给alpha参数，这是一个控制点透明度的参数;shape是一个控制形状的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(mpg)+ geom_point(aes(x=displ, y=hwy, alpha=class))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-1d6dd6c8cbe3b016.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(mpg)+ geom_point(aes(x=displ, y=hwy, shape=class))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-53c76d1b9cf0fea6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>发现当映射shape其中SUV是没有形状的，这是因为<strong>ggplot2</strong>只默认6种形状，这个问题后续解决。 需要注意的是映射参数必须在aes(),不然就无法映射。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(mpg)+ geom_point(aes(x=displ, y=hwy), color=&quot;blue&quot;)#all the points are blue</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-742710de940018e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>今天就讲到这，下次继续</p>
+<h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.1 (2017-06-30)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C ## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] forcats_0.2.0 stringr_1.2.0 dplyr_0.7.1 </div><div class="line">## [4] purrr_0.2.2.2 readr_1.1.1 tidyr_0.6.3 </div><div class="line">## [7] tibble_1.3.3 ggplot2_2.2.1 tidyverse_1.1.1.9000</div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] Rcpp_0.12.11 cellranger_1.1.0 compiler_3.4.1 </div><div class="line">## [4] plyr_1.8.4 bindr_0.1 tools_3.4.1 </div><div class="line">## [7] digest_0.6.12 lubridate_1.6.0 jsonlite_1.5 </div><div class="line">## [10] evaluate_0.10.1 nlme_3.1-131 gtable_0.2.0 </div><div class="line">## [13] lattice_0.20-35 pkgconfig_2.0.1 rlang_0.1.1 </div><div class="line">## [16] psych_1.7.5 rstudioapi_0.6 yaml_2.1.14 </div><div class="line">## [19] parallel_3.4.1 haven_1.0.0 bindrcpp_0.2 </div><div class="line">## [22] xml2_1.1.1 httr_1.2.1 knitr_1.16 </div><div class="line">## [25] hms_0.3 rprojroot_1.2 grid_3.4.1 </div><div class="line">## [28] glue_1.1.1 R6_2.2.2 readxl_1.0.0 </div><div class="line">## [31] foreign_0.8-69 rmarkdown_1.6 modelr_0.1.0 </div><div class="line">## [34] reshape2_1.4.2 magrittr_1.5 clisymbols_1.2.0 </div><div class="line">## [37] boxes_0.0.0.9000 backports_1.1.0 scales_0.4.1 </div><div class="line">## [40] htmltools_0.3.6 rvest_0.3.2 assertthat_0.2.0 </div><div class="line">## [43] mnormt_1.5-5 colorspace_1.3-2 labeling_0.3 </div><div class="line">## [46] stringi_1.1.5 lazyeval_0.2.0 munsell_0.4.3 </div><div class="line">## [49] broom_0.4.2 crayon_1.3.2.9000</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
+
+      
+    </div>
+<div>
+      
+        
+      
+</div>
+
+    <div>
+      
+        
+
+      
+    </div>
+<div>
+  
     
+<div style="text-align:center;color: #ccc;font-size:14px;">
+------ End ------</div>
+
+  
+</div>
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="https://raw.githubusercontent.com/YTLogos/Name/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170625192432.jpg" alt="TaoYan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://raw.githubusercontent.com/YTLogos/Name/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170625163544.jpg" alt="TaoYan Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
   </div>
 
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/可视化/" rel="tag"><i class="fa fa-tag"></i> 可视化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/29/R语言data-manipulation学习笔记之subset-data/" rel="next" title="R语言data manipulation学习笔记之subset data">
+                <i class="fa fa-chevron-left"></i> R语言data manipulation学习笔记之subset data
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
   </div>
 
 
@@ -580,7 +814,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介"><span class="nav-number">1.</span> <span class="nav-text">个人简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教育背景"><span class="nav-number">2.</span> <span class="nav-text">教育背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人技能"><span class="nav-number">3.</span> <span class="nav-text">个人技能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兴趣爱好"><span class="nav-number">4.</span> <span class="nav-text">兴趣爱好</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前提"><span class="nav-number">1.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ggplot2简介"><span class="nav-number">2.</span> <span class="nav-text">ggplot2简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#美学映射Aesthetic-Mappings"><span class="nav-number">3.</span> <span class="nav-text">美学映射Aesthetic Mappings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SessionInfo"><span class="nav-number">4.</span> <span class="nav-text">SessionInfo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number">5.</span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number">6.</span> <span class="nav-text">个人简介：</span></a></li></ol></div>
             
 
           </div>
@@ -719,10 +953,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
