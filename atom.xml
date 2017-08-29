@@ -643,6 +643,441 @@
   </entry>
   
   <entry>
+    <title>R语言可视化学习笔记之添加p-value和显著性标记</title>
+    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B7%BB%E5%8A%A0p-value%E5%92%8C%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/"/>
+    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/</id>
+    <published>2017-06-24T16:00:00.000Z</published>
+    <updated>2017-06-29T03:12:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上篇文章中提了一下如何通过<strong>ggpubr</strong>包为<code>ggplot</code>图添加<code>p-value</code>以及显著性标记,本文将详细介绍。利用数据集<strong>ToothGrowth</strong>进行演示<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#先加载包</div><div class="line">library(ggpubr)</div><div class="line">#加载数据集ToothGrowth</div><div class="line">data(&quot;ToothGrowth&quot;)</div><div class="line">head(ToothGrowth)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">##    len  supp  dose</div><div class="line">## 1  4.2   VC   0.5</div><div class="line">## 2  11.5  VC   0.5</div><div class="line">## 3  7.3   VC   0.5</div><div class="line">## 4  5.8   VC   0.5</div><div class="line">## 5  6.4   VC   0.5</div><div class="line">## 6  10.0  VC   0.5</div></pre></td></tr></table></figure>
+<p>#比较方法<br><strong>R</strong>中常用的比较方法主要有下面几种：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>R函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T-test</td>
+<td>t.test()</td>
+<td>比较两组(参数)</td>
+</tr>
+<tr>
+<td>Wilcoxon test</td>
+<td>wilcox.test()</td>
+<td>比较两组(非参数)</td>
+</tr>
+<tr>
+<td>ANOVA</td>
+<td>aov()或anova()</td>
+<td>比较多组(参数)</td>
+</tr>
+<tr>
+<td>Kruskal-Wallis</td>
+<td>kruskal.test()</td>
+<td>比较多组(非参数)</td>
+</tr>
+</tbody>
+</table>
+<p>各种比较方法后续有时间一一讲解。</p>
+<p>#添加<code>p-value</code><br>主要利用<strong>ggpubr</strong>包中的两个函数：</p>
+<ul>
+<li><code>compare_means()</code>:可以进行一组或多组间的比较</li>
+<li><code>stat_compare_mean()</code>:自动添加<code>p-value</code>、显著性标记到<strong>ggplot</strong>图中</li>
+</ul>
+<p>##<strong>compare_means()</strong>函数<br>该函数主要用用法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compare_means(formula, data, method = &quot;wilcox.test&quot;, paired = FALSE,</div><div class="line">  group.by = NULL, ref.group = NULL, ...)</div></pre></td></tr></table></figure></p>
+<p>注释：</p>
+<ul>
+<li><code>formula</code>:形如<code>x~group</code>，其中x是数值型变量，<code>group</code>是因子，可以是一个或者多个</li>
+<li><code>data</code>：数据集</li>
+<li><code>method</code>:比较的方法，默认为<code>&quot;wilcox.test&quot;</code>, 其他可选方法为：<code>&quot;t.test&quot;</code>、<code>&quot;anova&quot;</code>、<code>&quot;kruskal.test&quot;</code></li>
+<li><code>paired</code>:是否要进行<code>paired test</code>(<code>TRUE</code> or <code>FALSE</code>)</li>
+<li><code>group_by</code>: 比较时是否要进行分组</li>
+<li><code>ref.group</code>: 是否需要指定参考组</li>
+</ul>
+<p>##<strong>stat_compare_means()</strong>函数<br>主要用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">stat_compare_means(mapping = NULL, comparisons = NULL hide.ns = FALSE,</div><div class="line">                   label = NULL,  label.x = NULL, label.y = NULL,  ...)</div></pre></td></tr></table></figure></p>
+<p>注释：</p>
+<ul>
+<li><code>mapping</code>:由<code>aes()</code>创建的一套美学映射</li>
+<li><code>comparisons</code>:指定需要进行比较以及添加<code>p-value</code>、显著性标记的组</li>
+<li><code>hide.ns</code>:是否要显示显著性标记ns</li>
+<li><code>label</code>:显著性标记的类型，可选项为：<code>p.signif</code>(显著性标记)、<code>p.format</code>(显示<code>p-value</code>)</li>
+<li><code>label.x</code>、<code>label.y</code>:显著性标签调整</li>
+<li>…:其他参数</li>
+</ul>
+<p>##比较独立的两组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~supp, data=ToothGrowth)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b045b6dd37c6efb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>结果解释：</p>
+<ul>
+<li><code>.y</code>:测试中使用的y变量</li>
+<li><code>p</code>:<code>p-value</code></li>
+<li><code>p.adj</code>:调整后的<code>p-value</code>。默认为<code>p.adjust.method=&quot;holm&quot;</code></li>
+<li><code>p.format</code>:四舍五入后的<code>p-value</code></li>
+<li><code>p.signif</code>:显著性水平</li>
+<li><code>method</code>:用于统计检验的方法<br>##绘制箱线图<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, add = &quot;jitter&quot;)#添加p-valuep+stat_compare_means()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e218a1edab30a234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#使用其他统计检验方法</div><div class="line">p+stat_compare_means(method = &quot;t.test&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-fc20d4bbb39c1377.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上述显著性标记可以通过<code>label.x</code>、<code>label.y</code>、<code>hjust</code>及<code>vjust</code>来调整<br>显著性标记可以通过<code>aes()</code>映射来更改：</p>
+<ul>
+<li><code>aes(label=..p.format..)</code>或<code>aes(lebel=paste0(&quot;p=&quot;,..p.format..))</code>:只显示<code>p-value</code>，不显示统计检验方法<ul>
+<li><code>aes(label=..p.signif..)</code>:仅显示显著性水平</li>
+<li><code>aes(label=paste0(..method..,&quot;\n&quot;, &quot;p=&quot;,..p.format..))</code>:<code>p-value</code>与显著性水平分行显示</li>
+</ul>
+</li>
+</ul>
+<p>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p+stat_compare_means(aes(label=..p.signif..), label.x = 1.5, label.y = 40)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c0f71b843b6472b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>也可以将标签指定为字符向量，不要映射，只需将p.signif两端的..去掉即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p+stat_compare_means(label = &quot;p.signif&quot;, label.x = 1.5, label.y = 40)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-15c7ae8bbaaf7b95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##比较两个paired sample<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~supp, data=ToothGrowth, paired = TRUE)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-770f433a6a5e4ef3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##利用ggpaired()进行可视化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggpaired(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, line.color = &quot;gray&quot;, </div><div class="line">line.size = 0.4, palette = &quot;jco&quot;)+ stat_compare_means(paired = TRUE)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2b3b18fa8e3ec2c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##多组比较<br>Global test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~dose, data=ToothGrowth, method = &quot;anova&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dd4f81af301e529b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#可视化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means()</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a0fcb4c4683d0f07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#使用其他的方法</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+ </div><div class="line">stat_compare_means(method = &quot;anova&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6572797c98bbb9a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>Pairwise comparisons:如果分组变量中包含两个以上的水平，那么会自动进行pairwise test,默认方法为”wilcox.test”</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~dose, data=ToothGrowth)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c25c03cedcf149bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#可以指定比较哪些组</div><div class="line">my_comparisons &lt;- list(c(&quot;0.5&quot;, &quot;1&quot;), c(&quot;1&quot;, &quot;2&quot;), c(&quot;0.5&quot;, &quot;2&quot;))</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;,palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means(comparisons=my_comparisons)+ # Add pairwise </div><div class="line">comparisons p-value stat_compare_means(label.y = 50) # Add global p-value</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-87c29855f34018b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>可以通过修改参数label.y来更改标签的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;,palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means(comparisons=my_comparisons, label.y = c(29, 35, 40))+ # Add pairwise comparisons p-value </div><div class="line">stat_compare_means(label.y = 45) # Add global p-value</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-554a2136abe2eee4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>至于通过添加线条来连接比较的两组，这一功能已由包<a href="https://github.com/Artjom-Metro/ggsignif" target="_blank" rel="external"><strong>ggsignif</strong></a>实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">##设定参考组</div><div class="line">compare_means(len~dose, data=ToothGrowth, ref.group = &quot;0.5&quot;,  #以dose=0.5组为参考组 </div><div class="line">method = &quot;t.test&quot; )</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9ba2e25b978710a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+ </div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 40)+ # Add global p-value</div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, ref.group = &quot;0.5&quot;) # Pairwise comparison against reference</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8510992c45710447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">参考组也可以设置为.all.即所有的平均值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~dose, data=ToothGrowth, ref.group = &quot;.all.&quot;, method = &quot;t.test&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2976426c33943786.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 40)+# Add global p-value</div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, </div><div class="line">ref.group = &quot;.all.&quot;)#Pairwise comparison against all</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e0b10b222601691f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>接下来利用<strong>survminer</strong>包中的数据集<strong>myeloma</strong>来讲解一下为什么有时候我们需要将ref.group设置为.all.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(survminer)#没安装的先安装再加载</div><div class="line">data(&quot;myeloma&quot;)</div><div class="line">head(myeloma)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-96dcc29ad0882230.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>我们将根据患者的分组来绘制<strong>DEPDC1</strong>基因的表达谱，看不同组之间是否存在显著性的差异，我们可以在7组之间进行比较，但是这样的话组间比较的组合就太多了，因此我们可以将7组中每一组与全部平均值进行比较，看看<strong>DEPDC1</strong>基因在不同的组中是否过表达还是低表达。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(DEPDC1~molecular_group, data = myeloma, ref.group = &quot;.all.&quot;, method = &quot;t.test&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-53c1d6a7df55e7d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#可视化DEPDC1基因表达谱</div><div class="line">ggboxplot(myeloma, x=&quot;molecular_group&quot;, y=&quot;DEPDC1&quot;, </div><div class="line">color = &quot;molecular_group&quot;, add = &quot;jitter&quot;, legend=&quot;none&quot;)+ </div><div class="line">rotate_x_text(angle = 45)+ </div><div class="line">geom_hline(yintercept = mean(myeloma$DEPDC1), linetype=2)+# Add horizontal line at base mean </div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 1600)+ # Add global annova p-value </div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, ref.group = &quot;.all.&quot;)# Pairwise comparison against all</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c6188f0a83617dcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>从图中可以看出，DEPDC1基因在Proliferation组中显著性地过表达，而在Hyperdiploid和Low bone disease显著性地低表达</p>
+</blockquote>
+<p>我们也可以将非显著性标记ns去掉，只需要将参数hide.ns=TRUE<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ggboxplot(myeloma, x=&quot;molecular_group&quot;, y=&quot;DEPDC1&quot;, </div><div class="line">color = &quot;molecular_group&quot;, add = &quot;jitter&quot;, legend=&quot;none&quot;)+</div><div class="line">rotate_x_text(angle = 45)+ </div><div class="line">geom_hline(yintercept = mean(myeloma$DEPDC1), linetype=2)+# Add horizontal line at base mean </div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 1600)+ # Add global annova p-value </div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, ref.group = &quot;.all.&quot;, hide.ns = TRUE)# Pairwise comparison against all</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##多个分组变量<br>按另一个变量进行分组之后进行统计检验，比如按变量dose进行分组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~supp, data=ToothGrowth, group.by = &quot;dose&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-56f713ae2fa2c591.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, add = &quot;jitter&quot;, facet.by = &quot;dose&quot;, short.panel.labs = FALSE)#按dose进行分面</div><div class="line">#label只绘制</div><div class="line">p-valuep+stat_compare_means(label = &quot;p.format&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a235626a981e4709.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#label绘制显著性水平</div><div class="line">p+stat_compare_means(label = &quot;p.signif&quot;, label.x = 1.5)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-3ebf7d89f1a517cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#将所有箱线图绘制在一个panel中</div><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, add = &quot;jitter&quot;)</div><div class="line">p+stat_compare_means(aes(group=supp))</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6529191fdef8f3dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#只显示p-value</div><div class="line">p+stat_compare_means(aes(group=supp), label = &quot;p.format&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ce9c6136407ca58a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#显示显著性水平</div><div class="line">p+stat_compare_means(aes(group=supp), label = &quot;p.signif&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f2cf5728cc9cf67a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">进行paired sample检验</div><div class="line">compare_means(len~supp, data=ToothGrowth, group.by = &quot;dose&quot;, paired = TRUE)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5d2ebfd37391113.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">p &lt;- ggpaired(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, line.color=&quot;gray&quot;, line.size=0.4, facet.by = &quot;dose&quot;, </div><div class="line">short.panel.labs = FALSE)#按dose分面</div><div class="line">#只显示p-value</div><div class="line">p+stat_compare_means(label = &quot;p.format&quot;, paired = TRUE)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-cc7db564846fae97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#其他图形</p>
+<p>##条形图与线图（一个分组变量）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#有误差棒的条形图，实际上我以前的文章里有纯粹用ggplot2实现</div><div class="line">ggbarplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;)+ </div><div class="line">stat_compare_means()+ </div><div class="line">stat_compare_means(ref.group = &quot;0.5&quot;, label = &quot;p.signif&quot;, label.y = c(22, 29))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0a38300e74bbce61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#有误差棒的线图</div><div class="line">ggline(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;)+</div><div class="line">stat_compare_means()+ </div><div class="line">stat_compare_means(ref.group = &quot;0.5&quot;, label = &quot;p.signif&quot;, label.y = c(22, 29))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9bbc6411123c593a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##条形图与线图（两个分组变量）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggbarplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, position = position_dodge(0.8))+ </div><div class="line">stat_compare_means(aes(group=supp), label = &quot;p.signif&quot;, label.y = 29)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b2dd950f78f7a642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggline(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;)+ </div><div class="line">stat_compare_means(aes(group=supp), label = &quot;p.signif&quot;, label.y = c(16, 25, 29))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bd2413a61ece0ed2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#Sessioninfo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] survminer_0.4.0 ggpubr_0.1.3 magrittr_1.5 ggplot2_2.2.1 </div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] Rcpp_0.12.11 compiler_3.4.0 plyr_1.8.4</div><div class="line">## [4] tools_3.4.0 digest_0.6.12 evaluate_0.10 </div><div class="line">## [7] tibble_1.3.3 gtable_0.2.0 nlme_3.1-131 </div><div class="line">## [10] lattice_0.20-35 rlang_0.1.1 Matrix_1.2-10 </div><div class="line">## [13] psych_1.7.5 ggsci_2.4 DBI_0.6-1 </div><div class="line">## [16] cmprsk_2.2-7 yaml_2.1.14 parallel_3.4.0 </div><div class="line">## [19] gridExtra_2.2.1 dplyr_0.5.0 stringr_1.2.0 </div><div class="line">## [22] knitr_1.16 survMisc_0.5.4 rprojroot_1.2 </div><div class="line">## [25] grid_3.4.0 data.table_1.10.4 KMsurv_0.1-5 </div><div class="line">## [28] R6_2.2.1 km.ci_0.5-2 survival_2.41-3 </div><div class="line">## [31] foreign_0.8-68 rmarkdown_1.5 reshape2_1.4.2 </div><div class="line">## [34] tidyr_0.6.3 purrr_0.2.2.2 splines_3.4.0 </div><div class="line">## [37] backports_1.1.0 scales_0.4.1 htmltools_0.3.6 </div><div class="line">## [40] assertthat_0.2.0 mnormt_1.5-5 xtable_1.8-2 </div><div class="line">## [43] colorspace_1.3-2 ggsignif_0.2.0 labeling_0.3 </div><div class="line">## [46] stringi_1.1.5 lazyeval_0.2.0 munsell_0.4.3 </div><div class="line">## [49] broom_0.4.2 zoo_1.8-0</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;上篇文章中提了一下如何通过&lt;strong&gt;ggpubr&lt;/strong&gt;包为&lt;code&gt;ggplot&lt;/code&gt;图添加&lt;code&gt;p-value&lt;/code&gt;以及显著性标记,本文将详细介绍。利用数据集&lt;strong&gt;ToothGrowth&lt;/strong&gt;进行演示&lt;br&gt;
+    
+    </summary>
+    
+      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="R&amp;ggrepel&amp;visualization" scheme="https://ytlogos.github.io/tags/R-ggrepel-visualization/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>R语言可视化学习笔记之ggrepel包</title>
+    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggrepel%E5%8C%85/"/>
+    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之ggrepel包/</id>
+    <published>2017-06-24T16:00:00.000Z</published>
+    <updated>2017-08-24T09:41:41.683Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当我们在图形中添加标签时，标签之间很容易相互重叠，包<a href="https://github.com/slowkow/ggrepel" target="_blank" rel="external"><strong>ggrepel</strong></a>就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#使用数据集mtcars演示</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text(aes(wt, mpg, label=rownames(mtcars)))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0110517941711504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>可以看到可视化效果不是很好。接下来看看包<strong>ggrepel</strong>的效果。<br>geom_text_repel()是基于geom_text()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggrepel)</div><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text_repel(aes(wt, mpg, label=rownames(mtcars)))+</div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7f9edd980e5504ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#geom_label_repel()<br>geom_label_repel()是基于geom_label(),它将标签置于一个小方框中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;grey&quot;, size=5)+</div><div class="line">geom_label_repel(aes(wt, mpg, fill=factor(cyl), </div><div class="line">label=rownames(mtcars)), fontface=&quot;bold&quot;, color=&quot;white&quot;, </div><div class="line">box.padding=unit(0.35, &quot;lines&quot;), point.padding=unit(0.5, &quot;lines&quot;), </div><div class="line">segment.colour = &quot;grey50&quot;)+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5e60c14166f9c915.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#参数<br>大部分<code>geom_text()</code>的参数都适用于<code>geom_text_repel()</code>,除了以下几个：</p>
+<ul>
+<li>hjust</li>
+<li>vjust</li>
+<li>position</li>
+<li>check_overlap</li>
+</ul>
+<p><strong>ggrepel</strong>包为<code>geom_text_repel()</code>与<code>geom_label_repel()</code>提供了特有的参数设置：</p>
+<ul>
+<li>segment.color:连接点与标签的线段的颜色</li>
+<li>segment.size:线段的粗细</li>
+<li>segment.alpha:线段的透明度</li>
+<li>box.padding:文本框周边填充</li>
+<li>point.padding:点周围填充</li>
+<li>arrow:grid:arrow提供的箭头</li>
+<li>force:强制性将重叠文本散开</li>
+<li>max.oter:最大迭代次数</li>
+<li>nudge_x/y:标签开始位置在坐标轴的移动距离</li>
+<li>direction:允许标签的方向，x、y or both</li>
+</ul>
+<p>下面举个栗子来详细了解这些参数的图形效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg, color=factor(cyl)), size=3)+</div><div class="line">geom_text_repel(aes(wt, mpg, color=factor(cyl), </div><div class="line">label=rownames(mtcars), angle=ifelse(mtcars$cyl==4, 90, 0)), </div><div class="line">size=4, family=&quot;Times&quot;, fontface=&quot;bold&quot;, </div><div class="line">box.padding=unit(0.5, &quot;lines&quot;), point.padding=unit(1.6, &quot;lines&quot;), </div><div class="line">segment.color = &quot;#cccccc&quot;, segment.size = 0.5, </div><div class="line">arrow = arrow(length=unit(0.01, &quot;npc&quot;)),force = 1, max.iter = 3e3, </div><div class="line">nudge_x = ifelse(mtcars$cyl==6, 2, 0), nudge_y = ifelse(mtcars$cyl==6, 9, 0))+ </div><div class="line">scale_color_discrete(name=&quot;cyl&quot;)+ </div><div class="line">scale_x_continuous(expand = c(0.5, 0))+ </div><div class="line">scale_y_continuous(expand = c(0.25, 0))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>也可以通过设置参数<code>point.padding=NA</code>不对点进行<strong>repel</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">mtcars$label &lt;- rownames(mtcars)</div><div class="line">ggplot(mtcars, aes(wt, mpg, label=label))+ </div><div class="line">geom_point(color=&quot;red&quot;)+ geom_text_repel(point.padding = NA)+</div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-238389207de940a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>通过赋值某些<strong>label</strong>空字符“”来隐藏。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">mtcars$label &lt;- rownames(mtcars)</div><div class="line">mtcars$label[1:15] &lt;- &quot;&quot;</div><div class="line">ggplot(mtcars, aes(wt, mpg))+ geom_point(aes(color=factor(cyl)), size=2)+</div><div class="line">geom_text_repel(aes(color=factor(cyl), size=hp, label=label), </div><div class="line">point.padding = unit(0.25, &quot;lines&quot;), box.padding = unit(0.25, &quot;lines&quot;), </div><div class="line">nudge_y = 0.1)+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b6f7d76fe1e36113.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#将标签控制在特定区域<br>通过设置参数xlim和ylim来限制label的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">data &lt;- mtcars</div><div class="line">mu &lt;- mean(data$wt)</div><div class="line">left &lt;- data[data$wt &lt;mu, ]</div><div class="line">right &lt;- data[data$wt&gt;=mu, ]</div><div class="line">ggplot()+ geom_vline(xintercept = mu)+ </div><div class="line">geom_point(aes(wt, mpg), data=data)+ </div><div class="line">geom_text_repel(data=left, aes(wt, mpg, label=rownames(left), </div><div class="line">color=&quot;Left half&quot;), xlim=c(NA, mu))+ </div><div class="line">geom_text_repel(data=right, aes(wt, mpg, label=rownames(right), </div><div class="line">color=&quot;Rigth half&quot;), xlim=c(mu, NA))+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-91519695f1b33a20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过控制参数direction来决定label是左右移动还是上下移动， 默认是both<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">#direction=&quot;x&quot; 左右移动</div><div class="line">ggplot(mtcars)+</div><div class="line">  geom_point(aes(wt, mpg), color=&quot;red&quot;)+</div><div class="line">  geom_text_repel(aes(wt, mpg, label=rownames(mtcars)), direction=&quot;x&quot;)+</div><div class="line">  theme_classic(base_size = 16)+xlim(1, 6)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-771214ebd632ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#direction=&quot;x&quot; 上下移动</div><div class="line">ggplot(mtcars)+</div><div class="line">  geom_point(aes(wt, mpg), color=&quot;red&quot;)+</div><div class="line">  geom_text_repel(aes(wt, mpg, label=rownames(mtcars)), direction=&quot;y&quot;)+</div><div class="line">  theme_classic(base_size = 16)+xlim(1, 6)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-771214ebd632ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#线图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(Orange, aes(age, circumference, color=Tree))+</div><div class="line">  geom_line()+</div><div class="line">  coord_cartesian(xlim=c(min(Orange$age), max(Orange$age)+90))+</div><div class="line">  geom_text_repel(data=subset(Orange, age==max(age)),</div><div class="line">                  aes(label=paste(&quot;Tree&quot;, Tree)),size=6, nudge_x = 45, segment.color = NA)+</div><div class="line">  theme_classic(base_size = 16)+</div><div class="line">  theme(legend.position = &quot;none&quot;)+</div><div class="line">  labs(title=&quot;Orange Trees&quot;, x=&quot;Age(days)&quot;, y=&quot;Circumference(mm)&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9b5718dafd8b2739.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#SessionInfo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">##</div><div class="line">## other attached packages:</div><div class="line">## [1] ggrepel_0.6.5 ggplot2_2.2.1</div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] Rcpp_0.12.11 digest_0.6.12 rprojroot_1.2 plyr_1.8.4 </div><div class="line">## [5] grid_3.4.0 gtable_0.2.0 backports_1.1.0 magrittr_1.5 </div><div class="line">## [9] evaluate_0.10 scales_0.4.1 rlang_0.1.1 stringi_1.1.5 </div><div class="line">## [13] lazyeval_0.2.0 rmarkdown_1.5 labeling_0.3 tools_3.4.0 </div><div class="line">## [17] stringr_1.2.0 munsell_0.4.3 yaml_2.1.14 compiler_3.4.0 </div><div class="line">## [21] colorspace_1.3-2 htmltools_0.3.6 knitr_1.16 tibble_1.3.3</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><ul>
+<li>wechat: yt056410</li>
+<li>Email: tyan@zju.edu.cn</li>
+<li>QQ: 1051927088</li>
+<li>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></li>
+<li>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></li>
+<li>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></li>
+</ul>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
+<ul>
+<li>浙江大学作物遗传育种在读研究生（生物信息学方向）</li>
+<li>伪码农，R语言爱好者，爱开源</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;当我们在图形中添加标签时，标签之间很容易相互重叠，包&lt;a href=&quot;https://github.com/slowkow/ggrepel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;ggrepel&lt;/strong&gt;&lt;/a&gt;就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="R&amp;ggrepel&amp;visualization" scheme="https://ytlogos.github.io/tags/R-ggrepel-visualization/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>R语言可视化学习笔记之相关矩阵可视化包ggcorrplot</title>
+    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%9B%B8%E5%85%B3%E7%9F%A9%E9%98%B5%E5%8F%AF%E8%A7%86%E5%8C%96%E5%8C%85ggcorrplot/"/>
+    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之相关矩阵可视化包ggcorrplot/</id>
+    <published>2017-06-24T16:00:00.000Z</published>
+    <updated>2017-06-29T03:11:58.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a7b9c76f1b9177c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>基于<strong>ggplot2</strong>包以及<strong>corrplot</strong>包的相关矩阵可视化包<strong>ggcorrplot</strong>，<strong>ggcorrplot</strong>包提供对相关矩阵重排序以及在相关图中展示显著性水平的方法，同时也能计算相关性p-value<br><a id="more"></a><br>安装方法就不提了，不懂的可以浏览我以前的<a href="http://www.jianshu.com/p/678213d605a5" target="_blank" rel="external"><strong>文章</strong></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggcorrplot)</div><div class="line">#计算相关矩阵(cor()计算结果不提供p-value)</div><div class="line">data(&quot;mtcars&quot;)</div><div class="line">corr &lt;- round(cor(mtcars), 1)</div><div class="line">head(corr[, 1:6])</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a56840974454525.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#用ggcorrplot包提供的函数cor_pmat()</div><div class="line">p.mat &lt;- cor_pmat(mtcars)</div><div class="line">head(p.mat[, 1:4])</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-885ea263533e51b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>可视化相关性矩阵<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggcorrplot(corr)#method默认为square</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-679f0410e8d706fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#方法为circle</div><div class="line">ggcorrplot(corr, method = &quot;circle&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e6cc2527561a9df5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#重排矩阵，使用分等级聚类</div><div class="line">ggcorrplot(corr, hc.order = TRUE, outline.color = &quot;white&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bc7ef6b733b0010d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#控制矩阵形状</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, outline.color = &quot;white&quot;)#下三角形</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-3841c6dd4591f121.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#上三角形</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;upper&quot;, outline.color = &quot;white&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-582e2120663d452c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#更改颜色以及主题</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, outline.color = &quot;white&quot;, </div><div class="line">ggtheme = ggplot2::theme_gray, colors = c(&quot;#6D9EC1&quot;, &quot;white&quot;, &quot;#E46726&quot;))</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-abbab5e291738694.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#添加相关系数</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, lab = TRUE)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a7b9c76f1b9177c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#增加显著性水平，不显著的话就不添加了</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, p.mat = p.mat)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-38b016110a10b84b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#将不显著的色块设置成空白</div><div class="line">ggcorrplot(corr, p.mat = p.mat, hc.order=TRUE, type = &quot;lower&quot;, insig = &quot;blank&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-582c67d095d8e1aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-6a7b9c76f1b9177c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;基于&lt;strong&gt;ggplot2&lt;/strong&gt;包以及&lt;strong&gt;corrplot&lt;/strong&gt;包的相关矩阵可视化包&lt;strong&gt;ggcorrplot&lt;/strong&gt;，&lt;strong&gt;ggcorrplot&lt;/strong&gt;包提供对相关矩阵重排序以及在相关图中展示显著性水平的方法，同时也能计算相关性p-value&lt;br&gt;
+    
+    </summary>
+    
+      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="R&amp;ggcorrplot&amp;visualization" scheme="https://ytlogos.github.io/tags/R-ggcorrplot-visualization/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>R语言学习笔记之相关性矩阵分析及其可视化</title>
+    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%80%A7%E7%9F%A9%E9%98%B5%E5%88%86%E6%9E%90%E5%8F%8A%E5%85%B6%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    <id>https://ytlogos.github.io/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/</id>
+    <published>2017-06-24T16:00:00.000Z</published>
+    <updated>2017-06-29T13:13:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="计算相关矩阵"><a href="#计算相关矩阵" class="headerlink" title="计算相关矩阵"></a>计算相关矩阵</h2><p>R内置函数<code>cor()</code>可以用来计算相关系数：<code>cor(x, method = c(&quot;pearson&quot;, &quot;kendall&quot;, &quot;spearman&quot;))</code>，如果数据有缺失值，用<code>cor(x, method = &quot;pearson&quot;, use = &quot;complete.obs&quot;)</code>。<br><a id="more"></a></p>
+<h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><ul>
+<li><p>如果数据格式是txt，用<code>my_data &lt;- read.delim(file.choose())</code></p>
+</li>
+<li><p>csv则用<code>my_data &lt;- read.csv(file.choose())</code>导入。<br>这里我们利用R内置数据集<em>mtcars</em>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">data(mtcars)#加载数据集</div><div class="line">mydata &lt;- mtcars[, c(1,3,4,5,6,7)]</div><div class="line">head(mydata, 6)#查看数据前6行</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b3f1a7b1a3a3e181.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="计算相关系数矩阵"><a href="#计算相关系数矩阵" class="headerlink" title="计算相关系数矩阵"></a>计算相关系数矩阵</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">res &lt;- cor(mydata)</div><div class="line">round(res, 2)#保留两位小数</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bafb635e01db2201.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><code>cor()</code>只能计算出相关系数，无法给出显著性水平<code>p-value</code>,<strong>Hmisc</strong><br>包里的<code>rcorr()</code>函数能够同时给出相关系数以及显著性水平<code>p-value</code>。<code>rcorr(x, type = c(“pearson”,“spearman”))</code>。</p>
+<blockquote>
+<p>The output of the function rcorr() is a list containing the following elements : - r : the correlation matrix - n : the matrix of the number of observations used in analyzing each pair of variables - P : the p-values corresponding to the significance levels of correlations.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(Hmisc)#加载包</div><div class="line">res2 &lt;- rcorr(as.matrix(mydata))</div><div class="line">res2</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f86b5405d4687fd4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#可以用res2$r、res2$P来提取相关系数以及显著性p-value</div><div class="line">res2$r</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f17bff3ff57c9f0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res2$P</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e6696eca58e651c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>如何将相关系数以及显著性水平p-value整合进一个矩阵内，可以自定义一个函数<code>flattenCorrMatrix</code>。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># ++++++++++++++++++++++++++++</div><div class="line"># flattenCorrMatrix</div><div class="line"># ++++++++++++++++++++++++++++</div><div class="line"># cormat : matrix of the correlation coefficients</div><div class="line"># pmat : matrix of the correlation p-values</div><div class="line">flattenCorrMatrix &lt;- function(cormat, pmat) &#123;</div><div class="line">ut &lt;- upper.tri(cormat) data.frame( row = rownames(cormat)[row(cormat)[ut]], </div><div class="line">column = rownames(cormat)[col(cormat)[ut]], cor =(cormat)[ut], p = pmat[ut] )</div><div class="line">&#125;</div><div class="line">举个栗子</div><div class="line">---</div><div class="line">res3 &lt;- rcorr(as.matrix(mtcars[,1:7]))</div><div class="line">flattenCorrMatrix(res3$r, res3$P)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-80de5562641e38d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="可视化相关系数矩阵"><a href="#可视化相关系数矩阵" class="headerlink" title="可视化相关系数矩阵"></a>可视化相关系数矩阵</h2><p>有不同的方法来可视化，主要有下面四种：</p>
+<ul>
+<li><em>symnum()</em> function</li>
+<li><em>corrplot()</em> function to plot a correlogram</li>
+<li>scatter plots</li>
+<li>heatmap</li>
+</ul>
+<p>##<em>symnum()</em> function<br>主要用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">symnum(x, cutpoints = c(0.3, 0.6, 0.8, 0.9, 0.95), symbols = c(&quot; “,”.“,”,“,”+“,”*“,”B“), </div><div class="line">abbr.colnames = TRUE) #很好理解，0-0.3用空格表示， 0.3-0.6用.表示， 以此类推。</div></pre></td></tr></table></figure></p>
+<p>举个栗子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">symnum(res, abbr.colnames = FALSE)#abbr.colnames用来控制列名</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ad753adf20edfbbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##corrplot() function to plot a correlogram<br>这个函数来自于包corrplot()<br>,通过颜色深浅来显著相关程度。参数主要有：</p>
+<ul>
+<li>type: “upper”, “lower”, “full”,显示上三角还是下三角还是全部</li>
+<li>order:用什么方法，这里是<em>hclust</em></li>
+<li>tl.col (for text label color) and tl.srt (for text label string rotation) :控制文本颜色以及旋转角度<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(corrplot)#先加载包</div><div class="line">corrplot(res, type = &quot;upper&quot;, order = &quot;hclust&quot;, tl.col = &quot;black&quot;, tl.srt = 45)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-645b747c02956615.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##也可以结合显著性绘制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Insignificant correlations are leaved blank</div><div class="line">corrplot(res2$r, type=&quot;upper&quot;, order=&quot;hclust&quot;, p.mat = res2$P, sig.level = 0.01, insig = &quot;blank&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##Use <em>chart.Correlation()</em>: Draw scatter plots<br><em>chart.Correlation()</em>来自于包<strong>PerformanceAnalytics</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(PerformanceAnalytics)#加载包</div><div class="line">chart.Correlation(mydata, histogram=TRUE, pch=19)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a4b28a80a7dcd3b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解释一下上图：</p>
+<ul>
+<li>对角线上显示的是分布图</li>
+<li>左下部显示的是具有拟合线的双变量散点图</li>
+<li>右上部显示的是相关系数以及显著性水平</li>
+</ul>
+<p>##heatmap()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">col&lt;- colorRampPalette(c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))(20)#调用颜色版自定义颜色</div><div class="line">heatmap(x = res, col = col, symm = TRUE)#symm表示是否对称</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8155004e32f38369.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;计算相关矩阵&quot;&gt;&lt;a href=&quot;#计算相关矩阵&quot; class=&quot;headerlink&quot; title=&quot;计算相关矩阵&quot;&gt;&lt;/a&gt;计算相关矩阵&lt;/h2&gt;&lt;p&gt;R内置函数&lt;code&gt;cor()&lt;/code&gt;可以用来计算相关系数：&lt;code&gt;cor(x, method = c(&amp;quot;pearson&amp;quot;, &amp;quot;kendall&amp;quot;, &amp;quot;spearman&amp;quot;))&lt;/code&gt;，如果数据有缺失值，用&lt;code&gt;cor(x, method = &amp;quot;pearson&amp;quot;, use = &amp;quot;complete.obs&amp;quot;)&lt;/code&gt;。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="R&amp;corrplot&amp;visualization" scheme="https://ytlogos.github.io/tags/R-corrplot-visualization/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>R语言学习笔记之聚类分析</title>
+    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/"/>
+    <id>https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/</id>
+    <published>2017-06-24T16:00:00.000Z</published>
+    <updated>2017-06-29T03:11:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>使用<code>k-means</code>聚类所需的包：</p>
+<ul>
+<li>factoextra</li>
+<li>cluster<a id="more"></a>
+#加载包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(factoextra)</div><div class="line">library(cluster)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>#数据准备<br>使用内置的R数据集<code>USArrests</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#load the dataset</div><div class="line">data(&quot;USArrests&quot;)</div><div class="line">#remove any missing value (i.e, NA values for not available)</div><div class="line">#That might be present in the data</div><div class="line">USArrests &lt;- na.omit(USArrests)#view the first 6 rows of the data</div><div class="line">head(USArrests, n=6)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>在此数据集中，列是变量，行是观测值</strong><br>在聚类之前我们可以先进行一些必要的数据检查即数据描述性统计，如平均值、标准差等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">desc_stats &lt;- data.frame( Min=apply(USArrests, 2, min),#minimum</div><div class="line">Med=apply(USArrests, 2, median),#median </div><div class="line">Mean=apply(USArrests, 2, mean),#mean </div><div class="line">SD=apply(USArrests, 2, sd),#Standard deviation </div><div class="line">Max=apply(USArrests, 2, max)#maximum</div><div class="line">)</div><div class="line">desc_stats &lt;- round(desc_stats, 1)#保留小数点后一位head(desc_stats)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c28a99b3efe41ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>变量有很大的方差及均值时需进行标准化</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df &lt;- scale(USArrests)</div></pre></td></tr></table></figure></p>
+<p>#数据集群性评估<br>使用<code>get_clust_tendency()</code>计算<code>Hopkins</code>统计量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">res &lt;- get_clust_tendency(df, 40, graph = TRUE)</div><div class="line">res$hopkins_stat</div><div class="line">## [1] 0.3440875</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Visualize the dissimilarity matrix</div><div class="line">res$plot</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7ab1c23eb38f6cb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>Hopkins统计量的值&lt;0.5，表明数据是高度可聚合的。另外，从图中也可以看出数据可聚合。</p>
+</blockquote>
+<p>#估计聚合簇数<br>由于k均值聚类需要指定要生成的聚类数量，因此我们将使用函数<code>clusGap()</code>来计算用于估计最优聚类数。函数<code>fviz_gap_stat()</code>用于可视化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set.seed(123)</div><div class="line">## Compute the gap statistic</div><div class="line">gap_stat &lt;- clusGap(df, FUN = kmeans, nstart = 25, K.max = 10, B = 500) </div><div class="line"># Plot the result</div><div class="line">fviz_gap_stat(gap_stat)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-64e6e37dc513b2be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>图中显示最佳为聚成四类（k=4）</p>
+</blockquote>
+<p>#进行聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set.seed(123)</div><div class="line">km.res &lt;- kmeans(df, 4, nstart = 25)</div><div class="line">head(km.res$cluster, 20)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-61fe2e1a139e3b9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Visualize clusters using factoextra</div><div class="line">fviz_cluster(km.res, USArrests)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2e39c93b63af2161.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#检查<code>cluster silhouette</code>图</p>
+<blockquote>
+<p>Recall that the silhouette measures (SiSi) how similar an object ii is to the the other objects in its own cluster versus those in the neighbor cluster. SiSi values range from 1 to - 1:</p>
+</blockquote>
+<ul>
+<li>A value of SiSi close to 1 indicates that the object is well clustered. In the other words, the object ii is similar to the other objects in its group.</li>
+<li>A value of SiSi close to -1 indicates that the object is poorly clustered, and that assignment to some other cluster would probably improve the overall results.<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sil &lt;- silhouette(km.res$cluster, dist(df))</div><div class="line">rownames(sil) &lt;- rownames(USArrests)</div><div class="line">head(sil[, 1:3])</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e2752fd444968a90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Visualize </div><div class="line">fviz_silhouette(sil)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a01f551c35d38d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b2554b235caf0420.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>图中可以看出有负值，可以通过函数<code>silhouette()</code>确定是哪个观测值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">neg_sil_index &lt;- which(sil[, &quot;sil_width&quot;] &lt; 0)</div><div class="line">sil[neg_sil_index, , drop = FALSE]</div><div class="line">##          cluster    neighbor     sil_width</div><div class="line">## Missouri    3          2        -0.07318144</div></pre></td></tr></table></figure></p>
+<p>#<strong>eclust()</strong>:增强的聚类分析</p>
+<blockquote>
+<p>与其他聚类分析包相比，<code>eclust()</code>有以下优点：</p>
+</blockquote>
+<ul>
+<li>简化了聚类分析的工作流程</li>
+<li>可以用于计算层次聚类和分区聚类</li>
+<li>eclust()自动计算最佳聚类簇数。</li>
+<li>自动提供Silhouette plot</li>
+<li>可以结合ggplot2绘制优美的图形</li>
+</ul>
+<p>#使用eclust()的<strong>K</strong>均值聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Compute k-means</div><div class="line">res.km &lt;- eclust(df, &quot;kmeans&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-448668d5d66b746c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Gap statistic plot</div><div class="line">fviz_gap_stat(res.km$gap_stat)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8abcb70ddd53cc9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Silhouette plotfviz_silhouette(res.km)</div><div class="line"></div><div class="line">##    cluster size ave.sil.width</div><div class="line">## 1     1     13      0.31</div><div class="line">## 2     2     29      0.38</div><div class="line">## 3     3      8      0.39</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ef8922f5d288768f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#使用<strong>eclust（）</strong>的层次聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Enhanced hierarchical clustering</div><div class="line">res.hc &lt;- eclust(df, &quot;hclust&quot;) # compute hclust</div><div class="line">fviz_dend(res.hc, rect = TRUE) # dendrogam</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#下面的R代码生成Silhouette plot和分层聚类散点图。</div><div class="line">fviz_silhouette(res.hc) # silhouette plot</div><div class="line">##   cluster size ave.sil.width</div><div class="line">## 1    1     19      0.26</div><div class="line">## 2    2     19      0.28</div><div class="line">## 3    3     12      0.43</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-cdae172ce885358a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fviz_cluster(res.hc) # scatter plot</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-be9e7cd89ccec3bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#Infos</p>
+<blockquote>
+<p>This analysis has been performed using R software (R version 3.3.2)</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;使用&lt;code&gt;k-means&lt;/code&gt;聚类所需的包：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;factoextra&lt;/li&gt;
+&lt;li&gt;cluster
+    
+    </summary>
+    
+      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="R&amp;Cluster analysis&amp;visualization" scheme="https://ytlogos.github.io/tags/R-Cluster-analysis-visualization/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ggplot2学习笔记系列之主题（theme）设置</title>
     <link href="https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E4%B8%BB%E9%A2%98%EF%BC%88theme%EF%BC%89%E8%AE%BE%E7%BD%AE/"/>
     <id>https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/</id>
@@ -863,441 +1298,6 @@
     
     
       <category term="R&amp;circlize&amp;visualization" scheme="https://ytlogos.github.io/tags/R-circlize-visualization/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>R语言可视化学习笔记之ggrepel包</title>
-    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggrepel%E5%8C%85/"/>
-    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之ggrepel包/</id>
-    <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-08-24T09:41:41.683Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当我们在图形中添加标签时，标签之间很容易相互重叠，包<a href="https://github.com/slowkow/ggrepel" target="_blank" rel="external"><strong>ggrepel</strong></a>就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#使用数据集mtcars演示</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text(aes(wt, mpg, label=rownames(mtcars)))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0110517941711504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>可以看到可视化效果不是很好。接下来看看包<strong>ggrepel</strong>的效果。<br>geom_text_repel()是基于geom_text()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggrepel)</div><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text_repel(aes(wt, mpg, label=rownames(mtcars)))+</div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7f9edd980e5504ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#geom_label_repel()<br>geom_label_repel()是基于geom_label(),它将标签置于一个小方框中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;grey&quot;, size=5)+</div><div class="line">geom_label_repel(aes(wt, mpg, fill=factor(cyl), </div><div class="line">label=rownames(mtcars)), fontface=&quot;bold&quot;, color=&quot;white&quot;, </div><div class="line">box.padding=unit(0.35, &quot;lines&quot;), point.padding=unit(0.5, &quot;lines&quot;), </div><div class="line">segment.colour = &quot;grey50&quot;)+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5e60c14166f9c915.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#参数<br>大部分<code>geom_text()</code>的参数都适用于<code>geom_text_repel()</code>,除了以下几个：</p>
-<ul>
-<li>hjust</li>
-<li>vjust</li>
-<li>position</li>
-<li>check_overlap</li>
-</ul>
-<p><strong>ggrepel</strong>包为<code>geom_text_repel()</code>与<code>geom_label_repel()</code>提供了特有的参数设置：</p>
-<ul>
-<li>segment.color:连接点与标签的线段的颜色</li>
-<li>segment.size:线段的粗细</li>
-<li>segment.alpha:线段的透明度</li>
-<li>box.padding:文本框周边填充</li>
-<li>point.padding:点周围填充</li>
-<li>arrow:grid:arrow提供的箭头</li>
-<li>force:强制性将重叠文本散开</li>
-<li>max.oter:最大迭代次数</li>
-<li>nudge_x/y:标签开始位置在坐标轴的移动距离</li>
-<li>direction:允许标签的方向，x、y or both</li>
-</ul>
-<p>下面举个栗子来详细了解这些参数的图形效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg, color=factor(cyl)), size=3)+</div><div class="line">geom_text_repel(aes(wt, mpg, color=factor(cyl), </div><div class="line">label=rownames(mtcars), angle=ifelse(mtcars$cyl==4, 90, 0)), </div><div class="line">size=4, family=&quot;Times&quot;, fontface=&quot;bold&quot;, </div><div class="line">box.padding=unit(0.5, &quot;lines&quot;), point.padding=unit(1.6, &quot;lines&quot;), </div><div class="line">segment.color = &quot;#cccccc&quot;, segment.size = 0.5, </div><div class="line">arrow = arrow(length=unit(0.01, &quot;npc&quot;)),force = 1, max.iter = 3e3, </div><div class="line">nudge_x = ifelse(mtcars$cyl==6, 2, 0), nudge_y = ifelse(mtcars$cyl==6, 9, 0))+ </div><div class="line">scale_color_discrete(name=&quot;cyl&quot;)+ </div><div class="line">scale_x_continuous(expand = c(0.5, 0))+ </div><div class="line">scale_y_continuous(expand = c(0.25, 0))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>也可以通过设置参数<code>point.padding=NA</code>不对点进行<strong>repel</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">mtcars$label &lt;- rownames(mtcars)</div><div class="line">ggplot(mtcars, aes(wt, mpg, label=label))+ </div><div class="line">geom_point(color=&quot;red&quot;)+ geom_text_repel(point.padding = NA)+</div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-238389207de940a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>通过赋值某些<strong>label</strong>空字符“”来隐藏。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">mtcars$label &lt;- rownames(mtcars)</div><div class="line">mtcars$label[1:15] &lt;- &quot;&quot;</div><div class="line">ggplot(mtcars, aes(wt, mpg))+ geom_point(aes(color=factor(cyl)), size=2)+</div><div class="line">geom_text_repel(aes(color=factor(cyl), size=hp, label=label), </div><div class="line">point.padding = unit(0.25, &quot;lines&quot;), box.padding = unit(0.25, &quot;lines&quot;), </div><div class="line">nudge_y = 0.1)+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b6f7d76fe1e36113.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#将标签控制在特定区域<br>通过设置参数xlim和ylim来限制label的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">data &lt;- mtcars</div><div class="line">mu &lt;- mean(data$wt)</div><div class="line">left &lt;- data[data$wt &lt;mu, ]</div><div class="line">right &lt;- data[data$wt&gt;=mu, ]</div><div class="line">ggplot()+ geom_vline(xintercept = mu)+ </div><div class="line">geom_point(aes(wt, mpg), data=data)+ </div><div class="line">geom_text_repel(data=left, aes(wt, mpg, label=rownames(left), </div><div class="line">color=&quot;Left half&quot;), xlim=c(NA, mu))+ </div><div class="line">geom_text_repel(data=right, aes(wt, mpg, label=rownames(right), </div><div class="line">color=&quot;Rigth half&quot;), xlim=c(mu, NA))+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-91519695f1b33a20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过控制参数direction来决定label是左右移动还是上下移动， 默认是both<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">#direction=&quot;x&quot; 左右移动</div><div class="line">ggplot(mtcars)+</div><div class="line">  geom_point(aes(wt, mpg), color=&quot;red&quot;)+</div><div class="line">  geom_text_repel(aes(wt, mpg, label=rownames(mtcars)), direction=&quot;x&quot;)+</div><div class="line">  theme_classic(base_size = 16)+xlim(1, 6)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-771214ebd632ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#direction=&quot;x&quot; 上下移动</div><div class="line">ggplot(mtcars)+</div><div class="line">  geom_point(aes(wt, mpg), color=&quot;red&quot;)+</div><div class="line">  geom_text_repel(aes(wt, mpg, label=rownames(mtcars)), direction=&quot;y&quot;)+</div><div class="line">  theme_classic(base_size = 16)+xlim(1, 6)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-771214ebd632ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#线图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(Orange, aes(age, circumference, color=Tree))+</div><div class="line">  geom_line()+</div><div class="line">  coord_cartesian(xlim=c(min(Orange$age), max(Orange$age)+90))+</div><div class="line">  geom_text_repel(data=subset(Orange, age==max(age)),</div><div class="line">                  aes(label=paste(&quot;Tree&quot;, Tree)),size=6, nudge_x = 45, segment.color = NA)+</div><div class="line">  theme_classic(base_size = 16)+</div><div class="line">  theme(legend.position = &quot;none&quot;)+</div><div class="line">  labs(title=&quot;Orange Trees&quot;, x=&quot;Age(days)&quot;, y=&quot;Circumference(mm)&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9b5718dafd8b2739.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#SessionInfo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">##</div><div class="line">## other attached packages:</div><div class="line">## [1] ggrepel_0.6.5 ggplot2_2.2.1</div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] Rcpp_0.12.11 digest_0.6.12 rprojroot_1.2 plyr_1.8.4 </div><div class="line">## [5] grid_3.4.0 gtable_0.2.0 backports_1.1.0 magrittr_1.5 </div><div class="line">## [9] evaluate_0.10 scales_0.4.1 rlang_0.1.1 stringi_1.1.5 </div><div class="line">## [13] lazyeval_0.2.0 rmarkdown_1.5 labeling_0.3 tools_3.4.0 </div><div class="line">## [17] stringr_1.2.0 munsell_0.4.3 yaml_2.1.14 compiler_3.4.0 </div><div class="line">## [21] colorspace_1.3-2 htmltools_0.3.6 knitr_1.16 tibble_1.3.3</div></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><ul>
-<li>wechat: yt056410</li>
-<li>Email: tyan@zju.edu.cn</li>
-<li>QQ: 1051927088</li>
-<li>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></li>
-<li>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></li>
-<li>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></li>
-</ul>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
-<ul>
-<li>浙江大学作物遗传育种在读研究生（生物信息学方向）</li>
-<li>伪码农，R语言爱好者，爱开源</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;当我们在图形中添加标签时，标签之间很容易相互重叠，包&lt;a href=&quot;https://github.com/slowkow/ggrepel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;ggrepel&lt;/strong&gt;&lt;/a&gt;就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R&amp;ggrepel&amp;visualization" scheme="https://ytlogos.github.io/tags/R-ggrepel-visualization/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>R语言学习笔记之相关性矩阵分析及其可视化</title>
-    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%80%A7%E7%9F%A9%E9%98%B5%E5%88%86%E6%9E%90%E5%8F%8A%E5%85%B6%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    <id>https://ytlogos.github.io/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/</id>
-    <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-29T13:13:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="计算相关矩阵"><a href="#计算相关矩阵" class="headerlink" title="计算相关矩阵"></a>计算相关矩阵</h2><p>R内置函数<code>cor()</code>可以用来计算相关系数：<code>cor(x, method = c(&quot;pearson&quot;, &quot;kendall&quot;, &quot;spearman&quot;))</code>，如果数据有缺失值，用<code>cor(x, method = &quot;pearson&quot;, use = &quot;complete.obs&quot;)</code>。<br><a id="more"></a></p>
-<h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><ul>
-<li><p>如果数据格式是txt，用<code>my_data &lt;- read.delim(file.choose())</code></p>
-</li>
-<li><p>csv则用<code>my_data &lt;- read.csv(file.choose())</code>导入。<br>这里我们利用R内置数据集<em>mtcars</em>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">data(mtcars)#加载数据集</div><div class="line">mydata &lt;- mtcars[, c(1,3,4,5,6,7)]</div><div class="line">head(mydata, 6)#查看数据前6行</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b3f1a7b1a3a3e181.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="计算相关系数矩阵"><a href="#计算相关系数矩阵" class="headerlink" title="计算相关系数矩阵"></a>计算相关系数矩阵</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">res &lt;- cor(mydata)</div><div class="line">round(res, 2)#保留两位小数</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bafb635e01db2201.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><code>cor()</code>只能计算出相关系数，无法给出显著性水平<code>p-value</code>,<strong>Hmisc</strong><br>包里的<code>rcorr()</code>函数能够同时给出相关系数以及显著性水平<code>p-value</code>。<code>rcorr(x, type = c(“pearson”,“spearman”))</code>。</p>
-<blockquote>
-<p>The output of the function rcorr() is a list containing the following elements : - r : the correlation matrix - n : the matrix of the number of observations used in analyzing each pair of variables - P : the p-values corresponding to the significance levels of correlations.</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(Hmisc)#加载包</div><div class="line">res2 &lt;- rcorr(as.matrix(mydata))</div><div class="line">res2</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f86b5405d4687fd4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#可以用res2$r、res2$P来提取相关系数以及显著性p-value</div><div class="line">res2$r</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f17bff3ff57c9f0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res2$P</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e6696eca58e651c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>如何将相关系数以及显著性水平p-value整合进一个矩阵内，可以自定义一个函数<code>flattenCorrMatrix</code>。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># ++++++++++++++++++++++++++++</div><div class="line"># flattenCorrMatrix</div><div class="line"># ++++++++++++++++++++++++++++</div><div class="line"># cormat : matrix of the correlation coefficients</div><div class="line"># pmat : matrix of the correlation p-values</div><div class="line">flattenCorrMatrix &lt;- function(cormat, pmat) &#123;</div><div class="line">ut &lt;- upper.tri(cormat) data.frame( row = rownames(cormat)[row(cormat)[ut]], </div><div class="line">column = rownames(cormat)[col(cormat)[ut]], cor =(cormat)[ut], p = pmat[ut] )</div><div class="line">&#125;</div><div class="line">举个栗子</div><div class="line">---</div><div class="line">res3 &lt;- rcorr(as.matrix(mtcars[,1:7]))</div><div class="line">flattenCorrMatrix(res3$r, res3$P)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-80de5562641e38d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="可视化相关系数矩阵"><a href="#可视化相关系数矩阵" class="headerlink" title="可视化相关系数矩阵"></a>可视化相关系数矩阵</h2><p>有不同的方法来可视化，主要有下面四种：</p>
-<ul>
-<li><em>symnum()</em> function</li>
-<li><em>corrplot()</em> function to plot a correlogram</li>
-<li>scatter plots</li>
-<li>heatmap</li>
-</ul>
-<p>##<em>symnum()</em> function<br>主要用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">symnum(x, cutpoints = c(0.3, 0.6, 0.8, 0.9, 0.95), symbols = c(&quot; “,”.“,”,“,”+“,”*“,”B“), </div><div class="line">abbr.colnames = TRUE) #很好理解，0-0.3用空格表示， 0.3-0.6用.表示， 以此类推。</div></pre></td></tr></table></figure></p>
-<p>举个栗子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">symnum(res, abbr.colnames = FALSE)#abbr.colnames用来控制列名</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ad753adf20edfbbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##corrplot() function to plot a correlogram<br>这个函数来自于包corrplot()<br>,通过颜色深浅来显著相关程度。参数主要有：</p>
-<ul>
-<li>type: “upper”, “lower”, “full”,显示上三角还是下三角还是全部</li>
-<li>order:用什么方法，这里是<em>hclust</em></li>
-<li>tl.col (for text label color) and tl.srt (for text label string rotation) :控制文本颜色以及旋转角度<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(corrplot)#先加载包</div><div class="line">corrplot(res, type = &quot;upper&quot;, order = &quot;hclust&quot;, tl.col = &quot;black&quot;, tl.srt = 45)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-645b747c02956615.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##也可以结合显著性绘制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Insignificant correlations are leaved blank</div><div class="line">corrplot(res2$r, type=&quot;upper&quot;, order=&quot;hclust&quot;, p.mat = res2$P, sig.level = 0.01, insig = &quot;blank&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##Use <em>chart.Correlation()</em>: Draw scatter plots<br><em>chart.Correlation()</em>来自于包<strong>PerformanceAnalytics</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(PerformanceAnalytics)#加载包</div><div class="line">chart.Correlation(mydata, histogram=TRUE, pch=19)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a4b28a80a7dcd3b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解释一下上图：</p>
-<ul>
-<li>对角线上显示的是分布图</li>
-<li>左下部显示的是具有拟合线的双变量散点图</li>
-<li>右上部显示的是相关系数以及显著性水平</li>
-</ul>
-<p>##heatmap()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">col&lt;- colorRampPalette(c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))(20)#调用颜色版自定义颜色</div><div class="line">heatmap(x = res, col = col, symm = TRUE)#symm表示是否对称</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8155004e32f38369.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;计算相关矩阵&quot;&gt;&lt;a href=&quot;#计算相关矩阵&quot; class=&quot;headerlink&quot; title=&quot;计算相关矩阵&quot;&gt;&lt;/a&gt;计算相关矩阵&lt;/h2&gt;&lt;p&gt;R内置函数&lt;code&gt;cor()&lt;/code&gt;可以用来计算相关系数：&lt;code&gt;cor(x, method = c(&amp;quot;pearson&amp;quot;, &amp;quot;kendall&amp;quot;, &amp;quot;spearman&amp;quot;))&lt;/code&gt;，如果数据有缺失值，用&lt;code&gt;cor(x, method = &amp;quot;pearson&amp;quot;, use = &amp;quot;complete.obs&amp;quot;)&lt;/code&gt;。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R&amp;corrplot&amp;visualization" scheme="https://ytlogos.github.io/tags/R-corrplot-visualization/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>R语言学习笔记之聚类分析</title>
-    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/"/>
-    <id>https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/</id>
-    <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-29T03:11:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>使用<code>k-means</code>聚类所需的包：</p>
-<ul>
-<li>factoextra</li>
-<li>cluster<a id="more"></a>
-#加载包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(factoextra)</div><div class="line">library(cluster)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>#数据准备<br>使用内置的R数据集<code>USArrests</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#load the dataset</div><div class="line">data(&quot;USArrests&quot;)</div><div class="line">#remove any missing value (i.e, NA values for not available)</div><div class="line">#That might be present in the data</div><div class="line">USArrests &lt;- na.omit(USArrests)#view the first 6 rows of the data</div><div class="line">head(USArrests, n=6)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong>在此数据集中，列是变量，行是观测值</strong><br>在聚类之前我们可以先进行一些必要的数据检查即数据描述性统计，如平均值、标准差等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">desc_stats &lt;- data.frame( Min=apply(USArrests, 2, min),#minimum</div><div class="line">Med=apply(USArrests, 2, median),#median </div><div class="line">Mean=apply(USArrests, 2, mean),#mean </div><div class="line">SD=apply(USArrests, 2, sd),#Standard deviation </div><div class="line">Max=apply(USArrests, 2, max)#maximum</div><div class="line">)</div><div class="line">desc_stats &lt;- round(desc_stats, 1)#保留小数点后一位head(desc_stats)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c28a99b3efe41ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong>变量有很大的方差及均值时需进行标准化</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df &lt;- scale(USArrests)</div></pre></td></tr></table></figure></p>
-<p>#数据集群性评估<br>使用<code>get_clust_tendency()</code>计算<code>Hopkins</code>统计量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">res &lt;- get_clust_tendency(df, 40, graph = TRUE)</div><div class="line">res$hopkins_stat</div><div class="line">## [1] 0.3440875</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Visualize the dissimilarity matrix</div><div class="line">res$plot</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7ab1c23eb38f6cb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>Hopkins统计量的值&lt;0.5，表明数据是高度可聚合的。另外，从图中也可以看出数据可聚合。</p>
-</blockquote>
-<p>#估计聚合簇数<br>由于k均值聚类需要指定要生成的聚类数量，因此我们将使用函数<code>clusGap()</code>来计算用于估计最优聚类数。函数<code>fviz_gap_stat()</code>用于可视化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set.seed(123)</div><div class="line">## Compute the gap statistic</div><div class="line">gap_stat &lt;- clusGap(df, FUN = kmeans, nstart = 25, K.max = 10, B = 500) </div><div class="line"># Plot the result</div><div class="line">fviz_gap_stat(gap_stat)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-64e6e37dc513b2be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>图中显示最佳为聚成四类（k=4）</p>
-</blockquote>
-<p>#进行聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set.seed(123)</div><div class="line">km.res &lt;- kmeans(df, 4, nstart = 25)</div><div class="line">head(km.res$cluster, 20)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-61fe2e1a139e3b9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Visualize clusters using factoextra</div><div class="line">fviz_cluster(km.res, USArrests)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2e39c93b63af2161.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#检查<code>cluster silhouette</code>图</p>
-<blockquote>
-<p>Recall that the silhouette measures (SiSi) how similar an object ii is to the the other objects in its own cluster versus those in the neighbor cluster. SiSi values range from 1 to - 1:</p>
-</blockquote>
-<ul>
-<li>A value of SiSi close to 1 indicates that the object is well clustered. In the other words, the object ii is similar to the other objects in its group.</li>
-<li>A value of SiSi close to -1 indicates that the object is poorly clustered, and that assignment to some other cluster would probably improve the overall results.<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sil &lt;- silhouette(km.res$cluster, dist(df))</div><div class="line">rownames(sil) &lt;- rownames(USArrests)</div><div class="line">head(sil[, 1:3])</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e2752fd444968a90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Visualize </div><div class="line">fviz_silhouette(sil)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a01f551c35d38d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b2554b235caf0420.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>图中可以看出有负值，可以通过函数<code>silhouette()</code>确定是哪个观测值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">neg_sil_index &lt;- which(sil[, &quot;sil_width&quot;] &lt; 0)</div><div class="line">sil[neg_sil_index, , drop = FALSE]</div><div class="line">##          cluster    neighbor     sil_width</div><div class="line">## Missouri    3          2        -0.07318144</div></pre></td></tr></table></figure></p>
-<p>#<strong>eclust()</strong>:增强的聚类分析</p>
-<blockquote>
-<p>与其他聚类分析包相比，<code>eclust()</code>有以下优点：</p>
-</blockquote>
-<ul>
-<li>简化了聚类分析的工作流程</li>
-<li>可以用于计算层次聚类和分区聚类</li>
-<li>eclust()自动计算最佳聚类簇数。</li>
-<li>自动提供Silhouette plot</li>
-<li>可以结合ggplot2绘制优美的图形</li>
-</ul>
-<p>#使用eclust()的<strong>K</strong>均值聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Compute k-means</div><div class="line">res.km &lt;- eclust(df, &quot;kmeans&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-448668d5d66b746c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Gap statistic plot</div><div class="line">fviz_gap_stat(res.km$gap_stat)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8abcb70ddd53cc9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Silhouette plotfviz_silhouette(res.km)</div><div class="line"></div><div class="line">##    cluster size ave.sil.width</div><div class="line">## 1     1     13      0.31</div><div class="line">## 2     2     29      0.38</div><div class="line">## 3     3      8      0.39</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ef8922f5d288768f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#使用<strong>eclust（）</strong>的层次聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Enhanced hierarchical clustering</div><div class="line">res.hc &lt;- eclust(df, &quot;hclust&quot;) # compute hclust</div><div class="line">fviz_dend(res.hc, rect = TRUE) # dendrogam</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#下面的R代码生成Silhouette plot和分层聚类散点图。</div><div class="line">fviz_silhouette(res.hc) # silhouette plot</div><div class="line">##   cluster size ave.sil.width</div><div class="line">## 1    1     19      0.26</div><div class="line">## 2    2     19      0.28</div><div class="line">## 3    3     12      0.43</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-cdae172ce885358a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fviz_cluster(res.hc) # scatter plot</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-be9e7cd89ccec3bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#Infos</p>
-<blockquote>
-<p>This analysis has been performed using R software (R version 3.3.2)</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;使用&lt;code&gt;k-means&lt;/code&gt;聚类所需的包：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;factoextra&lt;/li&gt;
-&lt;li&gt;cluster
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R&amp;Cluster analysis&amp;visualization" scheme="https://ytlogos.github.io/tags/R-Cluster-analysis-visualization/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>R语言可视化学习笔记之相关矩阵可视化包ggcorrplot</title>
-    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%9B%B8%E5%85%B3%E7%9F%A9%E9%98%B5%E5%8F%AF%E8%A7%86%E5%8C%96%E5%8C%85ggcorrplot/"/>
-    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之相关矩阵可视化包ggcorrplot/</id>
-    <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-29T03:11:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a7b9c76f1b9177c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>基于<strong>ggplot2</strong>包以及<strong>corrplot</strong>包的相关矩阵可视化包<strong>ggcorrplot</strong>，<strong>ggcorrplot</strong>包提供对相关矩阵重排序以及在相关图中展示显著性水平的方法，同时也能计算相关性p-value<br><a id="more"></a><br>安装方法就不提了，不懂的可以浏览我以前的<a href="http://www.jianshu.com/p/678213d605a5" target="_blank" rel="external"><strong>文章</strong></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggcorrplot)</div><div class="line">#计算相关矩阵(cor()计算结果不提供p-value)</div><div class="line">data(&quot;mtcars&quot;)</div><div class="line">corr &lt;- round(cor(mtcars), 1)</div><div class="line">head(corr[, 1:6])</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a56840974454525.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#用ggcorrplot包提供的函数cor_pmat()</div><div class="line">p.mat &lt;- cor_pmat(mtcars)</div><div class="line">head(p.mat[, 1:4])</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-885ea263533e51b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>可视化相关性矩阵<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggcorrplot(corr)#method默认为square</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-679f0410e8d706fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#方法为circle</div><div class="line">ggcorrplot(corr, method = &quot;circle&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e6cc2527561a9df5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#重排矩阵，使用分等级聚类</div><div class="line">ggcorrplot(corr, hc.order = TRUE, outline.color = &quot;white&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bc7ef6b733b0010d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#控制矩阵形状</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, outline.color = &quot;white&quot;)#下三角形</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-3841c6dd4591f121.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#上三角形</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;upper&quot;, outline.color = &quot;white&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-582e2120663d452c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#更改颜色以及主题</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, outline.color = &quot;white&quot;, </div><div class="line">ggtheme = ggplot2::theme_gray, colors = c(&quot;#6D9EC1&quot;, &quot;white&quot;, &quot;#E46726&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-abbab5e291738694.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#添加相关系数</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, lab = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6a7b9c76f1b9177c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#增加显著性水平，不显著的话就不添加了</div><div class="line">ggcorrplot(corr, hc.order = TRUE, type = &quot;lower&quot;, p.mat = p.mat)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-38b016110a10b84b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#将不显著的色块设置成空白</div><div class="line">ggcorrplot(corr, p.mat = p.mat, hc.order=TRUE, type = &quot;lower&quot;, insig = &quot;blank&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-582c67d095d8e1aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-6a7b9c76f1b9177c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;基于&lt;strong&gt;ggplot2&lt;/strong&gt;包以及&lt;strong&gt;corrplot&lt;/strong&gt;包的相关矩阵可视化包&lt;strong&gt;ggcorrplot&lt;/strong&gt;，&lt;strong&gt;ggcorrplot&lt;/strong&gt;包提供对相关矩阵重排序以及在相关图中展示显著性水平的方法，同时也能计算相关性p-value&lt;br&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R&amp;ggcorrplot&amp;visualization" scheme="https://ytlogos.github.io/tags/R-ggcorrplot-visualization/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>R语言可视化学习笔记之添加p-value和显著性标记</title>
-    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B7%BB%E5%8A%A0p-value%E5%92%8C%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/"/>
-    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/</id>
-    <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-06-29T03:12:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上篇文章中提了一下如何通过<strong>ggpubr</strong>包为<code>ggplot</code>图添加<code>p-value</code>以及显著性标记,本文将详细介绍。利用数据集<strong>ToothGrowth</strong>进行演示<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#先加载包</div><div class="line">library(ggpubr)</div><div class="line">#加载数据集ToothGrowth</div><div class="line">data(&quot;ToothGrowth&quot;)</div><div class="line">head(ToothGrowth)</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">##    len  supp  dose</div><div class="line">## 1  4.2   VC   0.5</div><div class="line">## 2  11.5  VC   0.5</div><div class="line">## 3  7.3   VC   0.5</div><div class="line">## 4  5.8   VC   0.5</div><div class="line">## 5  6.4   VC   0.5</div><div class="line">## 6  10.0  VC   0.5</div></pre></td></tr></table></figure>
-<p>#比较方法<br><strong>R</strong>中常用的比较方法主要有下面几种：</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>R函数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T-test</td>
-<td>t.test()</td>
-<td>比较两组(参数)</td>
-</tr>
-<tr>
-<td>Wilcoxon test</td>
-<td>wilcox.test()</td>
-<td>比较两组(非参数)</td>
-</tr>
-<tr>
-<td>ANOVA</td>
-<td>aov()或anova()</td>
-<td>比较多组(参数)</td>
-</tr>
-<tr>
-<td>Kruskal-Wallis</td>
-<td>kruskal.test()</td>
-<td>比较多组(非参数)</td>
-</tr>
-</tbody>
-</table>
-<p>各种比较方法后续有时间一一讲解。</p>
-<p>#添加<code>p-value</code><br>主要利用<strong>ggpubr</strong>包中的两个函数：</p>
-<ul>
-<li><code>compare_means()</code>:可以进行一组或多组间的比较</li>
-<li><code>stat_compare_mean()</code>:自动添加<code>p-value</code>、显著性标记到<strong>ggplot</strong>图中</li>
-</ul>
-<p>##<strong>compare_means()</strong>函数<br>该函数主要用用法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compare_means(formula, data, method = &quot;wilcox.test&quot;, paired = FALSE,</div><div class="line">  group.by = NULL, ref.group = NULL, ...)</div></pre></td></tr></table></figure></p>
-<p>注释：</p>
-<ul>
-<li><code>formula</code>:形如<code>x~group</code>，其中x是数值型变量，<code>group</code>是因子，可以是一个或者多个</li>
-<li><code>data</code>：数据集</li>
-<li><code>method</code>:比较的方法，默认为<code>&quot;wilcox.test&quot;</code>, 其他可选方法为：<code>&quot;t.test&quot;</code>、<code>&quot;anova&quot;</code>、<code>&quot;kruskal.test&quot;</code></li>
-<li><code>paired</code>:是否要进行<code>paired test</code>(<code>TRUE</code> or <code>FALSE</code>)</li>
-<li><code>group_by</code>: 比较时是否要进行分组</li>
-<li><code>ref.group</code>: 是否需要指定参考组</li>
-</ul>
-<p>##<strong>stat_compare_means()</strong>函数<br>主要用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">stat_compare_means(mapping = NULL, comparisons = NULL hide.ns = FALSE,</div><div class="line">                   label = NULL,  label.x = NULL, label.y = NULL,  ...)</div></pre></td></tr></table></figure></p>
-<p>注释：</p>
-<ul>
-<li><code>mapping</code>:由<code>aes()</code>创建的一套美学映射</li>
-<li><code>comparisons</code>:指定需要进行比较以及添加<code>p-value</code>、显著性标记的组</li>
-<li><code>hide.ns</code>:是否要显示显著性标记ns</li>
-<li><code>label</code>:显著性标记的类型，可选项为：<code>p.signif</code>(显著性标记)、<code>p.format</code>(显示<code>p-value</code>)</li>
-<li><code>label.x</code>、<code>label.y</code>:显著性标签调整</li>
-<li>…:其他参数</li>
-</ul>
-<p>##比较独立的两组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~supp, data=ToothGrowth)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b045b6dd37c6efb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>结果解释：</p>
-<ul>
-<li><code>.y</code>:测试中使用的y变量</li>
-<li><code>p</code>:<code>p-value</code></li>
-<li><code>p.adj</code>:调整后的<code>p-value</code>。默认为<code>p.adjust.method=&quot;holm&quot;</code></li>
-<li><code>p.format</code>:四舍五入后的<code>p-value</code></li>
-<li><code>p.signif</code>:显著性水平</li>
-<li><code>method</code>:用于统计检验的方法<br>##绘制箱线图<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, add = &quot;jitter&quot;)#添加p-valuep+stat_compare_means()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e218a1edab30a234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#使用其他统计检验方法</div><div class="line">p+stat_compare_means(method = &quot;t.test&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-fc20d4bbb39c1377.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上述显著性标记可以通过<code>label.x</code>、<code>label.y</code>、<code>hjust</code>及<code>vjust</code>来调整<br>显著性标记可以通过<code>aes()</code>映射来更改：</p>
-<ul>
-<li><code>aes(label=..p.format..)</code>或<code>aes(lebel=paste0(&quot;p=&quot;,..p.format..))</code>:只显示<code>p-value</code>，不显示统计检验方法<ul>
-<li><code>aes(label=..p.signif..)</code>:仅显示显著性水平</li>
-<li><code>aes(label=paste0(..method..,&quot;\n&quot;, &quot;p=&quot;,..p.format..))</code>:<code>p-value</code>与显著性水平分行显示</li>
-</ul>
-</li>
-</ul>
-<p>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p+stat_compare_means(aes(label=..p.signif..), label.x = 1.5, label.y = 40)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c0f71b843b6472b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>也可以将标签指定为字符向量，不要映射，只需将p.signif两端的..去掉即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p+stat_compare_means(label = &quot;p.signif&quot;, label.x = 1.5, label.y = 40)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-15c7ae8bbaaf7b95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##比较两个paired sample<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~supp, data=ToothGrowth, paired = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-770f433a6a5e4ef3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##利用ggpaired()进行可视化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggpaired(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, line.color = &quot;gray&quot;, </div><div class="line">line.size = 0.4, palette = &quot;jco&quot;)+ stat_compare_means(paired = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2b3b18fa8e3ec2c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##多组比较<br>Global test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~dose, data=ToothGrowth, method = &quot;anova&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dd4f81af301e529b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#可视化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means()</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a0fcb4c4683d0f07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#使用其他的方法</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+ </div><div class="line">stat_compare_means(method = &quot;anova&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6572797c98bbb9a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>Pairwise comparisons:如果分组变量中包含两个以上的水平，那么会自动进行pairwise test,默认方法为”wilcox.test”</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~dose, data=ToothGrowth)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c25c03cedcf149bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#可以指定比较哪些组</div><div class="line">my_comparisons &lt;- list(c(&quot;0.5&quot;, &quot;1&quot;), c(&quot;1&quot;, &quot;2&quot;), c(&quot;0.5&quot;, &quot;2&quot;))</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;,palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means(comparisons=my_comparisons)+ # Add pairwise </div><div class="line">comparisons p-value stat_compare_means(label.y = 50) # Add global p-value</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-87c29855f34018b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>可以通过修改参数label.y来更改标签的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;,palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means(comparisons=my_comparisons, label.y = c(29, 35, 40))+ # Add pairwise comparisons p-value </div><div class="line">stat_compare_means(label.y = 45) # Add global p-value</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-554a2136abe2eee4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>至于通过添加线条来连接比较的两组，这一功能已由包<a href="https://github.com/Artjom-Metro/ggsignif" target="_blank" rel="external"><strong>ggsignif</strong></a>实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">##设定参考组</div><div class="line">compare_means(len~dose, data=ToothGrowth, ref.group = &quot;0.5&quot;,  #以dose=0.5组为参考组 </div><div class="line">method = &quot;t.test&quot; )</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9ba2e25b978710a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+ </div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 40)+ # Add global p-value</div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, ref.group = &quot;0.5&quot;) # Pairwise comparison against reference</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8510992c45710447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">参考组也可以设置为.all.即所有的平均值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~dose, data=ToothGrowth, ref.group = &quot;.all.&quot;, method = &quot;t.test&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2976426c33943786.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 40)+# Add global p-value</div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, </div><div class="line">ref.group = &quot;.all.&quot;)#Pairwise comparison against all</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e0b10b222601691f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>接下来利用<strong>survminer</strong>包中的数据集<strong>myeloma</strong>来讲解一下为什么有时候我们需要将ref.group设置为.all.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(survminer)#没安装的先安装再加载</div><div class="line">data(&quot;myeloma&quot;)</div><div class="line">head(myeloma)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-96dcc29ad0882230.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>我们将根据患者的分组来绘制<strong>DEPDC1</strong>基因的表达谱，看不同组之间是否存在显著性的差异，我们可以在7组之间进行比较，但是这样的话组间比较的组合就太多了，因此我们可以将7组中每一组与全部平均值进行比较，看看<strong>DEPDC1</strong>基因在不同的组中是否过表达还是低表达。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(DEPDC1~molecular_group, data = myeloma, ref.group = &quot;.all.&quot;, method = &quot;t.test&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-53c1d6a7df55e7d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#可视化DEPDC1基因表达谱</div><div class="line">ggboxplot(myeloma, x=&quot;molecular_group&quot;, y=&quot;DEPDC1&quot;, </div><div class="line">color = &quot;molecular_group&quot;, add = &quot;jitter&quot;, legend=&quot;none&quot;)+ </div><div class="line">rotate_x_text(angle = 45)+ </div><div class="line">geom_hline(yintercept = mean(myeloma$DEPDC1), linetype=2)+# Add horizontal line at base mean </div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 1600)+ # Add global annova p-value </div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, ref.group = &quot;.all.&quot;)# Pairwise comparison against all</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c6188f0a83617dcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>从图中可以看出，DEPDC1基因在Proliferation组中显著性地过表达，而在Hyperdiploid和Low bone disease显著性地低表达</p>
-</blockquote>
-<p>我们也可以将非显著性标记ns去掉，只需要将参数hide.ns=TRUE<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ggboxplot(myeloma, x=&quot;molecular_group&quot;, y=&quot;DEPDC1&quot;, </div><div class="line">color = &quot;molecular_group&quot;, add = &quot;jitter&quot;, legend=&quot;none&quot;)+</div><div class="line">rotate_x_text(angle = 45)+ </div><div class="line">geom_hline(yintercept = mean(myeloma$DEPDC1), linetype=2)+# Add horizontal line at base mean </div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 1600)+ # Add global annova p-value </div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, ref.group = &quot;.all.&quot;, hide.ns = TRUE)# Pairwise comparison against all</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##多个分组变量<br>按另一个变量进行分组之后进行统计检验，比如按变量dose进行分组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~supp, data=ToothGrowth, group.by = &quot;dose&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-56f713ae2fa2c591.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, add = &quot;jitter&quot;, facet.by = &quot;dose&quot;, short.panel.labs = FALSE)#按dose进行分面</div><div class="line">#label只绘制</div><div class="line">p-valuep+stat_compare_means(label = &quot;p.format&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a235626a981e4709.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#label绘制显著性水平</div><div class="line">p+stat_compare_means(label = &quot;p.signif&quot;, label.x = 1.5)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-3ebf7d89f1a517cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#将所有箱线图绘制在一个panel中</div><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, add = &quot;jitter&quot;)</div><div class="line">p+stat_compare_means(aes(group=supp))</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6529191fdef8f3dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#只显示p-value</div><div class="line">p+stat_compare_means(aes(group=supp), label = &quot;p.format&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ce9c6136407ca58a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#显示显著性水平</div><div class="line">p+stat_compare_means(aes(group=supp), label = &quot;p.signif&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f2cf5728cc9cf67a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">进行paired sample检验</div><div class="line">compare_means(len~supp, data=ToothGrowth, group.by = &quot;dose&quot;, paired = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5d2ebfd37391113.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">p &lt;- ggpaired(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, line.color=&quot;gray&quot;, line.size=0.4, facet.by = &quot;dose&quot;, </div><div class="line">short.panel.labs = FALSE)#按dose分面</div><div class="line">#只显示p-value</div><div class="line">p+stat_compare_means(label = &quot;p.format&quot;, paired = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-cc7db564846fae97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#其他图形</p>
-<p>##条形图与线图（一个分组变量）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#有误差棒的条形图，实际上我以前的文章里有纯粹用ggplot2实现</div><div class="line">ggbarplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;)+ </div><div class="line">stat_compare_means()+ </div><div class="line">stat_compare_means(ref.group = &quot;0.5&quot;, label = &quot;p.signif&quot;, label.y = c(22, 29))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0a38300e74bbce61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#有误差棒的线图</div><div class="line">ggline(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;)+</div><div class="line">stat_compare_means()+ </div><div class="line">stat_compare_means(ref.group = &quot;0.5&quot;, label = &quot;p.signif&quot;, label.y = c(22, 29))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9bbc6411123c593a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##条形图与线图（两个分组变量）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggbarplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, position = position_dodge(0.8))+ </div><div class="line">stat_compare_means(aes(group=supp), label = &quot;p.signif&quot;, label.y = 29)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b2dd950f78f7a642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggline(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;)+ </div><div class="line">stat_compare_means(aes(group=supp), label = &quot;p.signif&quot;, label.y = c(16, 25, 29))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bd2413a61ece0ed2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#Sessioninfo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] survminer_0.4.0 ggpubr_0.1.3 magrittr_1.5 ggplot2_2.2.1 </div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] Rcpp_0.12.11 compiler_3.4.0 plyr_1.8.4</div><div class="line">## [4] tools_3.4.0 digest_0.6.12 evaluate_0.10 </div><div class="line">## [7] tibble_1.3.3 gtable_0.2.0 nlme_3.1-131 </div><div class="line">## [10] lattice_0.20-35 rlang_0.1.1 Matrix_1.2-10 </div><div class="line">## [13] psych_1.7.5 ggsci_2.4 DBI_0.6-1 </div><div class="line">## [16] cmprsk_2.2-7 yaml_2.1.14 parallel_3.4.0 </div><div class="line">## [19] gridExtra_2.2.1 dplyr_0.5.0 stringr_1.2.0 </div><div class="line">## [22] knitr_1.16 survMisc_0.5.4 rprojroot_1.2 </div><div class="line">## [25] grid_3.4.0 data.table_1.10.4 KMsurv_0.1-5 </div><div class="line">## [28] R6_2.2.1 km.ci_0.5-2 survival_2.41-3 </div><div class="line">## [31] foreign_0.8-68 rmarkdown_1.5 reshape2_1.4.2 </div><div class="line">## [34] tidyr_0.6.3 purrr_0.2.2.2 splines_3.4.0 </div><div class="line">## [37] backports_1.1.0 scales_0.4.1 htmltools_0.3.6 </div><div class="line">## [40] assertthat_0.2.0 mnormt_1.5-5 xtable_1.8-2 </div><div class="line">## [43] colorspace_1.3-2 ggsignif_0.2.0 labeling_0.3 </div><div class="line">## [46] stringi_1.1.5 lazyeval_0.2.0 munsell_0.4.3 </div><div class="line">## [49] broom_0.4.2 zoo_1.8-0</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;上篇文章中提了一下如何通过&lt;strong&gt;ggpubr&lt;/strong&gt;包为&lt;code&gt;ggplot&lt;/code&gt;图添加&lt;code&gt;p-value&lt;/code&gt;以及显著性标记,本文将详细介绍。利用数据集&lt;strong&gt;ToothGrowth&lt;/strong&gt;进行演示&lt;br&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R&amp;ggrepel&amp;visualization" scheme="https://ytlogos.github.io/tags/R-ggrepel-visualization/"/>
     
   </entry>
   
