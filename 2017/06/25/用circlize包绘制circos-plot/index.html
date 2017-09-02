@@ -95,7 +95,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="R&circlize&visualization," />
+  <meta name="keywords" content="R,circlize,visualization," />
 
 
 
@@ -114,7 +114,7 @@
 
 
 <meta name="description" content="circlize包circlize包在德国癌症中心的华人博士Zuguang Gu开发的，有兴趣的可以去看看他的Github主页。这个包有两个文档，一个是介绍基本原理的绘制简单圈圈图的，也是本次要介绍的。另外一份文档专门介绍基因组数据绘制圈圈图Genomic Circos Plot,我自己还没看完，下次再介绍。根据我的学习发现这个包与ggplot2很相似，也是先创建一个图层，然后不断的添加图形元素">
-<meta name="keywords" content="R&amp;circlize&amp;visualization">
+<meta name="keywords" content="R,circlize,visualization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用circlize包绘制circos-plot">
 <meta property="og:url" content="https://ytlogos.github.io/2017/06/25/用circlize包绘制circos-plot/index.html">
@@ -134,7 +134,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4b332e9275d7088e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-51d87f7dd942126b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-a3ebeb278e1c4ae1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-29T03:22:52.000Z">
+<meta property="og:updated_time" content="2017-09-02T06:32:23.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用circlize包绘制circos-plot">
 <meta name="twitter:description" content="circlize包circlize包在德国癌症中心的华人博士Zuguang Gu开发的，有兴趣的可以去看看他的Github主页。这个包有两个文档，一个是介绍基本原理的绘制简单圈圈图的，也是本次要介绍的。另外一份文档专门介绍基因组数据绘制圈圈图Genomic Circos Plot,我自己还没看完，下次再介绍。根据我的学习发现这个包与ggplot2很相似，也是先创建一个图层，然后不断的添加图形元素">
@@ -435,8 +435,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-06-29T11:22:52+08:00">
-                2017-06-29
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-02T14:32:23+08:00">
+                2017-09-02
               </time>
             
           </span>
@@ -507,7 +507,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3,206
+                  3,278
                 </span>
               
 
@@ -523,7 +523,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  17
+                  18
                 </span>
               
             </div>
@@ -600,6 +600,17 @@
 <p>理解circlize包的原理，绘制基因组数据的图形也是一样的。有时间下次介绍(主要是我自己还没看完，看不太懂)<img src="http://upload-images.jianshu.io/upload_images/2084719-a3ebeb278e1c4ae1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">。<br>老规矩，给出<code>sessionInfo</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div></pre></td></tr></table></figure></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## ## Matrix products: default## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## ## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">## ## other attached packages:</div><div class="line">## [1] circlize_0.4.0 BiocInstaller_1.26.0 forcats_0.2.0</div><div class="line">## [4] stringr_1.2.0 dplyr_0.5.0 purrr_0.2.2.2 </div><div class="line">## [7] readr_1.1.1 tidyr_0.6.3 tibble_1.3.1</div><div class="line">## [10] ggplot2_2.2.1 tidyverse_1.1.1.9000</div><div class="line">#### loaded via a namespace (and not attached):</div><div class="line">## [1] shape_1.4.2 clisymbols_1.2.0 reshape2_1.4.2 </div><div class="line">## [4] haven_1.0.0 lattice_0.20-35 colorspace_1.3-2</div><div class="line">## [7] htmltools_0.3.6 yaml_2.1.14 rlang_0.1.1 </div><div class="line">## [10] foreign_0.8-68 DBI_0.6-1 modelr_0.1.0</div><div class="line">## [13] readxl_1.0.0 plyr_1.8.4 munsell_0.4.3 </div><div class="line">## [16] gtable_0.2.0 cellranger_1.1.0 rvest_0.3.2 </div><div class="line">## [19] GlobalOptions_0.0.12 psych_1.7.5 evaluate_0.10 </div><div class="line">## [22] knitr_1.16 parallel_3.4.0 broom_0.4.2 </div><div class="line">## [25] Rcpp_0.12.11 scales_0.4.1 backports_1.1.0 </div><div class="line">## [28] formatR_1.5 jsonlite_1.4 boxes_0.0.0.9000</div><div class="line">## [31] mnormt_1.5-5 hms_0.3 digest_0.6.12 </div><div class="line">## [34] stringi_1.1.5 grid_3.4.0 rprojroot_1.2</div><div class="line">## [37] tools_3.4.0 magrittr_1.5 lazyeval_0.2.0 </div><div class="line">## [40] crayon_1.3.2.9000 xml2_1.1.1 lubridate_1.6.0 </div><div class="line">## [43] assertthat_0.2.0 rmarkdown_1.5 httr_1.2.1 </div><div class="line">## [46] rstudioapi_0.6 R6_2.2.1 nlme_3.1-131</div><div class="line">## [49] compiler_3.4.0</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
+<p>Email: tyan@zju.edu.cn</p>
+<p>QQ: 1051927088</p>
+<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
+<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
+<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
+<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
+<p>伪码农，R语言爱好者，爱开源</p>
+
       
     </div>
 <div>
@@ -661,7 +672,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/R-circlize-visualization/" rel="tag"><i class="fa fa-tag"></i> R&circlize&visualization</a>
+            <a href="/tags/R-circlize-visualization/" rel="tag"><i class="fa fa-tag"></i> R,circlize,visualization</a>
           
         </div>
       
@@ -674,18 +685,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/" rel="next" title="ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记">
-                <i class="fa fa-chevron-left"></i> ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/" rel="prev" title="R语言可视化学习笔记之添加p-value和显著性标记">
-                R语言可视化学习笔记之添加p-value和显著性标记 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/25/R语言可视化学习笔记之ggrepel包/" rel="prev" title="R语言可视化学习笔记之ggrepel包">
+                R语言可视化学习笔记之ggrepel包 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -876,7 +883,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#circlize包"><span class="nav-number">1.</span> <span class="nav-text">circlize包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#circlize包"><span class="nav-number">1.</span> <span class="nav-text">circlize包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number">2.</span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number">3.</span> <span class="nav-text">个人简介：</span></a></li></ol></div>
             
 
           </div>
