@@ -4,138 +4,18 @@
 
     
   <url>
-    <loc>https://ytlogos.github.io/2017/08/24/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9B%BE%E5%BD%A2%E6%8E%92%E5%88%97/</loc>
-    <lastmod>2017-09-03T04:18:41.946Z</lastmod>
+    <loc>https://ytlogos.github.io/2017/08/24/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E6%95%A3%E7%82%B9%E5%9B%BE/</loc>
+    <lastmod>2017-09-03T04:25:04.861Z</lastmod>
     <data>
         <display>
-        <title>ggplot2学习笔记之图形排列</title>
-        <pubTime>2017-08-23T16:00:00.000Z</pubTime>
+        <title>ggplot2学习笔记系列之利用ggplot2绘制散点图</title>
+        <pubTime>2017-08-24T02:14:39.391Z</pubTime>
         
         <tag>R</tag>
          
-        <tag>ggpubr</tag>
-         
         <tag>visualization</tag>
          
-         
-           
-             
-              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://ytlogos.github.io/2017/06/25/%E7%94%A8circlize%E5%8C%85%E7%BB%98%E5%88%B6circos-plot/</loc>
-    <lastmod>2017-09-02T08:38:04.849Z</lastmod>
-    <data>
-        <display>
-        <title>用circlize包绘制circos-plot</title>
-        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
-        
-        <tag>R,circlize,visualization</tag>
-         
-         
-           
-             
-              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B7%BB%E5%8A%A0p-value%E5%92%8C%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/</loc>
-    <lastmod>2017-09-02T06:40:38.913Z</lastmod>
-    <data>
-        <display>
-        <title>R语言可视化学习笔记之添加p-value和显著性标记</title>
-        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
-        
-        <tag>R,ggrepel,visualization</tag>
-         
-         
-           
-             
-              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggrepel%E5%8C%85/</loc>
-    <lastmod>2017-09-02T06:39:19.703Z</lastmod>
-    <data>
-        <display>
-        <title>R语言可视化学习笔记之ggrepel包</title>
-        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
-        
-        <tag>R,ggrepel,visualization</tag>
-         
-         
-           
-             
-              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E8%AF%AF%E5%B7%AE%E6%A3%92%E5%8F%8A%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/</loc>
-    <lastmod>2017-09-02T06:38:07.073Z</lastmod>
-    <data>
-        <display>
-        <title>ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记</title>
-        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
-        
-        <tag>R,ggplot2,visualization</tag>
-         
-         
-           
-             
-              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E6%9D%A1%E5%BD%A2%E5%9B%BE/</loc>
-    <lastmod>2017-09-02T06:37:06.355Z</lastmod>
-    <data>
-        <display>
-        <title>ggplot2学习笔记系列之利用ggplot2绘制条形图</title>
-        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
-        
-        <tag>R,ggplot2,visualization</tag>
-         
-         
-           
-             
-              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://ytlogos.github.io/2017/08/24/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%83%AD%E5%9B%BE%E7%BB%98%E5%88%B6/</loc>
-    <lastmod>2017-09-02T06:35:41.532Z</lastmod>
-    <data>
-        <display>
-        <title>R语言学习笔记之热图绘制</title>
-        <pubTime>2017-08-24T02:14:39.403Z</pubTime>
-        
-        <tag>R,Heatmap,visualization</tag>
+        <tag>ggcorrplot</tag>
          
          
            
@@ -149,33 +29,17 @@
     
   <url>
     <loc>https://ytlogos.github.io/2017/08/24/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
-    <lastmod>2017-09-02T06:34:54.677Z</lastmod>
+    <lastmod>2017-09-03T04:25:01.884Z</lastmod>
     <data>
         <display>
         <title>R语言可视化学习笔记之基因组数据可视化</title>
         <pubTime>2017-08-24T02:14:39.396Z</pubTime>
         
-        <tag>R,ggpubr,visualization</tag>
+        <tag>R</tag>
          
+        <tag>visualization</tag>
          
-           
-             
-              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://ytlogos.github.io/2017/08/24/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E6%95%A3%E7%82%B9%E5%9B%BE/</loc>
-    <lastmod>2017-09-02T06:34:37.210Z</lastmod>
-    <data>
-        <display>
-        <title>ggplot2学习笔记系列之利用ggplot2绘制散点图</title>
-        <pubTime>2017-08-24T02:14:39.391Z</pubTime>
-        
-        <tag>R,ggcorrplot,visualization</tag>
+        <tag>ggpubr</tag>
          
          
            
@@ -189,7 +53,7 @@
     
   <url>
     <loc>https://ytlogos.github.io/2017/07/01/r4ds%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggplot2/</loc>
-    <lastmod>2017-09-02T06:33:51.713Z</lastmod>
+    <lastmod>2017-09-03T04:24:31.749Z</lastmod>
     <data>
         <display>
         <title>r4ds学习笔记之ggplot2</title>
@@ -208,14 +72,82 @@
 
     
   <url>
+    <loc>https://ytlogos.github.io/2017/06/29/R%E8%AF%AD%E8%A8%80data-manipulation%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bsubset-data/</loc>
+    <lastmod>2017-09-03T04:24:08.086Z</lastmod>
+    <data>
+        <display>
+        <title>R语言data manipulation学习笔记之subset data</title>
+        <pubTime>2017-06-29T12:58:25.000Z</pubTime>
+        
+        <tag>data management</tag>
+         
+         
+           
+             
+              <breadCrumb title="Data Manipulation" url="https://ytlogos.github.io/categories/Data-Manipulation/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ytlogos.github.io/2017/06/28/R%E8%AF%AD%E8%A8%80data-manipulation%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%88%9B%E5%BB%BA%E5%8F%98%E9%87%8F%E3%80%81%E9%87%8D%E5%91%BD%E5%90%8D%E3%80%81%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88/</loc>
+    <lastmod>2017-09-03T04:23:46.615Z</lastmod>
+    <data>
+        <display>
+        <title>R语言data manipulation学习笔记之创建变量、重命名、数据融合</title>
+        <pubTime>2017-06-28T08:06:11.000Z</pubTime>
+        
+        <tag>manipulation</tag>
+         
+         
+           
+             
+              <breadCrumb title="Data Manipulation" url="https://ytlogos.github.io/categories/Data-Manipulation/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://ytlogos.github.io/2017/06/26/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggpubr%E5%8C%85/</loc>
-    <lastmod>2017-09-02T06:32:48.304Z</lastmod>
+    <lastmod>2017-09-03T04:23:22.978Z</lastmod>
     <data>
         <display>
         <title>R语言可视化学习笔记之ggpubr包</title>
         <pubTime>2017-06-26T11:43:11.000Z</pubTime>
         
-        <tag>R,ggpubr,visualization</tag>
+        <tag>R</tag>
+         
+        <tag>visualization</tag>
+         
+        <tag>ggpubr</tag>
+         
+         
+           
+             
+              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ytlogos.github.io/2017/06/25/%E7%94%A8circlize%E5%8C%85%E7%BB%98%E5%88%B6circos-plot/</loc>
+    <lastmod>2017-09-03T04:23:09.818Z</lastmod>
+    <data>
+        <display>
+        <title>用circlize包绘制circos-plot</title>
+        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+        <tag>visualization</tag>
+         
+        <tag>circlize</tag>
          
          
            
@@ -229,13 +161,17 @@
     
   <url>
     <loc>https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%80%A7%E7%9F%A9%E9%98%B5%E5%88%86%E6%9E%90%E5%8F%8A%E5%85%B6%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
-    <lastmod>2017-09-02T06:31:57.757Z</lastmod>
+    <lastmod>2017-09-03T04:22:54.094Z</lastmod>
     <data>
         <display>
         <title>R语言学习笔记之相关性矩阵分析及其可视化</title>
         <pubTime>2017-06-24T16:00:00.000Z</pubTime>
         
-        <tag>R,corrplot,visualization</tag>
+        <tag>R</tag>
+         
+        <tag>visualization</tag>
+         
+        <tag>corrplot</tag>
          
          
            
@@ -249,13 +185,17 @@
     
   <url>
     <loc>https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/</loc>
-    <lastmod>2017-09-02T06:31:37.391Z</lastmod>
+    <lastmod>2017-09-03T04:22:40.147Z</lastmod>
     <data>
         <display>
         <title>R语言学习笔记之聚类分析</title>
         <pubTime>2017-06-24T16:00:00.000Z</pubTime>
         
-        <tag>R,Cluster analysis,visualization</tag>
+        <tag>R</tag>
+         
+        <tag>visualization</tag>
+         
+        <tag>Cluster analysis</tag>
          
          
            
@@ -269,13 +209,65 @@
     
   <url>
     <loc>https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%9B%B8%E5%85%B3%E7%9F%A9%E9%98%B5%E5%8F%AF%E8%A7%86%E5%8C%96%E5%8C%85ggcorrplot/</loc>
-    <lastmod>2017-09-02T06:31:04.047Z</lastmod>
+    <lastmod>2017-09-03T04:22:20.646Z</lastmod>
     <data>
         <display>
         <title>R语言可视化学习笔记之相关矩阵可视化包ggcorrplot</title>
         <pubTime>2017-06-24T16:00:00.000Z</pubTime>
         
-        <tag>R,ggcorrplot,visualization</tag>
+        <tag>R</tag>
+         
+        <tag>visualization</tag>
+         
+        <tag>ggcorrplot</tag>
+         
+         
+           
+             
+              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B7%BB%E5%8A%A0p-value%E5%92%8C%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/</loc>
+    <lastmod>2017-09-03T04:22:04.192Z</lastmod>
+    <data>
+        <display>
+        <title>R语言可视化学习笔记之添加p-value和显著性标记</title>
+        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+        <tag>ggrepel</tag>
+         
+        <tag>visualization</tag>
+         
+         
+           
+             
+              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggrepel%E5%8C%85/</loc>
+    <lastmod>2017-09-03T04:21:48.011Z</lastmod>
+    <data>
+        <display>
+        <title>R语言可视化学习笔记之ggrepel包</title>
+        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+        <tag>ggrepel</tag>
+         
+        <tag>visualization</tag>
          
          
            
@@ -289,13 +281,89 @@
     
   <url>
     <loc>https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E4%B8%BB%E9%A2%98%EF%BC%88theme%EF%BC%89%E8%AE%BE%E7%BD%AE/</loc>
-    <lastmod>2017-09-02T06:29:45.284Z</lastmod>
+    <lastmod>2017-09-03T04:21:27.775Z</lastmod>
     <data>
         <display>
         <title>ggplot2学习笔记系列之主题（theme）设置</title>
         <pubTime>2017-06-24T16:00:00.000Z</pubTime>
         
-        <tag>R,ggplot2,visualization</tag>
+        <tag>R</tag>
+         
+        <tag>visualization</tag>
+         
+        <tag>ggplot2</tag>
+         
+         
+           
+             
+              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E8%AF%AF%E5%B7%AE%E6%A3%92%E5%8F%8A%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/</loc>
+    <lastmod>2017-09-03T04:21:13.798Z</lastmod>
+    <data>
+        <display>
+        <title>ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记</title>
+        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+        <tag>visualization</tag>
+         
+        <tag>ggplot2</tag>
+         
+         
+           
+             
+              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E6%9D%A1%E5%BD%A2%E5%9B%BE/</loc>
+    <lastmod>2017-09-03T04:20:56.613Z</lastmod>
+    <data>
+        <display>
+        <title>ggplot2学习笔记系列之利用ggplot2绘制条形图</title>
+        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+        <tag>visualization</tag>
+         
+        <tag>ggplot2</tag>
+         
+         
+           
+             
+              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://ytlogos.github.io/2017/08/24/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9B%BE%E5%BD%A2%E6%8E%92%E5%88%97/</loc>
+    <lastmod>2017-09-03T04:18:41.946Z</lastmod>
+    <data>
+        <display>
+        <title>ggplot2学习笔记之图形排列</title>
+        <pubTime>2017-08-23T16:00:00.000Z</pubTime>
+        
+        <tag>R</tag>
+         
+        <tag>visualization</tag>
+         
+        <tag>ggpubr</tag>
          
          
            
@@ -324,46 +392,6 @@
     </url>
 
     
-  <url>
-    <loc>https://ytlogos.github.io/2017/06/29/R%E8%AF%AD%E8%A8%80data-manipulation%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bsubset-data/</loc>
-    <lastmod>2017-06-29T13:15:10.000Z</lastmod>
-    <data>
-        <display>
-        <title>R语言data manipulation学习笔记之subset data</title>
-        <pubTime>2017-06-29T12:58:25.000Z</pubTime>
-        
-        <tag>data management</tag>
-         
-         
-           
-             
-              <breadCrumb title="Data Manipulation" url="https://ytlogos.github.io/categories/Data-Manipulation/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>https://ytlogos.github.io/2017/06/28/R%E8%AF%AD%E8%A8%80data-manipulation%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%88%9B%E5%BB%BA%E5%8F%98%E9%87%8F%E3%80%81%E9%87%8D%E5%91%BD%E5%90%8D%E3%80%81%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88/</loc>
-    <lastmod>2017-06-28T14:00:00.000Z</lastmod>
-    <data>
-        <display>
-        <title>R语言data manipulation学习笔记之创建变量、重命名、数据融合</title>
-        <pubTime>2017-06-28T08:06:11.000Z</pubTime>
-        
-        <tag>manipulation</tag>
-         
-         
-           
-             
-              <breadCrumb title="Data Manipulation" url="https://ytlogos.github.io/categories/Data-Manipulation/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
     
     
