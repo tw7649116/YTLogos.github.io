@@ -95,7 +95,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="RNA-seq," />
 
 
 
@@ -113,16 +113,17 @@
 
 
 
-<meta name="description" content="本博客主要是用来记载我的日常学习笔记，以便于自己学习以及与他人交流 有兴趣的可转至我的博客：logos  联系方式：wechat: yt056410 Email: tyan@zju.edu.cn QQ: 1051927088 GitHub: https://github.com/YTLogos 简书: http://www.jianshu.com/u/bd001545cf0b 博客: https:">
+<meta name="description" content="简介RNA-seq后续分析可以利用R包edgeR、DESeq2以及limma-voom等，而tximport包则可以将RNA-seq上游定量分析软件产生的结果导入到R语言中，进而方便后续的分析。具体的情况可以参考这篇文献：  Charlotte Soneson, Michael I. Love, Mark D. Robinson (2015): Differential analyses for">
+<meta name="keywords" content="RNA-seq">
 <meta property="og:type" content="article">
-<meta property="og:title" content="README">
-<meta property="og:url" content="https://ytlogos.github.io/2017/08/29/README-MDOWN/index.html">
+<meta property="og:title" content="利用tximport进行RNA-seq分析">
+<meta property="og:url" content="https://ytlogos.github.io/2017/09/08/利用tximport进行RNA-seq分析/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="本博客主要是用来记载我的日常学习笔记，以便于自己学习以及与他人交流 有兴趣的可转至我的博客：logos  联系方式：wechat: yt056410 Email: tyan@zju.edu.cn QQ: 1051927088 GitHub: https://github.com/YTLogos 简书: http://www.jianshu.com/u/bd001545cf0b 博客: https:">
-<meta property="og:updated_time" content="2017-08-29T13:12:44.798Z">
+<meta property="og:description" content="简介RNA-seq后续分析可以利用R包edgeR、DESeq2以及limma-voom等，而tximport包则可以将RNA-seq上游定量分析软件产生的结果导入到R语言中，进而方便后续的分析。具体的情况可以参考这篇文献：  Charlotte Soneson, Michael I. Love, Mark D. Robinson (2015): Differential analyses for">
+<meta property="og:updated_time" content="2017-09-08T11:25:28.261Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="README">
-<meta name="twitter:description" content="本博客主要是用来记载我的日常学习笔记，以便于自己学习以及与他人交流 有兴趣的可转至我的博客：logos  联系方式：wechat: yt056410 Email: tyan@zju.edu.cn QQ: 1051927088 GitHub: https://github.com/YTLogos 简书: http://www.jianshu.com/u/bd001545cf0b 博客: https:">
+<meta name="twitter:title" content="利用tximport进行RNA-seq分析">
+<meta name="twitter:description" content="简介RNA-seq后续分析可以利用R包edgeR、DESeq2以及limma-voom等，而tximport包则可以将RNA-seq上游定量分析软件产生的结果导入到R语言中，进而方便后续的分析。具体的情况可以参考这篇文献：  Charlotte Soneson, Michael I. Love, Mark D. Robinson (2015): Differential analyses for">
 
 
 
@@ -150,7 +151,7 @@
 
 
 
-  <link rel="canonical" href="https://ytlogos.github.io/2017/08/29/README-MDOWN/"/>
+  <link rel="canonical" href="https://ytlogos.github.io/2017/09/08/利用tximport进行RNA-seq分析/"/>
 
 
 
@@ -171,7 +172,7 @@
     }
 </style>
 
-  <title>README | Logos</title>
+  <title>利用tximport进行RNA-seq分析 | Logos</title>
   
 
 
@@ -374,7 +375,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/08/29/README-MDOWN/">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/09/08/利用tximport进行RNA-seq分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TaoYan">
@@ -391,7 +392,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">README</h1>
+          <h1 class="post-title" itemprop="name headline">利用tximport进行RNA-seq分析</h1>
         
 
         <div class="post-meta">
@@ -403,8 +404,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T21:08:55+08:00">
-                2017-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T18:31:07+08:00">
+                2017-09-08
               </time>
             
 
@@ -419,12 +420,34 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-08-29T21:12:44+08:00">
-                2017-08-29
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-08T19:25:28+08:00">
+                2017-09-08
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RNA-seq/" itemprop="url" rel="index">
+                    <span itemprop="name">RNA-seq</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -434,7 +457,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/08/29/README-MDOWN/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/09/08/利用tximport进行RNA-seq分析/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -443,7 +466,7 @@
 
           
           
-             <span id="/2017/08/29/README-MDOWN/" class="leancloud_visitors" data-flag-title="README">
+             <span id="/2017/09/08/利用tximport进行RNA-seq分析/" class="leancloud_visitors" data-flag-title="利用tximport进行RNA-seq分析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -469,7 +492,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  116
+                  1,178
                 </span>
               
 
@@ -485,7 +508,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -503,17 +526,30 @@
       
 
       
-        <p>本博客主要是用来记载我的日常学习笔记，以便于自己学习以及与他人交流</p>
-<p>有兴趣的可转至我的博客：<a href="https://ytlogos.github.io/">logos</a></p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>RNA-seq后续分析可以利用R包edgeR、DESeq2以及limma-voom等，而tximport包则可以将RNA-seq上游定量分析软件产生的结果导入到R语言中，进而方便后续的分析。具体的情况可以参考这篇文献：</p>
+<blockquote>
+<p>Charlotte Soneson, Michael I. Love, Mark D. Robinson (2015): Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences. F1000Research <a href="http://sci-hub.cc/10.12688/f1000research.7563.1" target="_blank" rel="external">http://sci-hub.cc/10.12688/f1000research.7563.1</a></p>
+</blockquote>
+<a id="more"></a>
+<p>tximport具有以下优点：</p>
+<ul>
+<li>对于样本之间因基因长度不同导致的差异具有纠正功能</li>
+<li>一些上游分析软件(Salmon, Sailfish, kallisto)等的结果可以完美对接到R语言中，这些软件运行速度更快更稳定，且占用更少的内存</li>
+<li>更高的灵敏度，因为它可以避免那些比对到多基因的片段的丢失</li>
+</ul>
+<h2 id="导入转录组数据"><a href="#导入转录组数据" class="headerlink" title="导入转录组数据"></a>导入转录组数据</h2><p>下面我们将使用包tximportData中的数据进行演示，tximport可以处理多种类型的上游定量结果，只需要在参数type中设定就行。 先安装包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source(&quot;https://bioconductor.org/biocLite.R&quot;)</div><div class="line">options(BioC_mirror=&quot;http://mirrors.ustc.edu.cn/bioc/&quot;)#设置中科大镜像</div><div class="line">biocLite(&quot;tximportData&quot;)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(tximportData)</div><div class="line">dir &lt;- system.file(&quot;extdata&quot;, package = &quot;tximportData&quot;)#set directory</div><div class="line">list.files(dir)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">##  [1] &quot;cufflinks&quot;            &quot;kallisto&quot;             &quot;kallisto_boot&quot;       </div><div class="line">##  [4] &quot;rsem&quot;                 &quot;sailfish&quot;             &quot;salmon&quot;              </div><div class="line">##  [7] &quot;salmon_gibbs&quot;         &quot;samples.txt&quot;          &quot;samples_extended.txt&quot;</div><div class="line">## [10] &quot;tx2gene.csv&quot;</div></pre></td></tr></table></figure>
+<p>可以看到dir中存在这些文件，接下来我们其中的samples.txt读进来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">samples &lt;- read.table(file.path(dir, &quot;samples.txt&quot;), header = TRUE)</div><div class="line">samples</div><div class="line">##   pop center                assay    sample experiment       run</div><div class="line">## 1 TSI  UNIGE NA20503.1.M_111124_5 ERS185497  ERX163094 ERR188297</div><div class="line">## 2 TSI  UNIGE NA20504.1.M_111124_7 ERS185242  ERX162972 ERR188088</div><div class="line">## 3 TSI  UNIGE NA20505.1.M_111124_6 ERS185048  ERX163009 ERR188329</div><div class="line">## 4 TSI  UNIGE NA20507.1.M_111124_7 ERS185412  ERX163158 ERR188288</div><div class="line">## 5 TSI  UNIGE NA20508.1.M_111124_2 ERS185362  ERX163159 ERR188021</div><div class="line">## 6 TSI  UNIGE NA20514.1.M_111124_4 ERS185217  ERX163062 ERR188356</div></pre></td></tr></table></figure></p>
+<p>再将salmon与samples以及quant.sf一起创建每个样本的文件地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">files &lt;- file.path(dir, &quot;salmon&quot;, samples$run, &quot;quant.sf&quot;)</div><div class="line">names(files) &lt;- paste0(&quot;sample&quot;, 1:6)</div><div class="line">all(file.exists(files))</div><div class="line">## [1] TRUE</div></pre></td></tr></table></figure></p>
+<p>结果显示TRUE说明运行成功，可以进行下一步，要进行基因表达差异分析，首先要将转录本与基因名关联起来，这就需要我们创建一个两列的名为tx2gene的数据框，最简单的就是通过TxDb创建,再通过AnnotationDbi包里的函数select()进行选取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">library(TxDb.Hsapiens.UCSC.hg19.knownGene)</div><div class="line">txdb &lt;- TxDb.Hsapiens.UCSC.hg19.knownGene</div><div class="line">k &lt;- keys(txdb, keytype = &quot;GENEID&quot;)</div><div class="line">df &lt;- select(txdb, keys = k, keytype = &quot;GENEID&quot;, columns = &quot;TXNAME&quot;)</div><div class="line">tx2gene &lt;- df[, 2:1]#tx ID在前，gene ID在后</div><div class="line">#这里我们演示就使用现有的tx2gene</div><div class="line">tx2gene &lt;- read.csv(file.path(dir, &quot;tx2gene.csv&quot;))</div><div class="line">head(tx2gene)</div><div class="line">##         TXNAME   GENEID</div><div class="line">## 1    NM_130786     A1BG</div><div class="line">## 2    NR_015380 A1BG-AS1</div><div class="line">## 3 NM_001198818     A1CF</div><div class="line">## 4 NM_001198819     A1CF</div><div class="line">## 5 NM_001198820     A1CF</div><div class="line">## 6    NM_014576     A1CF</div></pre></td></tr></table></figure></p>
+<p>最后就是将转录组水平的数据导入就行了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">library(tximport)</div><div class="line">library(readr)</div><div class="line">txi &lt;- tximport(files, type = &quot;salmon&quot;, tx2gene = tx2gene)</div><div class="line">names(txi)</div><div class="line">## [1] &quot;abundance&quot;           &quot;counts&quot;              &quot;length&quot;             </div><div class="line">## [4] &quot;countsFromAbundance&quot;</div><div class="line">head(txi$counts)</div><div class="line">##             sample1   sample2    sample3   sample4   sample5   sample6</div><div class="line">## A1BG     109.232000 316.22400 110.638000 116.00000  86.38430  76.91630</div><div class="line">## A1BG-AS1  83.969700 138.44900 119.274000 151.08300 123.98500 103.25100</div><div class="line">## A1CF       9.030691  10.01847   5.019242  13.01820  25.21914  25.07356</div><div class="line">## A2M       24.000000   2.00000  21.000000   6.00000  38.00000   8.00000</div><div class="line">## A2M-AS1    1.000000   1.00000   1.000000   1.00000   0.00000   0.00000</div><div class="line">## A2ML1      3.047950   1.02987   4.076160   1.04945   3.07761   5.12409</div></pre></td></tr></table></figure></p>
+<h2 id="差异分析"><a href="#差异分析" class="headerlink" title="差异分析"></a>差异分析</h2><p>下游分析主要使用Bioconductor包进行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">library(edgeR)</div><div class="line">cts &lt;- txi$counts</div><div class="line">normMat &lt;- txi$length</div><div class="line">normMat &lt;- normMat/exp(rowMeans(log(normMat)))</div><div class="line">o &lt;- log(calcNormFactors(cts/normMat))+log(colSums(cts/normMat))</div><div class="line">y &lt;- DGEList(cts)</div><div class="line">y$offset &lt;- t(t(log(normMat))+o)</div></pre></td></tr></table></figure></p>
+<p>接下来的y就可以用来后续的分析</p>
+<h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.1 (2017-06-30)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 10 x64 (build 15063)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936   </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C                              </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936    </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats4    parallel  stats     graphics  grDevices utils     datasets </div><div class="line">## [8] methods   base     </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">##  [1] edgeR_3.18.1                           </div><div class="line">##  [2] limma_3.32.5                           </div><div class="line">##  [3] readr_1.1.1                            </div><div class="line">##  [4] tximport_1.4.0                         </div><div class="line">##  [5] TxDb.Hsapiens.UCSC.hg19.knownGene_3.2.2</div><div class="line">##  [6] GenomicFeatures_1.28.4                 </div><div class="line">##  [7] AnnotationDbi_1.38.2                   </div><div class="line">##  [8] Biobase_2.36.2                         </div><div class="line">##  [9] GenomicRanges_1.28.4                   </div><div class="line">## [10] GenomeInfoDb_1.12.2                    </div><div class="line">## [11] IRanges_2.10.3                         </div><div class="line">## [12] S4Vectors_0.14.3                       </div><div class="line">## [13] BiocGenerics_0.22.0                    </div><div class="line">## [14] tximportData_1.4.0                     </div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">##  [1] Rcpp_0.12.12               compiler_3.4.1            </div><div class="line">##  [3] XVector_0.16.0             bitops_1.0-6              </div><div class="line">##  [5] tools_3.4.1                zlibbioc_1.22.0           </div><div class="line">##  [7] biomaRt_2.32.1             digest_0.6.12             </div><div class="line">##  [9] bit_1.1-12                 lattice_0.20-35           </div><div class="line">## [11] evaluate_0.10.1            RSQLite_2.0               </div><div class="line">## [13] memoise_1.1.0              tibble_1.3.4              </div><div class="line">## [15] pkgconfig_2.0.1            rlang_0.1.2               </div><div class="line">## [17] Matrix_1.2-11              DelayedArray_0.3.12       </div><div class="line">## [19] DBI_0.7                    yaml_2.1.14               </div><div class="line">## [21] GenomeInfoDbData_0.99.0    rtracklayer_1.36.4        </div><div class="line">## [23] stringr_1.2.0              knitr_1.17                </div><div class="line">## [25] hms_0.3                    Biostrings_2.44.2         </div><div class="line">## [27] locfit_1.5-9.1             grid_3.4.1                </div><div class="line">## [29] rprojroot_1.2              bit64_0.9-7               </div><div class="line">## [31] R6_2.2.2                   XML_3.98-1.9              </div><div class="line">## [33] BiocParallel_1.10.1        rmarkdown_1.6             </div><div class="line">## [35] blob_1.1.0                 magrittr_1.5              </div><div class="line">## [37] matrixStats_0.52.2         GenomicAlignments_1.12.2  </div><div class="line">## [39] backports_1.1.0            Rsamtools_1.28.0          </div><div class="line">## [41] htmltools_0.3.6            SummarizedExperiment_1.6.3</div><div class="line">## [43] stringi_1.1.5              RCurl_1.95-4.8            </div><div class="line">## [45] rjson_0.2.15</div></pre></td></tr></table></figure>
 <hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
-<p>Email: tyan@zju.edu.cn</p>
-<p>QQ: 1051927088</p>
-<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
-<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
-<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
-<p>伪码农，R语言爱好者，爱开源</p>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
 
       
     </div>
@@ -574,6 +610,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/RNA-seq/" rel="tag"><i class="fa fa-tag"></i> RNA-seq</a>
+          
+        </div>
+      
 
       
       
@@ -583,8 +625,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/24/R语言可视化学习笔记之基因组数据可视化/" rel="next" title="R语言可视化学习笔记之基因组数据可视化">
-                <i class="fa fa-chevron-left"></i> R语言可视化学习笔记之基因组数据可视化
+              <a href="/2017/09/06/A-brief-introduction-of-salmon/" rel="next" title="A brief introduction of salmon">
+                <i class="fa fa-chevron-left"></i> A brief introduction of salmon
               </a>
             
           </div>
@@ -592,10 +634,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/03/图像处理R包magick学习笔记/" rel="prev" title="图像处理R包magick学习笔记">
-                图像处理R包magick学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -785,7 +823,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number">1.</span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number">2.</span> <span class="nav-text">个人简介：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入转录组数据"><span class="nav-number">2.</span> <span class="nav-text">导入转录组数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差异分析"><span class="nav-number">3.</span> <span class="nav-text">差异分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SessionInfo"><span class="nav-number">4.</span> <span class="nav-text">SessionInfo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number">5.</span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number">6.</span> <span class="nav-text">个人简介：</span></a></li></ol></div>
             
 
           </div>
