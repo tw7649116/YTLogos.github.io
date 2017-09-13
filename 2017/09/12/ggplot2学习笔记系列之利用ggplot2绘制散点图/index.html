@@ -95,7 +95,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="R,visualization,ggpubr," />
+  <meta name="keywords" content="R,ggcorrplot,visualization," />
 
 
 
@@ -113,59 +113,33 @@
 
 
 
-<meta name="description" content="本文主要利用ggpubr包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。">
-<meta name="keywords" content="R,visualization,ggpubr">
+<meta name="description" content="1 简介散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包ggplot2可以绘制十分漂亮的散点图。 利用ggplot2绘图前先确保我们所使用的数据集是data.frame形式。ggplot2绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包ggplot2 即library(ggplot2)。">
+<meta name="keywords" content="R,ggcorrplot,visualization">
 <meta property="og:type" content="article">
-<meta property="og:title" content="R语言可视化学习笔记之基因组数据可视化">
-<meta property="og:url" content="https://ytlogos.github.io/2017/08/24/R语言可视化学习笔记之基因组数据可视化/index.html">
+<meta property="og:title" content="ggplot2学习笔记系列之利用ggplot2绘制散点图">
+<meta property="og:url" content="https://ytlogos.github.io/2017/09/12/ggplot2学习笔记系列之利用ggplot2绘制散点图/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="本文主要利用ggpubr包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-38d068706ad3b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-b34678958936acea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-d4a71b05d7b47010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-af94785de32b871b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-08c6ecf624be4f0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4bb5efef9d761338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-ad563d41e1fa856d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-afe413c51f1795d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-5e292cfe7f0d5e3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-b61b9b569685a032.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-bb70ab12668b7010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-387bd27a2b95a30c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-bef1e0aa4148b8be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-ccb18f7da8288c6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4598a0d2c3d4f402.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-46f6e3b2c093c6c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-3562a99a0a400f3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-d90335d2c9e74f13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-efc44aeb7221760f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-5659d5845c1699f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8111c788c1ceba23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-38d068706ad3b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-a24be637c1b4db89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-845354aeeec09083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-52925943216eac0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-80f7238f464bba66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-5f6de57b9d6109d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-2495e6aa4b3f106f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-c020bff5daa5174a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-357acb14cd62ea30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-9f4facdd2b3bbe8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8d0a6cf618230ec0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-cf2dac791630c3ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-be8c87506d85f929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-a0ae7fae20c787bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-709bc0692833b95c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-08d17067003638cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-0e291051fdf8709b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-3e69df4a748c733c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-438ad8dd5a855bae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-edb0e229e75a1e2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-03T04:25:01.884Z">
+<meta property="og:description" content="1 简介散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包ggplot2可以绘制十分漂亮的散点图。 利用ggplot2绘图前先确保我们所使用的数据集是data.frame形式。ggplot2绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包ggplot2 即library(ggplot2)。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-d1d4d773b39fb55a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-92b206d9539bc599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-468edde6998fbc45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-f2a2af9082fb75b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4d500c2263205aec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-dfd4f44ad7ba946a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-95957e2d11770434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-61861423d92dee56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-10cdfaabe44eef3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-1c751afcdaa834e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-4fa6e3822fcf9a7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8a8be783c2d23499.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-141622fb2f69c5f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-03T04:25:04.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R语言可视化学习笔记之基因组数据可视化">
-<meta name="twitter:description" content="本文主要利用ggpubr包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-38d068706ad3b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="ggplot2学习笔记系列之利用ggplot2绘制散点图">
+<meta name="twitter:description" content="1 简介散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包ggplot2可以绘制十分漂亮的散点图。 利用ggplot2绘图前先确保我们所使用的数据集是data.frame形式。ggplot2绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包ggplot2 即library(ggplot2)。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -193,7 +167,7 @@
 
 
 
-  <link rel="canonical" href="https://ytlogos.github.io/2017/08/24/R语言可视化学习笔记之基因组数据可视化/"/>
+  <link rel="canonical" href="https://ytlogos.github.io/2017/09/12/ggplot2学习笔记系列之利用ggplot2绘制散点图/"/>
 
 
 
@@ -214,7 +188,7 @@
     }
 </style>
 
-  <title>R语言可视化学习笔记之基因组数据可视化 | Logos</title>
+  <title>ggplot2学习笔记系列之利用ggplot2绘制散点图 | Logos</title>
   
 
 
@@ -417,7 +391,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/08/24/R语言可视化学习笔记之基因组数据可视化/">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/09/12/ggplot2学习笔记系列之利用ggplot2绘制散点图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TaoYan">
@@ -434,7 +408,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">R语言可视化学习笔记之基因组数据可视化</h1>
+          <h1 class="post-title" itemprop="name headline">ggplot2学习笔记系列之利用ggplot2绘制散点图</h1>
         
 
         <div class="post-meta">
@@ -446,8 +420,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T10:14:39+08:00">
-                2017-08-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-12T20:48:07+08:00">
+                2017-09-12
               </time>
             
 
@@ -462,7 +436,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-03T12:25:01+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-03T12:25:04+08:00">
                 2017-09-03
               </time>
             
@@ -499,7 +473,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/08/24/R语言可视化学习笔记之基因组数据可视化/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/09/12/ggplot2学习笔记系列之利用ggplot2绘制散点图/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -508,7 +482,7 @@
 
           
           
-             <span id="/2017/08/24/R语言可视化学习笔记之基因组数据可视化/" class="leancloud_visitors" data-flag-title="R语言可视化学习笔记之基因组数据可视化">
+             <span id="/2017/09/12/ggplot2学习笔记系列之利用ggplot2绘制散点图/" class="leancloud_visitors" data-flag-title="ggplot2学习笔记系列之利用ggplot2绘制散点图">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -534,7 +508,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,748
+                  939
                 </span>
               
 
@@ -550,7 +524,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  9
+                  4
                 </span>
               
             </div>
@@ -568,61 +542,38 @@
       
 
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-38d068706ad3b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>本文主要利用<strong>ggpubr</strong>包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">library(ggpubr)#加载包</div></pre></td></tr></table></figure></p>
-<p>TCGA是一个包含大量癌症数据的数据库，由Marcin Kosinski创建的RTCGA包可以让我们很方便的获取这些数据。主要有三个包：RTCGA、RTCGA.clininal、RTCGA.mRNA。安装方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#Load the bioconductor installersource</div><div class="line">(&quot;http://bioconductor.org/biocLite.R&quot;&quot;)</div><div class="line">#设置镜像，这里我们选择中科大的镜像options(BioC_mirror=&quot;http://ustc.edu.cn/bioc&quot;)</div><div class="line">#下载包</div><div class="line">biocLite(&quot;RTCGA&quot;)</div><div class="line">biocLite(&quot;RTCGA.clininal&quot;)</div><div class="line">biocLite(&quot;RTCGA.mRNA&quot;)</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(RTCGA)</div><div class="line">#查看每一种癌症的数据集</div><div class="line">infoTCGA()</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b34678958936acea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这里只显示部分"></p>
-<p><strong>RTCGA</strong>包里的函数<code>expressionTCGA()</code>可以十分方便地从不同数据集中提取基因的表达值，下面我们将从三个数据集BRCA(乳腺癌)、OV(卵巢癌)、LUSC(肺癌)中提取五个基因的表达值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(RTCGA)</div><div class="line">library(RTCGA.mRNA)</div><div class="line">expr &lt;- expressionsTCGA(BRCA.mRNA, OV.mRNA, LUSC.mRNA, </div><div class="line">extract.cols = c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;, &quot;ESR1&quot;, &quot;MUC1&quot;))</div><div class="line">expr</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-d4a71b05d7b47010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>查看每个数据集中的样品数量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">nb_samples &lt;- table(expr$dataset)nb_samples</div><div class="line"></div><div class="line">## </div><div class="line">## BRCA.mRNA  LUSC.mRNA  OV.mRNA </div><div class="line">##    590        154      561</div></pre></td></tr></table></figure></p>
-<p>为了方便，我们将部分数据集名称简化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">expr$dataset &lt;- gsub(pattern = &quot;.mRNA&quot;, replacement = &quot;&quot;, expr$dataset)</div><div class="line">expr$bcr_patient_barcode &lt;- paste0(expr$dataset, c(1:590, 1:561, 1:154))</div><div class="line">expr</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-af94785de32b871b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>接下来绘制图形：<br>1、箱线图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(ggpubr)</div><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=&quot;GATA3&quot;, title=&quot;GATA3&quot;, ylab = &quot;Expression&quot;, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-08c6ecf624be4f0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>我们可以一次性绘制多个基因，然后一一查看，而不用每次写代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#Creat a list of plots</div><div class="line">p &lt;- ggboxplot(expr, x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;, &quot;ESR1&quot;, &quot;MUC1&quot;),</div><div class="line">title = c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;, &quot;ESR1&quot;, &quot;MUC1&quot;), </div><div class="line">ylab = &quot;EXpression&quot;, color = &quot;dataset&quot;, palette = &quot;jco&quot;)</div><div class="line">#接下来一一查看每个plot</div><div class="line">p$GATA3</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4bb5efef9d761338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p$PTEN</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ad563d41e1fa856d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p$XBP1</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-afe413c51f1795d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p$ESR1</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5e292cfe7f0d5e3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p$MUC1</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b61b9b569685a032.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当一次性绘制多个基因时，xlab,ylab,title也可以是一个跟y等长的向量。 接下来就是添加p-value以及显著性了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">my_comparisons &lt;- list(c(&quot;BRCA&quot;, &quot;OV&quot;), c(&quot;OV&quot;, &quot;LUSC&quot;))</div><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=&quot;GATA3&quot;, title = &quot;GATA3&quot;, ylab = &quot;Expression&quot;, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;)+ stat_compare_means(comparisons = my_comparisons)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bb70ab12668b7010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>也可以查看每个类型中每一个基因的比较：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(c(GATA3, PTEN, XBP1)~dataset, data = expr)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-387bd27a2b95a30c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>可以通过select以及remove来决定比较那几个类型，比如这里我们只比较BRCA和OV<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=&quot;GATA3&quot;, title = &quot;GATA3&quot;, ylab = &quot;Expression&quot;, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, select = c(&quot;BRCA&quot;, &quot;OV&quot;))#通过select选择</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bef1e0aa4148b8be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=&quot;GATA3&quot;, title = &quot;GATA3&quot;, ylab = &quot;Expression&quot;, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, remove = &quot;BRCA&quot;)#通过remove选择</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ccb18f7da8288c6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过order来改变各类型在x轴上的顺序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=&quot;GATA3&quot;, title = &quot;GATA3&quot;, ylab = &quot;Expression&quot;, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, order = c(&quot;LUSC&quot;, &quot;OV&quot;, &quot;BRCA&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4598a0d2c3d4f402.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过rotate=TRUE来变换坐标轴<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=&quot;GATA3&quot;, title = &quot;GATA3&quot;, ylab = &quot;Expression&quot;, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, rotate=TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-46f6e3b2c093c6c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过combine=TRUE来进行分面（类似于facet）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), ylab = &quot;Expression&quot;, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, combine = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-3562a99a0a400f3c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过merge=TRUE或者merge=“axis”将三个类型的plot绘制在一个panel中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), ylab = &quot;Expression&quot;,</div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, merge = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-d90335d2c9e74f13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过merge=flip利用不同癌症类型进行group<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), </div><div class="line">ylab = &quot;Expression&quot;, palette = &quot;jco&quot;, merge = &quot;flip&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-efc44aeb7221760f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过add=jitter增加抖动点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), combine = TRUE,</div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, ylab = &quot;Expression&quot;, add = &quot;jitter&quot;, </div><div class="line">add.params = list(size=0.1, jitter=0.2))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5659d5845c1699f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过add=dotplot增加dotplot<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), </div><div class="line">combine = TRUE, color = &quot;dataset&quot;, palette = &quot;jco&quot;, ylab = &quot;Expression&quot;, </div><div class="line">add = &quot;dotplot&quot;, add.params = list(binwidth=0.1, dotsize=0.2))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8111c788c1ceba23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>很多时候我们很像知道箱线图两端的数据，我们可以通过label来进行展示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ggboxplot(expr, x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), combine = TRUE,</div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, ylab = &quot;Expression&quot;, add = &quot;jitter&quot;, </div><div class="line">add.params = list(size=0.1, jitter=0.2), label = &quot;bcr_patient_barcode&quot;, </div><div class="line">label.select = list(top.up=2, top.down=2), </div><div class="line">font.label = list(size=9, face=&quot;italic&quot;), repel = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-38d068706ad3b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>2、小提琴图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggviolin(expr,x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), combine = TRUE, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, ylab = &quot;Expression&quot;, add = &quot;boxplot&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a24be637c1b4db89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过修改add来更改添加小提琴图里的图形<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggviolin(expr,x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), combine = TRUE, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, ylab = &quot;Expression&quot;, add = &quot;median_iqr&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-845354aeeec09083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>add有好多选项可以选择：“mean”, “mean_se”, “mean_sd”, “mean_ci”, “mean_range”, “median”, “median_iqr”, “median_mad”, “median_range”.有兴趣的可以自己试试。</p>
-</blockquote>
-<p>3、带状图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggstripchart(expr, x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), combine = TRUE,</div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, size = 0.1, jitter=0.2, ylab = &quot;Expression&quot;, </div><div class="line">add = &quot;median_iqr&quot;, add.params = list(color=&quot;red&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-52925943216eac0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>4、dotplot<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggdotplot(expr, x=&quot;dataset&quot;, y=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), combine = TRUE, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;, fill = &quot;white&quot;, binwidth = 0.1, ylab = &quot;Expression&quot;,</div><div class="line">add = &quot;median_iqr&quot;, add.params = list(size=0.9))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-80f7238f464bba66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>5、密度图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggdensity(expr, x=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), y=&quot;..density..&quot;, </div><div class="line">combine = TRUE, xlab = &quot;Expression&quot;, add = &quot;median&quot;, rug = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5f6de57b9d6109d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>将dataset映射给颜色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggdensity(expr, x=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), y=&quot;..density..&quot;, combine = TRUE,</div><div class="line">xlab = &quot;Expression&quot;, add = &quot;median&quot;, rug = TRUE, color = &quot;dataset&quot;, </div><div class="line">fill = &quot;dataset&quot;, palette = &quot;jco&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2495e6aa4b3f106f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>将三幅图整合进一个panel中，并对y轴进行..count..，而不是..density..<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggdensity(expr, x=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), y=&quot;..count..&quot;, xlab = &quot;Expression&quot;,</div><div class="line">add = &quot;median&quot;, rug = TRUE, palette = &quot;jco&quot;)</div><div class="line">## $GATA3</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c020bff5daa5174a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## ## $PTEN</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-357acb14cd62ea30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## ## $XBP1</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9f4facdd2b3bbe8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>颜色映射，将x轴变量映射给颜色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggdensity(expr, x=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), y=&quot;..count..&quot;, color = &quot;.x.&quot;, </div><div class="line">fill = &quot;.x.&quot;, merge = TRUE, xlab = &quot;Expression&quot;, add = &quot;median&quot;, rug = TRUE, palette = &quot;jco&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8d0a6cf618230ec0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>按dataset进行分面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggdensity(expr, x=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), y=&quot;..count..&quot;, color = &quot;.x.&quot;, </div><div class="line">fill = &quot;.x.&quot;, merge = TRUE, xlab = &quot;Expression&quot;, add = &quot;median&quot;, </div><div class="line">rug = TRUE, palette = &quot;jco&quot;, facet.by = &quot;dataset&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-cf2dac791630c3ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>6、直方图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gghistogram(expr, x=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), y=&quot;..density..&quot;, </div><div class="line">xlab = &quot;Expression&quot;, add = &quot;median&quot;, rug = TRUE)</div><div class="line">## $GATA3</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-be8c87506d85f929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## ## $PTEN</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a0ae7fae20c787bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## ## $XBP1</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-709bc0692833b95c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>将dataset映射给颜色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gghistogram(expr, x=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), y=&quot;..density..&quot;, xlab = &quot;Expression&quot;, </div><div class="line">add = &quot;median&quot;, rug = TRUE, color = &quot;dataset&quot;, fill = &quot;dataset&quot;, palette = &quot;jco&quot;)</div><div class="line">## $GATA3</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-08d17067003638cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## ## $PTEN</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0e291051fdf8709b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## ## $XBP1</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-3e69df4a748c733c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>后面还有一些将几幅图整合在一个panel以及分面等大同小异就不讲了。<br>7、Q-Q图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggqqplot(expr, x=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), combine = TRUE, size = 0.5)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-438ad8dd5a855bae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>颜色映射<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggqqplot(expr, x=c(&quot;GATA3&quot;, &quot;PTEN&quot;, &quot;XBP1&quot;), combine = TRUE, size = 0.5, </div><div class="line">color = &quot;dataset&quot;, palette = &quot;jco&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-edb0e229e75a1e2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#sessionInfo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-pc-linux-gnu (64-bit)</div><div class="line">## Running under: Ubuntu 16.04.2 LTS</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## BLAS: /usr/lib/libblas/libblas.so.3.6.0</div><div class="line">## LAPACK: /usr/lib/lapack/liblapack.so.3.6.0</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_CTYPE=en_US.UTF-8 LC_NUMERIC=C </div><div class="line">## [3] LC_TIME=zh_CN.UTF-8 LC_COLLATE=en_US.UTF-8 </div><div class="line">## [5] LC_MONETARY=zh_CN.UTF-8 LC_MESSAGES=en_US.UTF-8</div><div class="line">## [7] LC_PAPER=zh_CN.UTF-8 LC_NAME=C </div><div class="line">## [9] LC_ADDRESS=C LC_TELEPHONE=C </div><div class="line">## [11] LC_MEASUREMENT=zh_CN.UTF-8 LC_IDENTIFICATION=C </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] bindrcpp_0.2 RTCGA.mRNA_1.4.0 RTCGA_1.6.0 ggpubr_0.1.3 </div><div class="line">## [5] magrittr_1.5 ggplot2_2.2.1 </div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] zoo_1.8-0 reshape2_1.4.2 purrr_0.2.2.2 </div><div class="line">## [4] splines_3.4.0 ggthemes_3.4.0 lattice_0.20-35 </div><div class="line">## [7] colorspace_1.3-2 htmltools_0.3.6 viridisLite_0.2.0</div><div class="line">## [10] yaml_2.1.14 survival_2.41-3 XML_3.98-1.9 </div><div class="line">## [13] survMisc_0.5.4 rlang_0.1.1 foreign_0.8-68 </div><div class="line">## [16] glue_1.1.0 bindr_0.1 plyr_1.8.4 </div><div class="line">## [19] stringr_1.2.0 ggsignif_0.2.0 munsell_0.4.3 </div><div class="line">## [22] gtable_0.2.0 ggsci_2.7 rvest_0.3.2 </div><div class="line">## [25] psych_1.7.5 evaluate_0.10 labeling_0.3 </div><div class="line">## [28] knitr_1.16 parallel_3.4.0 broom_0.4.2 </div><div class="line">## [31] Rcpp_0.12.11 xtable_1.8-2 scales_0.4.1</div><div class="line">## [34] backports_1.1.0 cmprsk_2.2-7 km.ci_0.5-2 </div><div class="line">## [37] gridExtra_2.2.1 mnormt_1.5-5 digest_0.6.12 </div><div class="line">## [40] stringi_1.1.5 ggrepel_0.6.5 dplyr_0.7.0 </div><div class="line">## [43] KMsurv_0.1-5 grid_3.4.0 rprojroot_1.2 </div><div class="line">## [46] tools_3.4.0 lazyeval_0.2.0 tibble_1.3.3 </div><div class="line">## [49] tidyr_0.6.3 Matrix_1.2-10 data.table_1.10.4</div><div class="line">## [52] xml2_1.1.1 survminer_0.4.0 assertthat_0.2.0 </div><div class="line">## [55] rmarkdown_1.6 httr_1.2.1 viridis_0.4.0 </div><div class="line">## [58] R6_2.2.2 nlme_3.1-131 compiler_3.4.0</div></pre></td></tr></table></figure></p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>1 简介<br>散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包<strong>ggplot2</strong>可以绘制十分漂亮的散点图。 利用<strong>ggplot2</strong>绘图前先确保我们所使用的数据集是<strong>data.frame</strong>形式。<strong>ggplot2</strong>绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包<strong>ggplot2</strong> 即<strong>library(ggplot2)</strong>。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Load packages</div><div class="line">library(ggplot2)#visualization</div></pre></td></tr></table></figure></p>
+<p>加载完包之后，本文利用数据集<strong>mtcars</strong>来演示散点图绘制。 先查看数据集的前几行来了解<strong>mtcars</strong>数据集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#check data</div><div class="line">head(mtcars)</div></pre></td></tr></table></figure></p>
+<p>2 绘制简单的散点图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg)) + geom_point()</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-d1d4d773b39fb55a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>2.1 <strong>shape</strong>参数修改图形的形状<br>                                         <strong>可选点图形形状</strong>:<br><img src="http://upload-images.jianshu.io/upload_images/2084719-92b206d9539bc599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg)) +geom_point(shape=17)</div></pre></td></tr></table></figure></p>
+<p>2.2 <strong>size</strong>参数修改点的大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data = mtcars, aes(x=wt, y=mpg))+geom_point(size=5)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-468edde6998fbc45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>2.3 <strong>color</strong>参数修改点的颜色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg))+geom_point(color=&quot;red&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f2a2af9082fb75b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>3 绘制分组的散点图<br>可将分组变量（因子或字符变量，可通过<strong>factor()</strong>强制性将非因子变量转为因子变量）赋值给颜色或性状属性，实现分组散点图的绘制。<br>3.1 首先将数值型变量<code>cyl</code>转换为因子型变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mtcars$cyl &lt;- factor(mtcars$cyl)</div></pre></td></tr></table></figure></p>
+<p>3.2 分组变量赋值给颜色属性(变量赋值必须在aes里面)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, color=cyl))+geom_point(size=3)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>3.3 分组变量赋值给性状属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, shape=cyl))+geom_point(size=3)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4d500c2263205aec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>如果对R语言默认的颜色或者形状不满意，可以通过<code>scale_color_brewer()</code>或者<code>scale_color_manual()</code>函数自定义点的颜色以及<code>scale_shape_manual()</code>函数自定义点的形状。 下面我们将分组变量<strong>cyl</strong>同时赋值给颜色和形状属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, color=cyl, shape= cyl))+</div><div class="line">geom_point(size=3)+ scale_color_brewer(palette = &quot;Accent&quot;)+</div><div class="line">scale_shape_manual(values = c(2, 9, 16))#Accent是一调色板，可选点的形状见上</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dfd4f44ad7ba946a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>4 将连续变量映射给颜色、大小和形状等属性<br>4.1 将连续性变量disp映射给颜色属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, color=disp))+geom_point(size=3)</div></pre></td></tr></table></figure></p>
+<p>从图中可以发现值越大对应的颜色越浅，以下是通过人为设置色阶使值大小与颜色深浅保持一致<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, color=disp))+</div><div class="line">geom_point(size=3)+ scale_color_gradient(low=&quot;lightblue&quot;, high=&quot;darkblue&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-95957e2d11770434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>4.2 将连续性变量disp映射给大小属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, size=disp))+geom_point(color=&quot;red&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-61861423d92dee56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>5 重叠点的处理<br>当数据量非常大时，会导致数据重叠点非常严重，可通过使用半透明的点避免。<strong>alpha</strong>参数控制点的透明度。下面利用数据集<strong>diamonds</strong>来演示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#check data</div><div class="line">head(diamonds)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#未使用透明点处理</div><div class="line">ggplot(data=diamonds, aes(x=carat, y=price))+geom_point()</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-10cdfaabe44eef3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#使用alpha参数调整点透明度</div><div class="line">ggplot(data=diamonds, aes(x=carat, y=price))+geom_point(alpha=0.1)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-1c751afcdaa834e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>6 为散点图添加拟合曲线<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#使用数据集mtcars</div><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg))+geom_point()+stat_smooth(method=&quot;lm&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4fa6e3822fcf9a7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#也可以去除掉拟合曲线的置信区间</div><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg))+geom_point()+stat_smooth(method=&quot;lm&quot;, se=FALSE)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8a8be783c2d23499.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#也可以针对不同类型的cyl来进行拟合</div><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, color=cyl))+</div><div class="line">geom_point()+stat_smooth(method=&quot;lm&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-141622fb2f69c5f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
+<p>Email: tyan@zju.edu.cn</p>
+<p>QQ: 1051927088</p>
+<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
+<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
+<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
+<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
+<p>伪码农，R语言爱好者，爱开源</p>
 
       
     </div>
@@ -687,9 +638,9 @@
           
             <a href="/tags/R/" rel="tag"><i class="fa fa-tag"></i> R</a>
           
-            <a href="/tags/visualization/" rel="tag"><i class="fa fa-tag"></i> visualization</a>
+            <a href="/tags/ggcorrplot/" rel="tag"><i class="fa fa-tag"></i> ggcorrplot</a>
           
-            <a href="/tags/ggpubr/" rel="tag"><i class="fa fa-tag"></i> ggpubr</a>
+            <a href="/tags/visualization/" rel="tag"><i class="fa fa-tag"></i> visualization</a>
           
         </div>
       
@@ -702,8 +653,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/24/ggplot2学习笔记系列之利用ggplot2绘制散点图/" rel="next" title="ggplot2学习笔记系列之利用ggplot2绘制散点图">
-                <i class="fa fa-chevron-left"></i> ggplot2学习笔记系列之利用ggplot2绘制散点图
+              <a href="/2017/09/12/一篇关于国旗与奥运会奖牌的可视化笔记/" rel="next" title="一篇关于国旗与奥运会奖牌的可视化笔记">
+                <i class="fa fa-chevron-left"></i> 一篇关于国旗与奥运会奖牌的可视化笔记
               </a>
             
           </div>
@@ -712,7 +663,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/29/README-MDOWN/" rel="prev" title="README">
+              <a href="/2017/09/12/README-MDOWN/" rel="prev" title="README">
                 README <i class="fa fa-chevron-right"></i>
               </a>
             
