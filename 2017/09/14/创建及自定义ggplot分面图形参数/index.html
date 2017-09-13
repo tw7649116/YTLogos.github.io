@@ -95,7 +95,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="R,visualization,ggpubr," />
 
 
 
@@ -113,21 +113,22 @@
 
 
 
-<meta name="description" content="简介ggplot2有一个十分重要的功能就是分面，而今天要讲得R包ggpubr中也有一个函数facet()专门用来进行分面操作。 安装1234install.packages(&amp;quot;ggpubr&amp;quot;)#orif(!require(devtools)) install.packages(&amp;quot;devtools&amp;quot;)devtools::install_github(&amp;quot">
+<meta name="description" content="简介ggplot2有一个十分重要的功能就是分面，而今天要讲得R包ggpubr中也有一个函数facet()专门用来进行分面操作。">
+<meta name="keywords" content="R,visualization,ggpubr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Logos">
+<meta property="og:title" content="R语言学习笔记之热图绘制">
 <meta property="og:url" content="https://ytlogos.github.io/2017/09/14/创建及自定义ggplot分面图形参数/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="简介ggplot2有一个十分重要的功能就是分面，而今天要讲得R包ggpubr中也有一个函数facet()专门用来进行分面操作。 安装1234install.packages(&amp;quot;ggpubr&amp;quot;)#orif(!require(devtools)) install.packages(&amp;quot;devtools&amp;quot;)devtools::install_github(&amp;quot">
+<meta property="og:description" content="简介ggplot2有一个十分重要的功能就是分面，而今天要讲得R包ggpubr中也有一个函数facet()专门用来进行分面操作。">
 <meta property="og:image" content="http://os3hnmzbp.bkt.clouddn.com/1.png">
 <meta property="og:image" content="http://os3hnmzbp.bkt.clouddn.com/2.png">
 <meta property="og:image" content="http://os3hnmzbp.bkt.clouddn.com/3.png">
 <meta property="og:image" content="http://os3hnmzbp.bkt.clouddn.com/4.png">
 <meta property="og:image" content="http://os3hnmzbp.bkt.clouddn.com/5.png">
-<meta property="og:updated_time" content="2017-09-13T23:48:50.520Z">
+<meta property="og:updated_time" content="2017-09-13T23:54:59.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Logos">
-<meta name="twitter:description" content="简介ggplot2有一个十分重要的功能就是分面，而今天要讲得R包ggpubr中也有一个函数facet()专门用来进行分面操作。 安装1234install.packages(&amp;quot;ggpubr&amp;quot;)#orif(!require(devtools)) install.packages(&amp;quot;devtools&amp;quot;)devtools::install_github(&amp;quot">
+<meta name="twitter:title" content="R语言学习笔记之热图绘制">
+<meta name="twitter:description" content="简介ggplot2有一个十分重要的功能就是分面，而今天要讲得R包ggpubr中也有一个函数facet()专门用来进行分面操作。">
 <meta name="twitter:image" content="http://os3hnmzbp.bkt.clouddn.com/1.png">
 
 
@@ -177,7 +178,7 @@
     }
 </style>
 
-  <title> | Logos</title>
+  <title>R语言学习笔记之热图绘制 | Logos</title>
   
 
 
@@ -397,7 +398,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">R语言学习笔记之热图绘制</h1>
         
 
         <div class="post-meta">
@@ -409,7 +410,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-14T00:00:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-14T07:47:05+08:00">
                 2017-09-14
               </time>
             
@@ -425,12 +426,34 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-14T07:48:50+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-14T07:54:59+08:00">
                 2017-09-14
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/可视化/" itemprop="url" rel="index">
+                    <span itemprop="name">可视化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -449,7 +472,7 @@
 
           
           
-             <span id="/2017/09/14/创建及自定义ggplot分面图形参数/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2017/09/14/创建及自定义ggplot分面图形参数/" class="leancloud_visitors" data-flag-title="R语言学习笔记之热图绘制">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -475,7 +498,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  563
+                  635
                 </span>
               
 
@@ -510,6 +533,7 @@
 
       
         <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>ggplot2</strong>有一个十分重要的功能就是分面，而今天要讲得R包<strong>ggpubr</strong>中也有一个函数facet()专门用来进行分面操作。</p>
+<a id="more"></a>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">install.packages(&quot;ggpubr&quot;)</div><div class="line">#or</div><div class="line">if(!require(devtools)) install.packages(&quot;devtools&quot;)</div><div class="line">devtools::install_github(&quot;kassambara/ggpubr&quot;)</div></pre></td></tr></table></figure>
 <h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">library(ggpubr)</div><div class="line">df &lt;- ToothGrowth</div><div class="line">df$dose &lt;- as.factor(df$dose)</div><div class="line">head(df)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">##    len supp dose</div><div class="line">## 1  4.2   VC  0.5</div><div class="line">## 2 11.5   VC  0.5</div><div class="line">## 3  7.3   VC  0.5</div><div class="line">## 4  5.8   VC  0.5</div><div class="line">## 5  6.4   VC  0.5</div><div class="line">## 6 10.0   VC  0.5</div></pre></td></tr></table></figure>
@@ -532,6 +556,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#divide with &quot;supp&quot; vertical, &quot;sode&quot; horizontal</div><div class="line">facet(p, facet.by = c(&quot;supp&quot;, &quot;dose&quot;),</div><div class="line">      panel.labs = list(</div><div class="line">        supp=c(&quot;Orange Juice&quot;, &quot;Vitamin C&quot;),</div><div class="line">        dose=c(&quot;D0.5&quot;, &quot;D1&quot;, &quot;D2&quot;)),</div><div class="line">      panel.labs.background = list(</div><div class="line">        color=&quot;steelblue&quot;, </div><div class="line">        fill=&quot;steelblue&quot;,</div><div class="line">        size=0.5),</div><div class="line">      panel.labs.font = list(color=&quot;white&quot;),</div><div class="line">      panel.labs.font.x = list(angle=45, color=&quot;white&quot;))</div></pre></td></tr></table></figure>
 <p><img src="http://os3hnmzbp.bkt.clouddn.com/5.png" alt=""></p>
 <h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.1 (2017-06-30)</div><div class="line">## Platform: x86_64-pc-linux-gnu (64-bit)</div><div class="line">## Running under: Ubuntu 16.04.3 LTS</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## BLAS: /usr/lib/atlas-base/atlas/libblas.so.3.0</div><div class="line">## LAPACK: /usr/lib/atlas-base/atlas/liblapack.so.3.0</div><div class="line">## </div><div class="line">## locale:</div><div class="line">##  [1] LC_CTYPE=zh_CN.UTF-8       LC_NUMERIC=C              </div><div class="line">##  [3] LC_TIME=zh_CN.UTF-8        LC_COLLATE=zh_CN.UTF-8    </div><div class="line">##  [5] LC_MONETARY=zh_CN.UTF-8    LC_MESSAGES=zh_CN.UTF-8   </div><div class="line">##  [7] LC_PAPER=zh_CN.UTF-8       LC_NAME=C                 </div><div class="line">##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </div><div class="line">## [11] LC_MEASUREMENT=zh_CN.UTF-8 LC_IDENTIFICATION=C       </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats     graphics  grDevices utils     datasets  methods   base     </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] ggpubr_0.1.5  magrittr_1.5  ggplot2_2.2.1</div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">##  [1] Rcpp_0.12.12     bindr_0.1        knitr_1.17       munsell_0.4.3   </div><div class="line">##  [5] colorspace_1.3-2 R6_2.2.2         rlang_0.1.2      stringr_1.2.0   </div><div class="line">##  [9] plyr_1.8.4       dplyr_0.7.3      tools_3.4.1      grid_3.4.1      </div><div class="line">## [13] gtable_0.2.0     htmltools_0.3.6  yaml_2.1.14      lazyeval_0.2.0  </div><div class="line">## [17] rprojroot_1.2    digest_0.6.12    assertthat_0.2.0 tibble_1.3.4    </div><div class="line">## [21] bindrcpp_0.2     ggsci_2.7        reshape2_1.4.2   purrr_0.2.3     </div><div class="line">## [25] glue_1.1.1       evaluate_0.10.1  rmarkdown_1.6    labeling_0.3    </div><div class="line">## [29] stringi_1.1.5    compiler_3.4.1   scales_0.5.0     backports_1.1.0 </div><div class="line">## [33] pkgconfig_2.0.1</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
 
       
     </div>
@@ -591,6 +618,16 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R/" rel="tag"><i class="fa fa-tag"></i> R</a>
+          
+            <a href="/tags/visualization/" rel="tag"><i class="fa fa-tag"></i> visualization</a>
+          
+            <a href="/tags/ggpubr/" rel="tag"><i class="fa fa-tag"></i> ggpubr</a>
+          
+        </div>
       
 
       
@@ -803,7 +840,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘图"><span class="nav-number">3.</span> <span class="nav-text">绘图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分面"><span class="nav-number">4.</span> <span class="nav-text">分面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#水平方向分面"><span class="nav-number">4.1.</span> <span class="nav-text">水平方向分面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#竖直方向分面"><span class="nav-number">4.2.</span> <span class="nav-text">竖直方向分面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双变量分面"><span class="nav-number">4.3.</span> <span class="nav-text">双变量分面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改面板外观"><span class="nav-number">5.</span> <span class="nav-text">修改面板外观</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SessionInfo"><span class="nav-number">6.</span> <span class="nav-text">SessionInfo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘图"><span class="nav-number">3.</span> <span class="nav-text">绘图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分面"><span class="nav-number">4.</span> <span class="nav-text">分面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#水平方向分面"><span class="nav-number">4.1.</span> <span class="nav-text">水平方向分面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#竖直方向分面"><span class="nav-number">4.2.</span> <span class="nav-text">竖直方向分面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双变量分面"><span class="nav-number">4.3.</span> <span class="nav-text">双变量分面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改面板外观"><span class="nav-number">5.</span> <span class="nav-text">修改面板外观</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SessionInfo"><span class="nav-number">6.</span> <span class="nav-text">SessionInfo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number">7.</span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number">8.</span> <span class="nav-text">个人简介：</span></a></li></ol></div>
             
 
           </div>
