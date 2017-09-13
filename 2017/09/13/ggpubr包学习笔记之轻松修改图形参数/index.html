@@ -95,7 +95,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="R,visualization,ggplot2," />
+  <meta name="keywords" content="visualization,ggpubr," />
 
 
 
@@ -113,33 +113,47 @@
 
 
 
-<meta name="keywords" content="R,visualization,ggplot2">
+<meta name="description" content="简介越学习包ggpubr越感觉其功能强大，本文主要讲解一下如何修改图形参数，我们知道ggplot2有着十分强大的绘图功能，但是其参数之复杂足以让人望而却步。ggpubr提供的函数ggpar()可以十分轻松地让我们修改图形参数，并且可以无缝对接到ggplot图形中。ggpar()可以修改以下图形参数：">
+<meta name="keywords" content="visualization,ggpubr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ggplot2学习笔记系列之主题（theme）设置">
-<meta property="og:url" content="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/index.html">
+<meta property="og:title" content="ggpubr包学习笔记之轻松修改图形参数">
+<meta property="og:url" content="https://ytlogos.github.io/2017/09/13/ggpubr包学习笔记之轻松修改图形参数/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-aedad605e759b602.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-d83da9471e3bc837.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-12edb55b34046dc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-f6bc40449646b424.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-e451760fc8a576c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-50197c31a252b33b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-61e3363e54112d01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-f4aeac9b93d84040.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-28014be14a16fdc0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-1ab8b127abcdb850.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-fed6eaf4130fb8cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-b277d80d44c26dff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-0af39cbe41d20918.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-8114011d2c12d3b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-7bddc092cac1f639.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-bc4e002d5f925826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-c12712615e2430bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2084719-aedad605e759b602.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-03T04:21:27.775Z">
+<meta property="og:description" content="简介越学习包ggpubr越感觉其功能强大，本文主要讲解一下如何修改图形参数，我们知道ggplot2有着十分强大的绘图功能，但是其参数之复杂足以让人望而却步。ggpubr提供的函数ggpar()可以十分轻松地让我们修改图形参数，并且可以无缝对接到ggplot图形中。ggpar()可以修改以下图形参数：">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/dm80Clb7Eh.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/7hKdEb1ehB.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/f77I1FIlbB.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/cGa2dj6AB8.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/jAIc0AjBi8.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/5K7D23dIcC.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/dm80Clb7Eh.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/6EHIKCbjdB.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/K5Hh142DDJ.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/66Fl04A1Eg.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/j04LBcgCFf.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/gg16gmeE3D.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/3h1K0f5aaK.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/13fcD9GfDC.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/aD2IK0b75D.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/Jj9BG7J24h.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/ah3ed5b1Ai.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/1H7KBAdKLd.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/kCaHdmcG6i.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/FHKlGj4H8F.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/CFamb4cglg.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/Deh1KddGKj.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/IgF4D3LFiL.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/lfk8D0i00d.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/DhAlF966Cb.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/c6cHkJj7Hk.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/k49JlfLfDg.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/G53edij9j4.png?imageslim">
+<meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/CciAa0JEhH.png?imageslim">
+<meta property="og:updated_time" content="2017-09-13T05:19:10.674Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ggplot2学习笔记系列之主题（theme）设置">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2084719-aedad605e759b602.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="ggpubr包学习笔记之轻松修改图形参数">
+<meta name="twitter:description" content="简介越学习包ggpubr越感觉其功能强大，本文主要讲解一下如何修改图形参数，我们知道ggplot2有着十分强大的绘图功能，但是其参数之复杂足以让人望而却步。ggpubr提供的函数ggpar()可以十分轻松地让我们修改图形参数，并且可以无缝对接到ggplot图形中。ggpar()可以修改以下图形参数：">
+<meta name="twitter:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/dm80Clb7Eh.png?imageslim">
 
 
 
@@ -167,7 +181,7 @@
 
 
 
-  <link rel="canonical" href="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/"/>
+  <link rel="canonical" href="https://ytlogos.github.io/2017/09/13/ggpubr包学习笔记之轻松修改图形参数/"/>
 
 
 
@@ -188,7 +202,7 @@
     }
 </style>
 
-  <title>ggplot2学习笔记系列之主题（theme）设置 | Logos</title>
+  <title>ggpubr包学习笔记之轻松修改图形参数 | Logos</title>
   
 
 
@@ -391,7 +405,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/09/13/ggpubr包学习笔记之轻松修改图形参数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TaoYan">
@@ -408,7 +422,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ggplot2学习笔记系列之主题（theme）设置</h1>
+          <h1 class="post-title" itemprop="name headline">ggpubr包学习笔记之轻松修改图形参数</h1>
         
 
         <div class="post-meta">
@@ -420,8 +434,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
-                2017-06-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T13:00:55+08:00">
+                2017-09-13
               </time>
             
 
@@ -436,8 +450,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-03T12:21:27+08:00">
-                2017-09-03
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-13T13:19:10+08:00">
+                2017-09-13
               </time>
             
           </span>
@@ -473,7 +487,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/09/13/ggpubr包学习笔记之轻松修改图形参数/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -482,7 +496,7 @@
 
           
           
-             <span id="/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/" class="leancloud_visitors" data-flag-title="ggplot2学习笔记系列之主题（theme）设置">
+             <span id="/2017/09/13/ggpubr包学习笔记之轻松修改图形参数/" class="leancloud_visitors" data-flag-title="ggpubr包学习笔记之轻松修改图形参数">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -508,7 +522,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,420
+                  1,138
                 </span>
               
 
@@ -524,7 +538,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  7
+                  6
                 </span>
               
             </div>
@@ -542,44 +556,65 @@
       
 
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/2084719-aedad605e759b602.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><a id="more"></a><br>上次提了下<code>theme()</code>,本文将专门讲解一下。凡是与数据无关的图形设置可以归为主题类，<strong>ggplot2</strong>中主题设置十分多，根本不可能讲解完，只能稍微讲点皮毛，灵活运用才是关键，本文只是总体上略作介绍。正如R语言大神<strong>Hadley Wickham</strong>所讲的，<strong>ggplot2</strong>只是提供了一个平台，可以根据自己的需要无限创造。理论上来讲，只要能想到的图形，<strong>ggplot2</strong>都能实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#我们先来看看ggplot2默认的主题设置函数theme_gray()的源代码</div><div class="line">theme_gray#函数名不加括号可获得函数源代码</div><div class="line"></div><div class="line">## function (base_size = 11, base_family = &quot;&quot;) </div><div class="line">## &#123;</div><div class="line">## half_line &lt;- base_size/2</div><div class="line">## theme(line = element_line(colour = &quot;black&quot;, size = 0.5, linetype = 1, </div><div class="line">## lineend = &quot;butt&quot;), rect = element_rect(fill = &quot;white&quot;, </div><div class="line">## colour = &quot;black&quot;, size = 0.5, linetype = 1), text = element_text(family = base_family, </div><div class="line">## face = &quot;plain&quot;, colour = &quot;black&quot;, size = base_size, lineheight = 0.9, </div><div class="line">## hjust = 0.5, vjust = 0.5, angle = 0, margin = margin(), </div><div class="line">## debug = FALSE), axis.line = element_blank(), axis.line.x = NULL, </div><div class="line">## axis.line.y = NULL, axis.text = element_text(size = rel(0.8),</div><div class="line">## colour = &quot;grey30&quot;), axis.text.x = element_text(margin = margin(t = 0.8 * </div><div class="line">## half_line/2), vjust = 1), axis.text.x.top = element_text(margin = margin(b = 0.8 * ## half_line/2), vjust = 0), axis.text.y = element_text(margin = margin(r = 0.8 * </div><div class="line">## half_line/2), hjust = 1), axis.text.y.right = element_text(margin = margin(l = 0.8 * ## half_line/2), hjust = 0), axis.ticks = element_line(colour = &quot;grey20&quot;), </div><div class="line">## axis.ticks.length = unit(half_line/2, &quot;pt&quot;), axis.title.x = element_text(margin = margin(t = half_line), </div><div class="line">## vjust = 1), axis.title.x.top = element_text(margin = margin(b = half_line), </div><div class="line">## vjust = 0), axis.title.y = element_text(angle = 90, </div><div class="line">## margin = margin(r = half_line), vjust = 1), axis.title.y.right = element_text(angle = -90, </div><div class="line">## margin = margin(l = half_line), vjust = 0), legend.background = element_rect(colour = NA), </div><div class="line">## legend.spacing = unit(0.4, &quot;cm&quot;), legend.spacing.x = NULL, </div><div class="line">## legend.spacing.y = NULL, legend.margin = margin(0.2, </div><div class="line">## 0.2, 0.2, 0.2, &quot;cm&quot;), legend.key = element_rect(fill = &quot;grey95&quot;, </div><div class="line">## colour = &quot;white&quot;), legend.key.size = unit(1.2, &quot;lines&quot;), </div><div class="line">## legend.key.height = NULL, legend.key.width = NULL, legend.text = element_text(size = rel(0.8)), </div><div class="line">## legend.text.align = NULL, legend.title = element_text(hjust = 0), </div><div class="line">## legend.title.align = NULL, legend.position = &quot;right&quot;, </div><div class="line">## legend.direction = NULL, legend.justification = &quot;center&quot;, </div><div class="line">## legend.box = NULL, legend.box.margin = margin(0, 0, 0, </div><div class="line">## 0, &quot;cm&quot;), legend.box.background = element_blank(),</div><div class="line">## legend.box.spacing = unit(0.4, &quot;cm&quot;), panel.background = element_rect(fill = &quot;grey92&quot;, </div><div class="line">## colour = NA), panel.border = element_blank(), panel.grid.major = element_line(colour = &quot;white&quot;), </div><div class="line">## panel.grid.minor = element_line(colour = &quot;white&quot;, size = 0.25), </div><div class="line">## panel.spacing = unit(half_line, &quot;pt&quot;), panel.spacing.x = NULL, </div><div class="line">## panel.spacing.y = NULL, panel.ontop = FALSE, strip.background = element_rect(fill = &quot;grey85&quot;, </div><div class="line">## colour = NA), strip.text = element_text(colour = &quot;grey10&quot;, </div><div class="line">## size = rel(0.8)), strip.text.x = element_text(margin = margin(t = half_line, </div><div class="line">## b = half_line)), strip.text.y = element_text(angle = -90, </div><div class="line">## margin = margin(l = half_line, r = half_line)), strip.placement = &quot;inside&quot;, </div><div class="line">## strip.placement.x = NULL, strip.placement.y = NULL, strip.switch.pad.grid = unit(0.1, </div><div class="line">## &quot;cm&quot;), strip.switch.pad.wrap = unit(0.1, &quot;cm&quot;), plot.background = element_rect(colour = &quot;white&quot;), </div><div class="line">## plot.title = element_text(size = rel(1.2), hjust = 0, </div><div class="line">## vjust = 1, margin = margin(b = half_line * 1.2)), </div><div class="line">## plot.subtitle = element_text(size = rel(0.9), hjust = 0, </div><div class="line">## vjust = 1, margin = margin(b = half_line * 0.9)),</div><div class="line">## plot.caption = element_text(size = rel(0.9), hjust = 1, </div><div class="line">## vjust = 1, margin = margin(t = half_line * 0.9)),</div><div class="line">## plot.margin = margin(half_line, half_line, half_line, </div><div class="line">## half_line), complete = TRUE)</div><div class="line">## &#125;</div><div class="line">## &lt;environment: namespace:ggplot2&gt;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>可以看出，源代码主要是<code>theme()</code>函数，设置也很简单：<code>theme(..., complete = FALSE)</code>,但是其内含的参数则十分多。</p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-d83da9471e3bc837.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>  <img src="http://upload-images.jianshu.io/upload_images/2084719-12edb55b34046dc6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>几乎所有元素在<code>theme()</code>里都使用<code>element_line</code>，<code>element_rect</code>，<code>element_text</code>和<code>element_blank</code>函数设置. 下面就举例稍微讲解一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#利用数据集mtcars演示head(mtcars)</div><div class="line">#先创建p图层</div><div class="line">p&lt;- ggplot(data=mtcars, aes(x=wt, y=mpg))+</div><div class="line">geom_point(aes(color=factor(cyl)))#先试试图例修改</div><div class="line">p+theme(legend.position = &quot;none&quot;)#无图例</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f6bc40449646b424.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p+theme(legend.position = &quot;bottom&quot;)#图例在底部</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e451760fc8a576c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#也可以自定义</div><div class="line">p+theme(legend.position = c(0.5, 0.7))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-50197c31a252b33b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#为图例加边界</div><div class="line">p+theme(legend.background = element_rect(color=&quot;red&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-61e3363e54112d01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#或者为图例中的每个元素进行设置，如加边界</div><div class="line">p+theme(legend.key =element_rect(color=&quot;red&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f4aeac9b93d84040.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#进行填充</div><div class="line">p+theme(legend.key = element_rect(fill=&quot;yellow&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-28014be14a16fdc0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#图例内容字体大小、颜色、角度等设置</div><div class="line">p+theme(legend.text = element_text(size=25, color=&quot;darkred&quot;, angle=45))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-1ab8b127abcdb850.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#为图例标题设置字体、颜色、大小等</div><div class="line">p+theme(legend.title = element_text(face=&quot;italic&quot;, size=25, color=&quot;red&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-fed6eaf4130fb8cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>接下来是坐标以及网格等的自定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#修改背景颜色</div><div class="line">p+theme(panel.background = element_rect(fill=&quot;black&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b277d80d44c26dff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#修改边界线类型、颜色</div><div class="line">p+theme(panel.border = element_rect(linetype = &quot;dashed&quot;, color=&quot;red&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0af39cbe41d20918.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#修改网格线p+theme(panel.grid.major = element_line(color=&quot;blue&quot;, size= 3))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8114011d2c12d3b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p+theme(panel.grid.minor = element_line(linetype = &quot;dotted&quot;, color=&quot;red&quot;))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7bddc092cac1f639.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>还可以修改x、y轴等，这里懒得讲了，有兴趣的可以自己捣鼓捣鼓</p>
-</blockquote>
-<p>了解<code>theme</code>之后就可以自己定义自己的主题，以后作图就直接像格式刷一样就行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#下面是我比较常用的主题，画图时刷一下就行了</div><div class="line">windowsFonts(CA=windowsFont(&quot;Calibri&quot;))</div><div class="line">mytheme &lt;- theme_bw()+</div><div class="line">theme(legend.position = &apos;top&apos;, panel.border = element_blank(), </div><div class="line">panel.grid.major = element_line(linetype = &apos;dashed&apos;), panel.grid.minor = </div><div class="line">element_blank(), legend.text = element_text(size=9,color=&apos;#003087&apos;,family = &quot;CA&quot;), </div><div class="line">plot.title = element_text(size=15,color=&quot;#003087&quot;,family = &quot;CA&quot;), legend.key = </div><div class="line">element_blank(), axis.text = element_text(size=10,color=&apos;#003087&apos;,family = &quot;CA&quot;), </div><div class="line">strip.text = element_text(size=12,color=&quot;#EF0808&quot;,family = &quot;CA&quot;), </div><div class="line">strip.background = element_blank())</div><div class="line">pie_theme &lt;- mytheme+</div><div class="line">theme(axis.text = element_blank(), axis.ticks = element_blank(), axis.title = </div><div class="line">element_blank(), panel.grid.major = element_blank())</div><div class="line">myline_blue &lt;- geom_line(color=&quot;#085A9C&quot;, size=2)</div><div class="line">myline_red &lt;- geom_line(color=&quot;#EF0808&quot;,size=2)</div><div class="line">myarea &lt;- geom_area(color=NA,fill=&quot;#003087&quot;,alpha=0.2)</div><div class="line">mypoint &lt;- geom_point(size=3,shape=21,color=&quot;#003087&quot;,fill=&quot;white&quot;)</div><div class="line">mybar &lt;- geom_bar(fill=&quot;#0C8DC4&quot;,stat = &quot;identity&quot;)</div><div class="line">mycolor_3 &lt;- scale_fill_manual(values = c(&quot;#085A9C&quot;,&quot;#EF0808&quot;,&quot;#526373&quot;))</div><div class="line">mycolor_7 &lt;- scale_fill_manual(values=c (&quot;#085A9C&quot;,&quot;#EF0808&quot;,&quot;#526373&quot;,&quot;#FFFFE7&quot;,&quot;#FF9418&quot;,&quot;#219431&quot;,&quot;#9C52AD&quot;))</div><div class="line">mycolor_line_7 &lt;- scale_color_manual(values=c (&quot;#085A9C&quot;,&quot;#EF0808&quot;,&quot;#526373&quot;,&quot;#FFFFE7&quot;,&quot;#FF9418&quot;,&quot;#219431&quot;,&quot;#9C52AD&quot;))</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#可以来刷一刷#随便建个数据集</div><div class="line">x &lt;-rep(1:5, each = 3)</div><div class="line">y &lt;-rep(c(&apos;A&apos;,&apos;B&apos;,&apos;C&apos;),times = 5)</div><div class="line">set.seed(1111)</div><div class="line">z &lt;-round(runif(min = 10, max = 30, n = 15))</div><div class="line">df &lt;-data.frame(x = x, y = y, z = z)</div><div class="line">head(df)</div><div class="line">##   x   y   z</div><div class="line">## 1 1   A   19</div><div class="line">## 2 1   B   18</div><div class="line">## 3 1   C   28</div><div class="line">## 4 2   A   13</div><div class="line">## 5 2   B   25</div><div class="line">## 6 2   C   30</div><div class="line"></div><div class="line">#柱形图</div><div class="line">(p1 &lt;- ggplot(data=df, aes(x=factor(x), y=z, fill=y))+</div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)+</div><div class="line">ggtitle(&quot;自定义主题theme并应用实践&quot;))+</div><div class="line">xlab(&quot;随便定义了个x&quot;)+ylab(&quot;随机数&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bc4e002d5f925826.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p1+mytheme</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c12712615e2430bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p1+mytheme+mycolor_7</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-aedad605e759b602.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>还有线图、饼图等有兴趣的也可以自己刷一刷，你会发现<strong>ggplot2</strong>的魅力所在就是它拥有无穷的可能性。</p>
+        <p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/dm80Clb7Eh.png?imageslim" alt="mark"></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>越学习包<strong>ggpubr</strong>越感觉其功能强大，本文主要讲解一下如何修改图形参数，我们知道<strong>ggplot2</strong>有着十分强大的绘图功能，但是其参数之复杂足以让人望而却步。<strong>ggpubr</strong>提供的函数ggpar()可以十分轻松地让我们修改图形参数，并且可以无缝对接到ggplot图形中。ggpar()可以修改以下图形参数：<br><a id="more"></a></p>
+<ul>
+<li>图形标题，包括坐标轴标题以及图例标题</li>
+<li>图例的位置以及外观</li>
+<li>颜色必需的能修改</li>
+<li>坐标轴limits</li>
+<li>坐标转换</li>
+<li>坐标刻度</li>
+<li>主题</li>
+<li>翻转等</li>
+</ul>
+<h2 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#two ways to isntall the ggpubr package</div><div class="line">install.packages(&quot;ggpubr&quot;)</div><div class="line">#install the packages from the Github</div><div class="line">devtools::install_github(&quot;kassambara/ggpubr&quot;)</div></pre></td></tr></table></figure>
+<h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">library(ggpubr)#load ggpubr</div><div class="line">#basic plots</div><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color=&quot;dose&quot;)</div><div class="line">p</div></pre></td></tr></table></figure>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/7hKdEb1ehB.png?imageslim" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#add grids by the function grids()</div><div class="line">p+grids(linetype=&quot;dashed&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/f77I1FIlbB.png?imageslim" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#add panel borders lines by the function border()</div><div class="line">p+border(&quot;black&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/cGa2dj6AB8.png?imageslim" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#change background color</div><div class="line">p+bgcolor(&quot;#BFD5E3&quot;)+border(&quot;#BFD5E3&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/jAIc0AjBi8.png?imageslim" alt=""></p>
+<h2 id="修改标题以及坐标轴标签"><a href="#修改标题以及坐标轴标签" class="headerlink" title="修改标题以及坐标轴标签"></a>修改标题以及坐标轴标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">p2 &lt;- ggpar(p,</div><div class="line">            title = &quot;Box plot vreated with ggpubr&quot;,</div><div class="line">            subtitle = &quot;Length by dose&quot;,</div><div class="line">            caption = &quot;Source: ggpubr&quot;,</div><div class="line">            xlab = &quot;Dose (mg)&quot;,</div><div class="line">            ylab = &quot;Teeth length&quot;,</div><div class="line">            legend.title = &quot;Dose (mg)&quot;)</div><div class="line">p2</div></pre></td></tr></table></figure>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/5K7D23dIcC.png?imageslim" alt="mark"></p>
+<h2 id="修改标题以及标签的字体"><a href="#修改标题以及标签的字体" class="headerlink" title="修改标题以及标签的字体"></a>修改标题以及标签的字体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ggpar(p2, </div><div class="line">      font.title = c(14, &quot;bold.italic&quot;, &quot;red&quot;),</div><div class="line">      font.subtitle = c(10, &quot;orange&quot;),</div><div class="line">      font.caption = c(10, &quot;orange&quot;),</div><div class="line">      font.x = c(14, &quot;blue&quot;),</div><div class="line">      font.y = c(14, &quot;#993333&quot;))</div></pre></td></tr></table></figure>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/dm80Clb7Eh.png?imageslim" alt="mark"></p>
+<p>当然也可以直接用函数font()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">p2+</div><div class="line">  font(&quot;title&quot;, size = 14, color = &quot;red&quot;, face = &quot;bold.italic&quot;)+</div><div class="line">  font(&quot;subtitle&quot;, size = 10, color = &quot;orange&quot;)+</div><div class="line">  font(&quot;caption&quot;, size = 10, color = &quot;orange&quot;)+</div><div class="line">  font(&quot;xlab&quot;, size = 12, color = &quot;blue&quot;)+</div><div class="line">  font(&quot;ylab&quot;, size = 12, color = &quot;#993333&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/6EHIKCbjdB.png?imageslim" alt="mark"></p>
+<p>从上面可以看出我们可以一次性完成添加标题以及修改字体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ggpar(p,</div><div class="line">      title = &quot;Plot of length \n by dose&quot;,</div><div class="line">      xlab = &quot;Dose (mg)&quot;,</div><div class="line">      legend.title = &quot;Dose (mg)&quot;,</div><div class="line">      font.title = c(14, &quot;bold.italic&quot;, &quot;red&quot;),</div><div class="line">      font.x = c(14, &quot;bold&quot;, &quot;#2E9FDF&quot;),</div><div class="line">      font.y = c(14, &quot;bold&quot;, &quot;#E7B800&quot;))</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/K5Hh142DDJ.png?imageslim" alt="mark"></p>
+<h2 id="修改图例位置与外观"><a href="#修改图例位置与外观" class="headerlink" title="修改图例位置与外观"></a>修改图例位置与外观</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ggpar(p,</div><div class="line">      legend = &quot;right&quot;, legend.title = &quot;Dose (mg)&quot;)+</div><div class="line">  font(&quot;legend.title&quot;, color=&quot;blue&quot;, face = &quot;bold&quot;)+</div><div class="line">  font(&quot;legend.text&quot;, color = &quot;red&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/66Fl04A1Eg.png?imageslim" alt="mark"></p>
+<h2 id="颜色修改"><a href="#颜色修改" class="headerlink" title="颜色修改"></a>颜色修改</h2><p>ggpar()中有一个参数palette，即调色板，除了可以我们自定义颜色外，还可以调用RColorBrewer中的调色板以及包<strong>ggsci</strong>中的专门用于学术杂志的配色。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#use custom color palette</div><div class="line">ggpar(p, palette = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;#FC4E07&quot;))</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/j04LBcgCFf.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#use the RColorBrewer palette</div><div class="line">ggpar(p, palette = &quot;Dark2&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/gg16gmeE3D.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggpar(p, palette = &quot;grey&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/3h1K0f5aaK.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#use the ggsci palette</div><div class="line">ggpar(p, palette = &quot;npg&quot;)#nature</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/13fcD9GfDC.png?imageslim" alt="mark"></p>
+<p>当然也可以直接用<strong>ggpubr</strong>中的函数color_palette()以及fill_palette()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#jco color palette</div><div class="line">p+color_palette(&quot;jco&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/aD2IK0b75D.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#custom color</div><div class="line">p+color_palette(c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;#FC4E07&quot;))</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/Jj9BG7J24h.png?imageslim" alt="mark"></p>
+<h2 id="颜色梯度"><a href="#颜色梯度" class="headerlink" title="颜色梯度"></a>颜色梯度</h2><p><strong>ggpubr</strong>提供了两个函数用来处理颜色梯度：gradient_color()和gradient_fill()<br>通过一个例子来看如何运作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#first create a scatter plot</div><div class="line">p3 &lt;- ggscatter(mtcars, x=&quot;wt&quot;, y=&quot;mpg&quot;, color=&quot;mpg&quot;, size = 2)</div><div class="line">#change the gradient color</div><div class="line">#use one custom color</div><div class="line">p3+gradient_color(&quot;red&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/ah3ed5b1Ai.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#use two colors</div><div class="line">p3+gradient_color(c(&quot;blue&quot;, &quot;red&quot;))</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/1H7KBAdKLd.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#three colors</div><div class="line">p3+gradient_color(c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;))</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/kCaHdmcG6i.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#use the RColorBrewer palette</div><div class="line">p3+gradient_color(&quot;RdYlBu&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/FHKlGj4H8F.png?imageslim" alt="mark"><br>gradient_fill()用法也一样，不过是填充，这里就不演示了。</p>
+<h2 id="修改坐标轴limits、scales"><a href="#修改坐标轴limits、scales" class="headerlink" title="修改坐标轴limits、scales"></a>修改坐标轴limits、scales</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#change y axis limits</div><div class="line">ggpar(p, ylim = c(0, 50))</div></pre></td></tr></table></figure>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/CFamb4cglg.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#change y axis cale to log2</div><div class="line">ggpar(p, yscale = &quot;log2&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/Deh1KddGKj.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#format  axis scale</div><div class="line">ggpar(p, yscale = &quot;log2&quot;, format.scale = TRUE)#format.scale=TRUE说明y轴刻度也会scale</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/IgF4D3LFiL.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#也可以直接用yscale()</div><div class="line">p+yscale(&quot;log2&quot;, .format = TRUE)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/lfk8D0i00d.png?imageslim" alt="mark"></p>
+<h2 id="自定义坐标轴标签及刻度"><a href="#自定义坐标轴标签及刻度" class="headerlink" title="自定义坐标轴标签及刻度"></a>自定义坐标轴标签及刻度</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#change the font of x and y axis texts</div><div class="line">#rotate x and y texts</div><div class="line">p+</div><div class="line">  font(&quot;xy.text&quot;, size = 12, color = &quot;blue&quot;, face = &quot;bold&quot;)+</div><div class="line">  rotate_x_text(45)+</div><div class="line">  rotate_y_text(45)</div></pre></td></tr></table></figure>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/DhAlF966Cb.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#remove ticks and axis texts</div><div class="line">p+rremove(&quot;ticks&quot;)+</div><div class="line">  rremove(&quot;axis.text&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/c6cHkJj7Hk.png?imageslim" alt="mark"></p>
+<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>默认主题为theme_pubr(),可以调用包<strong>ggthemes</strong>里面的主题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(ggthemes)</div><div class="line">p+ggthemes::theme_economist()</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/k49JlfLfDg.png?imageslim" alt="mark"></p>
+<h2 id="移除ggplot组件"><a href="#移除ggplot组件" class="headerlink" title="移除ggplot组件"></a>移除ggplot组件</h2><p>通过ggpubr::rremove()可以移除组件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, ggtheme = theme_igray())</div><div class="line">p</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/G53edij9j4.png?imageslim" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p+rremove(&quot;grid&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/CciAa0JEhH.png?imageslim" alt="mark"></p>
+<h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">## R version 3.4.1 (2017-06-30)</div><div class="line">## Platform: x86_64-pc-linux-gnu (64-bit)</div><div class="line">## Running under: Ubuntu 16.04.3 LTS</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## BLAS: /usr/lib/atlas-base/atlas/libblas.so.3.0</div><div class="line">## LAPACK: /usr/lib/atlas-base/atlas/liblapack.so.3.0</div><div class="line">## </div><div class="line">## locale:</div><div class="line">##  [1] LC_CTYPE=zh_CN.UTF-8       LC_NUMERIC=C              </div><div class="line">##  [3] LC_TIME=zh_CN.UTF-8        LC_COLLATE=zh_CN.UTF-8    </div><div class="line">##  [5] LC_MONETARY=zh_CN.UTF-8    LC_MESSAGES=zh_CN.UTF-8   </div><div class="line">##  [7] LC_PAPER=zh_CN.UTF-8       LC_NAME=C                 </div><div class="line">##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </div><div class="line">## [11] LC_MEASUREMENT=zh_CN.UTF-8 LC_IDENTIFICATION=C       </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats     graphics  grDevices utils     datasets  methods   base     </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] ggthemes_3.4.0 ggpubr_0.1.5   magrittr_1.5   ggplot2_2.2.1 </div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">##  [1] Rcpp_0.12.12       bindr_0.1          knitr_1.17        </div><div class="line">##  [4] munsell_0.4.3      colorspace_1.3-2   R6_2.2.2          </div><div class="line">##  [7] rlang_0.1.2        stringr_1.2.0      plyr_1.8.4        </div><div class="line">## [10] dplyr_0.7.3        tools_3.4.1        grid_3.4.1        </div><div class="line">## [13] gtable_0.2.0       htmltools_0.3.6    yaml_2.1.14       </div><div class="line">## [16] lazyeval_0.2.0     rprojroot_1.2      digest_0.6.12     </div><div class="line">## [19] assertthat_0.2.0   tibble_1.3.4       bindrcpp_0.2      </div><div class="line">## [22] ggsci_2.7          RColorBrewer_1.1-2 purrr_0.2.3       </div><div class="line">## [25] glue_1.1.1         evaluate_0.10.1    rmarkdown_1.6     </div><div class="line">## [28] labeling_0.3       stringi_1.1.5      compiler_3.4.1    </div><div class="line">## [31] scales_0.5.0       backports_1.1.0    pkgconfig_2.0.1</div></pre></td></tr></table></figure>
 <hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
-<p>Email: tyan@zju.edu.cn</p>
-<p>QQ: 1051927088</p>
-<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
-<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
-<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
-<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
-<p>伪码农，R语言爱好者，爱开源</p>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
 
       
     </div>
@@ -642,11 +677,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/R/" rel="tag"><i class="fa fa-tag"></i> R</a>
-          
             <a href="/tags/visualization/" rel="tag"><i class="fa fa-tag"></i> visualization</a>
           
-            <a href="/tags/ggplot2/" rel="tag"><i class="fa fa-tag"></i> ggplot2</a>
+            <a href="/tags/ggpubr/" rel="tag"><i class="fa fa-tag"></i> ggpubr</a>
           
         </div>
       
@@ -659,8 +692,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/25/R语言可视化学习笔记之相关矩阵可视化包ggcorrplot/" rel="next" title="R语言可视化学习笔记之相关矩阵可视化包ggcorrplot">
-                <i class="fa fa-chevron-left"></i> R语言可视化学习笔记之相关矩阵可视化包ggcorrplot
+              <a href="/2017/09/12/R语言可视化学习笔记之基因组数据可视化/" rel="next" title="R语言可视化学习笔记之基因组数据可视化">
+                <i class="fa fa-chevron-left"></i> R语言可视化学习笔记之基因组数据可视化
               </a>
             
           </div>
@@ -668,10 +701,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/" rel="prev" title="ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记">
-                ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -861,7 +890,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number">1.</span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number">2.</span> <span class="nav-text">个人简介：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装包"><span class="nav-number">2.</span> <span class="nav-text">安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘图"><span class="nav-number">3.</span> <span class="nav-text">绘图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改标题以及坐标轴标签"><span class="nav-number">4.</span> <span class="nav-text">修改标题以及坐标轴标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改标题以及标签的字体"><span class="nav-number">5.</span> <span class="nav-text">修改标题以及标签的字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改图例位置与外观"><span class="nav-number">6.</span> <span class="nav-text">修改图例位置与外观</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色修改"><span class="nav-number">7.</span> <span class="nav-text">颜色修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色梯度"><span class="nav-number">8.</span> <span class="nav-text">颜色梯度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改坐标轴limits、scales"><span class="nav-number">9.</span> <span class="nav-text">修改坐标轴limits、scales</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义坐标轴标签及刻度"><span class="nav-number">10.</span> <span class="nav-text">自定义坐标轴标签及刻度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改主题"><span class="nav-number">11.</span> <span class="nav-text">修改主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移除ggplot组件"><span class="nav-number">12.</span> <span class="nav-text">移除ggplot组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SessionInfo"><span class="nav-number">13.</span> <span class="nav-text">SessionInfo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number">14.</span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number">15.</span> <span class="nav-text">个人简介：</span></a></li></ol></div>
             
 
           </div>
