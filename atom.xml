@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-09-19T00:19:37.523Z</updated>
+  <updated>2017-09-19T00:39:01.462Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -16,11 +16,90 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>README</title>
+    <link href="https://ytlogos.github.io/2017/09/19/README-MDOWN/"/>
+    <id>https://ytlogos.github.io/2017/09/19/README-MDOWN/</id>
+    <published>2017-09-19T00:39:01.459Z</published>
+    <updated>2017-09-19T00:39:01.462Z</updated>
+    
+    <content type="html"><![CDATA[<p>本博客主要是用来记载我的日常学习笔记，以便于自己学习以及与他人交流</p>
+<p>有兴趣的可转至我的博客：<a href="https://ytlogos.github.io/">logos</a></p>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
+<p>Email: tyan@zju.edu.cn</p>
+<p>QQ: 1051927088</p>
+<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
+<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
+<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
+<p>伪码农，R语言爱好者，爱开源</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本博客主要是用来记载我的日常学习笔记，以便于自己学习以及与他人交流&lt;/p&gt;
+&lt;p&gt;有兴趣的可转至我的博客：&lt;a href=&quot;https://ytlogos.github.io/&quot;&gt;logos&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;联系方式：&quot;&gt;&lt;a href=&quot;#联系方
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>tidyverse实践之绘制简单地图</title>
+    <link href="https://ytlogos.github.io/2017/09/19/tidyverse%E5%AE%9E%E8%B7%B5%E4%B9%8B%E7%BB%98%E5%88%B6%E7%AE%80%E5%8D%95%E5%9C%B0%E5%9B%BE/"/>
+    <id>https://ytlogos.github.io/2017/09/19/tidyverse实践之绘制简单地图/</id>
+    <published>2017-09-19T00:39:01.453Z</published>
+    <updated>2017-09-19T00:39:01.454Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/Big70i5b36.jpeg?imageslim" alt=""></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>tidyverse</strong>是一个数据科学的综合包，里面包含了数据分析一系列流程涉及的包，今天主要利用它绘制地图。这并不是它的强项，绘制地图<strong>leaflet</strong>才是利器，本文只是<strong>tidyverse</strong>的一个小练习。<br>目前该包支持有限的几个国家，比如美国，新西兰、意大利等，当然世界地图是支持的。</p>
+<a id="more"></a>
+<h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">library(tidyverse)</div><div class="line">map_data(&quot;usa&quot;)%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon()</div></pre></td></tr></table></figure>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/i32kBBc1DA.png?imageslim" alt=""></p>
+<p>可以绘制美国的不同州，就行我国的省份一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;state&quot;)%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(color=&quot;white&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/5haC8L95Fd.png?imageslim" alt=""></p>
+<p>另外我们可以只单独绘制几个state<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;state&quot;)%&gt;%</div><div class="line">  filter(region%in%c(&quot;california&quot;,&quot;nevada&quot;,&quot;oregon&quot;,&quot;washington&quot;))%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(color=&quot;red&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/md9HG40mi8.png?imageslim" alt=""></p>
+<p>再绘制细一点的地图，相当于市、县等<br><figure class="highlight plain"><figcaption><span>fig.height=6, fig.width=4&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;county&quot;)%&gt;%</div><div class="line">  filter(region %in% c(&quot;california&quot;,&quot;nevada&quot;,&quot;oregon&quot;,&quot;washington&quot;))%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(color=&quot;white&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/iEIjLcgIaK.png?imageslim" alt=""></p>
+<h2 id="世界地图"><a href="#世界地图" class="headerlink" title="世界地图"></a>世界地图</h2><p>很简单，只需将map_data()里的usa换成world就行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;world&quot;)%&gt;%ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(color=&quot;white&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/cK0LAl2cmd.png?imageslim" alt=""></p>
+<p>在世界地图中标出中国<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;world&quot;)%&gt;%</div><div class="line">  filter(region==&quot;China&quot;)%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(fill=&quot;red&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/f0f3fBgG7F.png?imageslim" alt=""></p>
+<p>美帝用心险恶，不承认台湾属于中国,自己添上去就是了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;world&quot;)%&gt;%</div><div class="line">  filter(region==c(&quot;China&quot;,&quot;Taiwan&quot;))%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(fill=&quot;red&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/BDd5BLBmaa.png?imageslim" alt=""></p>
+<h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.1 (2017-06-30)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 10 x64 (build 15063)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936   </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C                              </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936    </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats     graphics  grDevices utils     datasets  methods   base     </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">##  [1] bindrcpp_0.2         maps_3.2.0           dplyr_0.7.2         </div><div class="line">##  [4] purrr_0.2.3          readr_1.1.1          tidyr_0.7.1         </div><div class="line">##  [7] tibble_1.3.4         ggplot2_2.2.1        tidyverse_1.1.1     </div><div class="line">## [10] RevoUtilsMath_10.0.0</div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">##  [1] Rcpp_0.12.12     cellranger_1.1.0 compiler_3.4.1   plyr_1.8.4      </div><div class="line">##  [5] bindr_0.1        forcats_0.2.0    tools_3.4.1      digest_0.6.12   </div><div class="line">##  [9] lubridate_1.6.0  jsonlite_1.5     evaluate_0.10.1  nlme_3.1-131    </div><div class="line">## [13] gtable_0.2.0     lattice_0.20-35  pkgconfig_2.0.1  rlang_0.1.2     </div><div class="line">## [17] psych_1.7.8      yaml_2.1.14      parallel_3.4.1   haven_1.1.0     </div><div class="line">## [21] xml2_1.1.1       httr_1.3.1       stringr_1.2.0    knitr_1.17      </div><div class="line">## [25] hms_0.3          RevoUtils_10.0.5 rprojroot_1.2    grid_3.4.1      </div><div class="line">## [29] glue_1.1.1       R6_2.2.2         readxl_1.0.0     foreign_0.8-69  </div><div class="line">## [33] rmarkdown_1.6    modelr_0.1.1     reshape2_1.4.2   magrittr_1.5    </div><div class="line">## [37] backports_1.1.0  scales_0.5.0     htmltools_0.3.6  rvest_0.3.2     </div><div class="line">## [41] assertthat_0.2.0 mnormt_1.5-5     colorspace_1.3-2 labeling_0.3    </div><div class="line">## [45] stringi_1.1.5    lazyeval_0.2.0   munsell_0.4.3    broom_0.4.2</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/Big70i5b36.jpeg?imageslim&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;tidyverse&lt;/strong&gt;是一个数据科学的综合包，里面包含了数据分析一系列流程涉及的包，今天主要利用它绘制地图。这并不是它的强项，绘制地图&lt;strong&gt;leaflet&lt;/strong&gt;才是利器，本文只是&lt;strong&gt;tidyverse&lt;/strong&gt;的一个小练习。&lt;br&gt;目前该包支持有限的几个国家，比如美国，新西兰、意大利等，当然世界地图是支持的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="tidyverse" scheme="https://ytlogos.github.io/tags/tidyverse/"/>
+    
+      <category term="map" scheme="https://ytlogos.github.io/tags/map/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ggplot2高效实用指南</title>
     <link href="https://ytlogos.github.io/2017/09/18/ggplot2%E9%AB%98%E6%95%88%E5%AE%9E%E7%94%A8%E6%8C%87%E5%8D%97/"/>
     <id>https://ytlogos.github.io/2017/09/18/ggplot2高效实用指南/</id>
     <published>2017-09-18T10:29:46.000Z</published>
-    <updated>2017-09-19T00:19:37.523Z</updated>
+    <updated>2017-09-19T00:39:01.459Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170919/emJBf4A306.png?imageslim" alt="mark"></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文内容基本是来源于<a href="http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization" target="_blank" rel="external">STHDA</a>，这是一份十分详细的<strong>ggplot2</strong>使用指南，因此我将其翻译成中文，一是有助于我自己学习理解，另外其他R语言爱好者或者可视化爱好者可以用来学习。翻译过程肯定不能十全十美，各位读者有建议或改进的话，十分欢迎发<strong>Email</strong>(tyan@zju.edu.cn)给我。</p>
@@ -815,90 +894,11 @@
   </entry>
   
   <entry>
-    <title>tidyverse实践之绘制简单地图</title>
-    <link href="https://ytlogos.github.io/2017/09/16/tidyverse%E5%AE%9E%E8%B7%B5%E4%B9%8B%E7%BB%98%E5%88%B6%E7%AE%80%E5%8D%95%E5%9C%B0%E5%9B%BE/"/>
-    <id>https://ytlogos.github.io/2017/09/16/tidyverse实践之绘制简单地图/</id>
-    <published>2017-09-16T03:12:48.915Z</published>
-    <updated>2017-09-16T03:12:48.919Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/Big70i5b36.jpeg?imageslim" alt=""></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>tidyverse</strong>是一个数据科学的综合包，里面包含了数据分析一系列流程涉及的包，今天主要利用它绘制地图。这并不是它的强项，绘制地图<strong>leaflet</strong>才是利器，本文只是<strong>tidyverse</strong>的一个小练习。<br>目前该包支持有限的几个国家，比如美国，新西兰、意大利等，当然世界地图是支持的。</p>
-<a id="more"></a>
-<h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">library(tidyverse)</div><div class="line">map_data(&quot;usa&quot;)%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon()</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/i32kBBc1DA.png?imageslim" alt=""></p>
-<p>可以绘制美国的不同州，就行我国的省份一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;state&quot;)%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(color=&quot;white&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/5haC8L95Fd.png?imageslim" alt=""></p>
-<p>另外我们可以只单独绘制几个state<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;state&quot;)%&gt;%</div><div class="line">  filter(region%in%c(&quot;california&quot;,&quot;nevada&quot;,&quot;oregon&quot;,&quot;washington&quot;))%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(color=&quot;red&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/md9HG40mi8.png?imageslim" alt=""></p>
-<p>再绘制细一点的地图，相当于市、县等<br><figure class="highlight plain"><figcaption><span>fig.height=6, fig.width=4&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;county&quot;)%&gt;%</div><div class="line">  filter(region %in% c(&quot;california&quot;,&quot;nevada&quot;,&quot;oregon&quot;,&quot;washington&quot;))%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(color=&quot;white&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/iEIjLcgIaK.png?imageslim" alt=""></p>
-<h2 id="世界地图"><a href="#世界地图" class="headerlink" title="世界地图"></a>世界地图</h2><p>很简单，只需将map_data()里的usa换成world就行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;world&quot;)%&gt;%ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(color=&quot;white&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/cK0LAl2cmd.png?imageslim" alt=""></p>
-<p>在世界地图中标出中国<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;world&quot;)%&gt;%</div><div class="line">  filter(region==&quot;China&quot;)%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(fill=&quot;red&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/f0f3fBgG7F.png?imageslim" alt=""></p>
-<p>美帝用心险恶，不承认台湾属于中国,自己添上去就是了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">map_data(&quot;world&quot;)%&gt;%</div><div class="line">  filter(region==c(&quot;China&quot;,&quot;Taiwan&quot;))%&gt;%</div><div class="line">  ggplot(aes(x=long, y=lat, group=group))+</div><div class="line">  geom_polygon(fill=&quot;red&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/BDd5BLBmaa.png?imageslim" alt=""></p>
-<h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.1 (2017-06-30)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 10 x64 (build 15063)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936   </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C                              </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936    </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats     graphics  grDevices utils     datasets  methods   base     </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">##  [1] bindrcpp_0.2         maps_3.2.0           dplyr_0.7.2         </div><div class="line">##  [4] purrr_0.2.3          readr_1.1.1          tidyr_0.7.1         </div><div class="line">##  [7] tibble_1.3.4         ggplot2_2.2.1        tidyverse_1.1.1     </div><div class="line">## [10] RevoUtilsMath_10.0.0</div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">##  [1] Rcpp_0.12.12     cellranger_1.1.0 compiler_3.4.1   plyr_1.8.4      </div><div class="line">##  [5] bindr_0.1        forcats_0.2.0    tools_3.4.1      digest_0.6.12   </div><div class="line">##  [9] lubridate_1.6.0  jsonlite_1.5     evaluate_0.10.1  nlme_3.1-131    </div><div class="line">## [13] gtable_0.2.0     lattice_0.20-35  pkgconfig_2.0.1  rlang_0.1.2     </div><div class="line">## [17] psych_1.7.8      yaml_2.1.14      parallel_3.4.1   haven_1.1.0     </div><div class="line">## [21] xml2_1.1.1       httr_1.3.1       stringr_1.2.0    knitr_1.17      </div><div class="line">## [25] hms_0.3          RevoUtils_10.0.5 rprojroot_1.2    grid_3.4.1      </div><div class="line">## [29] glue_1.1.1       R6_2.2.2         readxl_1.0.0     foreign_0.8-69  </div><div class="line">## [33] rmarkdown_1.6    modelr_0.1.1     reshape2_1.4.2   magrittr_1.5    </div><div class="line">## [37] backports_1.1.0  scales_0.5.0     htmltools_0.3.6  rvest_0.3.2     </div><div class="line">## [41] assertthat_0.2.0 mnormt_1.5-5     colorspace_1.3-2 labeling_0.3    </div><div class="line">## [45] stringi_1.1.5    lazyeval_0.2.0   munsell_0.4.3    broom_0.4.2</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170916/Big70i5b36.jpeg?imageslim&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;tidyverse&lt;/strong&gt;是一个数据科学的综合包，里面包含了数据分析一系列流程涉及的包，今天主要利用它绘制地图。这并不是它的强项，绘制地图&lt;strong&gt;leaflet&lt;/strong&gt;才是利器，本文只是&lt;strong&gt;tidyverse&lt;/strong&gt;的一个小练习。&lt;br&gt;目前该包支持有限的几个国家，比如美国，新西兰、意大利等，当然世界地图是支持的。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="tidyverse" scheme="https://ytlogos.github.io/tags/tidyverse/"/>
-    
-      <category term="map" scheme="https://ytlogos.github.io/tags/map/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>README</title>
-    <link href="https://ytlogos.github.io/2017/09/14/README-MDOWN/"/>
-    <id>https://ytlogos.github.io/2017/09/14/README-MDOWN/</id>
-    <published>2017-09-13T23:48:50.520Z</published>
-    <updated>2017-09-13T23:48:50.520Z</updated>
-    
-    <content type="html"><![CDATA[<p>本博客主要是用来记载我的日常学习笔记，以便于自己学习以及与他人交流</p>
-<p>有兴趣的可转至我的博客：<a href="https://ytlogos.github.io/">logos</a></p>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
-<p>Email: tyan@zju.edu.cn</p>
-<p>QQ: 1051927088</p>
-<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
-<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
-<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
-<p>伪码农，R语言爱好者，爱开源</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本博客主要是用来记载我的日常学习笔记，以便于自己学习以及与他人交流&lt;/p&gt;
-&lt;p&gt;有兴趣的可转至我的博客：&lt;a href=&quot;https://ytlogos.github.io/&quot;&gt;logos&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;联系方式：&quot;&gt;&lt;a href=&quot;#联系方
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>创建及自定义ggplot分面图形参数</title>
     <link href="https://ytlogos.github.io/2017/09/14/%E5%88%9B%E5%BB%BA%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89ggplot%E5%88%86%E9%9D%A2%E5%9B%BE%E5%BD%A2%E5%8F%82%E6%95%B0/"/>
     <id>https://ytlogos.github.io/2017/09/14/创建及自定义ggplot分面图形参数/</id>
     <published>2017-09-13T23:47:05.000Z</published>
-    <updated>2017-09-14T00:02:46.797Z</updated>
+    <updated>2017-09-19T00:39:01.453Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://os3hnmzbp.bkt.clouddn.com/5.png" alt=""></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>ggplot2</strong>有一个十分重要的功能就是分面，而今天要讲得R包<strong>ggpubr</strong>中也有一个函数facet()专门用来进行分面操作。</p>
@@ -953,7 +953,7 @@
     <link href="https://ytlogos.github.io/2017/09/13/ggpubr%E5%8C%85%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%BD%BB%E6%9D%BE%E4%BF%AE%E6%94%B9%E5%9B%BE%E5%BD%A2%E5%8F%82%E6%95%B0/"/>
     <id>https://ytlogos.github.io/2017/09/13/ggpubr包学习笔记之轻松修改图形参数/</id>
     <published>2017-09-13T05:00:55.000Z</published>
-    <updated>2017-09-13T23:48:50.520Z</updated>
+    <updated>2017-09-19T00:39:01.449Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170913/dm80Clb7Eh.png?imageslim" alt="mark"></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>越学习包<strong>ggpubr</strong>越感觉其功能强大，本文主要讲解一下如何修改图形参数，我们知道<strong>ggplot2</strong>有着十分强大的绘图功能，但是其参数之复杂足以让人望而却步。<strong>ggpubr</strong>提供的函数ggpar()可以十分轻松地让我们修改图形参数，并且可以无缝对接到ggplot图形中。ggpar()可以修改以下图形参数：<br><a id="more"></a></p>
@@ -1033,11 +1033,48 @@
   </entry>
   
   <entry>
+    <title>About me</title>
+    <link href="https://ytlogos.github.io/2017/09/12/README/"/>
+    <id>https://ytlogos.github.io/2017/09/12/README/</id>
+    <published>2017-09-11T23:47:05.000Z</published>
+    <updated>2017-09-19T00:39:01.465Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Introductiom"><a href="#Introductiom" class="headerlink" title="Introductiom"></a>Introductiom</h1><hr>
+<p>The posts resource of my personal blog</p>
+<ul>
+<li>code &amp; data &amp; graph</li>
+<li>R &amp; RStudio</li>
+<li>If you are interested in my blog, you can go to the home of my <a href="https://ytlogos.github.io/">blog</a></li>
+</ul>
+<h1 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a>About me</h1><hr>
+<p>严涛</p>
+<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
+<p>伪码农，R语言爱好者，爱开源</p>
+<hr>
+<p>wechat: yt056410</p>
+<p>Email: tyan@zju.edu.cn</p>
+<p>QQ: 1051927088</p>
+<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
+<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
+<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Introductiom&quot;&gt;&lt;a href=&quot;#Introductiom&quot; class=&quot;headerlink&quot; title=&quot;Introductiom&quot;&gt;&lt;/a&gt;Introductiom&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;The posts resource of my 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>一篇关于国旗与奥运会奖牌的可视化笔记</title>
     <link href="https://ytlogos.github.io/2017/09/12/%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8E%E5%9B%BD%E6%97%97%E4%B8%8E%E5%A5%A5%E8%BF%90%E4%BC%9A%E5%A5%96%E7%89%8C%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%AC%94%E8%AE%B0/"/>
     <id>https://ytlogos.github.io/2017/09/12/一篇关于国旗与奥运会奖牌的可视化笔记/</id>
     <published>2017-09-11T23:47:05.000Z</published>
-    <updated>2017-09-13T23:48:50.505Z</updated>
+    <updated>2017-09-19T00:39:01.445Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170912/k58bFmLk2c.png?imageslim" alt=""></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文主要介绍一个R包<strong>ggflags</strong>，可以用于绘制国旗。安装的话从<a href="https://github.com/baptiste/ggflags" target="_blank" rel="external">Github</a>上利用包<strong>devtools</strong>安装。</p>
@@ -1081,48 +1118,11 @@
   </entry>
   
   <entry>
-    <title>About me</title>
-    <link href="https://ytlogos.github.io/2017/09/12/README/"/>
-    <id>https://ytlogos.github.io/2017/09/12/README/</id>
-    <published>2017-09-11T23:47:05.000Z</published>
-    <updated>2017-09-14T00:07:07.115Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Introductiom"><a href="#Introductiom" class="headerlink" title="Introductiom"></a>Introductiom</h1><hr>
-<p>The posts resource of my personal blog</p>
-<ul>
-<li>code &amp; data &amp; graph</li>
-<li>R &amp; RStudio</li>
-<li>If you are interested in my blog, you can go to the home of my <a href="https://ytlogos.github.io/">blog</a></li>
-</ul>
-<h1 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a>About me</h1><hr>
-<p>严涛</p>
-<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
-<p>伪码农，R语言爱好者，爱开源</p>
-<hr>
-<p>wechat: yt056410</p>
-<p>Email: tyan@zju.edu.cn</p>
-<p>QQ: 1051927088</p>
-<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
-<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
-<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Introductiom&quot;&gt;&lt;a href=&quot;#Introductiom&quot; class=&quot;headerlink&quot; title=&quot;Introductiom&quot;&gt;&lt;/a&gt;Introductiom&lt;/h1&gt;&lt;hr&gt;
-&lt;p&gt;The posts resource of my 
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>利用tximport进行RNA-seq分析</title>
     <link href="https://ytlogos.github.io/2017/09/08/%E5%88%A9%E7%94%A8tximport%E8%BF%9B%E8%A1%8CRNA-seq%E5%88%86%E6%9E%90/"/>
     <id>https://ytlogos.github.io/2017/09/08/利用tximport进行RNA-seq分析/</id>
     <published>2017-09-08T10:31:07.000Z</published>
-    <updated>2017-09-13T23:48:50.505Z</updated>
+    <updated>2017-09-19T00:39:01.441Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>RNA-seq后续分析可以利用R包edgeR、DESeq2以及limma-voom等，而tximport包则可以将RNA-seq上游定量分析软件产生的结果导入到R语言中，进而方便后续的分析。具体的情况可以参考这篇文献：</p>
 <blockquote>
@@ -1171,7 +1171,7 @@
     <link href="https://ytlogos.github.io/2017/09/06/A-brief-introduction-of-salmon/"/>
     <id>https://ytlogos.github.io/2017/09/06/A-brief-introduction-of-salmon/</id>
     <published>2017-09-06T10:31:06.000Z</published>
-    <updated>2017-09-13T23:48:50.505Z</updated>
+    <updated>2017-09-19T00:39:01.436Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Salmon是一款定量分析RNA-seq的软件，号称Fast、accurate、bias-aware and Don’t count…quantify定量分析转录本。本文主要简要的介绍一下Salmon。具体的情况可移步<a href="https://combine-lab.github.io/salmon/" target="_blank" rel="external">Salmon官网</a></p>
 <a id="more"></a>
@@ -1224,7 +1224,7 @@
     <link href="https://ytlogos.github.io/2017/09/03/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86R%E5%8C%85magick%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://ytlogos.github.io/2017/09/03/图像处理R包magick学习笔记/</id>
     <published>2017-09-03T10:29:46.000Z</published>
-    <updated>2017-09-13T23:48:50.505Z</updated>
+    <updated>2017-09-19T00:39:01.433Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/a2jGAc87jB.gif" alt=""></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文主要简单介绍一下magick包，主要用于图像处理</p>
@@ -1332,7 +1332,7 @@
     <link href="https://ytlogos.github.io/2017/08/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     <id>https://ytlogos.github.io/2017/08/25/R语言可视化学习笔记之基因组数据可视化/</id>
     <published>2017-08-24T23:47:05.000Z</published>
-    <updated>2017-09-14T00:06:55.692Z</updated>
+    <updated>2017-09-19T00:39:01.469Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-38d068706ad3b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>本文主要利用<strong>ggpubr</strong>包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">library(ggpubr)#加载包</div></pre></td></tr></table></figure></p>
 <p>TCGA是一个包含大量癌症数据的数据库，由Marcin Kosinski创建的RTCGA包可以让我们很方便的获取这些数据。主要有三个包：RTCGA、RTCGA.clininal、RTCGA.mRNA。安装方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#Load the bioconductor installersource</div><div class="line">(&quot;http://bioconductor.org/biocLite.R&quot;&quot;)</div><div class="line">#设置镜像，这里我们选择中科大的镜像options(BioC_mirror=&quot;http://ustc.edu.cn/bioc&quot;)</div><div class="line">#下载包</div><div class="line">biocLite(&quot;RTCGA&quot;)</div><div class="line">biocLite(&quot;RTCGA.clininal&quot;)</div><div class="line">biocLite(&quot;RTCGA.mRNA&quot;)</div></pre></td></tr></table></figure></p>
@@ -1413,7 +1413,7 @@
     <link href="https://ytlogos.github.io/2017/08/24/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9B%BE%E5%BD%A2%E6%8E%92%E5%88%97/"/>
     <id>https://ytlogos.github.io/2017/08/24/ggplot2学习笔记之图形排列/</id>
     <published>2017-08-23T16:00:00.000Z</published>
-    <updated>2017-09-13T23:48:50.505Z</updated>
+    <updated>2017-09-19T00:39:01.428Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e6bf2901af3d315e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>R语言基本绘图函数中可以利用par()以及layout()来进行图形排列，但是这两个函数对于ggplot图则不太适用，本文主要讲解如何对多ggplot图形多页面进行排列。主要讲解如何利用包gridExtra、cowplot以及ggpubr中的函数进行图形排列。<br><a id="more"></a></p>
 <h2 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#load packages</div><div class="line">library(gridExtra)</div><div class="line">library(cowplot)</div><div class="line">library(ggpubr)</div><div class="line">#dataset ToothGrowth and mtcars</div><div class="line">mtcars$name &lt;- rownames(mtcars)</div><div class="line">mtcars$cyl &lt;- as.factor(mtcars$cyl)</div><div class="line">head(mtcars[, c(&quot;name&quot;, &quot;wt&quot;,&quot;mpg&quot;, &quot;cyl&quot;)])</div></pre></td></tr></table></figure>
@@ -1586,7 +1586,7 @@
     <link href="https://ytlogos.github.io/2017/08/21/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%83%AD%E5%9B%BE%E7%BB%98%E5%88%B6/"/>
     <id>https://ytlogos.github.io/2017/08/21/R语言学习笔记之热图绘制/</id>
     <published>2017-08-20T23:47:05.000Z</published>
-    <updated>2017-09-14T00:21:08.980Z</updated>
+    <updated>2017-09-19T00:39:01.474Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-076503522b98e6a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文将绘制静态与交互式热图，需要使用到以下R包和函数：<br><code>heatmap()</code>:用于绘制简单热图的函数<br><code>heatmap.2()</code>:绘制增强热图的函数<br><code>d3heatmap</code>:用于绘制交互式热图的R包<br><code>ComplexHeatmap</code>:用于绘制、注释和排列复杂热图的R&amp;bioconductor包（非常适用于基因组数据分析）<br><a id="more"></a></p>
@@ -1731,7 +1731,7 @@
     <link href="https://ytlogos.github.io/2017/07/12/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E6%95%A3%E7%82%B9%E5%9B%BE/"/>
     <id>https://ytlogos.github.io/2017/07/12/ggplot2学习笔记系列之利用ggplot2绘制散点图/</id>
     <published>2017-07-11T23:47:05.000Z</published>
-    <updated>2017-09-13T23:59:38.111Z</updated>
+    <updated>2017-09-19T00:39:01.478Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>1 简介<br>散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包<strong>ggplot2</strong>可以绘制十分漂亮的散点图。 利用<strong>ggplot2</strong>绘图前先确保我们所使用的数据集是<strong>data.frame</strong>形式。<strong>ggplot2</strong>绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包<strong>ggplot2</strong> 即<strong>library(ggplot2)</strong>。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Load packages</div><div class="line">library(ggplot2)#visualization</div></pre></td></tr></table></figure></p>
 <p>加载完包之后，本文利用数据集<strong>mtcars</strong>来演示散点图绘制。 先查看数据集的前几行来了解<strong>mtcars</strong>数据集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#check data</div><div class="line">head(mtcars)</div></pre></td></tr></table></figure></p>
@@ -1789,7 +1789,7 @@
     <link href="https://ytlogos.github.io/2017/07/01/r4ds%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggplot2/"/>
     <id>https://ytlogos.github.io/2017/07/01/r4ds学习笔记之ggplot2/</id>
     <published>2017-07-01T09:55:59.000Z</published>
-    <updated>2017-09-13T23:48:50.505Z</updated>
+    <updated>2017-09-19T00:39:01.425Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-515da9e1fb644123.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>为了进一步加强以及整合自己<strong>data science</strong>的能力，最近打算在<a href="https://ytlogos.github.io/">我的博客</a>开辟一个新类<strong>r4ds</strong>，专门用来记录学习<strong>Hadley Wickham</strong>大神的新作<a href="http://r4ds.had.co.nz/" target="_blank" rel="external">R for Data Science</a>的读书笔记。该书推荐我们入门data science可以从可视化开始，这也是该书目录布局的第一章。因此开始学习R语言可视化。</p>
@@ -1837,7 +1837,7 @@
     <link href="https://ytlogos.github.io/2017/06/29/R%E8%AF%AD%E8%A8%80data-manipulation%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bsubset-data/"/>
     <id>https://ytlogos.github.io/2017/06/29/R语言data-manipulation学习笔记之subset-data/</id>
     <published>2017-06-29T12:58:25.000Z</published>
-    <updated>2017-09-13T23:48:50.505Z</updated>
+    <updated>2017-09-19T00:39:01.421Z</updated>
     
     <content type="html"><![CDATA[<center><img src="C:\Users\user\Desktop\下载.jpg" alt=""></center>
 
@@ -1879,7 +1879,7 @@
     <link href="https://ytlogos.github.io/2017/06/28/R%E8%AF%AD%E8%A8%80data-manipulation%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%88%9B%E5%BB%BA%E5%8F%98%E9%87%8F%E3%80%81%E9%87%8D%E5%91%BD%E5%90%8D%E3%80%81%E6%95%B0%E6%8D%AE%E8%9E%8D%E5%90%88/"/>
     <id>https://ytlogos.github.io/2017/06/28/R语言data-manipulation学习笔记之创建变量、重命名、数据融合/</id>
     <published>2017-06-28T08:06:11.000Z</published>
-    <updated>2017-09-13T23:48:50.505Z</updated>
+    <updated>2017-09-19T00:39:01.417Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4a45f75977c58bb5.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>数据分析中数据处理也就是data manipulation是十分繁琐的，为此我将在博客里特意建一个分类：Data Manipulation。本文将讲讲如何在R语言中创建变量、重命名以及merge。<br><a id="more"></a></p>
 <p>#create a dataset<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">fy &lt;- c(2010,2011,2012,2010,2011,2012,2010,2011,2012)</div><div class="line">company &lt;- c(&quot;Apple&quot;,&quot;Apple&quot;,&quot;Apple&quot;,&quot;Google&quot;,&quot;Google&quot;,&quot;Google&quot;,&quot;Microsoft&quot;,&quot;Microsoft&quot;,&quot;Microsoft&quot;)</div><div class="line">revenue &lt;- c(65225,108249,156508,29321,37905,50175,62484,69943,73723)</div><div class="line">profit &lt;- c(14013,25922,41733,8505,9737,10737,18760,23150,16978) </div><div class="line">companiesData &lt;- data.frame(fy, company, revenue, profit)</div><div class="line">head(companiesData)</div><div class="line">##     fy   company revenue profit</div><div class="line">## 1  2010   Apple   65225  14013</div><div class="line">## 2  2011   Apple  108249  25922</div><div class="line">## 3  2012   Apple  156508  41733</div><div class="line">## 4  2010  Google   29321   8505</div><div class="line">## 5  2011  Google   37905   9737</div><div class="line">## 6  2012  Google   50175  10737</div></pre></td></tr></table></figure></p>
@@ -1917,7 +1917,7 @@
     <link href="https://ytlogos.github.io/2017/06/26/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggpubr%E5%8C%85/"/>
     <id>https://ytlogos.github.io/2017/06/26/R语言可视化学习笔记之ggpubr包/</id>
     <published>2017-06-26T11:43:11.000Z</published>
-    <updated>2017-09-13T23:48:50.505Z</updated>
+    <updated>2017-09-19T00:39:01.412Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-fbe5b444e2efcb8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><a href="http://docs.ggplot2.org/current/" target="_blank" rel="external">Hadley Wickham</a>创建的可视化包ggplot2可以流畅地进行优美的可视化，但是如果要通过ggplot2定制一套图形，尤其是适用于杂志期刊等出版物的图形，对于那些没有深入了解<strong>ggplot2</strong>的人来说就有点困难了，<strong>ggplot2</strong>的部分语法是很晦涩的。为此<a href="http://www.sthda.com/english/rpkgs/ggpubr/index.html" target="_blank" rel="external">Alboukadel Kassambara</a>创建了基于<strong>ggplot2</strong>的可视化包<strong>ggpubr</strong>用于绘制符合出版物要求的图形。<br><a id="more"></a></p>
 <h2 id="安装及加载ggpubr包"><a href="#安装及加载ggpubr包" class="headerlink" title="安装及加载ggpubr包"></a>安装及加载<strong>ggpubr</strong>包</h2><p>安装方式有两种：</p>
@@ -2000,7 +2000,7 @@
     <link href="https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E8%AF%AF%E5%B7%AE%E6%A3%92%E5%8F%8A%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/"/>
     <id>https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-09-13T23:48:50.489Z</updated>
+    <updated>2017-09-19T00:39:01.404Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h2 id="绘制带有误差棒的条形图"><a href="#绘制带有误差棒的条形图" class="headerlink" title="绘制带有误差棒的条形图"></a>绘制带有误差棒的条形图</h2><a id="more"></a>
@@ -2049,147 +2049,66 @@
   </entry>
   
   <entry>
-    <title>R语言可视化学习笔记之添加p-value和显著性标记</title>
-    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B7%BB%E5%8A%A0p-value%E5%92%8C%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/"/>
-    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/</id>
+    <title>用circlize包绘制circos-plot</title>
+    <link href="https://ytlogos.github.io/2017/06/25/%E7%94%A8circlize%E5%8C%85%E7%BB%98%E5%88%B6circos-plot/"/>
+    <id>https://ytlogos.github.io/2017/06/25/用circlize包绘制circos-plot/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-09-13T23:48:50.474Z</updated>
+    <updated>2017-09-19T00:39:01.408Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上篇文章中提了一下如何通过<strong>ggpubr</strong>包为<code>ggplot</code>图添加<code>p-value</code>以及显著性标记,本文将详细介绍。利用数据集<strong>ToothGrowth</strong>进行演示<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#先加载包</div><div class="line">library(ggpubr)</div><div class="line">#加载数据集ToothGrowth</div><div class="line">data(&quot;ToothGrowth&quot;)</div><div class="line">head(ToothGrowth)</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">##    len  supp  dose</div><div class="line">## 1  4.2   VC   0.5</div><div class="line">## 2  11.5  VC   0.5</div><div class="line">## 3  7.3   VC   0.5</div><div class="line">## 4  5.8   VC   0.5</div><div class="line">## 5  6.4   VC   0.5</div><div class="line">## 6  10.0  VC   0.5</div></pre></td></tr></table></figure>
-<h2 id="比较方法"><a href="#比较方法" class="headerlink" title="比较方法"></a>比较方法</h2><p><strong>R</strong>中常用的比较方法主要有下面几种：</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>R函数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T-test</td>
-<td>t.test()</td>
-<td>比较两组(参数)</td>
-</tr>
-<tr>
-<td>Wilcoxon test</td>
-<td>wilcox.test()</td>
-<td>比较两组(非参数)</td>
-</tr>
-<tr>
-<td>ANOVA</td>
-<td>aov()或anova()</td>
-<td>比较多组(参数)</td>
-</tr>
-<tr>
-<td>Kruskal-Wallis</td>
-<td>kruskal.test()</td>
-<td>比较多组(非参数)</td>
-</tr>
-</tbody>
-</table>
-<p>各种比较方法后续有时间一一讲解。</p>
-<h2 id="添加p-value"><a href="#添加p-value" class="headerlink" title="添加p-value"></a>添加<code>p-value</code></h2><p>主要利用<strong>ggpubr</strong>包中的两个函数：</p>
-<ul>
-<li><code>compare_means()</code>:可以进行一组或多组间的比较</li>
-<li><code>stat_compare_mean()</code>:自动添加<code>p-value</code>、显著性标记到<strong>ggplot</strong>图中</li>
-</ul>
-<p>##<strong>compare_means()</strong>函数<br>该函数主要用用法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compare_means(formula, data, method = &quot;wilcox.test&quot;, paired = FALSE,</div><div class="line">  group.by = NULL, ref.group = NULL, ...)</div></pre></td></tr></table></figure></p>
-<p>注释：</p>
-<ul>
-<li><code>formula</code>:形如<code>x~group</code>，其中x是数值型变量，<code>group</code>是因子，可以是一个或者多个</li>
-<li><code>data</code>：数据集</li>
-<li><code>method</code>:比较的方法，默认为<code>&quot;wilcox.test&quot;</code>, 其他可选方法为：<code>&quot;t.test&quot;</code>、<code>&quot;anova&quot;</code>、<code>&quot;kruskal.test&quot;</code></li>
-<li><code>paired</code>:是否要进行<code>paired test</code>(<code>TRUE</code> or <code>FALSE</code>)</li>
-<li><code>group_by</code>: 比较时是否要进行分组</li>
-<li><code>ref.group</code>: 是否需要指定参考组</li>
-</ul>
-<p>##<strong>stat_compare_means()</strong>函数<br>主要用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">stat_compare_means(mapping = NULL, comparisons = NULL hide.ns = FALSE,</div><div class="line">                   label = NULL,  label.x = NULL, label.y = NULL,  ...)</div></pre></td></tr></table></figure></p>
-<p>注释：</p>
-<ul>
-<li><code>mapping</code>:由<code>aes()</code>创建的一套美学映射</li>
-<li><code>comparisons</code>:指定需要进行比较以及添加<code>p-value</code>、显著性标记的组</li>
-<li><code>hide.ns</code>:是否要显示显著性标记ns</li>
-<li><code>label</code>:显著性标记的类型，可选项为：<code>p.signif</code>(显著性标记)、<code>p.format</code>(显示<code>p-value</code>)</li>
-<li><code>label.x</code>、<code>label.y</code>:显著性标签调整</li>
-<li>…:其他参数</li>
-</ul>
-<h2 id="比较独立的两组"><a href="#比较独立的两组" class="headerlink" title="比较独立的两组"></a>比较独立的两组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~supp, data=ToothGrowth)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b045b6dd37c6efb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>结果解释：</p>
-<ul>
-<li><code>.y</code>:测试中使用的y变量</li>
-<li><code>p</code>:<code>p-value</code></li>
-<li><code>p.adj</code>:调整后的<code>p-value</code>。默认为<code>p.adjust.method=&quot;holm&quot;</code></li>
-<li><code>p.format</code>:四舍五入后的<code>p-value</code></li>
-<li><code>p.signif</code>:显著性水平</li>
-<li><code>method</code>:用于统计检验的方法<br>##绘制箱线图<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, add = &quot;jitter&quot;)#添加p-valuep+stat_compare_means()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e218a1edab30a234.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#使用其他统计检验方法</div><div class="line">p+stat_compare_means(method = &quot;t.test&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-fc20d4bbb39c1377.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上述显著性标记可以通过<code>label.x</code>、<code>label.y</code>、<code>hjust</code>及<code>vjust</code>来调整<br>显著性标记可以通过<code>aes()</code>映射来更改：</p>
-<ul>
-<li><code>aes(label=..p.format..)</code>或<code>aes(lebel=paste0(&quot;p=&quot;,..p.format..))</code>:只显示<code>p-value</code>，不显示统计检验方法<ul>
-<li><code>aes(label=..p.signif..)</code>:仅显示显著性水平</li>
-<li><code>aes(label=paste0(..method..,&quot;\n&quot;, &quot;p=&quot;,..p.format..))</code>:<code>p-value</code>与显著性水平分行显示</li>
-</ul>
-</li>
-</ul>
-<p>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p+stat_compare_means(aes(label=..p.signif..), label.x = 1.5, label.y = 40)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c0f71b843b6472b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>也可以将标签指定为字符向量，不要映射，只需将p.signif两端的..去掉即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p+stat_compare_means(label = &quot;p.signif&quot;, label.x = 1.5, label.y = 40)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-15c7ae8bbaaf7b95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="比较两个paired-sample"><a href="#比较两个paired-sample" class="headerlink" title="比较两个paired sample"></a>比较两个paired sample</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~supp, data=ToothGrowth, paired = TRUE)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-770f433a6a5e4ef3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="利用ggpaired-进行可视化"><a href="#利用ggpaired-进行可视化" class="headerlink" title="利用ggpaired()进行可视化"></a>利用ggpaired()进行可视化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggpaired(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, line.color = &quot;gray&quot;, </div><div class="line">line.size = 0.4, palette = &quot;jco&quot;)+ stat_compare_means(paired = TRUE)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2b3b18fa8e3ec2c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="多组比较"><a href="#多组比较" class="headerlink" title="多组比较"></a>多组比较</h2><p>Global test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~dose, data=ToothGrowth, method = &quot;anova&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dd4f81af301e529b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means()</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a0fcb4c4683d0f07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#使用其他的方法</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+ </div><div class="line">stat_compare_means(method = &quot;anova&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6572797c98bbb9a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>Pairwise comparisons:如果分组变量中包含两个以上的水平，那么会自动进行pairwise test,默认方法为”wilcox.test”</p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4b332e9275d7088e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="circlize包"><a href="#circlize包" class="headerlink" title="circlize包"></a><code>circlize</code>包</h2><p><code>circlize</code>包在德国癌症中心的华人博士Zuguang Gu开发的，有兴趣的可以去看看他的<a href="https://github.com/jokergoo" target="_blank" rel="external">Github主页</a>。这个包有两个文档，一个是介绍基本原理的绘制简单<a href="https://cran.r-project.org/web/packages/circlize/vignettes/circlize.pdf" target="_blank" rel="external">圈圈图</a>的，也是本次要介绍的。另外一份文档专门介绍基因组数据绘制圈圈图<a href="https://cran.r-project.org/web/packages/circlize/vignettes/genomic_plot.pdf" target="_blank" rel="external">Genomic Circos Plot</a>,我自己还没看完，下次再介绍。<br>根据我的学习发现这个包与<code>ggplot2</code>很相似，也是先创建一个图层，然后不断的添加图形元素（<code>point</code>、<code>line</code>、<code>bar</code>等），这些简单的图形元素都有<code>circos.</code>这个前缀进行绘制，比如要绘制点，则用<code>circos.points()</code>。具体的下面一一介绍。<br><a id="more"></a></p>
+<h2 id="用circlize绘制圈圈图"><a href="#用circlize绘制圈圈图" class="headerlink" title="用circlize绘制圈圈图"></a>用<code>circlize</code>绘制圈圈图</h2><blockquote>
+<p>照例，没有安装这个包的先安装：<code>install.packages(&quot;circlize&quot;)</code>或者<code>devtools::install_github(&quot;jokergoo/circlize&quot;)</code>。绘图第一步是先初始化(<code>circos.initialize</code>),接下来绘制<code>track</code>，再添加基本元素。需要提一下的是，由于<code>circlize</code>绘制图是不断叠加的，因此如果我们一大段代码下来我们只能看到最终的图形，这里为了演示每端代码的结果，所以每次我都得初始化以及<code>circlize.clear</code>。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~dose, data=ToothGrowth)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c25c03cedcf149bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#可以指定比较哪些组</div><div class="line">my_comparisons &lt;- list(c(&quot;0.5&quot;, &quot;1&quot;), c(&quot;1&quot;, &quot;2&quot;), c(&quot;0.5&quot;, &quot;2&quot;))</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;,palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means(comparisons=my_comparisons)+ # Add pairwise </div><div class="line">comparisons p-value stat_compare_means(label.y = 50) # Add global p-value</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-87c29855f34018b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>可以通过修改参数label.y来更改标签的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;,palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means(comparisons=my_comparisons, label.y = c(29, 35, 40))+ # Add pairwise comparisons p-value </div><div class="line">stat_compare_means(label.y = 45) # Add global p-value</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-554a2136abe2eee4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>至于通过添加线条来连接比较的两组，这一功能已由包<a href="https://github.com/Artjom-Metro/ggsignif" target="_blank" rel="external"><strong>ggsignif</strong></a>实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">##设定参考组</div><div class="line">compare_means(len~dose, data=ToothGrowth, ref.group = &quot;0.5&quot;,  #以dose=0.5组为参考组 </div><div class="line">method = &quot;t.test&quot; )</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9ba2e25b978710a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+ </div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 40)+ # Add global p-value</div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, ref.group = &quot;0.5&quot;) # Pairwise comparison against reference</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8510992c45710447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">参考组也可以设置为.all.即所有的平均值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~dose, data=ToothGrowth, ref.group = &quot;.all.&quot;, method = &quot;t.test&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2976426c33943786.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)+</div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 40)+# Add global p-value</div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, </div><div class="line">ref.group = &quot;.all.&quot;)#Pairwise comparison against all</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e0b10b222601691f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>接下来利用<strong>survminer</strong>包中的数据集<strong>myeloma</strong>来讲解一下为什么有时候我们需要将ref.group设置为.all.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(survminer)#没安装的先安装再加载</div><div class="line">data(&quot;myeloma&quot;)</div><div class="line">head(myeloma)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-96dcc29ad0882230.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(circlize)</div><div class="line"># 简单创建一个数据集</div><div class="line">set.seed(999)</div><div class="line">n &lt;- 1000</div><div class="line">a &lt;- data.frame(factors = sample(letters[1:8], n, replace = TRUE), x = rnorm(n), y = runif(n))</div></pre></td></tr></table></figure>
+<h2 id="绘制第一个track"><a href="#绘制第一个track" class="headerlink" title="绘制第一个track"></a>绘制第一个<code>track</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">par(mar = c(1, 1, 1, 1), lwd = 0.1, cex = 0.6)</div><div class="line">circos.par(track.height = 0.1)</div><div class="line">circos.initialize(factors = a$factors, x = a$x) #初始化，factors来控制track数目，初始化里只有x， 没有y。这一步相当于ggplot()</div><div class="line">circos.trackPlotRegion(factors = a$factors, y = a$y, </div><div class="line">panel.fun = function(x, y) &#123; </div><div class="line">circos.axis()&#125;)</div><div class="line">col &lt;- rep(c(&quot;#FF0000&quot;, &quot;#00FF00&quot;), 4) #自定义一下颜色# 这里先解释一下，一个track有好几个cell，具体数目由factors决定的，向本数据集中factors有八个，因此绘制一个track，其包含八个cell。含有前缀circos.track的函数会在所有的cel里添加基本元素，而只有前缀circos.的函数可以在特定的track、cell里添加基本元素。具体看下演示。</div><div class="line">circos.trackPoints(a$factors, a$x, a$y, col = col, pch = 16, cex = 0.5) #所有的cell里都绘制点图</div><div class="line">circos.text(-1, 0.5, &quot;left&quot;, sector.index = &quot;a&quot;, track.index = 1) #在track 1中的标记为a的cell里添加</div><div class="line">textcircos.text(1, 0.5, &quot;right&quot;, sector.index = &quot;a&quot;)</div><div class="line">circos.clear()</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-d3f6e3b63528471a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>##接下来绘制第二个<code>track</code></p>
 <blockquote>
-<p>我们将根据患者的分组来绘制<strong>DEPDC1</strong>基因的表达谱，看不同组之间是否存在显著性的差异，我们可以在7组之间进行比较，但是这样的话组间比较的组合就太多了，因此我们可以将7组中每一组与全部平均值进行比较，看看<strong>DEPDC1</strong>基因在不同的组中是否过表达还是低表达。</p>
+<p><code>circos.trackHist</code>添加柱状图，由于柱状图相对高级一点，因此<code>circos.trackHist</code>会自动创建一个<code>track</code>，无需我们<code>circos.trackPlotRegion</code>进行创建。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(DEPDC1~molecular_group, data = myeloma, ref.group = &quot;.all.&quot;, method = &quot;t.test&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-53c1d6a7df55e7d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#可视化DEPDC1基因表达谱</div><div class="line">ggboxplot(myeloma, x=&quot;molecular_group&quot;, y=&quot;DEPDC1&quot;, </div><div class="line">color = &quot;molecular_group&quot;, add = &quot;jitter&quot;, legend=&quot;none&quot;)+ </div><div class="line">rotate_x_text(angle = 45)+ </div><div class="line">geom_hline(yintercept = mean(myeloma$DEPDC1), linetype=2)+# Add horizontal line at base mean </div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 1600)+ # Add global annova p-value </div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, ref.group = &quot;.all.&quot;)# Pairwise comparison against all</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c6188f0a83617dcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">par(mar = c(1, 1, 1, 1), lwd = 0.1, cex = 0.6)</div><div class="line">circos.par(track.height = 0.1)</div><div class="line">circos.initialize(factors = a$factors, x = a$x)</div><div class="line">circos.trackPlotRegion(factors = a$factors, y = a$y, </div><div class="line">panel.fun = function(x, y) &#123; </div><div class="line">circos.axis()&#125;)</div><div class="line">col &lt;- rep(c(&quot;#FF0000&quot;, &quot;#00FF00&quot;), 4)</div><div class="line">circos.trackPoints(a$factors, a$x, a$y, col = col, pch = 16, cex = 0.5)</div><div class="line">circos.text(-1, 0.5, &quot;left&quot;, sector.index = &quot;a&quot;, track.index = 1)</div><div class="line">circos.text(1, 0.5, &quot;right&quot;, sector.index = &quot;a&quot;)</div><div class="line">bg.col &lt;- rep(c(&quot;#EFEFEF&quot;, &quot;#CCCCCC&quot;), 4)</div><div class="line">circos.trackHist(a$factors, a$x, bg.col = bg.col, col = NA)</div><div class="line">circos.clear()</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-42c29a97051139c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="创建第三个track"><a href="#创建第三个track" class="headerlink" title="创建第三个track"></a>创建第三个<code>track</code></h2><blockquote>
+<p>这里又得提一下，当我们绘制多个<code>track</code>时，我们添加基本元素时要指定添加到哪个<code>track</code>(<code>track.index</code>指定)、哪个<code>cell</code>(<code>sector.index</code>指定)里，如果不指定，那么将默认<code>track</code>是我们刚刚创建的那个。<code>track.index</code>、<code>sector.index</code>等参数可以通过<code>get.cell.meta.data</code>函数获取。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">par(mar = c(1, 1, 1, 1), lwd = 0.1, cex = 0.6)</div><div class="line">circos.par(track.height = 0.1)</div><div class="line">circos.initialize(factors = a$factors, x = a$x)</div><div class="line">circos.trackPlotRegion(factors = a$factors, y = a$y,</div><div class="line"> panel.fun = function(x, y) &#123; </div><div class="line">circos.axis()&#125;)</div><div class="line">col &lt;- rep(c(&quot;#FF0000&quot;, &quot;#00FF00&quot;), 4)</div><div class="line">circos.trackPoints(a$factors, a$x, a$y, col = col, pch = 16, cex = 0.5)</div><div class="line">circos.text(-1, 0.5, &quot;left&quot;, sector.index = &quot;a&quot;, track.index = 1)</div><div class="line">circos.text(1, 0.5, &quot;right&quot;, sector.index = &quot;a&quot;)</div><div class="line">bg.col &lt;- rep(c(&quot;#EFEFEF&quot;, &quot;#CCCCCC&quot;), 4)</div><div class="line">circos.trackHist(a$factors, a$x, bg.col = bg.col, col = NA)</div><div class="line">circos.trackPlotRegion(factors = a$factors, x = a$x, y = a$y, </div><div class="line">panel.fun = function(x, y) &#123;</div><div class="line"> grey = c(&quot;#FFFFFF&quot;, &quot;#CCCCCC&quot;, &quot;#999999&quot;) </div><div class="line">sector.index = get.cell.meta.data(&quot;sector.index&quot;) #这个是第三个track，因为我们刚刚创建，这里这一步不用也可。</div><div class="line"> xlim = get.cell.meta.data(&quot;xlim&quot;)</div><div class="line"> ylim = get.cell.meta.data(&quot;ylim&quot;) </div><div class="line">circos.text(mean(xlim), mean(ylim), sector.index) </div><div class="line">circos.points(x[1:10], y[1:10], col = &quot;red&quot;, pch = 16, cex = 0.6) </div><div class="line">circos.points(x[11:20], y[11:20], col = &quot;blue&quot;, cex = 0.6)&#125;)</div><div class="line">circos.clear()</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-16e1d662c32d6e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <blockquote>
-<p>从图中可以看出，DEPDC1基因在Proliferation组中显著性地过表达，而在Hyperdiploid和Low bone disease显著性地低表达</p>
+<p>实际操作中我们常常会更新数据或者想更新图形，这是可以通过<code>circos.updatePlotRegion</code>函数在特定的<code>track</code>、<code>cell</code>里(先删除再添加)<code>update</code>，下面我们将通过<code>circos.updatePlotRegion</code>函数先删除<code>track 2</code>、<code>sector d</code>中的图形元素再添加点图。</p>
 </blockquote>
-<p>我们也可以将非显著性标记ns去掉，只需要将参数hide.ns=TRUE<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ggboxplot(myeloma, x=&quot;molecular_group&quot;, y=&quot;DEPDC1&quot;, </div><div class="line">color = &quot;molecular_group&quot;, add = &quot;jitter&quot;, legend=&quot;none&quot;)+</div><div class="line">rotate_x_text(angle = 45)+ </div><div class="line">geom_hline(yintercept = mean(myeloma$DEPDC1), linetype=2)+# Add horizontal line at base mean </div><div class="line">stat_compare_means(method = &quot;anova&quot;, label.y = 1600)+ # Add global annova p-value </div><div class="line">stat_compare_means(label = &quot;p.signif&quot;, method = &quot;t.test&quot;, ref.group = &quot;.all.&quot;, hide.ns = TRUE)# Pairwise comparison against all</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="多个分组变量"><a href="#多个分组变量" class="headerlink" title="多个分组变量"></a>多个分组变量</h2><p>按另一个变量进行分组之后进行统计检验，比如按变量dose进行分组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compare_means(len~supp, data=ToothGrowth, group.by = &quot;dose&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-56f713ae2fa2c591.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, add = &quot;jitter&quot;, facet.by = &quot;dose&quot;, short.panel.labs = FALSE)#按dose进行分面</div><div class="line">#label只绘制</div><div class="line">p-valuep+stat_compare_means(label = &quot;p.format&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a235626a981e4709.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#label绘制显著性水平</div><div class="line">p+stat_compare_means(label = &quot;p.signif&quot;, label.x = 1.5)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-3ebf7d89f1a517cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#将所有箱线图绘制在一个panel中</div><div class="line">p &lt;- ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, add = &quot;jitter&quot;)</div><div class="line">p+stat_compare_means(aes(group=supp))</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6529191fdef8f3dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#只显示p-value</div><div class="line">p+stat_compare_means(aes(group=supp), label = &quot;p.format&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ce9c6136407ca58a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#显示显著性水平</div><div class="line">p+stat_compare_means(aes(group=supp), label = &quot;p.signif&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f2cf5728cc9cf67a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">进行paired sample检验</div><div class="line">compare_means(len~supp, data=ToothGrowth, group.by = &quot;dose&quot;, paired = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5d2ebfd37391113.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#可视化</div><div class="line">p &lt;- ggpaired(ToothGrowth, x=&quot;supp&quot;, y=&quot;len&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, line.color=&quot;gray&quot;, line.size=0.4, facet.by = &quot;dose&quot;, </div><div class="line">short.panel.labs = FALSE)#按dose分面</div><div class="line">#只显示p-value</div><div class="line">p+stat_compare_means(label = &quot;p.format&quot;, paired = TRUE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-cc7db564846fae97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="其他图形"><a href="#其他图形" class="headerlink" title="其他图形"></a>其他图形</h2><p>##条形图与线图（一个分组变量）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#有误差棒的条形图，实际上我以前的文章里有纯粹用ggplot2实现</div><div class="line">ggbarplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;)+ </div><div class="line">stat_compare_means()+ </div><div class="line">stat_compare_means(ref.group = &quot;0.5&quot;, label = &quot;p.signif&quot;, label.y = c(22, 29))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0a38300e74bbce61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#有误差棒的线图</div><div class="line">ggline(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;)+</div><div class="line">stat_compare_means()+ </div><div class="line">stat_compare_means(ref.group = &quot;0.5&quot;, label = &quot;p.signif&quot;, label.y = c(22, 29))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9bbc6411123c593a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>##条形图与线图（两个分组变量）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggbarplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;, position = position_dodge(0.8))+ </div><div class="line">stat_compare_means(aes(group=supp), label = &quot;p.signif&quot;, label.y = 29)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b2dd950f78f7a642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggline(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, add = &quot;mean_se&quot;, color = &quot;supp&quot;, </div><div class="line">palette = &quot;jco&quot;)+ </div><div class="line">stat_compare_means(aes(group=supp), label = &quot;p.signif&quot;, label.y = c(16, 25, 29))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bd2413a61ece0ed2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="Sessioninfo"><a href="#Sessioninfo" class="headerlink" title="Sessioninfo"></a>Sessioninfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] survminer_0.4.0 ggpubr_0.1.3 magrittr_1.5 ggplot2_2.2.1 </div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] Rcpp_0.12.11 compiler_3.4.0 plyr_1.8.4</div><div class="line">## [4] tools_3.4.0 digest_0.6.12 evaluate_0.10 </div><div class="line">## [7] tibble_1.3.3 gtable_0.2.0 nlme_3.1-131 </div><div class="line">## [10] lattice_0.20-35 rlang_0.1.1 Matrix_1.2-10 </div><div class="line">## [13] psych_1.7.5 ggsci_2.4 DBI_0.6-1 </div><div class="line">## [16] cmprsk_2.2-7 yaml_2.1.14 parallel_3.4.0 </div><div class="line">## [19] gridExtra_2.2.1 dplyr_0.5.0 stringr_1.2.0 </div><div class="line">## [22] knitr_1.16 survMisc_0.5.4 rprojroot_1.2 </div><div class="line">## [25] grid_3.4.0 data.table_1.10.4 KMsurv_0.1-5 </div><div class="line">## [28] R6_2.2.1 km.ci_0.5-2 survival_2.41-3 </div><div class="line">## [31] foreign_0.8-68 rmarkdown_1.5 reshape2_1.4.2 </div><div class="line">## [34] tidyr_0.6.3 purrr_0.2.2.2 splines_3.4.0 </div><div class="line">## [37] backports_1.1.0 scales_0.4.1 htmltools_0.3.6 </div><div class="line">## [40] assertthat_0.2.0 mnormt_1.5-5 xtable_1.8-2 </div><div class="line">## [43] colorspace_1.3-2 ggsignif_0.2.0 labeling_0.3 </div><div class="line">## [46] stringi_1.1.5 lazyeval_0.2.0 munsell_0.4.3 </div><div class="line">## [49] broom_0.4.2 zoo_1.8-0</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">par(mar = c(1, 1, 1, 1), lwd = 0.1, cex = 0.6)</div><div class="line">circos.par(track.height = 0.1)</div><div class="line">circos.initialize(factors = a$factors, x = a$x)</div><div class="line">circos.trackPlotRegion(factors = a$factors, y = a$y, </div><div class="line">panel.fun = function(x, y) &#123; </div><div class="line">circos.axis()&#125;)col &lt;- rep(c(&quot;#FF0000&quot;, &quot;#00FF00&quot;), 4)</div><div class="line">circos.trackPoints(a$factors, a$x, a$y, col = col, pch = 16, cex = 0.5)</div><div class="line">circos.text(-1, 0.5, &quot;left&quot;, sector.index = &quot;a&quot;, track.index = 1)</div><div class="line">circos.text(1, 0.5, &quot;right&quot;, sector.index = &quot;a&quot;)</div><div class="line">circos.trackPoints(a$factors, a$x, a$y, col = col, pch = 16, cex = 0.5)</div><div class="line">circos.text(-1, 0.5, &quot;left&quot;, sector.index = &quot;a&quot;, track.index = 1)</div><div class="line">circos.text(1, 0.5, &quot;right&quot;, sector.index = &quot;a&quot;)</div><div class="line">bg.col &lt;- rep(c(&quot;#EFEFEF&quot;, &quot;#CCCCCC&quot;), 4)</div><div class="line">circos.trackHist(a$factors, a$x, bg.col = bg.col, col = NA)</div><div class="line">circos.trackPlotRegion(factors = a$factors, x = a$x, y = a$y,</div><div class="line"> panel.fun = function(x, y) &#123; </div><div class="line">grey = c(&quot;#FFFFFF&quot;, &quot;#CCCCCC&quot;, &quot;#999999&quot;) </div><div class="line">sector.index = get.cell.meta.data(&quot;sector.index&quot;)</div><div class="line"> xlim = get.cell.meta.data(&quot;xlim&quot;) </div><div class="line">ylim = get.cell.meta.data(&quot;ylim&quot;) </div><div class="line">circos.text(mean(xlim), mean(ylim), sector.index)</div><div class="line">circos.points(x[1:10], y[1:10], col = &quot;red&quot;, pch = 16, cex = 0.6)</div><div class="line"> circos.points(x[11:20], y[11:20], col = &quot;blue&quot;, cex = 0.6)&#125;)</div><div class="line"># update第2个track中标记为d的sector</div><div class="line">circos.updatePlotRegion(sector.index = &quot;d&quot;, track.index = 2)</div><div class="line">circos.points(x = -2:2, y = rep(0, 5))</div><div class="line">xlim &lt;- get.cell.meta.data(&quot;xlim&quot;)</div><div class="line">ylim &lt;- get.cell.meta.data(&quot;ylim&quot;)</div><div class="line">circos.text(mean(xlim), mean(ylim), &quot;updated&quot;)</div><div class="line">circos.clear()</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c1739e4842120955.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="接下来绘制第四个track"><a href="#接下来绘制第四个track" class="headerlink" title="接下来绘制第四个track"></a>接下来绘制第四个<code>track</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">par(mar = c(1, 1, 1, 1), lwd = 0.1, cex = 0.6)</div><div class="line">circos.par(track.height = 0.1)</div><div class="line">circos.initialize(factors = a$factors, x = a$x)</div><div class="line">circos.trackPlotRegion(factors = a$factors, y = a$y,</div><div class="line"> panel.fun = function(x, y) &#123; circos.axis()&#125;)</div><div class="line">col &lt;- rep(c(&quot;#FF0000&quot;, &quot;#00FF00&quot;), 4)</div><div class="line">circos.trackPoints(a$factors, a$x, a$y, col = col, pch = 16, cex = 0.5)</div><div class="line">circos.text(-1, 0.5, &quot;left&quot;, sector.index = &quot;a&quot;, track.index = 1)</div><div class="line">circos.text(1, 0.5, &quot;right&quot;, sector.index = &quot;a&quot;)</div><div class="line">circos.trackPoints(a$factors, a$x, a$y, col = col, pch = 16, cex = 0.5)</div><div class="line">circos.text(-1, 0.5, &quot;left&quot;, sector.index = &quot;a&quot;, track.index = 1)</div><div class="line">circos.text(1, 0.5, &quot;right&quot;, sector.index = &quot;a&quot;)</div><div class="line">bg.col &lt;- rep(c(&quot;#EFEFEF&quot;, &quot;#CCCCCC&quot;), 4)</div><div class="line">circos.trackHist(a$factors, a$x, bg.col = bg.col, col = NA)</div><div class="line">circos.trackPlotRegion(factors = a$factors, x = a$x, y = a$y, </div><div class="line">panel.fun = function(x, y) &#123; </div><div class="line">grey = c(&quot;#FFFFFF&quot;, &quot;#CCCCCC&quot;, &quot;#999999&quot;) </div><div class="line">sector.index = get.cell.meta.data(&quot;sector.index&quot;) </div><div class="line">xlim = get.cell.meta.data(&quot;xlim&quot;)</div><div class="line"> ylim = get.cell.meta.data(&quot;ylim&quot;) </div><div class="line">circos.text(mean(xlim), mean(ylim), sector.index) </div><div class="line">circos.points(x[1:10], y[1:10], col = &quot;red&quot;, pch = 16, cex = 0.6) </div><div class="line">circos.points(x[11:20], y[11:20], col = &quot;blue&quot;, cex = 0.6)&#125;)</div><div class="line"># update第2个track中标记为d的sector</div><div class="line">circos.updatePlotRegion(sector.index = &quot;d&quot;, track.index = 2)</div><div class="line">circos.points(x = -2:2, y = rep(0, 5))</div><div class="line">xlim &lt;- get.cell.meta.data(&quot;xlim&quot;)</div><div class="line">ylim &lt;- get.cell.meta.data(&quot;ylim&quot;)</div><div class="line">circos.text(mean(xlim), mean(ylim), &quot;updated&quot;)</div><div class="line">circos.clear()</div><div class="line">circos.trackPlotRegion(factors = a$factors, y = a$y)</div><div class="line">circos.trackLines(a$factors[1:100], a$x[1:100], a$y[1:100], type = &quot;h&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dddf4d7d14922cf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>接下来添加<code>links</code>，<code>links</code>可以是<code>point</code>到<code>point</code>、<code>point</code>到<code>interval</code>、<code>interval</code>到<code>interval</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">par(mar = c(1, 1, 1, 1), lwd = 0.1, cex = 0.6)</div><div class="line">circos.par(track.height = 0.1)</div><div class="line">circos.initialize(factors = a$factors, x = a$x)</div><div class="line">circos.trackPlotRegion(factors = a$factors, y = a$y,</div><div class="line"> panel.fun = function(x, y) &#123; circos.axis()&#125;)</div><div class="line">col &lt;- rep(c(&quot;#FF0000&quot;, &quot;#00FF00&quot;), 4)</div><div class="line">circos.trackPoints(a$factors, a$x, a$y, col = col, pch = 16, cex = 0.5)</div><div class="line">circos.text(-1, 0.5, &quot;left&quot;, sector.index = &quot;a&quot;, track.index = 1)</div><div class="line">circos.text(1, 0.5, &quot;right&quot;, sector.index = &quot;a&quot;)</div><div class="line">circos.trackPoints(a$factors, a$x, a$y, col = col, pch = 16, cex = 0.5)</div><div class="line">circos.text(-1, 0.5, &quot;left&quot;, sector.index = &quot;a&quot;, track.index = 1)</div><div class="line">circos.text(1, 0.5, &quot;right&quot;, sector.index = &quot;a&quot;)</div><div class="line">bg.col &lt;- rep(c(&quot;#EFEFEF&quot;, &quot;#CCCCCC&quot;), 4)</div><div class="line">circos.trackHist(a$factors, a$x, bg.col = bg.col, col = NA)</div><div class="line">circos.trackPlotRegion(factors = a$factors, x = a$x, y = a$y,</div><div class="line"> panel.fun = function(x, y) &#123;</div><div class="line"> grey = c(&quot;#FFFFFF&quot;, &quot;#CCCCCC&quot;, &quot;#999999&quot;) </div><div class="line">sector.index = get.cell.meta.data(&quot;sector.index&quot;) </div><div class="line">xlim = get.cell.meta.data(&quot;xlim&quot;) </div><div class="line">ylim = get.cell.meta.data(&quot;ylim&quot;)</div><div class="line">circos.text(mean(xlim), mean(ylim), sector.index) </div><div class="line">circos.points(x[1:10], y[1:10], col = &quot;red&quot;, pch = 16, cex = 0.6) </div><div class="line">circos.points(x[11:20], y[11:20], col = &quot;blue&quot;, cex = 0.6)&#125;)</div><div class="line"># update第2个track中标记为d的sector</div><div class="line">circos.updatePlotRegion(sector.index = &quot;d&quot;, track.index = 2)</div><div class="line">circos.points(x = -2:2, y = rep(0, 5))</div><div class="line">xlim &lt;- get.cell.meta.data(&quot;xlim&quot;)</div><div class="line">ylim &lt;- get.cell.meta.data(&quot;ylim&quot;)</div><div class="line">circos.text(mean(xlim), mean(ylim), &quot;updated&quot;)</div><div class="line">circos.clear()</div><div class="line">circos.trackPlotRegion(factors = a$factors, y = a$y)</div><div class="line">circos.trackLines(a$factors[1:100], a$x[1:100], a$y[1:100], type = &quot;h&quot;)</div><div class="line">circos.link(&quot;a&quot;, 0, &quot;b&quot;, 0, h = 0.3) #point to point</div><div class="line">circos.link(&quot;c&quot;, c(-0.5, 0.5), &quot;d&quot;, c(-0.5, 0.5), col = &quot;red&quot;, border = NA, h = 0.2) #intreval to interval</div><div class="line">circos.link(&quot;e&quot;, 0, &quot;g&quot;, c(-1, 1), col = &quot;green&quot;, border = &quot;black&quot;, lwd = 2, lty = 2) #point to interval</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7c9b4bf33e074663.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="circlize详述"><a href="#circlize详述" class="headerlink" title="circlize详述"></a>circlize详述</h2><blockquote>
+<p><code>circlize</code>的绘图规则是初始化(<code>initialize</code>)-创建<code>track</code>-添加图形元素-创建<code>track</code>-添加图形元素-…-<code>circos.clear</code>。具体参数设置以及解释由于内容太多，有兴趣的可以自己<a href="https://cran.r-project.org/web/packages/circlize/vignettes/circlize.pdf" target="_blank" rel="external">参考文档</a>。 我认为比较重要的是要理解<code>track</code>、<code>sector</code>。由于基本所有的图形元素我们都是添加在<code>sector</code><br>里面，因此就需要指定<code>track.index</code>以及<code>sector.index</code>。接下来就用个例子来讲解一下如何操纵<code>track</code>、<code>sector</code>。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">par(mar = c(1, 1, 1, 1))</div><div class="line">factors &lt;- letters[1:8]</div><div class="line">circos.initialize(factors = factors, xlim = c(0, 1)) #初始化# 绘制三个track，并显示具体信息</div><div class="line">for (i in 1:3) &#123; </div><div class="line">circos.trackPlotRegion(ylim = c(0, 1))&#125;</div><div class="line">circos.info(plot = TRUE)</div><div class="line"># 通过draw.sector()来高亮某一sector，比如a：</div><div class="line">draw.sector(get.cell.meta.data(&quot;cell.start.degree&quot;, sector.index = &quot;a&quot;), </div><div class="line">get.cell.meta.data(&quot;cell.end.degree&quot;, sector.index = &quot;a&quot;), rou1 = 1, col = &quot;blue&quot;)</div><div class="line">circos.clear()</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-938c7de4bb4c23d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 高亮某一track， 比如第一个track：</div><div class="line">circos.initialize(factors = factors, xlim = c(0, 1))</div><div class="line">for (i in 1:3) &#123; </div><div class="line">circos.trackPlotRegion(ylim = c(0, 1))&#125;</div><div class="line">circos.info(plot = TRUE)</div><div class="line">draw.sector(0, 360, rou1 = get.cell.meta.data(&quot;cell.top.radius&quot;, track.index = 1), </div><div class="line">rou2 = get.cell.meta.data(&quot;cell.bottom.radius&quot;, track.index = 1), col = &quot;green&quot;)</div><div class="line">circos.clear()</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-45e3eb273fc3b890.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># 高亮某一track某一sector，比如地2、3track中的e、f(sector)：</div><div class="line">circos.initialize(factors = factors, xlim = c(0, 1))</div><div class="line">for (i in 1:3) &#123; circos.trackPlotRegion(ylim = c(0, 1))&#125;</div><div class="line">circos.info(plot = TRUE)</div><div class="line">draw.sector(get.cell.meta.data(&quot;cell.start.degree&quot;, sector.index = &quot;e&quot;), </div><div class="line">get.cell.meta.data(&quot;cell.end.degree&quot;, sector.index = &quot;f&quot;), </div><div class="line">get.cell.meta.data(&quot;cell.top.radius&quot;, track.index = 2), </div><div class="line">get.cell.meta.data(&quot;cell.bottom.radius&quot;, track.index = 3), col = &quot;red&quot;)</div><div class="line">circos.clear() #千万别忘了circos.clear，不然下次无法绘图。</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-68e9fa0e050abfe9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="放大某一特定区域"><a href="#放大某一特定区域" class="headerlink" title="放大某一特定区域"></a>放大某一特定区域</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">df &lt;- data.frame(factors = sample(letters[1:6], 100, replace = TRUE),</div><div class="line">                          x = rnorm(100), </div><div class="line">                          y = rnorm(100), </div><div class="line">                          stringsAsFactors = FALSE)</div><div class="line"># 放大a，b区域</div><div class="line">zoom_df &lt;- df %&gt;% dplyr::filter(factors %in% c(&quot;a&quot;, &quot;b&quot;))</div><div class="line">zoom_df$factors &lt;- paste0(&quot;zoom_&quot;, zoom_df$factors)</div><div class="line">df2 &lt;- rbind(df, zoom_df)</div><div class="line">xrange &lt;- tapply(df2$x, df2$factors, function(x) max(x) - min(x))</div><div class="line">normal_sector_index &lt;- unique(df$factors)</div><div class="line">zoomed_sector_index &lt;- unique(zoom_df$factors)</div><div class="line">sector.width &lt;- c(xrange[normal_sector_index]/sum(xrange[normal_sector_index]), </div><div class="line">xrange[zoomed_sector_index]/sum(xrange[zoomed_sector_index]))</div><div class="line"># 绘图</div><div class="line">par(mar = c(1, 1, 1, 1))</div><div class="line">circos.par(start.degree = 90)</div><div class="line">circos.initialize(df2$factors, x = df2$x, sector.width = sector.width)</div><div class="line">circos.trackPlotRegion(df2$factors, x = df2$x, y = df2$y, </div><div class="line">panel.fun = function(x, y) &#123; </div><div class="line">circos.points(x, y, col = &quot;red&quot;, pch = 16, cex = 0.5) </div><div class="line">xlim = get.cell.meta.data(&quot;xlim&quot;) </div><div class="line">ylim = get.cell.meta.data(&quot;ylim&quot;) </div><div class="line">sector.index = get.cell.meta.data(&quot;sector.index&quot;) </div><div class="line">circos.text(mean(xlim), mean(ylim), sector.index, niceFacing = TRUE)&#125;)</div><div class="line"># 添加links</div><div class="line">circos.link(&quot;a&quot;, get.cell.meta.data(&quot;cell.xlim&quot;, sector.index = &quot;a&quot;), &quot;zoom_a&quot;, </div><div class="line">get.cell.meta.data(&quot;cell.xlim&quot;, sector.index = &quot;zoom_a&quot;), border = NA, col = &quot;red&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-58a07e148222b8f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>circos.clear()</p>
+<h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><blockquote>
+<p>圈圈图+热图+进化树</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">set.seed(1234)</div><div class="line">data &lt;- matrix(rnorm(100 * 10), nrow = 10, ncol = 100)</div><div class="line">col &lt;- colorRamp2(c(-2, 0, 2), c(&quot;green&quot;, &quot;black&quot;, &quot;red&quot;))</div><div class="line">factors &lt;- rep(letters[1:2], times = c(30, 70))</div><div class="line">data_list &lt;- list(a = data[, factors == &quot;a&quot;], b = data[, factors == &quot;b&quot;])</div><div class="line">dend_list &lt;- list(a = as.dendrogram(hclust(dist(t(data_list[[&quot;a&quot;]])))), </div><div class="line">                  b = as.dendrogram(hclust(dist(t(data_list[[&quot;b&quot;]])))))</div><div class="line">circos.par(cell.padding = c(0, 0, 0, 0), gap.degree = 5)</div><div class="line">circos.initialize(factors = factors, xlim = cbind(c(0, 0), table(factors)))</div><div class="line">circos.track(ylim = c(0, 10), bg.border = NA, </div><div class="line">panel.fun = function(x, y) &#123;</div><div class="line"> sector.index = get.cell.meta.data(&quot;sector.index&quot;) </div><div class="line">d = data_list[[sector.index]] </div><div class="line">dend = dend_list[[sector.index]] </div><div class="line">d2 = d[, order.dendrogram(dend)] </div><div class="line">col_data = col(d2)</div><div class="line">nr = nrow(d2)</div><div class="line">nc = ncol(d2) </div><div class="line">for (i in 1:nr) &#123; </div><div class="line">circos.rect(1:nc - 1, rep(nr - i, nc), 1:nc, rep(nr - i + 1, nc),</div><div class="line">border = col_data[i, ], col = col_data[i, ]) &#125;&#125;)</div><div class="line">max_height &lt;- max(sapply(dend_list, function(x) attr(x, &quot;height&quot;)))</div><div class="line">circos.track(ylim = c(0, max_height), </div><div class="line">bg.border = NA, track.height = 0.3,</div><div class="line">panel.fun = function(x, y) &#123; </div><div class="line">sector.index = get.cell.meta.data(&quot;sector.index&quot;)</div><div class="line">dend = dend_list[[sector.index]]</div><div class="line">circos.dendrogram(dend, max_height = max_height)&#125;)</div><div class="line">circos.clear()</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4b332e9275d7088e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="多图排列"><a href="#多图排列" class="headerlink" title="多图排列"></a>多图排列</h2><blockquote>
+<p>直接用layout设置</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">layout(matrix(1:9, 3, 3))</div><div class="line">for (i in 1:9) &#123;</div><div class="line"> factors = letters[1:8] </div><div class="line">par(mar = c(0.5, 0.5, 0.5, 0.5)) </div><div class="line">circos.par(cell.padding = c(0, 0, 0, 0)) </div><div class="line">circos.initialize(factors = factors, xlim = c(0, 1)) </div><div class="line">circos.trackPlotRegion(ylim = c(0, 1), track.height = 0.05, </div><div class="line">bg.col = rand_color(8), bg.border = NA) </div><div class="line"># 绘制links </div><div class="line">for (i in 1:20) &#123;</div><div class="line">se = sample(letters[1:8], 2) </div><div class="line">circos.link(se[1], runif(2), se[2], runif(2),</div><div class="line">col = rand_color(1, transparency = 0.4), border = NA) </div><div class="line">&#125; </div><div class="line">circos.clear()</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-51d87f7dd942126b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="sessionInfo"><a href="#sessionInfo" class="headerlink" title="sessionInfo"></a>sessionInfo</h2><blockquote>
+<p>理解circlize包的原理，绘制基因组数据的图形也是一样的。有时间下次介绍(主要是我自己还没看完，看不太懂)<img src="http://upload-images.jianshu.io/upload_images/2084719-a3ebeb278e1c4ae1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">。<br>老规矩，给出<code>sessionInfo</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## ## Matrix products: default## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## ## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">## ## other attached packages:</div><div class="line">## [1] circlize_0.4.0 BiocInstaller_1.26.0 forcats_0.2.0</div><div class="line">## [4] stringr_1.2.0 dplyr_0.5.0 purrr_0.2.2.2 </div><div class="line">## [7] readr_1.1.1 tidyr_0.6.3 tibble_1.3.1</div><div class="line">## [10] ggplot2_2.2.1 tidyverse_1.1.1.9000</div><div class="line">#### loaded via a namespace (and not attached):</div><div class="line">## [1] shape_1.4.2 clisymbols_1.2.0 reshape2_1.4.2 </div><div class="line">## [4] haven_1.0.0 lattice_0.20-35 colorspace_1.3-2</div><div class="line">## [7] htmltools_0.3.6 yaml_2.1.14 rlang_0.1.1 </div><div class="line">## [10] foreign_0.8-68 DBI_0.6-1 modelr_0.1.0</div><div class="line">## [13] readxl_1.0.0 plyr_1.8.4 munsell_0.4.3 </div><div class="line">## [16] gtable_0.2.0 cellranger_1.1.0 rvest_0.3.2 </div><div class="line">## [19] GlobalOptions_0.0.12 psych_1.7.5 evaluate_0.10 </div><div class="line">## [22] knitr_1.16 parallel_3.4.0 broom_0.4.2 </div><div class="line">## [25] Rcpp_0.12.11 scales_0.4.1 backports_1.1.0 </div><div class="line">## [28] formatR_1.5 jsonlite_1.4 boxes_0.0.0.9000</div><div class="line">## [31] mnormt_1.5-5 hms_0.3 digest_0.6.12 </div><div class="line">## [34] stringi_1.1.5 grid_3.4.0 rprojroot_1.2</div><div class="line">## [37] tools_3.4.0 magrittr_1.5 lazyeval_0.2.0 </div><div class="line">## [40] crayon_1.3.2.9000 xml2_1.1.1 lubridate_1.6.0 </div><div class="line">## [43] assertthat_0.2.0 rmarkdown_1.5 httr_1.2.1 </div><div class="line">## [46] rstudioapi_0.6 R6_2.2.1 nlme_3.1-131</div><div class="line">## [49] compiler_3.4.0</div></pre></td></tr></table></figure>
 <hr>
 <h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
 <p>Email: tyan@zju.edu.cn</p>
@@ -2204,7 +2123,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;上篇文章中提了一下如何通过&lt;strong&gt;ggpubr&lt;/strong&gt;包为&lt;code&gt;ggplot&lt;/code&gt;图添加&lt;code&gt;p-value&lt;/code&gt;以及显著性标记,本文将详细介绍。利用数据集&lt;strong&gt;ToothGrowth&lt;/strong&gt;进行演示&lt;br&gt;
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-4b332e9275d7088e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;circlize包&quot;&gt;&lt;a href=&quot;#circlize包&quot; class=&quot;headerlink&quot; title=&quot;circlize包&quot;&gt;&lt;/a&gt;&lt;code&gt;circlize&lt;/code&gt;包&lt;/h2&gt;&lt;p&gt;&lt;code&gt;circlize&lt;/code&gt;包在德国癌症中心的华人博士Zuguang Gu开发的，有兴趣的可以去看看他的&lt;a href=&quot;https://github.com/jokergoo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github主页&lt;/a&gt;。这个包有两个文档，一个是介绍基本原理的绘制简单&lt;a href=&quot;https://cran.r-project.org/web/packages/circlize/vignettes/circlize.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;圈圈图&lt;/a&gt;的，也是本次要介绍的。另外一份文档专门介绍基因组数据绘制圈圈图&lt;a href=&quot;https://cran.r-project.org/web/packages/circlize/vignettes/genomic_plot.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Genomic Circos Plot&lt;/a&gt;,我自己还没看完，下次再介绍。&lt;br&gt;根据我的学习发现这个包与&lt;code&gt;ggplot2&lt;/code&gt;很相似，也是先创建一个图层，然后不断的添加图形元素（&lt;code&gt;point&lt;/code&gt;、&lt;code&gt;line&lt;/code&gt;、&lt;code&gt;bar&lt;/code&gt;等），这些简单的图形元素都有&lt;code&gt;circos.&lt;/code&gt;这个前缀进行绘制，比如要绘制点，则用&lt;code&gt;circos.points()&lt;/code&gt;。具体的下面一一介绍。&lt;br&gt;
     
     </summary>
     
@@ -2213,9 +2133,9 @@
     
       <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
     
-      <category term="ggrepel" scheme="https://ytlogos.github.io/tags/ggrepel/"/>
-    
       <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
+    
+      <category term="circlize" scheme="https://ytlogos.github.io/tags/circlize/"/>
     
   </entry>
   
