@@ -545,9 +545,9 @@
         
         <tag>R</tag>
          
-        <tag>ggcorrplot</tag>
-         
         <tag>visualization</tag>
+         
+        <tag>ggcorrplot</tag>
          
          
            
@@ -569,9 +569,9 @@
         
         <tag>R</tag>
          
-        <tag>visualization</tag>
-         
         <tag>ggrepel</tag>
+         
+        <tag>visualization</tag>
          
          
            
@@ -593,9 +593,9 @@
         
         <tag>R</tag>
          
-        <tag>visualization</tag>
-         
         <tag>ggrepel</tag>
+         
+        <tag>visualization</tag>
          
          
            
@@ -606,6 +606,7 @@
     </data>
     </url>
 
+    
     
     
     
