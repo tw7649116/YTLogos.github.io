@@ -113,13 +113,13 @@
 
 
 
-<meta name="description" content="简介集合可视化我们用得最多的是韦恩图，韦恩图在集合数少的时候是很好用的，但是当集合数多比如五个以上的时候那就会看花眼了，比如下面这副含有6个集合韦恩图，是发表在Nature上的文章里的，漂亮是漂亮，但是眼都快看花了。  今天介绍一个R包UpSetR，专门用来集合可视化，来源于UpSet，Python里面也有一个相似的包py-upset。此外还有个UpSetR shiny app以及源代码.">
+<meta name="description" content="简介集合可视化我们用得最多的是韦恩图，韦恩图在集合数少的时候是很好用的，但是当集合数多比如五个以上的时候那就会看花眼了，比如下面这副含有6个集合韦恩图，是发表在Nature上的文章里的，漂亮是漂亮，但是眼都快看花了。">
 <meta name="keywords" content="UpSetR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R语言可视化之UpSetR包">
 <meta property="og:url" content="https://ytlogos.github.io/2017/10/15/R语言可视化之UpSetR包/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="简介集合可视化我们用得最多的是韦恩图，韦恩图在集合数少的时候是很好用的，但是当集合数多比如五个以上的时候那就会看花眼了，比如下面这副含有6个集合韦恩图，是发表在Nature上的文章里的，漂亮是漂亮，但是眼都快看花了。  今天介绍一个R包UpSetR，专门用来集合可视化，来源于UpSet，Python里面也有一个相似的包py-upset。此外还有个UpSetR shiny app以及源代码.">
+<meta property="og:description" content="简介集合可视化我们用得最多的是韦恩图，韦恩图在集合数少的时候是很好用的，但是当集合数多比如五个以上的时候那就会看花眼了，比如下面这副含有6个集合韦恩图，是发表在Nature上的文章里的，漂亮是漂亮，但是眼都快看花了。">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/JK4Hhj821g.png?imageslim">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/Khec36GlKg.png?imageslim">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/m0KhE6H1EG.png?imageslim">
@@ -135,10 +135,10 @@
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/gfc18maAjI.png?imageslim">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/JK4Hhj821g.png?imageslim">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/FAH4If1bgh.png?imageslim">
-<meta property="og:updated_time" content="2017-10-15T08:21:10.328Z">
+<meta property="og:updated_time" content="2017-10-15T08:26:29.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R语言可视化之UpSetR包">
-<meta name="twitter:description" content="简介集合可视化我们用得最多的是韦恩图，韦恩图在集合数少的时候是很好用的，但是当集合数多比如五个以上的时候那就会看花眼了，比如下面这副含有6个集合韦恩图，是发表在Nature上的文章里的，漂亮是漂亮，但是眼都快看花了。  今天介绍一个R包UpSetR，专门用来集合可视化，来源于UpSet，Python里面也有一个相似的包py-upset。此外还有个UpSetR shiny app以及源代码.">
+<meta name="twitter:description" content="简介集合可视化我们用得最多的是韦恩图，韦恩图在集合数少的时候是很好用的，但是当集合数多比如五个以上的时候那就会看花眼了，比如下面这副含有6个集合韦恩图，是发表在Nature上的文章里的，漂亮是漂亮，但是眼都快看花了。">
 <meta name="twitter:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/JK4Hhj821g.png?imageslim">
 
 
@@ -436,7 +436,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-15T16:21:10+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-15T16:26:29+08:00">
                 2017-10-15
               </time>
             
@@ -544,9 +544,10 @@
       
         <p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/JK4Hhj821g.png?imageslim" alt=""></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>集合可视化我们用得最多的是韦恩图，韦恩图在集合数少的时候是很好用的，但是当集合数多比如五个以上的时候那就会看花眼了，比如下面这副含有6个集合韦恩图，是发表在<strong>Nature</strong>上的文章里的，漂亮是漂亮，但是眼都快看花了。</p>
+<a id="more"></a>
 <p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/Khec36GlKg.png?imageslim" alt="banana"></p>
 <p>今天介绍一个R包<strong>UpSetR</strong>，专门用来集合可视化，来源于<a href="http://caleydo.org/tools/upset/" target="_blank" rel="external">UpSet</a>，Python里面也有一个相似的包<strong>py-upset</strong>。此外还有个<a href="https://gehlenborglab.shinyapps.io/upsetr/" target="_blank" rel="external">UpSetR shiny app</a>以及<a href="https://github.com/hms-dbmi/UpSetR-shiny" target="_blank" rel="external">源代码</a>.</p>
-<a id="more"></a>
+<!--more-->
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>两种方式安装：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#从CRAN安装</div><div class="line">install.packages(&quot;UpSetR&quot;)</div><div class="line">#从Github上安装</div><div class="line">devtools::install_github(&quot;hms-dbmi/UpSetR&quot;)</div></pre></td></tr></table></figure>
 <h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><p><strong>UpSetR</strong>提供了两个函数<code>fromList</code>以及<code>fromExpression</code>将数据转换为<strong>UpsetR</strong>适用的数据格式。</p>

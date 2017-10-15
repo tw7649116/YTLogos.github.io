@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-10-15T08:21:10.328Z</updated>
+  <updated>2017-10-15T08:26:29.107Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -20,13 +20,14 @@
     <link href="https://ytlogos.github.io/2017/10/15/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8BUpSetR%E5%8C%85/"/>
     <id>https://ytlogos.github.io/2017/10/15/R语言可视化之UpSetR包/</id>
     <published>2017-10-15T08:47:05.000Z</published>
-    <updated>2017-10-15T08:21:10.328Z</updated>
+    <updated>2017-10-15T08:26:29.107Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/JK4Hhj821g.png?imageslim" alt=""></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>集合可视化我们用得最多的是韦恩图，韦恩图在集合数少的时候是很好用的，但是当集合数多比如五个以上的时候那就会看花眼了，比如下面这副含有6个集合韦恩图，是发表在<strong>Nature</strong>上的文章里的，漂亮是漂亮，但是眼都快看花了。</p>
+<a id="more"></a>
 <p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/Khec36GlKg.png?imageslim" alt="banana"></p>
 <p>今天介绍一个R包<strong>UpSetR</strong>，专门用来集合可视化，来源于<a href="http://caleydo.org/tools/upset/" target="_blank" rel="external">UpSet</a>，Python里面也有一个相似的包<strong>py-upset</strong>。此外还有个<a href="https://gehlenborglab.shinyapps.io/upsetr/" target="_blank" rel="external">UpSetR shiny app</a>以及<a href="https://github.com/hms-dbmi/UpSetR-shiny" target="_blank" rel="external">源代码</a>.</p>
-<a id="more"></a>
+<!--more-->
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>两种方式安装：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#从CRAN安装</div><div class="line">install.packages(&quot;UpSetR&quot;)</div><div class="line">#从Github上安装</div><div class="line">devtools::install_github(&quot;hms-dbmi/UpSetR&quot;)</div></pre></td></tr></table></figure>
 <h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><p><strong>UpSetR</strong>提供了两个函数<code>fromList</code>以及<code>fromExpression</code>将数据转换为<strong>UpsetR</strong>适用的数据格式。</p>
@@ -95,8 +96,6 @@
     
       &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/JK4Hhj821g.png?imageslim&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;集合可视化我们用得最多的是韦恩图，韦恩图在集合数少的时候是很好用的，但是当集合数多比如五个以上的时候那就会看花眼了，比如下面这副含有6个集合韦恩图，是发表在&lt;strong&gt;Nature&lt;/strong&gt;上的文章里的，漂亮是漂亮，但是眼都快看花了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171015/Khec36GlKg.png?imageslim&quot; alt=&quot;banana&quot;&gt;&lt;/p&gt;
-&lt;p&gt;今天介绍一个R包&lt;strong&gt;UpSetR&lt;/strong&gt;，专门用来集合可视化，来源于&lt;a href=&quot;http://caleydo.org/tools/upset/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;UpSet&lt;/a&gt;，Python里面也有一个相似的包&lt;strong&gt;py-upset&lt;/strong&gt;。此外还有个&lt;a href=&quot;https://gehlenborglab.shinyapps.io/upsetr/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;UpSetR shiny app&lt;/a&gt;以及&lt;a href=&quot;https://github.com/hms-dbmi/UpSetR-shiny&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;源代码&lt;/a&gt;.&lt;/p&gt;
     
     </summary>
     
@@ -1093,43 +1092,6 @@
   </entry>
   
   <entry>
-    <title>About me</title>
-    <link href="https://ytlogos.github.io/2017/09/12/README/"/>
-    <id>https://ytlogos.github.io/2017/09/12/README/</id>
-    <published>2017-09-11T23:47:05.000Z</published>
-    <updated>2017-10-11T06:34:28.155Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Introductiom"><a href="#Introductiom" class="headerlink" title="Introductiom"></a>Introductiom</h1><hr>
-<p>The posts resource of my personal blog</p>
-<ul>
-<li>code &amp; data &amp; graph</li>
-<li>R &amp; RStudio</li>
-<li>If you are interested in my blog, you can go to the home of my <a href="https://ytlogos.github.io/">blog</a></li>
-</ul>
-<h1 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a>About me</h1><hr>
-<p>严涛</p>
-<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
-<p>伪码农，R语言爱好者，爱开源</p>
-<hr>
-<p>wechat: yt056410</p>
-<p>Email: tyan@zju.edu.cn</p>
-<p>QQ: 1051927088</p>
-<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
-<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
-<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Introductiom&quot;&gt;&lt;a href=&quot;#Introductiom&quot; class=&quot;headerlink&quot; title=&quot;Introductiom&quot;&gt;&lt;/a&gt;Introductiom&lt;/h1&gt;&lt;hr&gt;
-&lt;p&gt;The posts resource of my 
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>一篇关于国旗与奥运会奖牌的可视化笔记</title>
     <link href="https://ytlogos.github.io/2017/09/12/%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8E%E5%9B%BD%E6%97%97%E4%B8%8E%E5%A5%A5%E8%BF%90%E4%BC%9A%E5%A5%96%E7%89%8C%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E7%AC%94%E8%AE%B0/"/>
     <id>https://ytlogos.github.io/2017/09/12/一篇关于国旗与奥运会奖牌的可视化笔记/</id>
@@ -1174,6 +1136,43 @@
       <category term="ggflags" scheme="https://ytlogos.github.io/tags/ggflags/"/>
     
       <category term="爬虫rvest" scheme="https://ytlogos.github.io/tags/%E7%88%AC%E8%99%ABrvest/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>About me</title>
+    <link href="https://ytlogos.github.io/2017/09/12/README/"/>
+    <id>https://ytlogos.github.io/2017/09/12/README/</id>
+    <published>2017-09-11T23:47:05.000Z</published>
+    <updated>2017-10-11T06:34:28.155Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Introductiom"><a href="#Introductiom" class="headerlink" title="Introductiom"></a>Introductiom</h1><hr>
+<p>The posts resource of my personal blog</p>
+<ul>
+<li>code &amp; data &amp; graph</li>
+<li>R &amp; RStudio</li>
+<li>If you are interested in my blog, you can go to the home of my <a href="https://ytlogos.github.io/">blog</a></li>
+</ul>
+<h1 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a>About me</h1><hr>
+<p>严涛</p>
+<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
+<p>伪码农，R语言爱好者，爱开源</p>
+<hr>
+<p>wechat: yt056410</p>
+<p>Email: tyan@zju.edu.cn</p>
+<p>QQ: 1051927088</p>
+<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
+<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
+<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Introductiom&quot;&gt;&lt;a href=&quot;#Introductiom&quot; class=&quot;headerlink&quot; title=&quot;Introductiom&quot;&gt;&lt;/a&gt;Introductiom&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;The posts resource of my 
+    
+    </summary>
+    
     
   </entry>
   
@@ -2109,73 +2108,43 @@
   </entry>
   
   <entry>
-    <title>R语言学习笔记之聚类分析</title>
-    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/"/>
-    <id>https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/</id>
+    <title>ggplot2学习笔记系列之利用ggplot2绘制条形图</title>
+    <link href="https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E6%9D%A1%E5%BD%A2%E5%9B%BE/"/>
+    <id>https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/</id>
     <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-09-19T00:39:01.392Z</updated>
+    <updated>2017-09-19T00:39:01.400Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>使用<code>k-means</code>聚类所需的包：</p>
-<ul>
-<li>factoextra</li>
-<li>cluster<a id="more"></a>
-#加载包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(factoextra)</div><div class="line">library(cluster)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>#数据准备<br>使用内置的R数据集<code>USArrests</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#load the dataset</div><div class="line">data(&quot;USArrests&quot;)</div><div class="line">#remove any missing value (i.e, NA values for not available)</div><div class="line">#That might be present in the data</div><div class="line">USArrests &lt;- na.omit(USArrests)#view the first 6 rows of the data</div><div class="line">head(USArrests, n=6)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong>在此数据集中，列是变量，行是观测值</strong><br>在聚类之前我们可以先进行一些必要的数据检查即数据描述性统计，如平均值、标准差等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">desc_stats &lt;- data.frame( Min=apply(USArrests, 2, min),#minimum</div><div class="line">Med=apply(USArrests, 2, median),#median </div><div class="line">Mean=apply(USArrests, 2, mean),#mean </div><div class="line">SD=apply(USArrests, 2, sd),#Standard deviation </div><div class="line">Max=apply(USArrests, 2, max)#maximum</div><div class="line">)</div><div class="line">desc_stats &lt;- round(desc_stats, 1)#保留小数点后一位head(desc_stats)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c28a99b3efe41ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong>变量有很大的方差及均值时需进行标准化</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df &lt;- scale(USArrests)</div></pre></td></tr></table></figure></p>
-<p>#数据集群性评估<br>使用<code>get_clust_tendency()</code>计算<code>Hopkins</code>统计量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">res &lt;- get_clust_tendency(df, 40, graph = TRUE)</div><div class="line">res$hopkins_stat</div><div class="line">## [1] 0.3440875</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Visualize the dissimilarity matrix</div><div class="line">res$plot</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7ab1c23eb38f6cb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>Hopkins统计量的值&lt;0.5，表明数据是高度可聚合的。另外，从图中也可以看出数据可聚合。</p>
-</blockquote>
-<p>#估计聚合簇数<br>由于k均值聚类需要指定要生成的聚类数量，因此我们将使用函数<code>clusGap()</code>来计算用于估计最优聚类数。函数<code>fviz_gap_stat()</code>用于可视化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set.seed(123)</div><div class="line">## Compute the gap statistic</div><div class="line">gap_stat &lt;- clusGap(df, FUN = kmeans, nstart = 25, K.max = 10, B = 500) </div><div class="line"># Plot the result</div><div class="line">fviz_gap_stat(gap_stat)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-64e6e37dc513b2be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>图中显示最佳为聚成四类（k=4）</p>
-</blockquote>
-<p>#进行聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set.seed(123)</div><div class="line">km.res &lt;- kmeans(df, 4, nstart = 25)</div><div class="line">head(km.res$cluster, 20)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-61fe2e1a139e3b9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Visualize clusters using factoextra</div><div class="line">fviz_cluster(km.res, USArrests)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2e39c93b63af2161.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#检查<code>cluster silhouette</code>图</p>
-<blockquote>
-<p>Recall that the silhouette measures (SiSi) how similar an object ii is to the the other objects in its own cluster versus those in the neighbor cluster. SiSi values range from 1 to - 1:</p>
-</blockquote>
-<ul>
-<li>A value of SiSi close to 1 indicates that the object is well clustered. In the other words, the object ii is similar to the other objects in its group.</li>
-<li>A value of SiSi close to -1 indicates that the object is poorly clustered, and that assignment to some other cluster would probably improve the overall results.<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sil &lt;- silhouette(km.res$cluster, dist(df))</div><div class="line">rownames(sil) &lt;- rownames(USArrests)</div><div class="line">head(sil[, 1:3])</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e2752fd444968a90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Visualize </div><div class="line">fviz_silhouette(sil)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a01f551c35d38d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b2554b235caf0420.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>图中可以看出有负值，可以通过函数<code>silhouette()</code>确定是哪个观测值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">neg_sil_index &lt;- which(sil[, &quot;sil_width&quot;] &lt; 0)</div><div class="line">sil[neg_sil_index, , drop = FALSE]</div><div class="line">##          cluster    neighbor     sil_width</div><div class="line">## Missouri    3          2        -0.07318144</div></pre></td></tr></table></figure></p>
-<p>#<strong>eclust()</strong>:增强的聚类分析</p>
-<blockquote>
-<p>与其他聚类分析包相比，<code>eclust()</code>有以下优点：</p>
-</blockquote>
-<ul>
-<li>简化了聚类分析的工作流程</li>
-<li>可以用于计算层次聚类和分区聚类</li>
-<li>eclust()自动计算最佳聚类簇数。</li>
-<li>自动提供Silhouette plot</li>
-<li>可以结合ggplot2绘制优美的图形</li>
-</ul>
-<p>#使用eclust()的<strong>K</strong>均值聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Compute k-means</div><div class="line">res.km &lt;- eclust(df, &quot;kmeans&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-448668d5d66b746c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Gap statistic plot</div><div class="line">fviz_gap_stat(res.km$gap_stat)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8abcb70ddd53cc9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Silhouette plotfviz_silhouette(res.km)</div><div class="line"></div><div class="line">##    cluster size ave.sil.width</div><div class="line">## 1     1     13      0.31</div><div class="line">## 2     2     29      0.38</div><div class="line">## 3     3      8      0.39</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ef8922f5d288768f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#使用<strong>eclust（）</strong>的层次聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Enhanced hierarchical clustering</div><div class="line">res.hc &lt;- eclust(df, &quot;hclust&quot;) # compute hclust</div><div class="line">fviz_dend(res.hc, rect = TRUE) # dendrogam</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#下面的R代码生成Silhouette plot和分层聚类散点图。</div><div class="line">fviz_silhouette(res.hc) # silhouette plot</div><div class="line">##   cluster size ave.sil.width</div><div class="line">## 1    1     19      0.26</div><div class="line">## 2    2     19      0.28</div><div class="line">## 3    3     12      0.43</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-cdae172ce885358a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fviz_cluster(res.hc) # scatter plot</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-be9e7cd89ccec3bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#Infos</p>
-<blockquote>
-<p>This analysis has been performed using R software (R version 3.3.2)</p>
-</blockquote>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5c9a37089f4883ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。<br><a id="more"></a></p>
+<h2 id="绘制条形图"><a href="#绘制条形图" class="headerlink" title="绘制条形图"></a>绘制条形图</h2><p>使用<code>ggplot()</code>函数与<code>geom_bar(stat=&quot;identity&quot;)</code>，绘制条形图，我们将利用<strong>gcookbook</strong>包中的数据进行绘制。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#没安装包要先安装包gcookbook、ggplot2以及dplyr</div><div class="line">library(gcookbook)#加载gcookbook以使用其包含的数据</div><div class="line">library(ggplot2)#用于可视化</div><div class="line">library(dplyr)#用于数据处理</div><div class="line">这里我们调用**gcookbook**里的数据集绘制条形图</div><div class="line">head(pg_mean)#查看数据集</div><div class="line">## group weigh</div><div class="line"> 1 ctrl 5.032</div><div class="line"> 2 trt1 4.661</div><div class="line"> 3 trt2 5.526</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggplot(data=pg_mean, aes(x=group, y=weight))+#将group、weight分别赋值给x、y轴 </div><div class="line">geom_bar(stat = &quot;identity&quot;)#必须将geom_bar()中的stat(统计变换)参数设置</div><div class="line">为”identity“，即对原始数据集不作任何统计变换，而该参数的默认值为&apos;count&apos;，即观测数量。</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a1a6cfbc69210db2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当x是连续型（数值型）变量时，条形图略有不同，需要略作调整，具体如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">str(BOD)#查看BOD数据集可以发现Time变量是数值型</div><div class="line"></div><div class="line">## &apos;data.frame&apos;:  6 obs. of 2 variables: </div><div class="line">## $ Time : num 1 2 3 4 5 7</div><div class="line">## $ demand: num 8.3 10.3 19 16 15.6 19.8</div><div class="line">## - attr(*, &quot;reference&quot;)= chr &quot;A1.4, p. 270&quot;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=BOD, aes(x=Time, y=demand))+ geom_bar(stat = &quot;identity&quot;)#此时Time是数值型</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-91c3a599b1385e04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggplot(data=BOD, aes(x=factor(Time), y=demand))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;)#将Time转换为因子型（分类/离散变量），仔细比较两图</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a2cb3446cf895736.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>条形图颜色有两部分：填充颜色（<strong>fill</strong>）以及边框颜色（<strong>color</strong>），因此调整条形图颜色要调两部分，具体如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggplot(data=BOD, aes(x=factor(Time), y=demand))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;, fill=&quot;blue&quot;, color=&quot;black&quot;)#可以自己设定喜好的颜色</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-af48e367d1ff7f47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="绘制簇状条形图"><a href="#绘制簇状条形图" class="headerlink" title="绘制簇状条形图"></a>绘制簇状条形图</h2><p>方法：将分类变量映射到fill参数，运用<code>geom_bar(position=&quot;dodge&quot;)</code>绘制，具体如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">head(cabbage_exp)#查看数据，发现含有两个分类变量：`Cultivar`和`Date`以及一个连续型变量Weight</div><div class="line"></div><div class="line">##  Cultivar Date Weight   sd       n     se</div><div class="line">## 1 c39     d16   3.18  0.9566144 10 0.30250803</div><div class="line">## 2 c39     d20   2.80  0.2788867 10 0.08819171</div><div class="line">## 3 c39     d21   2.74  0.9834181 10 0.31098410</div><div class="line">## 4 c52     d16   2.26  0.4452215 10 0.14079141</div><div class="line">## 5 c52     d20   3.11  0.7908505 10 0.25008887</div><div class="line">## 6 c52     d21   1.47   0.2110819 10 0.06674995</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggplot(data=cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar))+#分别将Date与Cultivar映射给x和fill </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;)#position = &quot;dodge&quot;表示条形图分开不重叠(簇形图)，默认的为stack（堆叠式）,还有百分比堆叠式(fill)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-703232c6cbde3d69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggplot(data=cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar))+</div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;stack&quot;)#堆叠式</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b95adaf8b70d9bf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggplot(data=cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;fill&quot;)#百分比堆叠式</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-06bc452dce49d4c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="设置颜色或者调用调色板"><a href="#设置颜色或者调用调色板" class="headerlink" title="设置颜色或者调用调色板"></a>设置颜色或者调用调色板</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggplot(data=cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;, color=&quot;black&quot;)+ </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)#Set1为调色板，后期将会专门讲解Color设置</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-1533b0dd9e638405.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggplot(data=cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;, color=&quot;black&quot;)+ </div><div class="line">scale_fill_manual(values = c(&quot;darkred&quot;, &quot;purple&quot;))#自设置颜色</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0ca0540506105191.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="绘制频数条形图"><a href="#绘制频数条形图" class="headerlink" title="绘制频数条形图"></a>绘制频数条形图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">head(diamonds,n=10)#查看前10行数据</div><div class="line"></div><div class="line">## # A tibble: 10 × 10</div><div class="line">##   carat  cut     color clarity depth table  price   x    y     z</div><div class="line">##   &lt;dbl&gt; &lt;ord&gt;    &lt;ord&gt;  &lt;ord&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</div><div class="line">## 1  0.23 Ideal      E     SI2    61.5   55    326   3.95  3.98 2.43</div><div class="line">## 2  0.21 Premium    E     SI1    59.8   61    326   3.89  3.84 2.31</div><div class="line">## 3  0.23 Good       E     VS1    56.9   65    327   4.05  4.07 2.31</div><div class="line">## 4  0.29 Premium    I     VS2    62.4   58    334   4.20  4.23 2.63</div><div class="line">## 5  0.31 Good       J     SI2    63.3   58    335   4.34  4.35 2.75</div><div class="line">## 6  0.24 Very Good  J     VVS2   62.8   57    336   3.94  3.96 2.48</div><div class="line">## 7  0.24 Very Good  I     VVS1   62.3   57    336   3.95  3.98 2.47</div><div class="line">## 8  0.26 Very Good  H     SI1    61.9   55    337   4.07  4.11 2.53</div><div class="line">## 9  0.22 Fair       E     VS2    65.1   61    337   3.87  3.78 2.49</div><div class="line">## 10 0.23 Very Good  H     VS1    59.4   61    338   4.00  4.05 2.39</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggplot(diamonds, aes(x=cut))+#此时不要映射任何变量到y </div><div class="line">geom_bar()#等价于geom_bar(stat=&quot;bin&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-95f3a46ca2f42a1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="绘制y轴正负轴都有数据的条形图"><a href="#绘制y轴正负轴都有数据的条形图" class="headerlink" title="绘制y轴正负轴都有数据的条形图"></a>绘制y轴正负轴都有数据的条形图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#首先先创建一下数据集</div><div class="line">set.seed(1111)#此命令保证数据结果可以重现在任何电脑上</div><div class="line">x &lt;- 1980+1:36#赋值x</div><div class="line">y &lt;- round(100*rnorm(36))#赋值y</div><div class="line">mydata &lt;- data.frame(x=x, y=y)#创建数据集mydata</div><div class="line">head(mydata)#查看数据集</div><div class="line">##    x    y</div><div class="line">## 1 1981  -9</div><div class="line">## 2 1982  132</div><div class="line">## 3 1983  64</div><div class="line">## 4 1984  117</div><div class="line">## 5 1985  12</div><div class="line">## 6 1986 -293</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mydata &lt;- mydata%&gt;%#%&gt;%管道操作，结合dplyr为数据处理神器 </div><div class="line">mutate(judge=ifelse(y&gt;=0,&quot;Yes&quot;, &quot;No&quot;))#创建judge变量，将y正负分类</div><div class="line">head(mydata)#查看数据</div><div class="line">##    x    y   judge</div><div class="line">## 1 1981  -9    No</div><div class="line">## 2 1982  132   Yes</div><div class="line">## 3 1983  64    Yes</div><div class="line">## 4 1984  117   Yes</div><div class="line">## 5 1985  12    Yes</div><div class="line">## 6 1986 -293   No</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">接下来绘制条形图</div><div class="line">ggplot(data=mydata, aes(x=x, y=y, fill=judge))+</div><div class="line"> geom_bar(stat = &quot;identity&quot;,position = &quot;identity&quot;)+#这里position=&quot;identity&quot;可以避免系统对负值绘制条形图发出警告信息 </div><div class="line">scale_fill_manual(values = c(&quot;purple&quot;, &quot;blue&quot;), guide=FALSE)+xlab(&quot;Year&quot;)#guide=FALSE表示不要图例,x轴标题为Year</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5c9a37089f4883ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="通过width来调整条形宽度以及条形距离"><a href="#通过width来调整条形宽度以及条形距离" class="headerlink" title="通过width来调整条形宽度以及条形距离"></a>通过width来调整条形宽度以及条形距离</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">head(diamonds)</div><div class="line"></div><div class="line">## # A tibble: 6 × 10</div><div class="line">##  carat  cut    color  clarity  depth    table   price   x     y     z</div><div class="line">##  &lt;dbl&gt; &lt;ord&gt;    &lt;ord&gt;   &lt;ord&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</div><div class="line">## 1 0.23  Ideal     E      SI2    61.5     55      326   3.95  3.98  2.43</div><div class="line">## 2 0.21  Premium   E      SI1    59.8     61      326   3.89  3.84  2.31</div><div class="line">## 3 0.23  Good      E      VS1    56.9     65      327   4.05  4.07  2.31</div><div class="line">## 4 0.29  Premium   I      VS2    62.4     58      334   4.20  4.23  2.63</div><div class="line">## 5 0.31  Good      J      SI2    63.3     58      335   4.34  4.35  2.75</div><div class="line">## 6 0.24  Very Good J      VVS2    62.8    57      336   3.94  3.96  2.48</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggplot(data=diamonds, aes(x=color, y=price, fill=cut))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;, width = 0.6, position = position_dodge(0.8))+#调整条形宽度以及条形距离 </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0cf73b4e51ec0430.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="geom-text-添加数据标签"><a href="#geom-text-添加数据标签" class="headerlink" title="geom_text()添加数据标签"></a><code>geom_text()</code>添加数据标签</h2><p>使用<code>geom_text()</code>为条形图添加标签，需要分别指定一个变量映射给x、y以及标签（label），<code>vjust</code>和<code>hjust</code>分别调整标签的竖直和水平位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">标签在条形图顶端下方</div><div class="line">ggplot(data=cabbage_exp, aes(x=interaction(Date, Cultivar), y=Weight))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;)+ </div><div class="line">geom_text(aes(label=Weight), vjust=1.5, color=&quot;white&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-aab91b53fbdb3b5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">标签在条形图顶端上方</div><div class="line">ggplot(data=cabbage_exp, aes(x=interaction(Date, Cultivar), y=Weight))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;)+ </div><div class="line">geom_text(aes(label=Weight), vjust=-0.3, color=&quot;red&quot;)#可以通过color、size等自行调整标签属性</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-72f4b5a03f700c8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">堆叠图也一样</div><div class="line">ggplot(data=cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar))+ </div><div class="line">geom_bar(stat=&quot;identity&quot;, position = &quot;stack&quot;)+ </div><div class="line">geom_text(aes(label=Weight), size=5, color=&quot;black&quot;, vjust=3.5, hjust=0.5, </div><div class="line">position = position_stack())#这里的position要与geom_bar()里面的保持一致，各种参数多调整才能效果最佳</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5545ef422328ac23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>下次将重点讲解如何添加误差棒、显著性标记、坐标轴标题、图标题以及部分小技巧等等</p>
 <hr>
 <h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
 <p>Email: tyan@zju.edu.cn</p>
@@ -2190,10 +2159,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;使用&lt;code&gt;k-means&lt;/code&gt;聚类所需的包：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;factoextra&lt;/li&gt;
-&lt;li&gt;cluster
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-5c9a37089f4883ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。&lt;br&gt;
     
     </summary>
     
@@ -2204,7 +2171,7 @@
     
       <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
     
-      <category term="Cluster analysis" scheme="https://ytlogos.github.io/tags/Cluster-analysis/"/>
+      <category term="ggplot2" scheme="https://ytlogos.github.io/tags/ggplot2/"/>
     
   </entry>
   
