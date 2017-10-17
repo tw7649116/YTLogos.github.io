@@ -199,7 +199,7 @@
    page-home 
  ">
     <div class="headband"></div>
-  <a href="https://github.com/YTLogos"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171017/mFIEFcIC5I.png?imageslim"></a>
+  <a href="https://github.com/YTLogos"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171017/mFIEFcIC5I.png?imageslim" alt="Fork me on GitHub" data-canonical-src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171017/mFIEFcIC5I.png?imageslim"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta custom-logo">
@@ -375,7 +375,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/用circlize包绘制circos-plot/">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TaoYan">
@@ -394,7 +394,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/25/用circlize包绘制circos-plot/" itemprop="url">用circlize包绘制circos-plot</a></h1>
+                <a class="post-title-link" href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/" itemprop="url">ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记</a></h1>
         
 
         <div class="post-meta">
@@ -460,8 +460,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/06/25/用circlize包绘制circos-plot/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ytlogos.github.io/2017/06/25/用circlize包绘制circos-plot/" class="cy_cmt_count" data-xid="2017/06/25/用circlize包绘制circos-plot/" itemprop="commentsCount" ></span>
+                <a href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/" class="cy_cmt_count" data-xid="2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -469,7 +469,7 @@
 
           
           
-             <span id="/2017/06/25/用circlize包绘制circos-plot/" class="leancloud_visitors" data-flag-title="用circlize包绘制circos-plot">
+             <span id="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/" class="leancloud_visitors" data-flag-title="ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -495,7 +495,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  3,311
+                  1,380
                 </span>
               
 
@@ -511,7 +511,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  18
+                  7
                 </span>
               
             </div>
@@ -530,11 +530,11 @@
 
       
         
-          <p><img src="http://upload-images.jianshu.io/upload_images/2084719-4b332e9275d7088e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="circlize包"><a href="#circlize包" class="headerlink" title="circlize包"></a><code>circlize</code>包</h2><p><code>circlize</code>包在德国癌症中心的华人博士Zuguang Gu开发的，有兴趣的可以去看看他的<a href="https://github.com/jokergoo" target="_blank" rel="external">Github主页</a>。这个包有两个文档，一个是介绍基本原理的绘制简单<a href="https://cran.r-project.org/web/packages/circlize/vignettes/circlize.pdf" target="_blank" rel="external">圈圈图</a>的，也是本次要介绍的。另外一份文档专门介绍基因组数据绘制圈圈图<a href="https://cran.r-project.org/web/packages/circlize/vignettes/genomic_plot.pdf" target="_blank" rel="external">Genomic Circos Plot</a>,我自己还没看完，下次再介绍。<br>根据我的学习发现这个包与<code>ggplot2</code>很相似，也是先创建一个图层，然后不断的添加图形元素（<code>point</code>、<code>line</code>、<code>bar</code>等），这些简单的图形元素都有<code>circos.</code>这个前缀进行绘制，比如要绘制点，则用<code>circos.points()</code>。具体的下面一一介绍。<br>
+          <p><img src="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="绘制带有误差棒的条形图"><a href="#绘制带有误差棒的条形图" class="headerlink" title="绘制带有误差棒的条形图"></a>绘制带有误差棒的条形图</h2>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/25/用circlize包绘制circos-plot/#more" rel="contents">
+            <a class="btn" href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -585,7 +585,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TaoYan">
@@ -604,7 +604,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/25/R语言学习笔记之聚类分析/" itemprop="url">R语言学习笔记之聚类分析</a></h1>
+                <a class="post-title-link" href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/" itemprop="url">ggplot2学习笔记系列之利用ggplot2绘制条形图</a></h1>
         
 
         <div class="post-meta">
@@ -670,8 +670,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/06/25/R语言学习笔记之聚类分析/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/" class="cy_cmt_count" data-xid="2017/06/25/R语言学习笔记之聚类分析/" itemprop="commentsCount" ></span>
+                <a href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/" class="cy_cmt_count" data-xid="2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -679,7 +679,7 @@
 
           
           
-             <span id="/2017/06/25/R语言学习笔记之聚类分析/" class="leancloud_visitors" data-flag-title="R语言学习笔记之聚类分析">
+             <span id="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/" class="leancloud_visitors" data-flag-title="ggplot2学习笔记系列之利用ggplot2绘制条形图">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -705,7 +705,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  824
+                  1,758
                 </span>
               
 
@@ -721,7 +721,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4
+                  8
                 </span>
               
             </div>
@@ -740,13 +740,11 @@
 
       
         
-          <p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>使用<code>k-means</code>聚类所需的包：</p>
-<ul>
-<li>factoextra</li>
-<li>cluster
+          <p><img src="http://upload-images.jianshu.io/upload_images/2084719-5c9a37089f4883ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>条形图可以说是我们最常用的数据可视化方法了，通常用于展示不同分类条件下（在x轴上）某个数值型变量的取值（y轴上）。绘制条形图时需要特别注意的一个细节是条形图的条形高度有时表示的是数据集中变量的频数，有时表示的则是变量本身。本文将会介绍这两类条形图的绘图技巧。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/25/R语言学习笔记之聚类分析/#more" rel="contents">
+            <a class="btn" href="/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制条形图/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1634,7 +1632,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TaoYan">
@@ -1653,7 +1651,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/" itemprop="url">ggplot2学习笔记系列之主题（theme）设置</a></h1>
+                <a class="post-title-link" href="/2017/06/25/R语言学习笔记之聚类分析/" itemprop="url">R语言学习笔记之聚类分析</a></h1>
         
 
         <div class="post-meta">
@@ -1719,8 +1717,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/" class="cy_cmt_count" data-xid="2017/06/25/ggplot2学习笔记系列之主题（theme）设置/" itemprop="commentsCount" ></span>
+                <a href="/2017/06/25/R语言学习笔记之聚类分析/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/" class="cy_cmt_count" data-xid="2017/06/25/R语言学习笔记之聚类分析/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1728,7 +1726,7 @@
 
           
           
-             <span id="/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/" class="leancloud_visitors" data-flag-title="ggplot2学习笔记系列之主题（theme）设置">
+             <span id="/2017/06/25/R语言学习笔记之聚类分析/" class="leancloud_visitors" data-flag-title="R语言学习笔记之聚类分析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1754,7 +1752,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,420
+                  824
                 </span>
               
 
@@ -1770,7 +1768,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  7
+                  4
                 </span>
               
             </div>
@@ -1789,10 +1787,13 @@
 
       
         
-          <p><img src="http://upload-images.jianshu.io/upload_images/2084719-aedad605e759b602.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>
+          <p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>使用<code>k-means</code>聚类所需的包：</p>
+<ul>
+<li>factoextra</li>
+<li>cluster
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/25/ggplot2学习笔记系列之主题（theme）设置/#more" rel="contents">
+            <a class="btn" href="/2017/06/25/R语言学习笔记之聚类分析/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
