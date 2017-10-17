@@ -1563,9 +1563,9 @@ pre .javascript .function {
   margin: 0.8em 2em 0 2em;
 }
 #wechat:hover p {
-  animation: roll 0.1s infinite linear;
-  -webkit-animation: roll 0.1s infinite linear;
-  -moz-animation: roll 0.1s infinite linear;
+  animation: roll 0s infinite linear;
+  -webkit-animation: roll 0s infinite linear;
+  -moz-animation: roll 0s infinite linear;
 }
 #alipay:hover p {
   animation: roll 0.1s infinite linear;
@@ -1854,7 +1854,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #babd95;
+  background: #1b734b;
 }
 .links-of-blogroll {
   font-size: 13px;
