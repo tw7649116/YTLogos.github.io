@@ -1800,9 +1800,9 @@
     
       <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
     
-      <category term="scatter plot" scheme="https://ytlogos.github.io/tags/scatter-plot/"/>
-    
       <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
+    
+      <category term="scatter plot" scheme="https://ytlogos.github.io/tags/scatter-plot/"/>
     
   </entry>
   
@@ -2018,6 +2018,185 @@
   </entry>
   
   <entry>
+    <title>R语言学习笔记之聚类分析</title>
+    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%81%9A%E7%B1%BB%E5%88%86%E6%9E%90/"/>
+    <id>https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/</id>
+    <published>2017-06-24T16:00:00.000Z</published>
+    <updated>2017-09-19T00:39:01.392Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>使用<code>k-means</code>聚类所需的包：</p>
+<ul>
+<li>factoextra</li>
+<li>cluster<a id="more"></a>
+#加载包<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">library(factoextra)</div><div class="line">library(cluster)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>#数据准备<br>使用内置的R数据集<code>USArrests</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#load the dataset</div><div class="line">data(&quot;USArrests&quot;)</div><div class="line">#remove any missing value (i.e, NA values for not available)</div><div class="line">#That might be present in the data</div><div class="line">USArrests &lt;- na.omit(USArrests)#view the first 6 rows of the data</div><div class="line">head(USArrests, n=6)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2abe5fa13d02d884.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>在此数据集中，列是变量，行是观测值</strong><br>在聚类之前我们可以先进行一些必要的数据检查即数据描述性统计，如平均值、标准差等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">desc_stats &lt;- data.frame( Min=apply(USArrests, 2, min),#minimum</div><div class="line">Med=apply(USArrests, 2, median),#median </div><div class="line">Mean=apply(USArrests, 2, mean),#mean </div><div class="line">SD=apply(USArrests, 2, sd),#Standard deviation </div><div class="line">Max=apply(USArrests, 2, max)#maximum</div><div class="line">)</div><div class="line">desc_stats &lt;- round(desc_stats, 1)#保留小数点后一位head(desc_stats)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c28a99b3efe41ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>变量有很大的方差及均值时需进行标准化</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df &lt;- scale(USArrests)</div></pre></td></tr></table></figure></p>
+<p>#数据集群性评估<br>使用<code>get_clust_tendency()</code>计算<code>Hopkins</code>统计量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">res &lt;- get_clust_tendency(df, 40, graph = TRUE)</div><div class="line">res$hopkins_stat</div><div class="line">## [1] 0.3440875</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Visualize the dissimilarity matrix</div><div class="line">res$plot</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7ab1c23eb38f6cb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>Hopkins统计量的值&lt;0.5，表明数据是高度可聚合的。另外，从图中也可以看出数据可聚合。</p>
+</blockquote>
+<p>#估计聚合簇数<br>由于k均值聚类需要指定要生成的聚类数量，因此我们将使用函数<code>clusGap()</code>来计算用于估计最优聚类数。函数<code>fviz_gap_stat()</code>用于可视化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set.seed(123)</div><div class="line">## Compute the gap statistic</div><div class="line">gap_stat &lt;- clusGap(df, FUN = kmeans, nstart = 25, K.max = 10, B = 500) </div><div class="line"># Plot the result</div><div class="line">fviz_gap_stat(gap_stat)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-64e6e37dc513b2be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>图中显示最佳为聚成四类（k=4）</p>
+</blockquote>
+<p>#进行聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set.seed(123)</div><div class="line">km.res &lt;- kmeans(df, 4, nstart = 25)</div><div class="line">head(km.res$cluster, 20)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-61fe2e1a139e3b9c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Visualize clusters using factoextra</div><div class="line">fviz_cluster(km.res, USArrests)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2e39c93b63af2161.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#检查<code>cluster silhouette</code>图</p>
+<blockquote>
+<p>Recall that the silhouette measures (SiSi) how similar an object ii is to the the other objects in its own cluster versus those in the neighbor cluster. SiSi values range from 1 to - 1:</p>
+</blockquote>
+<ul>
+<li>A value of SiSi close to 1 indicates that the object is well clustered. In the other words, the object ii is similar to the other objects in its group.</li>
+<li>A value of SiSi close to -1 indicates that the object is poorly clustered, and that assignment to some other cluster would probably improve the overall results.<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sil &lt;- silhouette(km.res$cluster, dist(df))</div><div class="line">rownames(sil) &lt;- rownames(USArrests)</div><div class="line">head(sil[, 1:3])</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e2752fd444968a90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Visualize </div><div class="line">fviz_silhouette(sil)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a01f551c35d38d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b2554b235caf0420.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>图中可以看出有负值，可以通过函数<code>silhouette()</code>确定是哪个观测值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">neg_sil_index &lt;- which(sil[, &quot;sil_width&quot;] &lt; 0)</div><div class="line">sil[neg_sil_index, , drop = FALSE]</div><div class="line">##          cluster    neighbor     sil_width</div><div class="line">## Missouri    3          2        -0.07318144</div></pre></td></tr></table></figure></p>
+<p>#<strong>eclust()</strong>:增强的聚类分析</p>
+<blockquote>
+<p>与其他聚类分析包相比，<code>eclust()</code>有以下优点：</p>
+</blockquote>
+<ul>
+<li>简化了聚类分析的工作流程</li>
+<li>可以用于计算层次聚类和分区聚类</li>
+<li>eclust()自动计算最佳聚类簇数。</li>
+<li>自动提供Silhouette plot</li>
+<li>可以结合ggplot2绘制优美的图形</li>
+</ul>
+<p>#使用eclust()的<strong>K</strong>均值聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Compute k-means</div><div class="line">res.km &lt;- eclust(df, &quot;kmeans&quot;)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-448668d5d66b746c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Gap statistic plot</div><div class="line">fviz_gap_stat(res.km$gap_stat)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8abcb70ddd53cc9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Silhouette plotfviz_silhouette(res.km)</div><div class="line"></div><div class="line">##    cluster size ave.sil.width</div><div class="line">## 1     1     13      0.31</div><div class="line">## 2     2     29      0.38</div><div class="line">## 3     3      8      0.39</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ef8922f5d288768f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#使用<strong>eclust（）</strong>的层次聚类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Enhanced hierarchical clustering</div><div class="line">res.hc &lt;- eclust(df, &quot;hclust&quot;) # compute hclust</div><div class="line">fviz_dend(res.hc, rect = TRUE) # dendrogam</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#下面的R代码生成Silhouette plot和分层聚类散点图。</div><div class="line">fviz_silhouette(res.hc) # silhouette plot</div><div class="line">##   cluster size ave.sil.width</div><div class="line">## 1    1     19      0.26</div><div class="line">## 2    2     19      0.28</div><div class="line">## 3    3     12      0.43</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-cdae172ce885358a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fviz_cluster(res.hc) # scatter plot</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-be9e7cd89ccec3bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#Infos</p>
+<blockquote>
+<p>This analysis has been performed using R software (R version 3.3.2)</p>
+</blockquote>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
+<p>Email: tyan@zju.edu.cn</p>
+<p>QQ: 1051927088</p>
+<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
+<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
+<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
+<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
+<p>伪码农，R语言爱好者，爱开源</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-f5f4fb4aa3f23466.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;使用&lt;code&gt;k-means&lt;/code&gt;聚类所需的包：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;factoextra&lt;/li&gt;
+&lt;li&gt;cluster
+    
+    </summary>
+    
+      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
+    
+      <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
+    
+      <category term="Cluster analysis" scheme="https://ytlogos.github.io/tags/Cluster-analysis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>R语言可视化学习笔记之ggrepel包</title>
+    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggrepel%E5%8C%85/"/>
+    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之ggrepel包/</id>
+    <published>2017-06-24T16:00:00.000Z</published>
+    <updated>2017-09-19T00:39:01.376Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当我们在图形中添加标签时，标签之间很容易相互重叠，包<a href="https://github.com/slowkow/ggrepel" target="_blank" rel="external"><strong>ggrepel</strong></a>就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#使用数据集mtcars演示</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text(aes(wt, mpg, label=rownames(mtcars)))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0110517941711504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>可以看到可视化效果不是很好。接下来看看包<strong>ggrepel</strong>的效果。<br>geom_text_repel()是基于geom_text()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggrepel)</div><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text_repel(aes(wt, mpg, label=rownames(mtcars)))+</div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7f9edd980e5504ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="geom-label-repel"><a href="#geom-label-repel" class="headerlink" title="geom_label_repel()"></a>geom_label_repel()</h2><p>geom_label_repel()是基于geom_label(),它将标签置于一个小方框中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;grey&quot;, size=5)+</div><div class="line">geom_label_repel(aes(wt, mpg, fill=factor(cyl), </div><div class="line">label=rownames(mtcars)), fontface=&quot;bold&quot;, color=&quot;white&quot;, </div><div class="line">box.padding=unit(0.35, &quot;lines&quot;), point.padding=unit(0.5, &quot;lines&quot;), </div><div class="line">segment.colour = &quot;grey50&quot;)+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5e60c14166f9c915.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>大部分<code>geom_text()</code>的参数都适用于<code>geom_text_repel()</code>,除了以下几个：</p>
+<ul>
+<li>hjust</li>
+<li>vjust</li>
+<li>position</li>
+<li>check_overlap</li>
+</ul>
+<p><strong>ggrepel</strong>包为<code>geom_text_repel()</code>与<code>geom_label_repel()</code>提供了特有的参数设置：</p>
+<ul>
+<li>segment.color:连接点与标签的线段的颜色</li>
+<li>segment.size:线段的粗细</li>
+<li>segment.alpha:线段的透明度</li>
+<li>box.padding:文本框周边填充</li>
+<li>point.padding:点周围填充</li>
+<li>arrow:grid:arrow提供的箭头</li>
+<li>force:强制性将重叠文本散开</li>
+<li>max.oter:最大迭代次数</li>
+<li>nudge_x/y:标签开始位置在坐标轴的移动距离</li>
+<li>direction:允许标签的方向，x、y or both</li>
+</ul>
+<p>下面举个栗子来详细了解这些参数的图形效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg, color=factor(cyl)), size=3)+</div><div class="line">geom_text_repel(aes(wt, mpg, color=factor(cyl), </div><div class="line">label=rownames(mtcars), angle=ifelse(mtcars$cyl==4, 90, 0)), </div><div class="line">size=4, family=&quot;Times&quot;, fontface=&quot;bold&quot;, </div><div class="line">box.padding=unit(0.5, &quot;lines&quot;), point.padding=unit(1.6, &quot;lines&quot;), </div><div class="line">segment.color = &quot;#cccccc&quot;, segment.size = 0.5, </div><div class="line">arrow = arrow(length=unit(0.01, &quot;npc&quot;)),force = 1, max.iter = 3e3, </div><div class="line">nudge_x = ifelse(mtcars$cyl==6, 2, 0), nudge_y = ifelse(mtcars$cyl==6, 9, 0))+ </div><div class="line">scale_color_discrete(name=&quot;cyl&quot;)+ </div><div class="line">scale_x_continuous(expand = c(0.5, 0))+ </div><div class="line">scale_y_continuous(expand = c(0.25, 0))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>也可以通过设置参数<code>point.padding=NA</code>不对点进行<strong>repel</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">mtcars$label &lt;- rownames(mtcars)</div><div class="line">ggplot(mtcars, aes(wt, mpg, label=label))+ </div><div class="line">geom_point(color=&quot;red&quot;)+ geom_text_repel(point.padding = NA)+</div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-238389207de940a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>通过赋值某些<strong>label</strong>空字符“”来隐藏。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">mtcars$label &lt;- rownames(mtcars)</div><div class="line">mtcars$label[1:15] &lt;- &quot;&quot;</div><div class="line">ggplot(mtcars, aes(wt, mpg))+ geom_point(aes(color=factor(cyl)), size=2)+</div><div class="line">geom_text_repel(aes(color=factor(cyl), size=hp, label=label), </div><div class="line">point.padding = unit(0.25, &quot;lines&quot;), box.padding = unit(0.25, &quot;lines&quot;), </div><div class="line">nudge_y = 0.1)+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b6f7d76fe1e36113.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="将标签控制在特定区域"><a href="#将标签控制在特定区域" class="headerlink" title="将标签控制在特定区域"></a>将标签控制在特定区域</h2><p>通过设置参数xlim和ylim来限制label的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">data &lt;- mtcars</div><div class="line">mu &lt;- mean(data$wt)</div><div class="line">left &lt;- data[data$wt &lt;mu, ]</div><div class="line">right &lt;- data[data$wt&gt;=mu, ]</div><div class="line">ggplot()+ geom_vline(xintercept = mu)+ </div><div class="line">geom_point(aes(wt, mpg), data=data)+ </div><div class="line">geom_text_repel(data=left, aes(wt, mpg, label=rownames(left), </div><div class="line">color=&quot;Left half&quot;), xlim=c(NA, mu))+ </div><div class="line">geom_text_repel(data=right, aes(wt, mpg, label=rownames(right), </div><div class="line">color=&quot;Rigth half&quot;), xlim=c(mu, NA))+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-91519695f1b33a20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过控制参数direction来决定label是左右移动还是上下移动， 默认是both<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">#direction=&quot;x&quot; 左右移动</div><div class="line">ggplot(mtcars)+</div><div class="line">  geom_point(aes(wt, mpg), color=&quot;red&quot;)+</div><div class="line">  geom_text_repel(aes(wt, mpg, label=rownames(mtcars)), direction=&quot;x&quot;)+</div><div class="line">  theme_classic(base_size = 16)+xlim(1, 6)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-771214ebd632ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#direction=&quot;x&quot; 上下移动</div><div class="line">ggplot(mtcars)+</div><div class="line">  geom_point(aes(wt, mpg), color=&quot;red&quot;)+</div><div class="line">  geom_text_repel(aes(wt, mpg, label=rownames(mtcars)), direction=&quot;y&quot;)+</div><div class="line">  theme_classic(base_size = 16)+xlim(1, 6)</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-771214ebd632ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="线图"><a href="#线图" class="headerlink" title="线图"></a>线图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(Orange, aes(age, circumference, color=Tree))+</div><div class="line">  geom_line()+</div><div class="line">  coord_cartesian(xlim=c(min(Orange$age), max(Orange$age)+90))+</div><div class="line">  geom_text_repel(data=subset(Orange, age==max(age)),</div><div class="line">                  aes(label=paste(&quot;Tree&quot;, Tree)),size=6, nudge_x = 45, segment.color = NA)+</div><div class="line">  theme_classic(base_size = 16)+</div><div class="line">  theme(legend.position = &quot;none&quot;)+</div><div class="line">  labs(title=&quot;Orange Trees&quot;, x=&quot;Age(days)&quot;, y=&quot;Circumference(mm)&quot;)</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9b5718dafd8b2739.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">##</div><div class="line">## other attached packages:</div><div class="line">## [1] ggrepel_0.6.5 ggplot2_2.2.1</div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] Rcpp_0.12.11 digest_0.6.12 rprojroot_1.2 plyr_1.8.4 </div><div class="line">## [5] grid_3.4.0 gtable_0.2.0 backports_1.1.0 magrittr_1.5 </div><div class="line">## [9] evaluate_0.10 scales_0.4.1 rlang_0.1.1 stringi_1.1.5 </div><div class="line">## [13] lazyeval_0.2.0 rmarkdown_1.5 labeling_0.3 tools_3.4.0 </div><div class="line">## [17] stringr_1.2.0 munsell_0.4.3 yaml_2.1.14 compiler_3.4.0 </div><div class="line">## [21] colorspace_1.3-2 htmltools_0.3.6 knitr_1.16 tibble_1.3.3</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><ul>
+<li>wechat: yt056410</li>
+<li>Email: tyan@zju.edu.cn</li>
+<li>QQ: 1051927088</li>
+<li>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></li>
+<li>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></li>
+<li>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></li>
+</ul>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
+<ul>
+<li>浙江大学作物遗传育种在读研究生（生物信息学方向）</li>
+<li>伪码农，R语言爱好者，爱开源</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;当我们在图形中添加标签时，标签之间很容易相互重叠，包&lt;a href=&quot;https://github.com/slowkow/ggrepel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;ggrepel&lt;/strong&gt;&lt;/a&gt;就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+      <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
+    
+      <category term="ggrepel" scheme="https://ytlogos.github.io/tags/ggrepel/"/>
+    
+      <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用circlize包绘制circos-plot</title>
     <link href="https://ytlogos.github.io/2017/06/25/%E7%94%A8circlize%E5%8C%85%E7%BB%98%E5%88%B6circos-plot/"/>
     <id>https://ytlogos.github.io/2017/06/25/用circlize包绘制circos-plot/</id>
@@ -2105,138 +2284,6 @@
       <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
     
       <category term="circlize" scheme="https://ytlogos.github.io/tags/circlize/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记</title>
-    <link href="https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E8%AF%AF%E5%B7%AE%E6%A3%92%E5%8F%8A%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/"/>
-    <id>https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/</id>
-    <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-09-19T00:39:01.404Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="绘制带有误差棒的条形图"><a href="#绘制带有误差棒的条形图" class="headerlink" title="绘制带有误差棒的条形图"></a>绘制带有误差棒的条形图</h2><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#创建数据集</div><div class="line">df &lt;- data.frame(treatment = factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3)), </div><div class="line">                 response = c(2, 5, 4, 6, 9, 7, 3, 5, 8), </div><div class="line">                 group = factor(c(1, 2, 3, 1, 2, 3, 1, 2, 3)), </div><div class="line">                 se = c(0.4, 0.2, 0.4, 0.5, 0.3, 0.2, 0.4, 0.6, 0.7))</div><div class="line">head(df) #查看数据集</div><div class="line"></div><div class="line">##   treatment response group  se</div><div class="line">## 1    1         2       1    0.4</div><div class="line">## 2    1         5       2    0.2</div><div class="line">## 3    1         4       3    0.4</div><div class="line">## 4    2         6       1    0.5</div><div class="line">## 5    2         9       2    0.3</div><div class="line">## 6    2         7       3    0.2</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 使用geom_errorbar()绘制带有误差棒的条形图</div><div class="line"># 这里一定要注意position要与`geom_bar()`保持一致，由于系统默认dodge是0.9，</div><div class="line"># 因此geom_errorbar()里面position需要设置0.9，width设置误差棒的大小</div><div class="line">ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0d1a0cc2f8ac5129.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="绘制带有显著性标记的条形图"><a href="#绘制带有显著性标记的条形图" class="headerlink" title="绘制带有显著性标记的条形图"></a>绘制带有显著性标记的条形图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">label &lt;- c(&quot;&quot;, &quot;*&quot;, &quot;**&quot;, &quot;&quot;, &quot;**&quot;, &quot;*&quot;, &quot;&quot;, &quot;&quot;, &quot;*&quot;) #这里随便设置的显著性，还有abcdef等显著性标记符号，原理一样，这里不再重复。</div><div class="line"># 添加显著性标记跟上次讲的添加数据标签是一样的，这里我们假设1是对照</div><div class="line">ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">geom_text(aes(y = response +  1.5 * se, label = label, group = group), </div><div class="line">position = position_dodge(0.9), size = 5, fontface = &quot;bold&quot;) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;) #这里的label就是刚才设置的，group是数据集中的，fontface设置字体。</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-d7a71cdebe7aaecb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="绘制两条形图中间带有星号的统计图"><a href="#绘制两条形图中间带有星号的统计图" class="headerlink" title="绘制两条形图中间带有星号的统计图"></a>绘制两条形图中间带有星号的统计图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#创建一个简单的数据集</div><div class="line">Control &lt;- c(2.0,2.5,2.2,2.4,2.1)</div><div class="line">Treatment &lt;- c(3.0,3.3,3.1,3.2,3.2)</div><div class="line">mean &lt;- c(mean(Control), mean(Treatment))</div><div class="line">sd &lt;- c(sd(Control), sd(Treatment))</div><div class="line">df1 &lt;- data.frame(V=c(&quot;Control&quot;, &quot;Treatment&quot;), mean=mean, sd=sd)</div><div class="line">df1$V &lt;- factor(df1$V, levels=c(&quot;Control&quot;, &quot;Treatment&quot;))</div><div class="line">#利用geom_segment()绘制图形</div><div class="line">ggplot(data=df1, aes(x=V, y=mean, fill=V))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;,position = position_dodge(0.9),color=&quot;black&quot;)+ </div><div class="line">geom_errorbar(aes(ymax=mean+sd, ymin=mean-sd), width=0.05)+ </div><div class="line">geom_segment(aes(x=1, y=2.5, xend=1, yend=3.8))+#绘制control端的竖线 </div><div class="line">geom_segment(aes(x=2, y=3.3, xend=2, yend=3.8))+#绘制treatment端竖线 </div><div class="line">geom_segment(aes(x=1, y=3.8, xend=1.45, yend=3.8))+ </div><div class="line">geom_segment(aes(x=1.55, y=3.8, xend=2, yend=3.8))+#绘制两段横线 </div><div class="line">annotate(&quot;text&quot;, x=1.5, y=3.8, label=&quot;〇&quot;, size=5)#annotate函数也可以添加标签</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-fd824d52ccfd97f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="为图形添加标题"><a href="#为图形添加标题" class="headerlink" title="为图形添加标题"></a>为图形添加标题</h2><p>图形标题有图标题、坐标轴标题、图例标题等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">p &lt;- ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) +</div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se),</div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)# 利用ggtitle()添加图标题,还有labs（）也可以添加标题，最后会提一下。（有一个问题就是ggtitle()添加的标题总是左对齐）</div><div class="line">p + ggtitle(&quot;利用ggtitle()添加图标题&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-437d4f549444463d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 利用xlab()\ylab()添加/修改坐标轴标题</div><div class="line">p + ggtitle(&quot;利用ggtitle()添加图标题&quot;) + </div><div class="line">xlab(&quot;不同处理&quot;) + </div><div class="line">ylab(&quot;response&quot;) #标题的参数修改在theme里，theme是一个很大的函数，几乎可以定义一切，下次有时间会讲解</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2b799bb7890f0624.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>最后再讲解一下如何将多副图至于一个页面 利用包<strong>gridExtra</strong>中<code>grid.arrange()</code>函数实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 将四幅图放置于一个页面中</div><div class="line">p &lt;- ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)</div><div class="line">p1 &lt;- p + ggtitle(&quot;利用ggtitle()添加图标题&quot;)</div><div class="line">p2 &lt;- p + ggtitle(&quot;利用ggtitle()添加图标题&quot;) + xlab(&quot;不同处理&quot;) + ylab(&quot;response&quot;)</div><div class="line">p3 &lt;- ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">geom_text(aes(y = response +  1.5 * se, label = label, group = group), </div><div class="line">position = position_dodge(0.9), size = 5, fontface = &quot;bold&quot;) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)</div><div class="line">library(gridExtra) #没有安装此包先用install.packages(&apos;gridExtra&apos;)安装</div><div class="line">grid.arrange(p, p1, p2, p3)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8ea6aa114eeab5ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上次有人问坐标轴旋转的实现，坐标轴旋转有时是很有用的，下面是我看过的一个例子，用来介绍一下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#先加载他的数据</div><div class="line">url.world_ports &lt;- url(&quot;http://sharpsightlabs.com/wp-content/datasets/world_ports.RData&quot;)</div><div class="line">load(url.world_ports)</div><div class="line">knitr::kable(df.world_ports[1:5,])#该数据是关于世界上各个港口的数据汇总</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-01c06eb52b6848d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">library(dplyr) #用于数据操作，与ggplot2一样是R语言必学包#现在绘制条形图(%&gt;%上次说过是管道操作，用于连接各个代码，十分有用)</div><div class="line">df.world_ports%&gt;%filter(year==2014)%&gt;% #筛选2014年的数据 </div><div class="line">ggplot(aes(x=reorder(port_label, desc(volume)), y=volume))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;, fill=&quot;darkred&quot;)+ </div><div class="line">labs(title=&quot;Busiest container ports in the world&quot;)+ </div><div class="line">labs(subtitle = &apos;2014, in order of shipping volume&apos;)+ #添加副标题 </div><div class="line">labs(x = &quot;Port&quot;, y = &quot;Shipping\nVolume&quot;)+ </div><div class="line">theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .4))#调整x轴标签，angle=90表示标签旋转90度，从图中可以看出</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-11d43dfb82953994.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#现在旋转坐标轴，并筛选排名小于25的港口，并且添加数据标签</div><div class="line">df.world_ports %&gt;% filter(year==2014, rank&lt;=25) %&gt;% #筛选2014年并且rank小于等于25的数据 </div><div class="line">ggplot(aes(x=reorder(port, volume), y=volume))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;, fill=&quot;darkred&quot;)+ </div><div class="line">labs(title=&quot;Busiest container ports in the world&quot;)+ </div><div class="line">labs(subtitle = &apos;2014, in order of shipping volume&apos;)+  </div><div class="line">labs(x = &quot;Port&quot;, y = &quot;Shipping\nVolume&quot;)+ </div><div class="line">geom_text(aes(label=volume), hjust=1.2, color=&quot;white&quot;)+ </div><div class="line">coord_flip()#旋转坐标轴</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>两图相比，明显第二幅图好，一是可以添加数据标签，二是不用歪着脖子看。<br>本来打算讲讲图例的但是发现内容太多了，就不讲了，下次吧！</p>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
-<p>Email: tyan@zju.edu.cn</p>
-<p>QQ: 1051927088</p>
-<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
-<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
-<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
-<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
-<p>伪码农，R语言爱好者，爱开源</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;绘制带有误差棒的条形图&quot;&gt;&lt;a href=&quot;#绘制带有误差棒的条形图&quot; class=&quot;headerlink&quot; title=&quot;绘制带有误差棒的条形图&quot;&gt;&lt;/a&gt;绘制带有误差棒的条形图&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
-    
-      <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
-    
-      <category term="ggplot2" scheme="https://ytlogos.github.io/tags/ggplot2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>R语言可视化学习笔记之ggrepel包</title>
-    <link href="https://ytlogos.github.io/2017/06/25/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bggrepel%E5%8C%85/"/>
-    <id>https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之ggrepel包/</id>
-    <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-09-19T00:39:01.376Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>当我们在图形中添加标签时，标签之间很容易相互重叠，包<a href="https://github.com/slowkow/ggrepel" target="_blank" rel="external"><strong>ggrepel</strong></a>就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#使用数据集mtcars演示</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text(aes(wt, mpg, label=rownames(mtcars)))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0110517941711504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>可以看到可视化效果不是很好。接下来看看包<strong>ggrepel</strong>的效果。<br>geom_text_repel()是基于geom_text()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggrepel)</div><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;red&quot;)+ </div><div class="line">geom_text_repel(aes(wt, mpg, label=rownames(mtcars)))+</div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-7f9edd980e5504ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="geom-label-repel"><a href="#geom-label-repel" class="headerlink" title="geom_label_repel()"></a>geom_label_repel()</h2><p>geom_label_repel()是基于geom_label(),它将标签置于一个小方框中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg), color=&quot;grey&quot;, size=5)+</div><div class="line">geom_label_repel(aes(wt, mpg, fill=factor(cyl), </div><div class="line">label=rownames(mtcars)), fontface=&quot;bold&quot;, color=&quot;white&quot;, </div><div class="line">box.padding=unit(0.35, &quot;lines&quot;), point.padding=unit(0.5, &quot;lines&quot;), </div><div class="line">segment.colour = &quot;grey50&quot;)+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5e60c14166f9c915.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>大部分<code>geom_text()</code>的参数都适用于<code>geom_text_repel()</code>,除了以下几个：</p>
-<ul>
-<li>hjust</li>
-<li>vjust</li>
-<li>position</li>
-<li>check_overlap</li>
-</ul>
-<p><strong>ggrepel</strong>包为<code>geom_text_repel()</code>与<code>geom_label_repel()</code>提供了特有的参数设置：</p>
-<ul>
-<li>segment.color:连接点与标签的线段的颜色</li>
-<li>segment.size:线段的粗细</li>
-<li>segment.alpha:线段的透明度</li>
-<li>box.padding:文本框周边填充</li>
-<li>point.padding:点周围填充</li>
-<li>arrow:grid:arrow提供的箭头</li>
-<li>force:强制性将重叠文本散开</li>
-<li>max.oter:最大迭代次数</li>
-<li>nudge_x/y:标签开始位置在坐标轴的移动距离</li>
-<li>direction:允许标签的方向，x、y or both</li>
-</ul>
-<p>下面举个栗子来详细了解这些参数的图形效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(mtcars)+ geom_point(aes(wt, mpg, color=factor(cyl)), size=3)+</div><div class="line">geom_text_repel(aes(wt, mpg, color=factor(cyl), </div><div class="line">label=rownames(mtcars), angle=ifelse(mtcars$cyl==4, 90, 0)), </div><div class="line">size=4, family=&quot;Times&quot;, fontface=&quot;bold&quot;, </div><div class="line">box.padding=unit(0.5, &quot;lines&quot;), point.padding=unit(1.6, &quot;lines&quot;), </div><div class="line">segment.color = &quot;#cccccc&quot;, segment.size = 0.5, </div><div class="line">arrow = arrow(length=unit(0.01, &quot;npc&quot;)),force = 1, max.iter = 3e3, </div><div class="line">nudge_x = ifelse(mtcars$cyl==6, 2, 0), nudge_y = ifelse(mtcars$cyl==6, 9, 0))+ </div><div class="line">scale_color_discrete(name=&quot;cyl&quot;)+ </div><div class="line">scale_x_continuous(expand = c(0.5, 0))+ </div><div class="line">scale_y_continuous(expand = c(0.25, 0))+ </div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>也可以通过设置参数<code>point.padding=NA</code>不对点进行<strong>repel</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">mtcars$label &lt;- rownames(mtcars)</div><div class="line">ggplot(mtcars, aes(wt, mpg, label=label))+ </div><div class="line">geom_point(color=&quot;red&quot;)+ geom_text_repel(point.padding = NA)+</div><div class="line">theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-238389207de940a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>通过赋值某些<strong>label</strong>空字符“”来隐藏。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">mtcars$label &lt;- rownames(mtcars)</div><div class="line">mtcars$label[1:15] &lt;- &quot;&quot;</div><div class="line">ggplot(mtcars, aes(wt, mpg))+ geom_point(aes(color=factor(cyl)), size=2)+</div><div class="line">geom_text_repel(aes(color=factor(cyl), size=hp, label=label), </div><div class="line">point.padding = unit(0.25, &quot;lines&quot;), box.padding = unit(0.25, &quot;lines&quot;), </div><div class="line">nudge_y = 0.1)+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-b6f7d76fe1e36113.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="将标签控制在特定区域"><a href="#将标签控制在特定区域" class="headerlink" title="将标签控制在特定区域"></a>将标签控制在特定区域</h2><p>通过设置参数xlim和ylim来限制label的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">data &lt;- mtcars</div><div class="line">mu &lt;- mean(data$wt)</div><div class="line">left &lt;- data[data$wt &lt;mu, ]</div><div class="line">right &lt;- data[data$wt&gt;=mu, ]</div><div class="line">ggplot()+ geom_vline(xintercept = mu)+ </div><div class="line">geom_point(aes(wt, mpg), data=data)+ </div><div class="line">geom_text_repel(data=left, aes(wt, mpg, label=rownames(left), </div><div class="line">color=&quot;Left half&quot;), xlim=c(NA, mu))+ </div><div class="line">geom_text_repel(data=right, aes(wt, mpg, label=rownames(right), </div><div class="line">color=&quot;Rigth half&quot;), xlim=c(mu, NA))+ theme_classic(base_size = 16)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-91519695f1b33a20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过控制参数direction来决定label是左右移动还是上下移动， 默认是both<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">#direction=&quot;x&quot; 左右移动</div><div class="line">ggplot(mtcars)+</div><div class="line">  geom_point(aes(wt, mpg), color=&quot;red&quot;)+</div><div class="line">  geom_text_repel(aes(wt, mpg, label=rownames(mtcars)), direction=&quot;x&quot;)+</div><div class="line">  theme_classic(base_size = 16)+xlim(1, 6)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-771214ebd632ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#direction=&quot;x&quot; 上下移动</div><div class="line">ggplot(mtcars)+</div><div class="line">  geom_point(aes(wt, mpg), color=&quot;red&quot;)+</div><div class="line">  geom_text_repel(aes(wt, mpg, label=rownames(mtcars)), direction=&quot;y&quot;)+</div><div class="line">  theme_classic(base_size = 16)+xlim(1, 6)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-771214ebd632ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="线图"><a href="#线图" class="headerlink" title="线图"></a>线图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">set.seed(42)</div><div class="line">ggplot(Orange, aes(age, circumference, color=Tree))+</div><div class="line">  geom_line()+</div><div class="line">  coord_cartesian(xlim=c(min(Orange$age), max(Orange$age)+90))+</div><div class="line">  geom_text_repel(data=subset(Orange, age==max(age)),</div><div class="line">                  aes(label=paste(&quot;Tree&quot;, Tree)),size=6, nudge_x = 45, segment.color = NA)+</div><div class="line">  theme_classic(base_size = 16)+</div><div class="line">  theme(legend.position = &quot;none&quot;)+</div><div class="line">  labs(title=&quot;Orange Trees&quot;, x=&quot;Age(days)&quot;, y=&quot;Circumference(mm)&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-9b5718dafd8b2739.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.0 (2017-04-21)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 8.1 x64 (build 9600)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats graphics grDevices utils datasets methods base </div><div class="line">##</div><div class="line">## other attached packages:</div><div class="line">## [1] ggrepel_0.6.5 ggplot2_2.2.1</div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] Rcpp_0.12.11 digest_0.6.12 rprojroot_1.2 plyr_1.8.4 </div><div class="line">## [5] grid_3.4.0 gtable_0.2.0 backports_1.1.0 magrittr_1.5 </div><div class="line">## [9] evaluate_0.10 scales_0.4.1 rlang_0.1.1 stringi_1.1.5 </div><div class="line">## [13] lazyeval_0.2.0 rmarkdown_1.5 labeling_0.3 tools_3.4.0 </div><div class="line">## [17] stringr_1.2.0 munsell_0.4.3 yaml_2.1.14 compiler_3.4.0 </div><div class="line">## [21] colorspace_1.3-2 htmltools_0.3.6 knitr_1.16 tibble_1.3.3</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><ul>
-<li>wechat: yt056410</li>
-<li>Email: tyan@zju.edu.cn</li>
-<li>QQ: 1051927088</li>
-<li>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></li>
-<li>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></li>
-<li>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></li>
-</ul>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
-<ul>
-<li>浙江大学作物遗传育种在读研究生（生物信息学方向）</li>
-<li>伪码农，R语言爱好者，爱开源</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-9824653100d11fec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;当我们在图形中添加标签时，标签之间很容易相互重叠，包&lt;a href=&quot;https://github.com/slowkow/ggrepel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;ggrepel&lt;/strong&gt;&lt;/a&gt;就专门用来解决这个问题！ 首先我们来看看通过geom_text()添加标签时的情形：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
-    
-      <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
-    
-      <category term="ggrepel" scheme="https://ytlogos.github.io/tags/ggrepel/"/>
     
   </entry>
   
