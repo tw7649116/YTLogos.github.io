@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-11-11T07:57:37.687Z</updated>
+  <updated>2017-11-12T06:13:36.928Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Linux学习笔记（二）</title>
+    <title>Linux学习笔记（三）</title>
     <link href="https://ytlogos.github.io/2017/11/12/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>https://ytlogos.github.io/2017/11/12/Linux学习笔记（三）/</id>
     <published>2017-11-12T05:19:05.000Z</published>
-    <updated>2017-11-11T07:57:37.687Z</updated>
+    <updated>2017-11-12T06:13:36.928Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171111/Be16KgagG1.png?imageslim" alt="mark"></p>
 <p>“write code for humans, write data for computers”</p>
@@ -1973,9 +1973,9 @@
     
       <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
     
-      <category term="scatter plot" scheme="https://ytlogos.github.io/tags/scatter-plot/"/>
-    
       <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
+    
+      <category term="scatter plot" scheme="https://ytlogos.github.io/tags/scatter-plot/"/>
     
   </entry>
   
