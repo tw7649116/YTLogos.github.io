@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-11-11T05:20:57.546Z</updated>
+  <updated>2017-11-11T07:57:37.687Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux学习笔记（二）</title>
+    <link href="https://ytlogos.github.io/2017/11/12/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>https://ytlogos.github.io/2017/11/12/Linux学习笔记（三）/</id>
+    <published>2017-11-12T05:19:05.000Z</published>
+    <updated>2017-11-11T07:57:37.687Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171111/Be16KgagG1.png?imageslim" alt="mark"></p>
+<p>“write code for humans, write data for computers”</p>
+<a id="more"></a>
+<h2 id="cut"><a href="#cut" class="headerlink" title="cut"></a><strong>cut</strong></h2><p><code>cut</code>允许我们从数据集中提取某几列进行查看，通过参数<code>f</code>来设置查看几列，比如我们想要查看第一和第三列或者只查看第二列：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ cut -f 1,3 Mus_musculus.GRCm38.75_chr1.bed|head -n 3</div><div class="line">1       3054733</div><div class="line">1       3054733</div><div class="line">1       3054733</div><div class="line">$ cut -f 2 Mus_musculus.GRCm38.75_chr1.bed|head -n 3</div><div class="line">3054233</div><div class="line">3054233</div><div class="line">3054233</div></pre></td></tr></table></figure></p>
+<p>结合<code>grep</code>我们可以十分方便的将<strong>GTF</strong>文件中的部分信息提取出来进行查看，使用<code>grep</code>主要用来将以<code>#</code>开头的部份内容剔除掉，这其中涉及到正则表达式，我将在后面集中学习。下面的命令可以将染色体、起始位置以及终止位置提取出来，类似于<code>bed</code>文件格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ grep -v &apos;^#&apos; Mus_musculus.GRCm38.75_chr1.gtf | cut -f 1,4,5 | head -n 3</div><div class="line">1       3054233 3054733</div><div class="line">1       3054233 3054733</div><div class="line">1       3054233 3054733</div></pre></td></tr></table></figure></p>
+<p>我们也可以使用<code>&gt;</code>将提取的文件另存为一个文件，方便以后使用。这里我们存为<strong>test.txt</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ grep -v &quot;^#&quot; Mus_musculus.GRCm38.75_chr1.gtf | cut -f 1,4,5 &gt; test.txt</div></pre></td></tr></table></figure></p>
+<p><code>cut</code>默认分隔符为空格，因此如果使用<code>cut</code>来处理<strong>CSV</strong>文件的话，我们就需要通过参数<code>d</code>指定分隔符 <strong><code>,</code></strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ cut -d , -f 2,3 Mus_musculus.GRCm38.75_chr1_bed.csv | head -n 3</div><div class="line">3054233,3054733</div><div class="line">3054233,3054733</div><div class="line">3054233,3054733</div></pre></td></tr></table></figure></p>
+<h2 id="column"><a href="#column" class="headerlink" title="column"></a><strong>column</strong></h2><p>当我们处理制表符文件时，常常行列之间无法对其，浏览效果很差,如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ grep -v &quot;^#&quot; Mus_musculus.GRCm38.75_chr1.gtf|cut -f1-8|head -n 3</div><div class="line">1       pseudogene      gene    3054233 3054733 .       +       .</div><div class="line">1       unprocessed_pseudogene  transcript      3054233 3054733 .       +      .</div><div class="line">1       unprocessed_pseudogene  exon    3054233 3054733 .       +       .</div></pre></td></tr></table></figure></p>
+<p><code>column</code>可以产生阅读效果很好的文件格式，参数<code>t</code>表示<code>column</code>将对数据集当作一个table来处理,下面的阅读效果明显好于前面的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ grep -v &quot;^#&quot; Mus_musculus.GRCm38.75_chr1.gtf|cut -f1-8|head -n 3|column -t</div><div class="line">1  pseudogene              gene        3054233  3054733  .  +  .</div><div class="line">1  unprocessed_pseudogene  transcript  3054233  3054733  .  +  .</div><div class="line">1  unprocessed_pseudogene  exon        3054233  3054733  .  +  .</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>需要注意的是，<code>column -t</code>只能支持在终端进行浏览数据，无法对数据集进行格式重写成一个文件。</p>
+</blockquote>
+<p><code>column</code>默认\t为分隔符，因此当我们处理其他分隔符数据时，需要使用参数<code>s</code>进行指定，比如当我们处理<strong>CSV</strong>数据时：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ column -s, -t Mus_musculus.GRCm38.75_chr1_bed.csv|head -n 3</div><div class="line">1  3054233    3054733</div><div class="line">1  3054233    3054733</div><div class="line">1  3054233    3054733</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171111/Be16KgagG1.png?imageslim&quot; alt=&quot;mark&quot;&gt;&lt;/p&gt;
+&lt;p&gt;“write code for humans, write data for computers”&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://ytlogos.github.io/categories/Linux/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Linux学习笔记（二）</title>
@@ -2150,59 +2187,6 @@
       <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
     
       <category term="ggpubr" scheme="https://ytlogos.github.io/tags/ggpubr/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记</title>
-    <link href="https://ytlogos.github.io/2017/06/25/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E8%AF%AF%E5%B7%AE%E6%A3%92%E5%8F%8A%E6%98%BE%E8%91%97%E6%80%A7%E6%A0%87%E8%AE%B0/"/>
-    <id>https://ytlogos.github.io/2017/06/25/ggplot2学习笔记系列之利用ggplot2绘制误差棒及显著性标记/</id>
-    <published>2017-06-24T16:00:00.000Z</published>
-    <updated>2017-09-19T00:39:01.404Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="绘制带有误差棒的条形图"><a href="#绘制带有误差棒的条形图" class="headerlink" title="绘制带有误差棒的条形图"></a>绘制带有误差棒的条形图</h2><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">#创建数据集</div><div class="line">df &lt;- data.frame(treatment = factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3)), </div><div class="line">                 response = c(2, 5, 4, 6, 9, 7, 3, 5, 8), </div><div class="line">                 group = factor(c(1, 2, 3, 1, 2, 3, 1, 2, 3)), </div><div class="line">                 se = c(0.4, 0.2, 0.4, 0.5, 0.3, 0.2, 0.4, 0.6, 0.7))</div><div class="line">head(df) #查看数据集</div><div class="line"></div><div class="line">##   treatment response group  se</div><div class="line">## 1    1         2       1    0.4</div><div class="line">## 2    1         5       2    0.2</div><div class="line">## 3    1         4       3    0.4</div><div class="line">## 4    2         6       1    0.5</div><div class="line">## 5    2         9       2    0.3</div><div class="line">## 6    2         7       3    0.2</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 使用geom_errorbar()绘制带有误差棒的条形图</div><div class="line"># 这里一定要注意position要与`geom_bar()`保持一致，由于系统默认dodge是0.9，</div><div class="line"># 因此geom_errorbar()里面position需要设置0.9，width设置误差棒的大小</div><div class="line">ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0d1a0cc2f8ac5129.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="绘制带有显著性标记的条形图"><a href="#绘制带有显著性标记的条形图" class="headerlink" title="绘制带有显著性标记的条形图"></a>绘制带有显著性标记的条形图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">label &lt;- c(&quot;&quot;, &quot;*&quot;, &quot;**&quot;, &quot;&quot;, &quot;**&quot;, &quot;*&quot;, &quot;&quot;, &quot;&quot;, &quot;*&quot;) #这里随便设置的显著性，还有abcdef等显著性标记符号，原理一样，这里不再重复。</div><div class="line"># 添加显著性标记跟上次讲的添加数据标签是一样的，这里我们假设1是对照</div><div class="line">ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">geom_text(aes(y = response +  1.5 * se, label = label, group = group), </div><div class="line">position = position_dodge(0.9), size = 5, fontface = &quot;bold&quot;) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;) #这里的label就是刚才设置的，group是数据集中的，fontface设置字体。</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-d7a71cdebe7aaecb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="绘制两条形图中间带有星号的统计图"><a href="#绘制两条形图中间带有星号的统计图" class="headerlink" title="绘制两条形图中间带有星号的统计图"></a>绘制两条形图中间带有星号的统计图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#创建一个简单的数据集</div><div class="line">Control &lt;- c(2.0,2.5,2.2,2.4,2.1)</div><div class="line">Treatment &lt;- c(3.0,3.3,3.1,3.2,3.2)</div><div class="line">mean &lt;- c(mean(Control), mean(Treatment))</div><div class="line">sd &lt;- c(sd(Control), sd(Treatment))</div><div class="line">df1 &lt;- data.frame(V=c(&quot;Control&quot;, &quot;Treatment&quot;), mean=mean, sd=sd)</div><div class="line">df1$V &lt;- factor(df1$V, levels=c(&quot;Control&quot;, &quot;Treatment&quot;))</div><div class="line">#利用geom_segment()绘制图形</div><div class="line">ggplot(data=df1, aes(x=V, y=mean, fill=V))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;,position = position_dodge(0.9),color=&quot;black&quot;)+ </div><div class="line">geom_errorbar(aes(ymax=mean+sd, ymin=mean-sd), width=0.05)+ </div><div class="line">geom_segment(aes(x=1, y=2.5, xend=1, yend=3.8))+#绘制control端的竖线 </div><div class="line">geom_segment(aes(x=2, y=3.3, xend=2, yend=3.8))+#绘制treatment端竖线 </div><div class="line">geom_segment(aes(x=1, y=3.8, xend=1.45, yend=3.8))+ </div><div class="line">geom_segment(aes(x=1.55, y=3.8, xend=2, yend=3.8))+#绘制两段横线 </div><div class="line">annotate(&quot;text&quot;, x=1.5, y=3.8, label=&quot;〇&quot;, size=5)#annotate函数也可以添加标签</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-fd824d52ccfd97f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="为图形添加标题"><a href="#为图形添加标题" class="headerlink" title="为图形添加标题"></a>为图形添加标题</h2><p>图形标题有图标题、坐标轴标题、图例标题等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">p &lt;- ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) +</div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se),</div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)# 利用ggtitle()添加图标题,还有labs（）也可以添加标题，最后会提一下。（有一个问题就是ggtitle()添加的标题总是左对齐）</div><div class="line">p + ggtitle(&quot;利用ggtitle()添加图标题&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-437d4f549444463d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 利用xlab()\ylab()添加/修改坐标轴标题</div><div class="line">p + ggtitle(&quot;利用ggtitle()添加图标题&quot;) + </div><div class="line">xlab(&quot;不同处理&quot;) + </div><div class="line">ylab(&quot;response&quot;) #标题的参数修改在theme里，theme是一个很大的函数，几乎可以定义一切，下次有时间会讲解</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-2b799bb7890f0624.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>最后再讲解一下如何将多副图至于一个页面 利用包<strong>gridExtra</strong>中<code>grid.arrange()</code>函数实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 将四幅图放置于一个页面中</div><div class="line">p &lt;- ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)</div><div class="line">p1 &lt;- p + ggtitle(&quot;利用ggtitle()添加图标题&quot;)</div><div class="line">p2 &lt;- p + ggtitle(&quot;利用ggtitle()添加图标题&quot;) + xlab(&quot;不同处理&quot;) + ylab(&quot;response&quot;)</div><div class="line">p3 &lt;- ggplot(data = df, aes(x = treatment, y = response, fill = group)) + </div><div class="line">geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + </div><div class="line">geom_errorbar(aes(ymax = response + se, ymin = response -  se), </div><div class="line">position = position_dodge(0.9), width = 0.15) + </div><div class="line">geom_text(aes(y = response +  1.5 * se, label = label, group = group), </div><div class="line">position = position_dodge(0.9), size = 5, fontface = &quot;bold&quot;) + </div><div class="line">scale_fill_brewer(palette = &quot;Set1&quot;)</div><div class="line">library(gridExtra) #没有安装此包先用install.packages(&apos;gridExtra&apos;)安装</div><div class="line">grid.arrange(p, p1, p2, p3)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8ea6aa114eeab5ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上次有人问坐标轴旋转的实现，坐标轴旋转有时是很有用的，下面是我看过的一个例子，用来介绍一下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#先加载他的数据</div><div class="line">url.world_ports &lt;- url(&quot;http://sharpsightlabs.com/wp-content/datasets/world_ports.RData&quot;)</div><div class="line">load(url.world_ports)</div><div class="line">knitr::kable(df.world_ports[1:5,])#该数据是关于世界上各个港口的数据汇总</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-01c06eb52b6848d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">library(dplyr) #用于数据操作，与ggplot2一样是R语言必学包#现在绘制条形图(%&gt;%上次说过是管道操作，用于连接各个代码，十分有用)</div><div class="line">df.world_ports%&gt;%filter(year==2014)%&gt;% #筛选2014年的数据 </div><div class="line">ggplot(aes(x=reorder(port_label, desc(volume)), y=volume))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;, fill=&quot;darkred&quot;)+ </div><div class="line">labs(title=&quot;Busiest container ports in the world&quot;)+ </div><div class="line">labs(subtitle = &apos;2014, in order of shipping volume&apos;)+ #添加副标题 </div><div class="line">labs(x = &quot;Port&quot;, y = &quot;Shipping\nVolume&quot;)+ </div><div class="line">theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .4))#调整x轴标签，angle=90表示标签旋转90度，从图中可以看出</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-11d43dfb82953994.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#现在旋转坐标轴，并筛选排名小于25的港口，并且添加数据标签</div><div class="line">df.world_ports %&gt;% filter(year==2014, rank&lt;=25) %&gt;% #筛选2014年并且rank小于等于25的数据 </div><div class="line">ggplot(aes(x=reorder(port, volume), y=volume))+ </div><div class="line">geom_bar(stat = &quot;identity&quot;, fill=&quot;darkred&quot;)+ </div><div class="line">labs(title=&quot;Busiest container ports in the world&quot;)+ </div><div class="line">labs(subtitle = &apos;2014, in order of shipping volume&apos;)+  </div><div class="line">labs(x = &quot;Port&quot;, y = &quot;Shipping\nVolume&quot;)+ </div><div class="line">geom_text(aes(label=volume), hjust=1.2, color=&quot;white&quot;)+ </div><div class="line">coord_flip()#旋转坐标轴</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>两图相比，明显第二幅图好，一是可以添加数据标签，二是不用歪着脖子看。<br>本来打算讲讲图例的但是发现内容太多了，就不讲了，下次吧！</p>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
-<p>Email: tyan@zju.edu.cn</p>
-<p>QQ: 1051927088</p>
-<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
-<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
-<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
-<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
-<p>伪码农，R语言爱好者，爱开源</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-46b1e37462ac6440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;绘制带有误差棒的条形图&quot;&gt;&lt;a href=&quot;#绘制带有误差棒的条形图&quot; class=&quot;headerlink&quot; title=&quot;绘制带有误差棒的条形图&quot;&gt;&lt;/a&gt;绘制带有误差棒的条形图&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
-    
-      <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
-    
-      <category term="ggplot2" scheme="https://ytlogos.github.io/tags/ggplot2/"/>
     
   </entry>
   
