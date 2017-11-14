@@ -1640,6 +1640,216 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TaoYan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171017/Kh4BagCbCG.png?imageslim">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Logos">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/" itemprop="url">R语言学习笔记之相关性矩阵分析及其可视化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
+                2017-06-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-19T08:39:01+08:00">
+                2017-09-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/可视化/" itemprop="url" rel="index">
+                    <span itemprop="name">可视化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ytlogos.github.io/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/" class="cy_cmt_count" data-xid="2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/" class="leancloud_visitors" data-flag-title="R语言学习笔记之相关性矩阵分析及其可视化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				  <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  784
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="计算相关矩阵"><a href="#计算相关矩阵" class="headerlink" title="计算相关矩阵"></a>计算相关矩阵</h2><p>R内置函数<code>cor()</code>可以用来计算相关系数：<code>cor(x, method = c(&quot;pearson&quot;, &quot;kendall&quot;, &quot;spearman&quot;))</code>，如果数据有缺失值，用<code>cor(x, method = &quot;pearson&quot;, use = &quot;complete.obs&quot;)</code>。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+<div>
+      
+</div>
+
+    <div>
+      
+    </div>
+<div>
+  
+</div>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/R语言学习笔记之聚类分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1852,7 +2062,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/">
+    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TaoYan">
@@ -1871,7 +2081,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/" itemprop="url">R语言学习笔记之相关性矩阵分析及其可视化</a></h1>
+                <a class="post-title-link" href="/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/" itemprop="url">R语言可视化学习笔记之添加p-value和显著性标记</a></h1>
         
 
         <div class="post-meta">
@@ -1937,8 +2147,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ytlogos.github.io/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/" class="cy_cmt_count" data-xid="2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/" itemprop="commentsCount" ></span>
+                <a href="/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/" class="cy_cmt_count" data-xid="2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1946,7 +2156,7 @@
 
           
           
-             <span id="/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/" class="leancloud_visitors" data-flag-title="R语言学习笔记之相关性矩阵分析及其可视化">
+             <span id="/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/" class="leancloud_visitors" data-flag-title="R语言可视化学习笔记之添加p-value和显著性标记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1972,7 +2182,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  784
+                  2,161
                 </span>
               
 
@@ -1988,7 +2198,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4
+                  11
                 </span>
               
             </div>
@@ -2007,11 +2217,10 @@
 
       
         
-          <p><img src="http://upload-images.jianshu.io/upload_images/2084719-dfdeb96ba28fda4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="计算相关矩阵"><a href="#计算相关矩阵" class="headerlink" title="计算相关矩阵"></a>计算相关矩阵</h2><p>R内置函数<code>cor()</code>可以用来计算相关系数：<code>cor(x, method = c(&quot;pearson&quot;, &quot;kendall&quot;, &quot;spearman&quot;))</code>，如果数据有缺失值，用<code>cor(x, method = &quot;pearson&quot;, use = &quot;complete.obs&quot;)</code>。<br>
+          <p><img src="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上篇文章中提了一下如何通过<strong>ggpubr</strong>包为<code>ggplot</code>图添加<code>p-value</code>以及显著性标记,本文将详细介绍。利用数据集<strong>ToothGrowth</strong>进行演示<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/25/R语言学习笔记之相关性矩阵分析及其可视化/#more" rel="contents">
+            <a class="btn" href="/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2221,215 +2430,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/25/R语言可视化学习笔记之相关矩阵可视化包ggcorrplot/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-<div>
-      
-</div>
-
-    <div>
-      
-    </div>
-<div>
-  
-</div>
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="TaoYan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171017/Kh4BagCbCG.png?imageslim">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Logos">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/" itemprop="url">R语言可视化学习笔记之添加p-value和显著性标记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
-                2017-06-25
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-19T08:39:01+08:00">
-                2017-09-19
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/可视化/" itemprop="url" rel="index">
-                    <span itemprop="name">可视化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ytlogos.github.io/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/" class="cy_cmt_count" data-xid="2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/" class="leancloud_visitors" data-flag-title="R语言可视化学习笔记之添加p-value和显著性标记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">热度 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-				  <span>℃</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  2,161
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  11
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://upload-images.jianshu.io/upload_images/2084719-15bd512052d55bf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>上篇文章中提了一下如何通过<strong>ggpubr</strong>包为<code>ggplot</code>图添加<code>p-value</code>以及显著性标记,本文将详细介绍。利用数据集<strong>ToothGrowth</strong>进行演示<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/25/R语言可视化学习笔记之添加p-value和显著性标记/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
