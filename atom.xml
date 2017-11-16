@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-11-16T01:44:25.278Z</updated>
+  <updated>2017-11-16T01:50:25.842Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -20,10 +20,11 @@
     <link href="https://ytlogos.github.io/2017/11/16/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/"/>
     <id>https://ytlogos.github.io/2017/11/16/Linux学习笔记（七）/</id>
     <published>2017-11-16T01:19:05.000Z</published>
-    <updated>2017-11-16T01:44:25.278Z</updated>
+    <updated>2017-11-16T01:50:25.842Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171113/97fC0bjE56.png?imageslim" alt="mark"></p>
 <h3 id="awk命令"><a href="#awk命令" class="headerlink" title="awk命令"></a>awk命令</h3><p><strong>awk</strong>是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。</p>
+<a id="more"></a>
 <h3 id="awk命令格式以及选项"><a href="#awk命令格式以及选项" class="headerlink" title="awk命令格式以及选项"></a>awk命令格式以及选项</h3><p><strong>awk</strong>使用一个或多个如下结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">pattren &#123; action &#125;</div><div class="line">``` </div><div class="line">每一个pattern是一个表达式或者正则表达式，pattern类似于其它编程语言中的if语句：如果表达式为TRUE或者正则表达式匹配到的话，后面的action命令会被执行。</div><div class="line">### awk语法形式</div></pre></td></tr></table></figure></p>
 <p>awk [options] ‘script’ var=value file(s)<br>awk [options] -f scriptfile var=value file(s)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">常用命令选项：</div><div class="line">* -F fs：fs指定输入分隔符，fs可以是字符串或者正则表达式</div><div class="line">* -v var=value：赋值一个用户定义变量，将外部变量传递给awk</div><div class="line">* -f scriptfile：从脚本文件中读取awk命令</div><div class="line">* -m[fr] val：对val值设置内在限制，-mf选项限制分配给val的最大块数目；-mr选项限制记录的最大块数目，这两个功能是扩展功能，在标准awk中不适用。</div><div class="line"></div><div class="line">### awk模式以及操作</div><div class="line">上面已经讲了pattern以及action，awk就是有一个或多个模式与操作组成的。</div><div class="line">#### 模式pattern</div><div class="line">pattern可以是以下任意一种：</div><div class="line">* 正则表达式</div><div class="line">* 关系表达式：使用运算符操作，可以是字符串或者数字的比较测试</div><div class="line">* 模式匹配表达式：用运算符`~`(匹配)和`!`(不匹配)</div><div class="line">* BEGIN语句块、pattern语句块以及END语句块，涉及十分复杂，后续再讲解</div><div class="line">#### 操作</div><div class="line">操作由一个或多个命令、函数表达式组成，相互之间使用换行符或者分号分开，并位于大括号内。主要部分是：</div><div class="line">* 变量或者数组赋值</div><div class="line">* 输出命令</div><div class="line">* 内置函数</div><div class="line">* 控制流语句</div><div class="line">### awk脚本基本结构</div></pre></td></tr></table></figure></p>
 <p>awk ‘BEGIN{ print “start”} pattern{ command } END{ print “end”}’ file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">一个awk脚本通常是由：BEIGIN语句块、能够使用模式匹配的通用语句块、END语句块三部分组成，这三部分是可选的，任意一部分都可以不出现在脚本中。脚本通常是在&apos;&apos;或&quot;&quot;中：</div></pre></td></tr></table></figure></p>
@@ -114,7 +115,7 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171113/97fC0bjE56.png?imageslim&quot; alt=&quot;mark&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;awk命令&quot;&gt;&lt;a href=&quot;#awk命令&quot; class
+&lt;h3 id=&quot;awk命令&quot;&gt;&lt;a href=&quot;#awk命令&quot; class=&quot;headerlink&quot; title=&quot;awk命令&quot;&gt;&lt;/a&gt;awk命令&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;awk&lt;/strong&gt;是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。&lt;/p&gt;
     
     </summary>
     
