@@ -122,7 +122,7 @@
 <meta property="og:description" content="awk命令awk是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171113/97fC0bjE56.png?imageslim">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171114/1JeD56aLBg.png?imageslim">
-<meta property="og:updated_time" content="2017-11-16T02:16:55.446Z">
+<meta property="og:updated_time" content="2017-11-19T13:04:48.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux学习笔记（七）">
 <meta name="twitter:description" content="awk命令awk是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。">
@@ -432,8 +432,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-16T10:16:55+08:00">
-                2017-11-16
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-19T21:04:48+08:00">
+                2017-11-19
               </time>
             
           </span>
@@ -504,7 +504,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  2,439
+                  2,758
                 </span>
               
 
@@ -520,7 +520,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  10
+                  11
                 </span>
               
             </div>
@@ -751,6 +751,47 @@
 <li>结合正则表达式以及算术对数据集进行过滤</li>
 <li>利用算术重铸数据集的列</li>
 </ul>
+<h3 id="BEGIN和END"><a href="#BEGIN和END" class="headerlink" title="BEGIN和END"></a>BEGIN和END</h3><p>前面我们已经讲了BEGIN和END，BEGIN在初始化变量方面十分有用，比如如果我们想要求平均长度的话，首先我们可以求和再除以总行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;sum=0&#125;;&#123;sum+=($3-$2)&#125;;END&#123;print &quot;mean: &quot;sum/NR&#125;;&apos; example.bed</div><div class="line">mean: 14</div></pre></td></tr></table></figure></p>
+<p>由于NR表示当前行数，因此我们就可以利用它来提取数据集中的数据，比如提取example.bed中的3-5行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;NR&gt;=3&amp;&amp;NR&lt;=5&apos; example.bed</div><div class="line">chr3    11      28</div><div class="line">chr1    40      49</div><div class="line">chr3    16      27</div></pre></td></tr></table></figure></p>
+<p>使用awk我们可以很方便的实现BED与GTF文件之间的转换，比如我们可以十分快速的实现从GTF文件中提取出BED文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;!/^#/ &#123;print $1 &quot;\t&quot; $4-1 &quot;\t&quot; $5&#125;&apos; Mus_musculus.GRCm38.75_chr1.gtf|head -n 3</div><div class="line">1       3054232 3054733</div><div class="line">1       3054232 3054733</div><div class="line">1       3054232 3054733</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这里需要注意的是BED文件索引是从0开始的，GTF索引是从1开始的，因此start position我们需要减去1.</p>
+</blockquote>
+<p>awk内置了很多函数可以调用：</p>
+<table>
+<thead>
+<tr>
+<th>function</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>length(s)</td>
+<td>length 0f a string s</td>
+</tr>
+<tr>
+<td>tolower(s)</td>
+<td>convert string s to lowercase</td>
+</tr>
+<tr>
+<td>touppper(s)</td>
+<td>convert string s to uppercase</td>
+</tr>
+<tr>
+<td>substr(s,i,j)</td>
+<td>return the substring of s that starts at i and ends at j</td>
+</tr>
+<tr>
+<td>split(s,x,d)</td>
+<td>split string s into chunks by delimiter d,place chunks in array x</td>
+</tr>
+<tr>
+<td>sub(f,r,s)</td>
+<td>find regular expression f in s and replace it with r(modifing s in place);use gsub for global substitution;returns a positive value if string is found</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
 <h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
@@ -850,6 +891,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/11/17/Linux学习笔记（八）/" rel="prev" title="Linux学习笔记（七）">
+                Linux学习笔记（七） <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -945,7 +990,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1068,7 +1113,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#awk命令"><span class="nav-number">1.</span> <span class="nav-text">awk命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk命令格式以及选项"><span class="nav-number">2.</span> <span class="nav-text">awk命令格式以及选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk语法形式"><span class="nav-number">3.</span> <span class="nav-text">awk语法形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk模式以及操作"><span class="nav-number">4.</span> <span class="nav-text">awk模式以及操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模式pattern"><span class="nav-number">4.1.</span> <span class="nav-text">模式pattern</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作"><span class="nav-number">4.2.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk脚本基本结构"><span class="nav-number">5.</span> <span class="nav-text">awk脚本基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#awk的工作原理"><span class="nav-number">5.1.</span> <span class="nav-text">awk的工作原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk内置变量"><span class="nav-number">6.</span> <span class="nav-text">awk内置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传递外部变量给awk"><span class="nav-number">7.</span> <span class="nav-text">传递外部变量给awk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk运算与判断"><span class="nav-number">8.</span> <span class="nav-text">awk运算与判断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算符"><span class="nav-number">8.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算符"><span class="nav-number">8.2.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">8.3.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则运算符"><span class="nav-number">8.4.</span> <span class="nav-text">正则运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系运算符"><span class="nav-number">8.5.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他运算符"><span class="nav-number">8.6.</span> <span class="nav-text">其他运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符优先级"><span class="nav-number">8.7.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk高级输入输出"><span class="nav-number">9.</span> <span class="nav-text">awk高级输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#next语句读取下一条记录"><span class="nav-number">9.1.</span> <span class="nav-text">next语句读取下一条记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件筛选"><span class="nav-number">9.2.</span> <span class="nav-text">条件筛选</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number"></span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number"></span> <span class="nav-text">个人简介：</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#awk命令"><span class="nav-number">1.</span> <span class="nav-text">awk命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk命令格式以及选项"><span class="nav-number">2.</span> <span class="nav-text">awk命令格式以及选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk语法形式"><span class="nav-number">3.</span> <span class="nav-text">awk语法形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk模式以及操作"><span class="nav-number">4.</span> <span class="nav-text">awk模式以及操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模式pattern"><span class="nav-number">4.1.</span> <span class="nav-text">模式pattern</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作"><span class="nav-number">4.2.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk脚本基本结构"><span class="nav-number">5.</span> <span class="nav-text">awk脚本基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#awk的工作原理"><span class="nav-number">5.1.</span> <span class="nav-text">awk的工作原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk内置变量"><span class="nav-number">6.</span> <span class="nav-text">awk内置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传递外部变量给awk"><span class="nav-number">7.</span> <span class="nav-text">传递外部变量给awk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk运算与判断"><span class="nav-number">8.</span> <span class="nav-text">awk运算与判断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算符"><span class="nav-number">8.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算符"><span class="nav-number">8.2.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">8.3.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则运算符"><span class="nav-number">8.4.</span> <span class="nav-text">正则运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系运算符"><span class="nav-number">8.5.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他运算符"><span class="nav-number">8.6.</span> <span class="nav-text">其他运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符优先级"><span class="nav-number">8.7.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk高级输入输出"><span class="nav-number">9.</span> <span class="nav-text">awk高级输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#next语句读取下一条记录"><span class="nav-number">9.1.</span> <span class="nav-text">next语句读取下一条记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件筛选"><span class="nav-number">9.2.</span> <span class="nav-text">条件筛选</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BEGIN和END"><span class="nav-number">10.</span> <span class="nav-text">BEGIN和END</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number"></span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number"></span> <span class="nav-text">个人简介：</span></a></div>
             
 
           </div>

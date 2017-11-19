@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-11-16T02:16:55.446Z</updated>
+  <updated>2017-11-16T02:21:55.396Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -17,10 +17,37 @@
   
   <entry>
     <title>Linux学习笔记（七）</title>
+    <link href="https://ytlogos.github.io/2017/11/17/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/"/>
+    <id>https://ytlogos.github.io/2017/11/17/Linux学习笔记（八）/</id>
+    <published>2017-11-17T14:19:05.000Z</published>
+    <updated>2017-11-16T02:21:55.396Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="BEGIN和END"><a href="#BEGIN和END" class="headerlink" title="BEGIN和END"></a>BEGIN和END</h3><p>前面我们已经讲了BEGIN和END，BEGIN在初始化变量方面十分有用，比如如果我们想要求平均长度的话，首先我们可以求和再除以总行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;sum=0&#125;;&#123;sum+=($3-$2)&#125;;END&#123;print &quot;mean: &quot;sum/NR&#125;;&apos; example.bed</div><div class="line">mean: 14</div></pre></td></tr></table></figure></p>
+<p>由于NR表示当前行数，因此我们就可以利用它来提取数据集中的数据，比如提取example.bed中的3-5行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;NR&gt;=3&amp;&amp;NR&lt;=5&apos; example.bed</div><div class="line">chr3    11      28</div><div class="line">chr1    40      49</div><div class="line">chr3    16      27</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;BEGIN和END&quot;&gt;&lt;a href=&quot;#BEGIN和END&quot; class=&quot;headerlink&quot; title=&quot;BEGIN和END&quot;&gt;&lt;/a&gt;BEGIN和END&lt;/h3&gt;&lt;p&gt;前面我们已经讲了BEGIN和END，BEGIN在初始化变量方面十分有用，比如如果我们
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://ytlogos.github.io/categories/Linux/"/>
+    
+    
+      <category term="awk" scheme="https://ytlogos.github.io/tags/awk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux学习笔记（七）</title>
     <link href="https://ytlogos.github.io/2017/11/16/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/"/>
     <id>https://ytlogos.github.io/2017/11/16/Linux学习笔记（七）/</id>
     <published>2017-11-16T01:19:05.000Z</published>
-    <updated>2017-11-16T02:16:55.446Z</updated>
+    <updated>2017-11-19T13:04:48.321Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171113/97fC0bjE56.png?imageslim" alt="mark"></p>
 <h3 id="awk命令"><a href="#awk命令" class="headerlink" title="awk命令"></a>awk命令</h3><p><strong>awk</strong>是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。</p>
@@ -235,6 +262,47 @@
 <li>结合正则表达式以及算术对数据集进行过滤</li>
 <li>利用算术重铸数据集的列</li>
 </ul>
+<h3 id="BEGIN和END"><a href="#BEGIN和END" class="headerlink" title="BEGIN和END"></a>BEGIN和END</h3><p>前面我们已经讲了BEGIN和END，BEGIN在初始化变量方面十分有用，比如如果我们想要求平均长度的话，首先我们可以求和再除以总行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;sum=0&#125;;&#123;sum+=($3-$2)&#125;;END&#123;print &quot;mean: &quot;sum/NR&#125;;&apos; example.bed</div><div class="line">mean: 14</div></pre></td></tr></table></figure></p>
+<p>由于NR表示当前行数，因此我们就可以利用它来提取数据集中的数据，比如提取example.bed中的3-5行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;NR&gt;=3&amp;&amp;NR&lt;=5&apos; example.bed</div><div class="line">chr3    11      28</div><div class="line">chr1    40      49</div><div class="line">chr3    16      27</div></pre></td></tr></table></figure></p>
+<p>使用awk我们可以很方便的实现BED与GTF文件之间的转换，比如我们可以十分快速的实现从GTF文件中提取出BED文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;!/^#/ &#123;print $1 &quot;\t&quot; $4-1 &quot;\t&quot; $5&#125;&apos; Mus_musculus.GRCm38.75_chr1.gtf|head -n 3</div><div class="line">1       3054232 3054733</div><div class="line">1       3054232 3054733</div><div class="line">1       3054232 3054733</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这里需要注意的是BED文件索引是从0开始的，GTF索引是从1开始的，因此start position我们需要减去1.</p>
+</blockquote>
+<p>awk内置了很多函数可以调用：</p>
+<table>
+<thead>
+<tr>
+<th>function</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>length(s)</td>
+<td>length 0f a string s</td>
+</tr>
+<tr>
+<td>tolower(s)</td>
+<td>convert string s to lowercase</td>
+</tr>
+<tr>
+<td>touppper(s)</td>
+<td>convert string s to uppercase</td>
+</tr>
+<tr>
+<td>substr(s,i,j)</td>
+<td>return the substring of s that starts at i and ends at j</td>
+</tr>
+<tr>
+<td>split(s,x,d)</td>
+<td>split string s into chunks by delimiter d,place chunks in array x</td>
+</tr>
+<tr>
+<td>sub(f,r,s)</td>
+<td>find regular expression f in s and replace it with r(modifing s in place);use gsub for global substitution;returns a positive value if string is found</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
 <h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
@@ -2347,64 +2415,6 @@
       <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
     
       <category term="Heatmap" scheme="https://ytlogos.github.io/tags/Heatmap/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ggplot2学习笔记系列之利用ggplot2绘制散点图</title>
-    <link href="https://ytlogos.github.io/2017/07/12/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%B3%BB%E5%88%97%E4%B9%8B%E5%88%A9%E7%94%A8ggplot2%E7%BB%98%E5%88%B6%E6%95%A3%E7%82%B9%E5%9B%BE/"/>
-    <id>https://ytlogos.github.io/2017/07/12/ggplot2学习笔记系列之利用ggplot2绘制散点图/</id>
-    <published>2017-07-11T23:47:05.000Z</published>
-    <updated>2017-10-11T06:34:28.151Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>1 简介<br>散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包<strong>ggplot2</strong>可以绘制十分漂亮的散点图。 利用<strong>ggplot2</strong>绘图前先确保我们所使用的数据集是<strong>data.frame</strong>形式。<strong>ggplot2</strong>绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包<strong>ggplot2</strong> 即<strong>library(ggplot2)</strong>。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Load packages</div><div class="line">library(ggplot2)#visualization</div></pre></td></tr></table></figure></p>
-<p>加载完包之后，本文利用数据集<strong>mtcars</strong>来演示散点图绘制。 先查看数据集的前几行来了解<strong>mtcars</strong>数据集。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#check data</div><div class="line">head(mtcars)</div></pre></td></tr></table></figure></p>
-<p>2 绘制简单的散点图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg)) + geom_point()</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-d1d4d773b39fb55a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>2.1 <strong>shape</strong>参数修改图形的形状<br>                                         <strong>可选点图形形状</strong>:<br><img src="http://upload-images.jianshu.io/upload_images/2084719-92b206d9539bc599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg)) +geom_point(shape=17)</div></pre></td></tr></table></figure></p>
-<p>2.2 <strong>size</strong>参数修改点的大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data = mtcars, aes(x=wt, y=mpg))+geom_point(size=5)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-468edde6998fbc45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>2.3 <strong>color</strong>参数修改点的颜色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg))+geom_point(color=&quot;red&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f2a2af9082fb75b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>3 绘制分组的散点图<br>可将分组变量（因子或字符变量，可通过<strong>factor()</strong>强制性将非因子变量转为因子变量）赋值给颜色或性状属性，实现分组散点图的绘制。<br>3.1 首先将数值型变量<code>cyl</code>转换为因子型变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mtcars$cyl &lt;- factor(mtcars$cyl)</div></pre></td></tr></table></figure></p>
-<p>3.2 分组变量赋值给颜色属性(变量赋值必须在aes里面)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, color=cyl))+geom_point(size=3)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>3.3 分组变量赋值给性状属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, shape=cyl))+geom_point(size=3)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4d500c2263205aec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>如果对R语言默认的颜色或者形状不满意，可以通过<code>scale_color_brewer()</code>或者<code>scale_color_manual()</code>函数自定义点的颜色以及<code>scale_shape_manual()</code>函数自定义点的形状。 下面我们将分组变量<strong>cyl</strong>同时赋值给颜色和形状属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, color=cyl, shape= cyl))+</div><div class="line">geom_point(size=3)+ scale_color_brewer(palette = &quot;Accent&quot;)+</div><div class="line">scale_shape_manual(values = c(2, 9, 16))#Accent是一调色板，可选点的形状见上</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dfd4f44ad7ba946a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>4 将连续变量映射给颜色、大小和形状等属性<br>4.1 将连续性变量disp映射给颜色属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, color=disp))+geom_point(size=3)</div></pre></td></tr></table></figure></p>
-<p>从图中可以发现值越大对应的颜色越浅，以下是通过人为设置色阶使值大小与颜色深浅保持一致<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, color=disp))+</div><div class="line">geom_point(size=3)+ scale_color_gradient(low=&quot;lightblue&quot;, high=&quot;darkblue&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-95957e2d11770434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>4.2 将连续性变量disp映射给大小属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, size=disp))+geom_point(color=&quot;red&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-61861423d92dee56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>5 重叠点的处理<br>当数据量非常大时，会导致数据重叠点非常严重，可通过使用半透明的点避免。<strong>alpha</strong>参数控制点的透明度。下面利用数据集<strong>diamonds</strong>来演示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#check data</div><div class="line">head(diamonds)</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#未使用透明点处理</div><div class="line">ggplot(data=diamonds, aes(x=carat, y=price))+geom_point()</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-10cdfaabe44eef3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#使用alpha参数调整点透明度</div><div class="line">ggplot(data=diamonds, aes(x=carat, y=price))+geom_point(alpha=0.1)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-1c751afcdaa834e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>6 为散点图添加拟合曲线<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#使用数据集mtcars</div><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg))+geom_point()+stat_smooth(method=&quot;lm&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4fa6e3822fcf9a7a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#也可以去除掉拟合曲线的置信区间</div><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg))+geom_point()+stat_smooth(method=&quot;lm&quot;, se=FALSE)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-8a8be783c2d23499.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#也可以针对不同类型的cyl来进行拟合</div><div class="line">ggplot(data=mtcars, aes(x=wt, y=mpg, color=cyl))+</div><div class="line">geom_point()+stat_smooth(method=&quot;lm&quot;)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-141622fb2f69c5f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410</p>
-<p>Email: tyan@zju.edu.cn</p>
-<p>QQ: 1051927088</p>
-<p>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></p>
-<p>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></p>
-<p>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
-<p>浙江大学作物遗传育种在读研究生（生物信息学方向）</p>
-<p>伪码农，R语言爱好者，爱开源</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-c6a0647f86050fb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;1 简介&lt;br&gt;散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时数据集中的每一个观测值都由散点图中的一个点来表示。利用包&lt;strong&gt;ggplot2&lt;/strong&gt;可以绘制十分漂亮的散点图。 利用&lt;strong&gt;ggplot2&lt;/strong&gt;绘图前先确保我们所使用的数据集是&lt;strong&gt;data.frame&lt;/strong&gt;形式。&lt;strong&gt;ggplot2&lt;/strong&gt;绘图利用映射将数据赋予给坐标轴上进而添加几何对象形成图形。绘图前先加载包&lt;strong&gt;ggplot2&lt;/strong&gt; 即&lt;strong&gt;library(ggplot2)&lt;/strong&gt;。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
-    
-      <category term="scatter plot" scheme="https://ytlogos.github.io/tags/scatter-plot/"/>
-    
-      <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
     
   </entry>
   
