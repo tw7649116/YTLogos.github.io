@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-11-20T09:45:33.694Z</updated>
+  <updated>2017-11-20T09:48:40.764Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -20,25 +20,25 @@
     <link href="https://ytlogos.github.io/2017/11/20/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AB%EF%BC%89/"/>
     <id>https://ytlogos.github.io/2017/11/20/Linux学习笔记（八）/</id>
     <published>2017-11-20T09:19:05.000Z</published>
-    <updated>2017-11-20T09:45:33.694Z</updated>
+    <updated>2017-11-20T09:48:40.764Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171120/B6jBAEJ3k8.png?imageslim" alt="mark"></p>
-<h3 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h3><p>sed是一种功能强大的流式文本编辑器，能够完美结合正则表达式使用。处理时sed将当前处理的行储存在临时缓冲区中，称为模式空间（pattern space），接着sed命令处理缓冲区的内容，处理完成后打印到屏幕，接着继续处理下一行，不断重复直到文件结束。</p>
+<h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><p>sed是一种功能强大的流式文本编辑器，能够完美结合正则表达式使用。处理时sed将当前处理的行储存在临时缓冲区中，称为模式空间（pattern space），接着sed命令处理缓冲区的内容，处理完成后打印到屏幕，接着继续处理下一行，不断重复直到文件结束。</p>
 <a id="more"></a>
-<h3 id="sed的用途"><a href="#sed的用途" class="headerlink" title="sed的用途"></a>sed的用途</h3><p>sed用途十分广泛：</p>
+<h2 id="sed的用途"><a href="#sed的用途" class="headerlink" title="sed的用途"></a>sed的用途</h2><p>sed用途十分广泛：</p>
 <ul>
 <li>文本替换</li>
 <li>选择性的文件输出</li>
 <li>从文本特定位置进行编辑</li>
 <li>无交互式的文本编辑</li>
 </ul>
-<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>sed遵循简单的工作流：读取、执行以及显示，下图显示sed的工作流程：<br><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171120/4556AfHI7k.png?imageslim" alt="mark"></p>
+<h2 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h2><p>sed遵循简单的工作流：读取、执行以及显示，下图显示sed的工作流程：<br><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171120/4556AfHI7k.png?imageslim" alt="mark"></p>
 <ul>
 <li>读取：sed从输入流（文件、管道、标准输入STDIN等）中读取一行并且存储到模式空间的内部缓冲区</li>
 <li>执行：默认情况下所有的sed命令都在模式空间中按顺序执行，除非指定了行的地址，否则sed命令将会在所有的行上依次执行</li>
 <li>显示：发送修改后的内容到输出流，之后模式空间将被清空，继续重复上述过程直到文件结束</li>
 </ul>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
 <li>模式空间（pattern space）是一块活跃的缓冲区，在sed编辑器执行命令时它会保存待检查的文本</li>
 <li>默认情况下所有的sed命令都是在模式空间中执行，因此输入文件不会发生改变</li>
 <li>另外一个缓冲区是保持空间（hold buffer），在处理模式空间中的某些行时，可以利用保持空间来临时保存一些行，在每一个循环结束的时候，sed将会移除模式空间的内容，但是保持空间的内容在所有循环过程中是持久存储的，sed命令无法直接在保持空间中执行，因此sed允许数据在模式空间与保持空间之间切换</li>
@@ -46,14 +46,14 @@
 <li>如果没有提供输入文件的话sed将会从标准输入接收请求</li>
 <li>如果没有提供地址范围的话，默认情况下sed将对所有的行进行操作</li>
 </ul>
-<h3 id="sed的选型、命令、替换标记"><a href="#sed的选型、命令、替换标记" class="headerlink" title="sed的选型、命令、替换标记"></a>sed的选型、命令、替换标记</h3><p>sed作为一个强大的流式编辑器，具有其特有的格式</p>
-<h4 id="sed命令格式"><a href="#sed命令格式" class="headerlink" title="sed命令格式"></a>sed命令格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sed [options] &apos;commands&apos; file(s)</div><div class="line">sed [options] -f scriptfile file(s)</div></pre></td></tr></table></figure>
-<h4 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h4><ul>
+<h2 id="sed的选型、命令、替换标记"><a href="#sed的选型、命令、替换标记" class="headerlink" title="sed的选型、命令、替换标记"></a>sed的选型、命令、替换标记</h2><p>sed作为一个强大的流式编辑器，具有其特有的格式</p>
+<h3 id="sed命令格式"><a href="#sed命令格式" class="headerlink" title="sed命令格式"></a>sed命令格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sed [options] &apos;commands&apos; file(s)</div><div class="line">sed [options] -f scriptfile file(s)</div></pre></td></tr></table></figure>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><ul>
 <li>-e：以选项中指定的script来处理输入的文本文件</li>
 <li>-f：以选项中指定的script文本来处理输入的文本文件</li>
 <li>-n或者–quiet或者–silent：仅显示script处理后的结果</li>
 </ul>
-<h4 id="sed命令"><a href="#sed命令" class="headerlink" title="sed命令"></a>sed命令</h4><ul>
+<h3 id="sed命令"><a href="#sed命令" class="headerlink" title="sed命令"></a>sed命令</h3><ul>
 <li>a\：在当前行下面插入文本</li>
 <li>i\：在当前行上面插入文本</li>
 <li>c\：将选定的行改为新的版本</li>
@@ -79,7 +79,7 @@
 <li>！：表示后面的命令对所有没有被选定的行发生作用</li>
 <li>=：打印当前行号码</li>
 </ul>
-<h4 id="sed替换标记"><a href="#sed替换标记" class="headerlink" title="sed替换标记"></a>sed替换标记</h4><ul>
+<h3 id="sed替换标记"><a href="#sed替换标记" class="headerlink" title="sed替换标记"></a>sed替换标记</h3><ul>
 <li>g：表示行内全面替换</li>
 <li>p：表示打印行</li>
 <li>w：表示将行写入一个文件</li>
@@ -88,7 +88,7 @@
 <li>\l：子串匹配标记</li>
 <li>&amp;：已匹配字符串标记</li>
 </ul>
-<h4 id="sed元字符集（就是一些正则表达式）"><a href="#sed元字符集（就是一些正则表达式）" class="headerlink" title="sed元字符集（就是一些正则表达式）"></a>sed元字符集（就是一些正则表达式）</h4><ul>
+<h3 id="sed元字符集（就是一些正则表达式）"><a href="#sed元字符集（就是一些正则表达式）" class="headerlink" title="sed元字符集（就是一些正则表达式）"></a>sed元字符集（就是一些正则表达式）</h3><ul>
 <li>^：匹配行的开始，如/^sed/匹配所有以sed开头的行</li>
 <li>$：匹配行结束，如/sed$/匹配所有以sed结尾的行</li>
 <li>.：匹配一个非换行符的任意字符，如/s.d/匹配在sd之间接一个任意字符</li>
@@ -112,7 +112,7 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171120/B6jBAEJ3k8.png?imageslim&quot; alt=&quot;mark&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;sed&quot;&gt;&lt;a href=&quot;#sed&quot; class=&quot;headerlink&quot; title=&quot;sed&quot;&gt;&lt;/a&gt;sed&lt;/h3&gt;&lt;p&gt;sed是一种功能强大的流式文本编辑器，能够完美结合正则表达式使用。处理时sed将当前处理的行储存在临时缓冲区中，称为模式空间（pattern space），接着sed命令处理缓冲区的内容，处理完成后打印到屏幕，接着继续处理下一行，不断重复直到文件结束。&lt;/p&gt;
+&lt;h2 id=&quot;sed&quot;&gt;&lt;a href=&quot;#sed&quot; class=&quot;headerlink&quot; title=&quot;sed&quot;&gt;&lt;/a&gt;sed&lt;/h2&gt;&lt;p&gt;sed是一种功能强大的流式文本编辑器，能够完美结合正则表达式使用。处理时sed将当前处理的行储存在临时缓冲区中，称为模式空间（pattern space），接着sed命令处理缓冲区的内容，处理完成后打印到屏幕，接着继续处理下一行，不断重复直到文件结束。&lt;/p&gt;
     
     </summary>
     
@@ -128,15 +128,15 @@
     <link href="https://ytlogos.github.io/2017/11/16/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%83%EF%BC%89/"/>
     <id>https://ytlogos.github.io/2017/11/16/Linux学习笔记（七）/</id>
     <published>2017-11-16T01:19:05.000Z</published>
-    <updated>2017-11-19T13:04:48.321Z</updated>
+    <updated>2017-11-20T09:49:30.533Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171113/97fC0bjE56.png?imageslim" alt="mark"></p>
-<h3 id="awk命令"><a href="#awk命令" class="headerlink" title="awk命令"></a>awk命令</h3><p><strong>awk</strong>是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。</p>
+<h2 id="awk命令"><a href="#awk命令" class="headerlink" title="awk命令"></a>awk命令</h2><p><strong>awk</strong>是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。</p>
 <a id="more"></a>
-<h3 id="awk命令格式以及选项"><a href="#awk命令格式以及选项" class="headerlink" title="awk命令格式以及选项"></a>awk命令格式以及选项</h3><p><strong>awk</strong>使用一个或多个如下结构：</p>
+<h2 id="awk命令格式以及选项"><a href="#awk命令格式以及选项" class="headerlink" title="awk命令格式以及选项"></a>awk命令格式以及选项</h2><p><strong>awk</strong>使用一个或多个如下结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pattren &#123; action &#125;</div></pre></td></tr></table></figure>
 <p>每一个pattern是一个表达式或者正则表达式，pattern类似于其它编程语言中的if语句：如果表达式为TRUE或者正则表达式匹配到的话，后面的action命令会被执行。</p>
-<h3 id="awk语法形式"><a href="#awk语法形式" class="headerlink" title="awk语法形式"></a>awk语法形式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">awk [options] &apos;script&apos; var=value file(s)</div><div class="line">awk [options] -f scriptfile var=value file(s)</div></pre></td></tr></table></figure>
+<h2 id="awk语法形式"><a href="#awk语法形式" class="headerlink" title="awk语法形式"></a>awk语法形式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">awk [options] &apos;script&apos; var=value file(s)</div><div class="line">awk [options] -f scriptfile var=value file(s)</div></pre></td></tr></table></figure>
 <p>常用命令选项：</p>
 <ul>
 <li>-F fs：fs指定输入分隔符，fs可以是字符串或者正则表达式</li>
@@ -144,25 +144,25 @@
 <li>-f scriptfile：从脚本文件中读取awk命令</li>
 <li>-m[fr] val：对val值设置内在限制，-mf选项限制分配给val的最大块数目；-mr选项限制记录的最大块数目，这两个功能是扩展功能，在标准awk中不适用。</li>
 </ul>
-<h3 id="awk模式以及操作"><a href="#awk模式以及操作" class="headerlink" title="awk模式以及操作"></a>awk模式以及操作</h3><p>上面已经讲了pattern以及action，awk就是有一个或多个模式与操作组成的。</p>
-<h4 id="模式pattern"><a href="#模式pattern" class="headerlink" title="模式pattern"></a>模式pattern</h4><p>pattern可以是以下任意一种：</p>
+<h2 id="awk模式以及操作"><a href="#awk模式以及操作" class="headerlink" title="awk模式以及操作"></a>awk模式以及操作</h2><p>上面已经讲了pattern以及action，awk就是有一个或多个模式与操作组成的。</p>
+<h3 id="模式pattern"><a href="#模式pattern" class="headerlink" title="模式pattern"></a>模式pattern</h3><p>pattern可以是以下任意一种：</p>
 <ul>
 <li>正则表达式</li>
 <li>关系表达式：使用运算符操作，可以是字符串或者数字的比较测试</li>
 <li>模式匹配表达式：用运算符<code>~</code>(匹配)和<code>!</code>(不匹配)</li>
 <li>BEGIN语句块、pattern语句块以及END语句块，涉及十分复杂，后续再讲解</li>
 </ul>
-<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><p>操作由一个或多个命令、函数表达式组成，相互之间使用换行符或者分号分开，并位于大括号内。主要部分是：</p>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>操作由一个或多个命令、函数表达式组成，相互之间使用换行符或者分号分开，并位于大括号内。主要部分是：</p>
 <ul>
 <li>变量或者数组赋值</li>
 <li>输出命令</li>
 <li>内置函数</li>
 <li>控制流语句</li>
 </ul>
-<h3 id="awk脚本基本结构"><a href="#awk脚本基本结构" class="headerlink" title="awk脚本基本结构"></a>awk脚本基本结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;BEGIN&#123; print &quot;start&quot;&#125; pattern&#123; command &#125; END&#123; print &quot;end&quot;&#125;&apos; file</div></pre></td></tr></table></figure>
+<h2 id="awk脚本基本结构"><a href="#awk脚本基本结构" class="headerlink" title="awk脚本基本结构"></a>awk脚本基本结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;BEGIN&#123; print &quot;start&quot;&#125; pattern&#123; command &#125; END&#123; print &quot;end&quot;&#125;&apos; file</div></pre></td></tr></table></figure>
 <p>一个awk脚本通常是由：BEIGIN语句块、能够使用模式匹配的通用语句块、END语句块三部分组成，这三部分是可选的，任意一部分都可以不出现在脚本中。脚本通常是在’’或””中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">awk &apos;BEGIN&#123; i=0 &#125; &#123; i++ &#125; END&#123; print i &#125;&apos; filename</div><div class="line">awk &quot;BEGIN&#123; i=0 &#125; &#123; i++ &#125; END&#123; print i &#125;&quot; filename</div></pre></td></tr></table></figure>
-<h4 id="awk的工作原理"><a href="#awk的工作原理" class="headerlink" title="awk的工作原理"></a>awk的工作原理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;BEGIN&#123; commands &#125; pattern&#123; commands &#125; END&#123; commands &#125;&apos;</div></pre></td></tr></table></figure>
+<h3 id="awk的工作原理"><a href="#awk的工作原理" class="headerlink" title="awk的工作原理"></a>awk的工作原理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;BEGIN&#123; commands &#125; pattern&#123; commands &#125; END&#123; commands &#125;&apos;</div></pre></td></tr></table></figure>
 <p>工作原理：</p>
 <ul>
 <li>第一步是执行<code>BEGIN{ commands }</code>语句块中的语句</li>
@@ -182,7 +182,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ echo|awk &apos;&#123;var1=&quot;v1&quot;;var2=&quot;v2&quot;;var3=&quot;v3&quot;;print var1,var2,var3;&#125;&apos;</div><div class="line"></div><div class="line">v1 v2 v3</div><div class="line">$ echo|awk &apos;&#123;var1=&quot;v1&quot;;var2=&quot;v2&quot;;var3=&quot;v3&quot;;print var1&quot;=&quot;var2&quot;=&quot;var3;&#125;&apos;</div><div class="line"></div><div class="line">v1=v2=v3</div></pre></td></tr></table></figure>
 <p>{}类似于循环体，会对文件每一行进行迭代，通常变量初始化语句(比如i=0)以及打印文件头部的语句放在BEGIN语句块中，而将打印的结果等语句放在END语句块中。</p>
-<h3 id="awk内置变量"><a href="#awk内置变量" class="headerlink" title="awk内置变量"></a>awk内置变量</h3><p>awk内置大量的变量方便我们直接调用</p>
+<h2 id="awk内置变量"><a href="#awk内置变量" class="headerlink" title="awk内置变量"></a>awk内置变量</h2><p>awk内置大量的变量方便我们直接调用</p>
 <ul>
 <li>$n：当前记录的第n个字段，比如n为1表示第一个字段，n为2表示第二字段，以此类推</li>
 <li>$0：表示执行过程中当前行的文本内容</li>
@@ -204,10 +204,10 @@
 <p>统计一个文件有多少行可以使用以下命令语句：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;END&#123;print NR&#125;&apos; Mus_musculus.GRCm38.75_chr1.gtf</div><div class="line">81231</div></pre></td></tr></table></figure>
 <p>上面我们只是用了END语句块，在读入每一行时awk会将NR更新为对应的行号，所以当读取到最后一行时就会打印出最后一行的行号NR也就是文件的总行数了。</p>
-<h3 id="传递外部变量给awk"><a href="#传递外部变量给awk" class="headerlink" title="传递外部变量给awk"></a>传递外部变量给awk</h3><p>借助-v选项可以将外部值（非来自stdin）传递给awk：</p>
+<h2 id="传递外部变量给awk"><a href="#传递外部变量给awk" class="headerlink" title="传递外部变量给awk"></a>传递外部变量给awk</h2><p>借助-v选项可以将外部值（非来自stdin）传递给awk：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ var=1000</div><div class="line">$ echo |awk &apos;&#123;print var&#125;&apos; var=&quot;$var&quot;</div><div class="line">1000</div></pre></td></tr></table></figure>
-<h3 id="awk运算与判断"><a href="#awk运算与判断" class="headerlink" title="awk运算与判断"></a>awk运算与判断</h3><p>awk不仅支持算术运算还支持逻辑运算</p>
-<h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><table>
+<h2 id="awk运算与判断"><a href="#awk运算与判断" class="headerlink" title="awk运算与判断"></a>awk运算与判断</h2><p>awk不仅支持算术运算还支持逻辑运算</p>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><table>
 <thead>
 <tr>
 <th>运算符</th>
@@ -240,16 +240,16 @@
 <blockquote>
 <p>所有算术运算符进行操作，操作数自动转为数值，所有非数值转为0</p>
 </blockquote>
-<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>主要赋值运算符有：= += -= <em>= /= ……= *</em>=</p>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>主要赋值运算符有：= += -= <em>= /= ……= *</em>=</p>
 <p>举例说明：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a+=5,等价于a=a+5.其它类似</div></pre></td></tr></table></figure>
-<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>就是我们常见的”或”、”与”、”非”</p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>就是我们常见的”或”、”与”、”非”</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;a=1;b=2;print (a&gt;5&amp;&amp;b&gt;2),(a&gt;5||b&lt;=2);&#125;&apos;</div><div class="line">0 1</div></pre></td></tr></table></figure>
-<h4 id="正则运算符"><a href="#正则运算符" class="headerlink" title="正则运算符"></a>正则运算符</h4><p>主要有~和~！即匹配正则表达式和不匹配</p>
+<h3 id="正则运算符"><a href="#正则运算符" class="headerlink" title="正则运算符"></a>正则运算符</h3><p>主要有~和~！即匹配正则表达式和不匹配</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;a=&quot;100test&quot;;if(a~/^100*/)&#123;print &quot;OK&quot;;&#125;&#125;&apos;</div><div class="line">OK</div></pre></td></tr></table></figure>
-<h4 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h4><p>主要是&gt;、&gt;=、=、==、!=、&lt;、&lt;=等</p>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p>主要是&gt;、&gt;=、=、==、!=、&lt;、&lt;=等</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;a=11;if(a&gt;=9)&#123;print &quot;OK&quot;;&#125;&#125;&apos;</div><div class="line">OK</div></pre></td></tr></table></figure>
-<h4 id="其他运算符"><a href="#其他运算符" class="headerlink" title="其他运算符"></a>其他运算符</h4><table>
+<h3 id="其他运算符"><a href="#其他运算符" class="headerlink" title="其他运算符"></a>其他运算符</h3><table>
 <thead>
 <tr>
 <th>运算符</th>
@@ -275,11 +275,11 @@
 </tr>
 </tbody>
 </table>
-<h4 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h4><p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171114/1JeD56aLBg.png?imageslim" alt="级别越高越优先"></p>
-<h3 id="awk高级输入输出"><a href="#awk高级输入输出" class="headerlink" title="awk高级输入输出"></a>awk高级输入输出</h3><h4 id="next语句读取下一条记录"><a href="#next语句读取下一条记录" class="headerlink" title="next语句读取下一条记录"></a>next语句读取下一条记录</h4><p>awk中的next语句使用：在循环逐行匹配，如果遇到next，就会跳过当前行，直接忽略下面的语句而进入下一匹配，一般用于多行匹配</p>
+<h3 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h3><p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171114/1JeD56aLBg.png?imageslim" alt="级别越高越优先"></p>
+<h2 id="awk高级输入输出"><a href="#awk高级输入输出" class="headerlink" title="awk高级输入输出"></a>awk高级输入输出</h2><h3 id="next语句读取下一条记录"><a href="#next语句读取下一条记录" class="headerlink" title="next语句读取下一条记录"></a>next语句读取下一条记录</h3><p>awk中的next语句使用：在循环逐行匹配，如果遇到next，就会跳过当前行，直接忽略下面的语句而进入下一匹配，一般用于多行匹配</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;NR%2==1&#123;next&#125;&#123;print NR,$0;&#125;&apos; example.bed</div><div class="line">2 chr1  32      47</div><div class="line">4 chr1  40      49</div><div class="line">6 chr1  9       28</div><div class="line">8 chr1  10      19</div></pre></td></tr></table></figure>
 <p>后面还有很多复杂用法我暂时不讲了，再者如果遇到更复杂的情况最好使用其他更强大的工具比如python。下面我会讲讲awk如何处理生物信息学数据。</p>
-<h4 id="条件筛选"><a href="#条件筛选" class="headerlink" title="条件筛选"></a>条件筛选</h4><p>我们想要将长度大于18的行找出来（即end position-start position&gt;18）</p>
+<h3 id="条件筛选"><a href="#条件筛选" class="headerlink" title="条件筛选"></a>条件筛选</h3><p>我们想要将长度大于18的行找出来（即end position-start position&gt;18）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;$3-$2&gt;18&apos; example.bed</div><div class="line">chr1    9       28</div><div class="line">chr2    35      54</div></pre></td></tr></table></figure>
 <p>下面是一些常用的逻辑操作符</p>
 <table>
@@ -343,7 +343,7 @@
 <li>结合正则表达式以及算术对数据集进行过滤</li>
 <li>利用算术重铸数据集的列</li>
 </ul>
-<h3 id="BEGIN和END"><a href="#BEGIN和END" class="headerlink" title="BEGIN和END"></a>BEGIN和END</h3><p>前面我们已经讲了BEGIN和END，BEGIN在初始化变量方面十分有用，比如如果我们想要求平均长度的话，首先我们可以求和再除以总行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;sum=0&#125;;&#123;sum+=($3-$2)&#125;;END&#123;print &quot;mean: &quot;sum/NR&#125;;&apos; example.bed</div><div class="line">mean: 14</div></pre></td></tr></table></figure></p>
+<h2 id="BEGIN和END"><a href="#BEGIN和END" class="headerlink" title="BEGIN和END"></a>BEGIN和END</h2><p>前面我们已经讲了BEGIN和END，BEGIN在初始化变量方面十分有用，比如如果我们想要求平均长度的话，首先我们可以求和再除以总行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;sum=0&#125;;&#123;sum+=($3-$2)&#125;;END&#123;print &quot;mean: &quot;sum/NR&#125;;&apos; example.bed</div><div class="line">mean: 14</div></pre></td></tr></table></figure></p>
 <p>由于NR表示当前行数，因此我们就可以利用它来提取数据集中的数据，比如提取example.bed中的3-5行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;NR&gt;=3&amp;&amp;NR&lt;=5&apos; example.bed</div><div class="line">chr3    11      28</div><div class="line">chr1    40      49</div><div class="line">chr3    16      27</div></pre></td></tr></table></figure></p>
 <p>使用awk我们可以很方便的实现BED与GTF文件之间的转换，比如我们可以十分快速的实现从GTF文件中提取出BED文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;!/^#/ &#123;print $1 &quot;\t&quot; $4-1 &quot;\t&quot; $5&#125;&apos; Mus_musculus.GRCm38.75_chr1.gtf|head -n 3</div><div class="line">1       3054232 3054733</div><div class="line">1       3054232 3054733</div><div class="line">1       3054232 3054733</div></pre></td></tr></table></figure></p>
 <blockquote>
@@ -392,7 +392,7 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171113/97fC0bjE56.png?imageslim&quot; alt=&quot;mark&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;awk命令&quot;&gt;&lt;a href=&quot;#awk命令&quot; class=&quot;headerlink&quot; title=&quot;awk命令&quot;&gt;&lt;/a&gt;awk命令&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;awk&lt;/strong&gt;是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。&lt;/p&gt;
+&lt;h2 id=&quot;awk命令&quot;&gt;&lt;a href=&quot;#awk命令&quot; class=&quot;headerlink&quot; title=&quot;awk命令&quot;&gt;&lt;/a&gt;awk命令&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;awk&lt;/strong&gt;是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。&lt;/p&gt;
     
     </summary>
     
@@ -635,20 +635,20 @@
     <link href="https://ytlogos.github.io/2017/11/11/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://ytlogos.github.io/2017/11/11/Linux学习笔记（二）/</id>
     <published>2017-11-11T05:19:05.000Z</published>
-    <updated>2017-11-11T05:20:57.546Z</updated>
+    <updated>2017-11-20T09:50:23.251Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171111/E3kF9hl9jj.png?imageslim" alt="mark"></p>
 <p>鉴于以后要大量使用<code>Linux</code>系统处理生物信息学数据，因此加强自身linux系统的学习，开辟一个新的分类专门记录我学习<code>Linux</code>的学习笔记，一是为了我自己以后方便查看，二也是希望能帮助到其他学习<code>Linux</code>系统的人，共勉！！！</p>
 <a id="more"></a>
-<h3 id="head"><a href="#head" class="headerlink" title="head"></a><code>head</code></h3><p>快速查看数据，以<strong>bed</strong>(只有三列)格式数据为例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ head Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">1       3054233 3054733</div><div class="line">1       3054233 3054733</div><div class="line">1       3054233 3054733</div><div class="line">1       3102016 3102125</div><div class="line">1       3102016 3102125</div><div class="line">1       3102016 3102125</div><div class="line">1       3205901 3671498</div><div class="line">1       3205901 3216344</div><div class="line">1       3213609 3216344</div><div class="line">1       3205901 3207317</div></pre></td></tr></table></figure></p>
+<h2 id="head"><a href="#head" class="headerlink" title="head"></a><code>head</code></h2><p>快速查看数据，以<strong>bed</strong>(只有三列)格式数据为例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ head Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">1       3054233 3054733</div><div class="line">1       3054233 3054733</div><div class="line">1       3054233 3054733</div><div class="line">1       3102016 3102125</div><div class="line">1       3102016 3102125</div><div class="line">1       3102016 3102125</div><div class="line">1       3205901 3671498</div><div class="line">1       3205901 3216344</div><div class="line">1       3213609 3216344</div><div class="line">1       3205901 3207317</div></pre></td></tr></table></figure></p>
 <p><code>head</code>默认显示前十行，可以通过参数n来指定显示几行，比如只显示三行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ head -n 3 Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">1       3054233 3054733</div><div class="line">1       3054233 3054733</div><div class="line">1       3054233 3054733</div></pre></td></tr></table></figure></p>
-<h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a><code>tail</code></h3><p>与<code>head</code>相对的有一个命令<code>tail</code>,<code>tail</code>显示后几行，默认显示后十行，也可以通过参数n来指定显示几行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ tail Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">1       195166217       195166390</div><div class="line">1       195165745       195165851</div><div class="line">1       195165748       195165851</div><div class="line">1       195165745       195165747</div><div class="line">1       195228278       195228398</div><div class="line">1       195228278       195228398</div><div class="line">1       195228278       195228398</div><div class="line">1       195240910       195241007</div><div class="line">1       195240910       195241007</div><div class="line">1       195240910       195241007</div><div class="line">$ tail -n 3 Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">1       195240910       195241007</div><div class="line">1       195240910       195241007</div><div class="line">1       195240910       195241007</div></pre></td></tr></table></figure></p>
+<h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a><code>tail</code></h2><p>与<code>head</code>相对的有一个命令<code>tail</code>,<code>tail</code>显示后几行，默认显示后十行，也可以通过参数n来指定显示几行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ tail Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">1       195166217       195166390</div><div class="line">1       195165745       195165851</div><div class="line">1       195165748       195165851</div><div class="line">1       195165745       195165747</div><div class="line">1       195228278       195228398</div><div class="line">1       195228278       195228398</div><div class="line">1       195228278       195228398</div><div class="line">1       195240910       195241007</div><div class="line">1       195240910       195241007</div><div class="line">1       195240910       195241007</div><div class="line">$ tail -n 3 Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">1       195240910       195241007</div><div class="line">1       195240910       195241007</div><div class="line">1       195240910       195241007</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>基于这个特性，<code>tail</code>可以用来去除数据集的前几列，通过在参数n后面添加数字(即<code>-n +x</code>,区别于<code>-n 2</code>)指定从第几行开始，比如从第三行开始，也就是剔除了前两行。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ seq 5 &gt; nums.txt</div><div class="line">$ cat nums.txt</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line"># 从第三行开始</div><div class="line">$ tail -n +3 nums.txt</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td></tr></table></figure>
 <p>结合这两个命令，我们可以十分方便的查看一个数据集的前几行以及后几行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ (head -n 2; tail -n 2)&lt; Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">1       3054233 3054733</div><div class="line">1       3054233 3054733</div><div class="line">1       195240910       195241007</div><div class="line">1       195240910       195241007</div></pre></td></tr></table></figure></p>
-<h3 id="less"><a href="#less" class="headerlink" title="less"></a><code>less</code></h3><p>一般小的文件我们直接用<code>cat</code>进行查看，但是如果大数据集的话用<code>cat</code>就十分不方便查看，<code>less</code>就是用来查看大数据集的命令。<code>less</code>一次性只显示前几行，但是可以通过滚动查看后面的信息，最后按<code>q</code>结束。下面列出<code>less</code>常用的命令：</p>
+<h2 id="less"><a href="#less" class="headerlink" title="less"></a><code>less</code></h2><p>一般小的文件我们直接用<code>cat</code>进行查看，但是如果大数据集的话用<code>cat</code>就十分不方便查看，<code>less</code>就是用来查看大数据集的命令。<code>less</code>一次性只显示前几行，但是可以通过滚动查看后面的信息，最后按<code>q</code>结束。下面列出<code>less</code>常用的命令：</p>
 <table>
 <thead>
 <tr>
@@ -699,7 +699,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="wc-word-count"><a href="#wc-word-count" class="headerlink" title="wc(word count)"></a><code>wc(word count)</code></h3><p>查看数据有多少行可以用<code>wc</code>命令,<code>wc</code>会显示出数据有多少行、多少word以及多少字符(characters)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ wc Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">  81226  243678 1698545 Mus_musculus.GRCm38.75_chr1.bed</div></pre></td></tr></table></figure></p>
+<h2 id="wc-word-count"><a href="#wc-word-count" class="headerlink" title="wc(word count)"></a><code>wc(word count)</code></h2><p>查看数据有多少行可以用<code>wc</code>命令,<code>wc</code>会显示出数据有多少行、多少word以及多少字符(characters)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ wc Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">  81226  243678 1698545 Mus_musculus.GRCm38.75_chr1.bed</div></pre></td></tr></table></figure></p>
 <p><code>wc</code>支持同时处理多个文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ wc Mus_musculus.GRCm38.75_chr1.bed Mus_musculus.GRCm38.75_chr1.gtf</div><div class="line">   81226   243678  1698545 Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">   81231  2385570 26607149 Mus_musculus.GRCm38.75_chr1.gtf</div><div class="line">  162457  2629248 28305694 总用量</div></pre></td></tr></table></figure></p>
 <p>如果只想显示多少行，添加参数<code>l</code>就行了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ wc -l Mus_musculus.GRCm38.75_chr1.bed</div><div class="line">81226 Mus_musculus.GRCm38.75_chr1.bed</div></pre></td></tr></table></figure></p>
 <p>更多用法可以用<code>man wc</code>查看。</p>

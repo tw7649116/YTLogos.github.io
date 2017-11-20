@@ -122,7 +122,7 @@
 <meta property="og:description" content="awk命令awk是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171113/97fC0bjE56.png?imageslim">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171114/1JeD56aLBg.png?imageslim">
-<meta property="og:updated_time" content="2017-11-19T13:04:48.321Z">
+<meta property="og:updated_time" content="2017-11-20T09:49:30.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux学习笔记（七）">
 <meta name="twitter:description" content="awk命令awk是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。">
@@ -432,8 +432,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-19T21:04:48+08:00">
-                2017-11-19
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-20T17:49:30+08:00">
+                2017-11-20
               </time>
             
           </span>
@@ -539,12 +539,12 @@
 
       
         <p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171113/97fC0bjE56.png?imageslim" alt="mark"></p>
-<h3 id="awk命令"><a href="#awk命令" class="headerlink" title="awk命令"></a>awk命令</h3><p><strong>awk</strong>是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。</p>
+<h2 id="awk命令"><a href="#awk命令" class="headerlink" title="awk命令"></a>awk命令</h2><p><strong>awk</strong>是一种编程语言，用于在unix下处理数据以及文本。数据可以来自stdin、一个或者多个文件或者其它命令的输出，同时支持自定义函数和正则表达式，更多是作为脚本来使用。</p>
 <a id="more"></a>
-<h3 id="awk命令格式以及选项"><a href="#awk命令格式以及选项" class="headerlink" title="awk命令格式以及选项"></a>awk命令格式以及选项</h3><p><strong>awk</strong>使用一个或多个如下结构：</p>
+<h2 id="awk命令格式以及选项"><a href="#awk命令格式以及选项" class="headerlink" title="awk命令格式以及选项"></a>awk命令格式以及选项</h2><p><strong>awk</strong>使用一个或多个如下结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pattren &#123; action &#125;</div></pre></td></tr></table></figure>
 <p>每一个pattern是一个表达式或者正则表达式，pattern类似于其它编程语言中的if语句：如果表达式为TRUE或者正则表达式匹配到的话，后面的action命令会被执行。</p>
-<h3 id="awk语法形式"><a href="#awk语法形式" class="headerlink" title="awk语法形式"></a>awk语法形式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">awk [options] &apos;script&apos; var=value file(s)</div><div class="line">awk [options] -f scriptfile var=value file(s)</div></pre></td></tr></table></figure>
+<h2 id="awk语法形式"><a href="#awk语法形式" class="headerlink" title="awk语法形式"></a>awk语法形式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">awk [options] &apos;script&apos; var=value file(s)</div><div class="line">awk [options] -f scriptfile var=value file(s)</div></pre></td></tr></table></figure>
 <p>常用命令选项：</p>
 <ul>
 <li>-F fs：fs指定输入分隔符，fs可以是字符串或者正则表达式</li>
@@ -552,25 +552,25 @@
 <li>-f scriptfile：从脚本文件中读取awk命令</li>
 <li>-m[fr] val：对val值设置内在限制，-mf选项限制分配给val的最大块数目；-mr选项限制记录的最大块数目，这两个功能是扩展功能，在标准awk中不适用。</li>
 </ul>
-<h3 id="awk模式以及操作"><a href="#awk模式以及操作" class="headerlink" title="awk模式以及操作"></a>awk模式以及操作</h3><p>上面已经讲了pattern以及action，awk就是有一个或多个模式与操作组成的。</p>
-<h4 id="模式pattern"><a href="#模式pattern" class="headerlink" title="模式pattern"></a>模式pattern</h4><p>pattern可以是以下任意一种：</p>
+<h2 id="awk模式以及操作"><a href="#awk模式以及操作" class="headerlink" title="awk模式以及操作"></a>awk模式以及操作</h2><p>上面已经讲了pattern以及action，awk就是有一个或多个模式与操作组成的。</p>
+<h3 id="模式pattern"><a href="#模式pattern" class="headerlink" title="模式pattern"></a>模式pattern</h3><p>pattern可以是以下任意一种：</p>
 <ul>
 <li>正则表达式</li>
 <li>关系表达式：使用运算符操作，可以是字符串或者数字的比较测试</li>
 <li>模式匹配表达式：用运算符<code>~</code>(匹配)和<code>!</code>(不匹配)</li>
 <li>BEGIN语句块、pattern语句块以及END语句块，涉及十分复杂，后续再讲解</li>
 </ul>
-<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><p>操作由一个或多个命令、函数表达式组成，相互之间使用换行符或者分号分开，并位于大括号内。主要部分是：</p>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>操作由一个或多个命令、函数表达式组成，相互之间使用换行符或者分号分开，并位于大括号内。主要部分是：</p>
 <ul>
 <li>变量或者数组赋值</li>
 <li>输出命令</li>
 <li>内置函数</li>
 <li>控制流语句</li>
 </ul>
-<h3 id="awk脚本基本结构"><a href="#awk脚本基本结构" class="headerlink" title="awk脚本基本结构"></a>awk脚本基本结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;BEGIN&#123; print &quot;start&quot;&#125; pattern&#123; command &#125; END&#123; print &quot;end&quot;&#125;&apos; file</div></pre></td></tr></table></figure>
+<h2 id="awk脚本基本结构"><a href="#awk脚本基本结构" class="headerlink" title="awk脚本基本结构"></a>awk脚本基本结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;BEGIN&#123; print &quot;start&quot;&#125; pattern&#123; command &#125; END&#123; print &quot;end&quot;&#125;&apos; file</div></pre></td></tr></table></figure>
 <p>一个awk脚本通常是由：BEIGIN语句块、能够使用模式匹配的通用语句块、END语句块三部分组成，这三部分是可选的，任意一部分都可以不出现在脚本中。脚本通常是在’’或””中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">awk &apos;BEGIN&#123; i=0 &#125; &#123; i++ &#125; END&#123; print i &#125;&apos; filename</div><div class="line">awk &quot;BEGIN&#123; i=0 &#125; &#123; i++ &#125; END&#123; print i &#125;&quot; filename</div></pre></td></tr></table></figure>
-<h4 id="awk的工作原理"><a href="#awk的工作原理" class="headerlink" title="awk的工作原理"></a>awk的工作原理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;BEGIN&#123; commands &#125; pattern&#123; commands &#125; END&#123; commands &#125;&apos;</div></pre></td></tr></table></figure>
+<h3 id="awk的工作原理"><a href="#awk的工作原理" class="headerlink" title="awk的工作原理"></a>awk的工作原理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;BEGIN&#123; commands &#125; pattern&#123; commands &#125; END&#123; commands &#125;&apos;</div></pre></td></tr></table></figure>
 <p>工作原理：</p>
 <ul>
 <li>第一步是执行<code>BEGIN{ commands }</code>语句块中的语句</li>
@@ -590,7 +590,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ echo|awk &apos;&#123;var1=&quot;v1&quot;;var2=&quot;v2&quot;;var3=&quot;v3&quot;;print var1,var2,var3;&#125;&apos;</div><div class="line"></div><div class="line">v1 v2 v3</div><div class="line">$ echo|awk &apos;&#123;var1=&quot;v1&quot;;var2=&quot;v2&quot;;var3=&quot;v3&quot;;print var1&quot;=&quot;var2&quot;=&quot;var3;&#125;&apos;</div><div class="line"></div><div class="line">v1=v2=v3</div></pre></td></tr></table></figure>
 <p>{}类似于循环体，会对文件每一行进行迭代，通常变量初始化语句(比如i=0)以及打印文件头部的语句放在BEGIN语句块中，而将打印的结果等语句放在END语句块中。</p>
-<h3 id="awk内置变量"><a href="#awk内置变量" class="headerlink" title="awk内置变量"></a>awk内置变量</h3><p>awk内置大量的变量方便我们直接调用</p>
+<h2 id="awk内置变量"><a href="#awk内置变量" class="headerlink" title="awk内置变量"></a>awk内置变量</h2><p>awk内置大量的变量方便我们直接调用</p>
 <ul>
 <li>$n：当前记录的第n个字段，比如n为1表示第一个字段，n为2表示第二字段，以此类推</li>
 <li>$0：表示执行过程中当前行的文本内容</li>
@@ -612,10 +612,10 @@
 <p>统计一个文件有多少行可以使用以下命令语句：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;END&#123;print NR&#125;&apos; Mus_musculus.GRCm38.75_chr1.gtf</div><div class="line">81231</div></pre></td></tr></table></figure>
 <p>上面我们只是用了END语句块，在读入每一行时awk会将NR更新为对应的行号，所以当读取到最后一行时就会打印出最后一行的行号NR也就是文件的总行数了。</p>
-<h3 id="传递外部变量给awk"><a href="#传递外部变量给awk" class="headerlink" title="传递外部变量给awk"></a>传递外部变量给awk</h3><p>借助-v选项可以将外部值（非来自stdin）传递给awk：</p>
+<h2 id="传递外部变量给awk"><a href="#传递外部变量给awk" class="headerlink" title="传递外部变量给awk"></a>传递外部变量给awk</h2><p>借助-v选项可以将外部值（非来自stdin）传递给awk：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ var=1000</div><div class="line">$ echo |awk &apos;&#123;print var&#125;&apos; var=&quot;$var&quot;</div><div class="line">1000</div></pre></td></tr></table></figure>
-<h3 id="awk运算与判断"><a href="#awk运算与判断" class="headerlink" title="awk运算与判断"></a>awk运算与判断</h3><p>awk不仅支持算术运算还支持逻辑运算</p>
-<h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><table>
+<h2 id="awk运算与判断"><a href="#awk运算与判断" class="headerlink" title="awk运算与判断"></a>awk运算与判断</h2><p>awk不仅支持算术运算还支持逻辑运算</p>
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><table>
 <thead>
 <tr>
 <th>运算符</th>
@@ -648,16 +648,16 @@
 <blockquote>
 <p>所有算术运算符进行操作，操作数自动转为数值，所有非数值转为0</p>
 </blockquote>
-<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><p>主要赋值运算符有：= += -= <em>= /= ……= *</em>=</p>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><p>主要赋值运算符有：= += -= <em>= /= ……= *</em>=</p>
 <p>举例说明：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a+=5,等价于a=a+5.其它类似</div></pre></td></tr></table></figure>
-<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>就是我们常见的”或”、”与”、”非”</p>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>就是我们常见的”或”、”与”、”非”</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;a=1;b=2;print (a&gt;5&amp;&amp;b&gt;2),(a&gt;5||b&lt;=2);&#125;&apos;</div><div class="line">0 1</div></pre></td></tr></table></figure>
-<h4 id="正则运算符"><a href="#正则运算符" class="headerlink" title="正则运算符"></a>正则运算符</h4><p>主要有~和~！即匹配正则表达式和不匹配</p>
+<h3 id="正则运算符"><a href="#正则运算符" class="headerlink" title="正则运算符"></a>正则运算符</h3><p>主要有~和~！即匹配正则表达式和不匹配</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;a=&quot;100test&quot;;if(a~/^100*/)&#123;print &quot;OK&quot;;&#125;&#125;&apos;</div><div class="line">OK</div></pre></td></tr></table></figure>
-<h4 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h4><p>主要是&gt;、&gt;=、=、==、!=、&lt;、&lt;=等</p>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p>主要是&gt;、&gt;=、=、==、!=、&lt;、&lt;=等</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;a=11;if(a&gt;=9)&#123;print &quot;OK&quot;;&#125;&#125;&apos;</div><div class="line">OK</div></pre></td></tr></table></figure>
-<h4 id="其他运算符"><a href="#其他运算符" class="headerlink" title="其他运算符"></a>其他运算符</h4><table>
+<h3 id="其他运算符"><a href="#其他运算符" class="headerlink" title="其他运算符"></a>其他运算符</h3><table>
 <thead>
 <tr>
 <th>运算符</th>
@@ -683,11 +683,11 @@
 </tr>
 </tbody>
 </table>
-<h4 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h4><p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171114/1JeD56aLBg.png?imageslim" alt="级别越高越优先"></p>
-<h3 id="awk高级输入输出"><a href="#awk高级输入输出" class="headerlink" title="awk高级输入输出"></a>awk高级输入输出</h3><h4 id="next语句读取下一条记录"><a href="#next语句读取下一条记录" class="headerlink" title="next语句读取下一条记录"></a>next语句读取下一条记录</h4><p>awk中的next语句使用：在循环逐行匹配，如果遇到next，就会跳过当前行，直接忽略下面的语句而进入下一匹配，一般用于多行匹配</p>
+<h3 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h3><p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171114/1JeD56aLBg.png?imageslim" alt="级别越高越优先"></p>
+<h2 id="awk高级输入输出"><a href="#awk高级输入输出" class="headerlink" title="awk高级输入输出"></a>awk高级输入输出</h2><h3 id="next语句读取下一条记录"><a href="#next语句读取下一条记录" class="headerlink" title="next语句读取下一条记录"></a>next语句读取下一条记录</h3><p>awk中的next语句使用：在循环逐行匹配，如果遇到next，就会跳过当前行，直接忽略下面的语句而进入下一匹配，一般用于多行匹配</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;NR%2==1&#123;next&#125;&#123;print NR,$0;&#125;&apos; example.bed</div><div class="line">2 chr1  32      47</div><div class="line">4 chr1  40      49</div><div class="line">6 chr1  9       28</div><div class="line">8 chr1  10      19</div></pre></td></tr></table></figure>
 <p>后面还有很多复杂用法我暂时不讲了，再者如果遇到更复杂的情况最好使用其他更强大的工具比如python。下面我会讲讲awk如何处理生物信息学数据。</p>
-<h4 id="条件筛选"><a href="#条件筛选" class="headerlink" title="条件筛选"></a>条件筛选</h4><p>我们想要将长度大于18的行找出来（即end position-start position&gt;18）</p>
+<h3 id="条件筛选"><a href="#条件筛选" class="headerlink" title="条件筛选"></a>条件筛选</h3><p>我们想要将长度大于18的行找出来（即end position-start position&gt;18）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;$3-$2&gt;18&apos; example.bed</div><div class="line">chr1    9       28</div><div class="line">chr2    35      54</div></pre></td></tr></table></figure>
 <p>下面是一些常用的逻辑操作符</p>
 <table>
@@ -751,7 +751,7 @@
 <li>结合正则表达式以及算术对数据集进行过滤</li>
 <li>利用算术重铸数据集的列</li>
 </ul>
-<h3 id="BEGIN和END"><a href="#BEGIN和END" class="headerlink" title="BEGIN和END"></a>BEGIN和END</h3><p>前面我们已经讲了BEGIN和END，BEGIN在初始化变量方面十分有用，比如如果我们想要求平均长度的话，首先我们可以求和再除以总行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;sum=0&#125;;&#123;sum+=($3-$2)&#125;;END&#123;print &quot;mean: &quot;sum/NR&#125;;&apos; example.bed</div><div class="line">mean: 14</div></pre></td></tr></table></figure></p>
+<h2 id="BEGIN和END"><a href="#BEGIN和END" class="headerlink" title="BEGIN和END"></a>BEGIN和END</h2><p>前面我们已经讲了BEGIN和END，BEGIN在初始化变量方面十分有用，比如如果我们想要求平均长度的话，首先我们可以求和再除以总行数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;BEGIN&#123;sum=0&#125;;&#123;sum+=($3-$2)&#125;;END&#123;print &quot;mean: &quot;sum/NR&#125;;&apos; example.bed</div><div class="line">mean: 14</div></pre></td></tr></table></figure></p>
 <p>由于NR表示当前行数，因此我们就可以利用它来提取数据集中的数据，比如提取example.bed中的3-5行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;NR&gt;=3&amp;&amp;NR&lt;=5&apos; example.bed</div><div class="line">chr3    11      28</div><div class="line">chr1    40      49</div><div class="line">chr3    16      27</div></pre></td></tr></table></figure></p>
 <p>使用awk我们可以很方便的实现BED与GTF文件之间的转换，比如我们可以十分快速的实现从GTF文件中提取出BED文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ awk &apos;!/^#/ &#123;print $1 &quot;\t&quot; $4-1 &quot;\t&quot; $5&#125;&apos; Mus_musculus.GRCm38.75_chr1.gtf|head -n 3</div><div class="line">1       3054232 3054733</div><div class="line">1       3054232 3054733</div><div class="line">1       3054232 3054733</div></pre></td></tr></table></figure></p>
 <blockquote>
@@ -1113,7 +1113,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#awk命令"><span class="nav-number">1.</span> <span class="nav-text">awk命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk命令格式以及选项"><span class="nav-number">2.</span> <span class="nav-text">awk命令格式以及选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk语法形式"><span class="nav-number">3.</span> <span class="nav-text">awk语法形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk模式以及操作"><span class="nav-number">4.</span> <span class="nav-text">awk模式以及操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模式pattern"><span class="nav-number">4.1.</span> <span class="nav-text">模式pattern</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作"><span class="nav-number">4.2.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk脚本基本结构"><span class="nav-number">5.</span> <span class="nav-text">awk脚本基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#awk的工作原理"><span class="nav-number">5.1.</span> <span class="nav-text">awk的工作原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk内置变量"><span class="nav-number">6.</span> <span class="nav-text">awk内置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传递外部变量给awk"><span class="nav-number">7.</span> <span class="nav-text">传递外部变量给awk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk运算与判断"><span class="nav-number">8.</span> <span class="nav-text">awk运算与判断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算符"><span class="nav-number">8.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算符"><span class="nav-number">8.2.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">8.3.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则运算符"><span class="nav-number">8.4.</span> <span class="nav-text">正则运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系运算符"><span class="nav-number">8.5.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他运算符"><span class="nav-number">8.6.</span> <span class="nav-text">其他运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符优先级"><span class="nav-number">8.7.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk高级输入输出"><span class="nav-number">9.</span> <span class="nav-text">awk高级输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#next语句读取下一条记录"><span class="nav-number">9.1.</span> <span class="nav-text">next语句读取下一条记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件筛选"><span class="nav-number">9.2.</span> <span class="nav-text">条件筛选</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BEGIN和END"><span class="nav-number">10.</span> <span class="nav-text">BEGIN和END</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number"></span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number"></span> <span class="nav-text">个人简介：</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk命令"><span class="nav-number">1.</span> <span class="nav-text">awk命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk命令格式以及选项"><span class="nav-number">2.</span> <span class="nav-text">awk命令格式以及选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk语法形式"><span class="nav-number">3.</span> <span class="nav-text">awk语法形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk模式以及操作"><span class="nav-number">4.</span> <span class="nav-text">awk模式以及操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模式pattern"><span class="nav-number">4.1.</span> <span class="nav-text">模式pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作"><span class="nav-number">4.2.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk脚本基本结构"><span class="nav-number">5.</span> <span class="nav-text">awk脚本基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#awk的工作原理"><span class="nav-number">5.1.</span> <span class="nav-text">awk的工作原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk内置变量"><span class="nav-number">6.</span> <span class="nav-text">awk内置变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传递外部变量给awk"><span class="nav-number">7.</span> <span class="nav-text">传递外部变量给awk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk运算与判断"><span class="nav-number">8.</span> <span class="nav-text">awk运算与判断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算符"><span class="nav-number">8.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值运算符"><span class="nav-number">8.2.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">8.3.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则运算符"><span class="nav-number">8.4.</span> <span class="nav-text">正则运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系运算符"><span class="nav-number">8.5.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他运算符"><span class="nav-number">8.6.</span> <span class="nav-text">其他运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符优先级"><span class="nav-number">8.7.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk高级输入输出"><span class="nav-number">9.</span> <span class="nav-text">awk高级输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#next语句读取下一条记录"><span class="nav-number">9.1.</span> <span class="nav-text">next语句读取下一条记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件筛选"><span class="nav-number">9.2.</span> <span class="nav-text">条件筛选</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BEGIN和END"><span class="nav-number">10.</span> <span class="nav-text">BEGIN和END</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联系方式："><span class="nav-number">11.</span> <span class="nav-text">联系方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人简介："><span class="nav-number">12.</span> <span class="nav-text">个人简介：</span></a></li></ol></div>
             
 
           </div>
