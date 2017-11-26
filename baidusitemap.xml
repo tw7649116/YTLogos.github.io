@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://ytlogos.github.io/2017/11/26/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B9%9D%EF%BC%89/</loc>
+    <lastmod>2017-11-26T13:32:19.595Z</lastmod>
+    <data>
+        <display>
+        <title>Linux学习笔记（九）</title>
+        <pubTime>2017-11-26T13:19:05.000Z</pubTime>
+        
+        <tag>sed</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://ytlogos.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://ytlogos.github.io/2017/11/11/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
     <lastmod>2017-11-20T09:50:23.251Z</lastmod>
     <data>
@@ -235,9 +255,9 @@
         
         <tag>R</tag>
          
-        <tag>scatter plot</tag>
-         
         <tag>visualization</tag>
+         
+        <tag>scatter plot</tag>
          
          
            
@@ -713,9 +733,9 @@
         
         <tag>R</tag>
          
-        <tag>visualization</tag>
-         
         <tag>ggrepel</tag>
+         
+        <tag>visualization</tag>
          
          
            
@@ -737,9 +757,9 @@
         
         <tag>R</tag>
          
-        <tag>visualization</tag>
-         
         <tag>ggrepel</tag>
+         
+        <tag>visualization</tag>
          
          
            
