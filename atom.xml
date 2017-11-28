@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-11-26T13:32:19.595Z</updated>
+  <updated>2017-11-28T13:28:36.323Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -14,6 +14,77 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>生物信息学学习笔记（一）</title>
+    <link href="https://ytlogos.github.io/2017/11/28/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://ytlogos.github.io/2017/11/28/生物信息学学习笔记（一）/</id>
+    <published>2017-11-28T13:19:05.000Z</published>
+    <updated>2017-11-28T13:28:36.323Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171128/D6l28BlfFI.png?imageslim" alt="mark"></p>
+<p>生物信息学学习笔记主要是我平常看文献以及一些资料时总结的一些东西，相对来说有点杂，所以我专门开辟出一个新的系列，以便后面可以持续更新。</p>
+<a id="more"></a>
+<ul>
+<li><p>sequence logos方法利用每个位置的高度来表示其保守程度，这样特征高度就反映了相对的变化频率，比如说一个consensus sequence位置上可能是C或者T，sequence logos上C的高度代表了其出现的频率。</p>
+</li>
+<li><p>改良品种中LD显著增加，这是驯化正向选择的结果，栽培品种的π值、w值相比于野生种明显降低</p>
+</li>
+<li><p>顺式(cis-)指的是“分子内”，也就是说顺式作用就是自己作用于自己，就像顺式作用元件就是一段DNA序列作用于自己的临近序列，调节它的表达，比如我们常说的增强子、沉默子等。反式(tran-)指的是“分子间”的作用，所以反式作用因子就是一个蛋白质分子，是由A基因编码的，但是可以作用于B基因，调节B基因的表达。但是也存在少量的“顺式作用因子”。因子(factor)在分子生物学中就是特指DNA片段产生的物质，换句话说就是特指蛋白质，比如调节因子、转录因子等。元件(element)指的是DNA或者RNA具有某种特定功能的序列，换句话说就是DNA或者RNA的一片段。</p>
+</li>
+</ul>
+<h3 id="染色质开放性"><a href="#染色质开放性" class="headerlink" title="染色质开放性"></a>染色质开放性</h3><ul>
+<li>染色质开放性(chromatin accessibility)是指真核生物染色质DNA在核小体或转录因子等蛋白与其结合后，对其它蛋白能否再结合的开放程度。这一特征反映了染色质转录活跃程度，结合其他DNA修饰(如甲基化)信息，特定条件下的染色质开放性变化可以提供大量的基因表达调控信息，为各种蛋白质结合新位点的发现指明方向。</li>
+</ul>
+<blockquote>
+<p>有趣的是染色质开放性变化往往是各种应激反应(stimulus response)、抗逆反应(stress response)或者发育阶段过渡(transition)发生时非常早期的细胞学事件。在癌症早期诊断和治疗、农作物逆境胁迫的早期防治等方面，染色质结构研究可以提供非常上游的宝贵信息。</p>
+</blockquote>
+<p>检测染色质开放性的手段主要是足迹法(footprinting)，即利用外来蛋白(如核酸酶、修饰酶等)处理细胞核，再利用酶切、电泳、测序等手段衡量这些蛋白与DNA的结合程度，以此来体现染色质开放性。<br>用于足迹法的外来蛋白主要是核酸酶，最开始简单除暴用的是Dnase Ⅰ，价格低廉，但需要大量的实验材料。DNase Ⅰ主要切割核小体未占据的DNA区域，生成的片段测序之后获得的就是染色质开放区域。后来又出现了MNase Ⅰ，其为外切酶，消化了开放区域之后，测序获得的就是当前状态下核小体或者转录因子等占据的封闭区域。因此二者互为补充。<br>得益于二代测序技术的发展，ATAC-seq(Assay for transposase Accessible Chromatin with sequencing)是其中具备高灵敏度的一种方法。ATAC-seq使用Tn5转座酶，在开放区域跳转，边切割边加上接头，利用PCR技术富集开放区域片段，因此灵敏度高，甚至可以做单细胞测序。<br>所有以核酸酶为基础的DNA足迹法都有一个致命的缺陷：核酸酶切割的偏好性(Bias)。有研究指出DNase Ⅰ切割无核小体和转录因子结合的“裸”DNA时展现出强烈的偏好性，之前许多DNase Ⅰ印记更多地反映是切割的偏好性而非真实的蛋白质结合情况，再加上植物材料由于其细胞结构的特殊性(主要是细胞壁的存在以及丰富的纤维素和多糖)，获取细胞核用于足迹法分析本身就是一个挑战。<br>MAPit(methyltransferase accessibility protocol for individual templates)技术的出现解决了上述部分难题，MAPit利用外源DNA甲基化转移酶处理细胞核，染色质开放区域中的特定“C”位点可被甲基化，封闭区域中的相应“C”位点则不被甲基化，之后进行甲基化测序(Bisulfite sequencing)，从而精确显示染色质的开放程度。该技术利用DNA甲基化组来显示染色质开放性，避免了核酸酶的偏好性问题，且结果同时提供了DNA甲基化组和染色质开放性的信息，配合转录组测序(RNA-seq)，可一次性组合出特定状态下全基因组的甲基化修饰、蛋白结合以及基因表达调控的复杂网络，是功能强大的组合型分析。</p>
+<ul>
+<li><p>单体型是指位于一条染色体特定区域的一组相互关联，并倾向于以整体遗传给后代的单核苷酸多态性的组合。简单地说就是同源染色体上同一位点的杂合SNP，如在某一位置同源染色体中一条为G，另一条染色体为A。单体型图谱能够将来自于亲本的遗传信息区分开，研究遗传变异。</p>
+</li>
+<li><p>Hi-C技术是染色体构象捕获(Chromosome Confirmation Capture,3C)的一种衍生技术，是指基于高通量进行染色体构象的捕获，它能够在全基因组范围内捕捉不同基因座位之间的空间交互，研究三维空间中调控基因的DNA元件。</p>
+</li>
+</ul>
+<h3 id="Hi-C技术流程"><a href="#Hi-C技术流程" class="headerlink" title="Hi-C技术流程"></a>Hi-C技术流程</h3><ul>
+<li>用甲醛对细胞进行交联固定，使DNA与蛋白、蛋白与蛋白之间进行交联，这样会导致相互作用的DNA片段被交联在一起。</li>
+<li>进行酶切(如Hind Ⅲ等限制性内切酶)，使交联两侧产生粘性末端，加入过量限制性内切酶将未交联的DNA与交联的DNA相互分离。限制酶的选择取决于需要分析的基因座位的情况，限制序列较短(4bp)的内切酶切点密集，用于研究较短的座位(10~20kp),而限制序列较长(6bp)的内切酶用于研究较长的座位。</li>
+<li>末端修复，引入生物素标记，连接</li>
+<li>解交联，使DNA和蛋白、蛋白与蛋白分开，提取DNA，打断，捕获带有生物素标记的片段，进行建库</li>
+<li>测序</li>
+</ul>
+<hr>
+<ul>
+<li><p>影响基因表达的染色质相互作用的例子之一是：染色体区域可以折叠将增强子以及相关转录因子带到基因附近。</p>
+</li>
+<li><p>拓扑关联结构域(TAD)是利用Hi-C map分析研究染色质构象信息时获取的一种图形现象，也是染色质局部相互作用较为强烈的一个作用单元，与基因转录表达调控有着密切关系。</p>
+</li>
+</ul>
+<blockquote>
+<p>2012年四个独立的研究小组利用Hi-C技术分析不同物种染色质构象信息时均发现了一种高度自我相互作用的基因组单元，并称之为拓扑关联结构域(TAD)，具有保守性</p>
+</blockquote>
+<ul>
+<li>染色质环(chromatin loop)是染色质物理结构的特性之一。染色质中的调控元件一般都相距较远，比如启动子、增强子等距离调控基因位点均有一定间隔。随着3C技术和一些分子研究技术的证实，这些调控元件在三维空间上的距离要比它们之间的插入序列更近一些，因此形成了染色质环。染色质环通过控制启动子、增强子这些顺式调控元件来调控基因转录表达</li>
+</ul>
+<blockquote>
+<p>拓扑关联结构域更像是染色质环在全基因组所有作用位点进行图谱分析时表现出来的一种现象</p>
+</blockquote>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171128/D6l28BlfFI.png?imageslim&quot; alt=&quot;mark&quot;&gt;&lt;/p&gt;
+&lt;p&gt;生物信息学学习笔记主要是我平常看文献以及一些资料时总结的一些东西，相对来说有点杂，所以我专门开辟出一个新的系列，以便后面可以持续更新。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="bioinformatics" scheme="https://ytlogos.github.io/categories/bioinformatics/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Linux学习笔记（九）</title>
@@ -2233,179 +2304,6 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-38d068706ad3b03a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;本文主要利用&lt;strong&gt;ggpubr&lt;/strong&gt;包来探索基因组数据,主要是可视化TCGA基因组数据的基因表达谱。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
-    
-      <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
-    
-      <category term="ggpubr" scheme="https://ytlogos.github.io/tags/ggpubr/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ggplot2学习笔记之图形排列</title>
-    <link href="https://ytlogos.github.io/2017/08/24/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9B%BE%E5%BD%A2%E6%8E%92%E5%88%97/"/>
-    <id>https://ytlogos.github.io/2017/08/24/ggplot2学习笔记之图形排列/</id>
-    <published>2017-08-23T16:00:00.000Z</published>
-    <updated>2017-09-19T00:39:01.428Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e6bf2901af3d315e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>R语言基本绘图函数中可以利用par()以及layout()来进行图形排列，但是这两个函数对于ggplot图则不太适用，本文主要讲解如何对多ggplot图形多页面进行排列。主要讲解如何利用包gridExtra、cowplot以及ggpubr中的函数进行图形排列。<br><a id="more"></a></p>
-<h2 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#load packages</div><div class="line">library(gridExtra)</div><div class="line">library(cowplot)</div><div class="line">library(ggpubr)</div><div class="line">#dataset ToothGrowth and mtcars</div><div class="line">mtcars$name &lt;- rownames(mtcars)</div><div class="line">mtcars$cyl &lt;- as.factor(mtcars$cyl)</div><div class="line">head(mtcars[, c(&quot;name&quot;, &quot;wt&quot;,&quot;mpg&quot;, &quot;cyl&quot;)])</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e97fd1379156e2e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#First let&apos;s create some plots</div><div class="line">#Box plot(bxp)</div><div class="line">bxp &lt;- ggboxplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;)</div><div class="line">#Dot plot(dp)</div><div class="line">dp &lt;- ggdotplot(ToothGrowth, x=&quot;dose&quot;, y=&quot;len&quot;, color = &quot;dose&quot;, palette = &quot;jco&quot;, binwidth = 1)</div><div class="line">#An ordered Bar plot(bp)</div><div class="line">bp &lt;- ggbarplot(mtcars, x=&quot;name&quot;, y=&quot;mpg&quot;, fill=&quot;cyl&quot;, #change fill color by cyl </div><div class="line">color=&quot;white&quot;, #Set bar border colors to white </div><div class="line">palette = &quot;jco&quot;, #jco jourbal color palette </div><div class="line">sort.val = &quot;asc&quot;, #Sort the value in ascending order </div><div class="line">sort.by.groups = TRUE, #Sort inside each group </div><div class="line">x.text.angle=90 #Rotate vertically x axis texts )</div><div class="line">bp+font(&quot;x.text&quot;, size = 8)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-f1195474adb47ef5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#Scatter plots(sp)</div><div class="line">sp &lt;- ggscatter(mtcars, x=&quot;wt&quot;, y=&quot;mpg&quot;, add = &quot;reg.line&quot;, #Add regression line </div><div class="line">conf.int = TRUE, #Add confidence interval </div><div class="line">color = &quot;cyl&quot;, palette = &quot;jco&quot;,#Color by group cyl </div><div class="line">shape = &quot;cyl&quot; #Change point shape by groups cyl </div><div class="line">)+ </div><div class="line">stat_cor(aes(color=cyl), label.x = 3) #Add correlation coefficientsp</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-60d2ce55b9ce82f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="图形排列"><a href="#图形排列" class="headerlink" title="图形排列"></a>图形排列</h2><blockquote>
-<p>多幅图形排列于一面</p>
-</blockquote>
-<ul>
-<li>ggpubr::ggarrange()<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggarrange(bxp, dp, bp+rremove(&quot;x.text&quot;), labels = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), ncol = 2, nrow = 2)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dbc9f5f6ba4082ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<ul>
-<li>cowplot::plot.grid()<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plot_grid(bxp, dp, bp+rremove(&quot;x.text&quot;), labels = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), ncol = 2, nrow = 2)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-dbc9f5f6ba4082ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<ul>
-<li>gridExtra::grid.arrange()<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grid.arrange(bxp, dp, bp+rremove(&quot;x.text&quot;), ncol=2, nrow=2)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-0d3d087bce2af907.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="排列图形注释"><a href="#排列图形注释" class="headerlink" title="排列图形注释"></a>排列图形注释</h2><ul>
-<li>ggpubr::annotate_figure()</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">figure &lt;- ggarrange(sp, bp+font(&quot;x.text&quot;, size = 10), ncol = 1, nrow = 2)</div><div class="line">annotate_figure(figure, top=text_grob(&quot;Visualizing mpg&quot;, color = &quot;red&quot;, </div><div class="line">face = &quot;bold&quot;, size=14), bottom = text_grob(&quot;Data source:\n mtcars data set&quot;, </div><div class="line">color = &quot;blue&quot;, hjust = 1, x=1, face = &quot;italic&quot;, size=10), left = text_grob(&quot;Figure arranged using ggpubr&quot;, color = &quot;green&quot;, rot = 90), </div><div class="line">right = &quot;I&apos;m done, thanks :-)!&quot;, fig.lab = &quot;Figure 1&quot;, fig.lab.face = &quot;bold&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-36ca476191d8af86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="绘图面板对齐"><a href="#绘图面板对齐" class="headerlink" title="绘图面板对齐"></a>绘图面板对齐</h2><ul>
-<li>绘制生存曲线<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">library(survival)</div><div class="line">head(colon[, c(1:4)])</div><div class="line">#Fit survival curves</div><div class="line">fit &lt;- survfit(Surv(time, status)~adhere, data = colon)</div><div class="line">library(survminer)</div><div class="line">ggsurv &lt;- ggsurvplot(fit, data = colon, palette = &quot;jco&quot;, #jco palette </div><div class="line">pval = TRUE, pval.coord=c(500, 0.4), #Add p-value </div><div class="line">risk.table = TRUE #Add risk table)</div><div class="line">names(ggsurv)</div><div class="line">`</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">## [1] &quot;plot&quot; &quot;table&quot; &quot;data.survplot&quot; &quot;data.survtable&quot;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>ggsurv是一个包含两部分的list </p>
-<ul>
-<li>plot：生存曲线</li>
-<li>table：风险表<br>可以用ggarrange()进行排列这两者<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggarrange(ggsurv$plot, ggsurv$table, heights = c(2, 0.7), ncol = 1, nrow = 2)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e53edb9d332af479.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>上图中的坐标轴没有对齐，可以通过参数align来设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggarrange(ggsurv$plot, ggsurv$table, heights = c(2, 0.7), ncol = 1, nrow = 2, align = &quot;v&quot;)</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-4e2c926c330d1680.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="改变排列图的行列"><a href="#改变排列图的行列" class="headerlink" title="改变排列图的行列"></a>改变排列图的行列</h2><p>设置面板为两行两列，其中sp占据第一行的两列，bxp以及dp置于第二行的两列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggarrange(sp, #First row with scatter plot(sp) </div><div class="line">ggarrange(bxp, dp, ncol = 2, labels = c(&quot;B&quot;,&quot;C&quot;)),#Second row with box and dot plot </div><div class="line">nrow = 2, labels = &quot;A&quot; #Labels of the scatter plot)</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6b2884cdeeb38d66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="R包cowplot"><a href="#R包cowplot" class="headerlink" title="R包cowplot"></a>R包cowplot</h2><blockquote>
-<p>cowplot::ggdraw()可以将图形置于特定位置, ggdraw()首先会初始化一个绘图面板， 接下来draw_plot()则是将图形绘制于初始化的绘图面板中，通过参数设置可以将图形置于特定位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">draw_plot(plot, x=0, y=0, width=1, height=1)</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>其中： </p>
-<ul>
-<li>plot:将要放置的图形 </li>
-<li>x,y:控制图形位置 </li>
-<li>width,height:图形的宽度和高度</li>
-<li>draw_plot_label():为图形添加标签<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">draw_plot_label(label, x=0, y=1, size=16, ...)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>其中：</p>
-<ul>
-<li>label:标签</li>
-<li>x,y:控制标签位置</li>
-<li>size:标签字体大小</li>
-</ul>
-<p>下面通过一个例子来讲解如何将多个图形放置在特定的位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ggdraw()+ draw_plot(bxp, x=0, y=0.5, width=0.5, height = 0.5)+</div><div class="line">draw_plot(dp, x=0.5, y=0.5, width = 0.5, height = 0.5)+ </div><div class="line">draw_plot(bp, x=0, y=0, width = 1.5, height = 0.5)+ </div><div class="line">draw_plot_label(label = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), size = 15, x=c(0, 0.5, 0), y=c(1, 1, 0.5))</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a342161e1f1e5cf4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="R包gridExtra"><a href="#R包gridExtra" class="headerlink" title="R包gridExtra"></a>R包gridExtra</h2><blockquote>
-<p>gridExtra::arrangeGrop()改变行列分布</p>
-</blockquote>
-<p>下面将sp置于第一行并横跨两列，而bxp和dp分别分布于第二行两列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">grid.arrange(sp, #First row with one plot spaning over 2 columns</div><div class="line">arrangeGrob(bxp, dp, ncol = 2), #Second row with 2plots in 2 different columns </div><div class="line">nrow=2) #number of rows</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-bd23e000d25050e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>也可以通过函数grid.arrange中的layout_matrix来设置复杂的图形布局<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">grid.arrange(bp, #bar plot spaning two columns </div><div class="line">bxp, sp, #box plot amd scatter plot </div><div class="line">ncol=2, nrow=2, layout_matrix=rbind(c(1, 1), c(2, 3)))</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-918661a64ae22dcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<blockquote>
-<p>要相对grid.arrange()以及arrangeGrob()的输出进行注释，首先要利用as_ggplot()将其转化为ggplot图形，进而利用函数draw_plot_label()对其进行注释。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gt &lt;- arrangeGrob(bp, bxp, sp, layout_matrix = rbind(c(1,1),c(2, 3)))</div><div class="line">p &lt;- as_ggplot(gt)+ </div><div class="line">draw_plot_label(label = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), size = 15, x=c(0, 0, 0.5), y=c(1, 0.5, 0.5))</div><div class="line">p</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-251b2907ceddcbc0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="R包grid"><a href="#R包grid" class="headerlink" title="R包grid"></a>R包grid</h2><blockquote>
-<p>R包grid中的grid.layout()可以设置复杂的图形布局，viewport()可以定义一个区域用来安置图形排列，print()则用来将图形置于特定区域。 总结起来步骤如下：</p>
-</blockquote>
-<ul>
-<li>创建图形p1,p2,p3,…</li>
-<li>grid.newpage()创建一个画布</li>
-<li>创建图形布局，几行几列</li>
-<li>定义布局的矩形区域</li>
-<li>print：将图形置于特定区域<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">library(grid)</div><div class="line">#Move to a new page</div><div class="line">grid.newpage()</div><div class="line">#Create layout:nrow=3, ncol=2</div><div class="line">pushViewport(viewport(layout = grid.layout(nrow=3, ncol=2)))</div><div class="line">#A helper function to define a region on the layout</div><div class="line">define_region &lt;- function(row, col)&#123; </div><div class="line">viewport(layout.pos.row = row, layout.pos.col = col)&#125;</div><div class="line">#Arrange the plots</div><div class="line">print(sp, vp=define_region(row=1, col=1:2)) #Span over two columns</div><div class="line">print(bxp, vp=define_region(row=2, col=1))</div><div class="line">print(dp, vp=define_region(row=2, col=2))</div><div class="line">print(bp+rremove(&quot;x.text&quot;), vp=define_region(row=3, col=1:2))</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="设置共同图例"><a href="#设置共同图例" class="headerlink" title="设置共同图例"></a>设置共同图例</h2><blockquote>
-<p>ggpubr::ggarrange()可以为组合图形添加共同图例</p>
-</blockquote>
-<ul>
-<li>common.legeng=TRUE:在图形旁边添加图例</li>
-<li>legend：指定legend的位置，主要选项有：top、bottom、left、right。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ggarrange(bxp, dp, labels = c(&quot;A&quot;, &quot;B&quot;), common.legend = TRUE, legend = &quot;bottom&quot;)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-ca42c6bbb45bcfdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="含有边际密度图的散点图"><a href="#含有边际密度图的散点图" class="headerlink" title="含有边际密度图的散点图"></a>含有边际密度图的散点图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sp &lt;- ggscatter(iris, x=&quot;Sepal.Length&quot;, y=&quot;Sepal.Width&quot;, color=&quot;Species&quot;, </div><div class="line">palette = &quot;jco&quot;, size=3, alpha=0.6)+border()</div><div class="line">#Marginal density plot of x(top panel) and y(right panel)</div><div class="line">xplot &lt;- ggdensity(iris, &quot;Sepal.Length&quot;, fill=&quot;Species&quot;,palette = &quot;jco&quot;)</div><div class="line">yplot &lt;- ggdensity(iris, &quot;Sepal.Width&quot;, fill=&quot;Species&quot;, palette = &quot;jco&quot;)+rotate()</div><div class="line">#Clean the plots</div><div class="line">xplot &lt;- xplot+clean_theme()</div><div class="line">yplot &lt;- yplot+clean_theme()</div><div class="line">#Arrange the plots</div><div class="line">ggarrange(xplot, NULL, sp, yplot, ncol = 2, nrow = 2, align = &quot;hv&quot;, widths = c(2, 1), </div><div class="line">heights = c(1, 2), common.legend = TRUE)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-1565dd7ff1900770.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="ggplot图、文本、表格组合"><a href="#ggplot图、文本、表格组合" class="headerlink" title="ggplot图、文本、表格组合"></a>ggplot图、文本、表格组合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">density.p &lt;- ggdensity(iris, x=&quot;Sepal.Length&quot;, fill=&quot;Species&quot;, palette = &quot;jco&quot;)</div><div class="line">#Compute the summary table of Sepal.Length</div><div class="line">stable &lt;- desc_statby(iris, measure.var = &quot;Sepal.Length&quot;, grps = &quot;Species&quot;)</div><div class="line">stable &lt;- stable[, c(&quot;Species&quot;, &quot;length&quot;, &quot;mean&quot;, &quot;sd&quot;)]</div><div class="line">#Summary table plot, medium and theme</div><div class="line">stable.p &lt;- ggtexttable(stable, rows = NULL, theme = ttheme(&quot;mOrange&quot;))</div><div class="line">text &lt;- paste(&quot;iris data set gives the measurements in cm&quot;, &quot;of the variables sepal length and width&quot;, &quot;and petal length and width, respectively,&quot;, &quot;for 50 flowers from each of 3 species of iris.&quot;, &quot;The species are Iris setosa, versicolor, and virginica.&quot;, sep = &quot; &quot;)</div><div class="line">text.p &lt;- ggparagraph(text = text, face = &quot;italic&quot;, size = 11, color = &quot;black&quot;)</div><div class="line">#Arrange the plots on the same page</div><div class="line">ggarrange(density.p, stable.p, text.p, ncol = 1, nrow = 3, heights = c(1, 0.5, 0.3))</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-6d68d9bbc420bdd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="ggplot图形中嵌入图形元素"><a href="#ggplot图形中嵌入图形元素" class="headerlink" title="ggplot图形中嵌入图形元素"></a>ggplot图形中嵌入图形元素</h2><blockquote>
-<p>ggplot2::annotation_custom()可以添加各种图形元素到ggplot图中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">annotation_custom(grob, xmin, xmax, ymin, ymax)</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>其中：</p>
-<ul>
-<li>grob:要添加的图形元素</li>
-<li>xmin, xmax: x轴方向位置（水平方向）</li>
-<li>ymin, ymax: y轴方向位置（竖直方向）</li>
-</ul>
-<h2 id="ggplot图形中添加table"><a href="#ggplot图形中添加table" class="headerlink" title="ggplot图形中添加table"></a>ggplot图形中添加table</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">density.p+annotation_custom(ggplotGrob(stable.p), xmin = 5.5, xmax = 8, ymin = 0.7)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-3806bee958243f30.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="ggplot图形中添加box-plot"><a href="#ggplot图形中添加box-plot" class="headerlink" title="ggplot图形中添加box plot"></a>ggplot图形中添加box plot</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">sp &lt;- ggscatter(iris, x=&quot;Sepal.Length&quot;, y=&quot;Sepal.Width&quot;, color = &quot;Species&quot;, palette = &quot;jco&quot;, size = 3, alpha=0.6)</div><div class="line">xbp &lt;- ggboxplot(iris$Sepal.Length, width = 0.3, fill = &quot;lightgray&quot;)+ rotate()+theme_transparent()</div><div class="line">ybp &lt;- ggboxplot(iris$Sepal.Width, width = 0.3, fill=&quot;lightgray&quot;)+theme_transparent()</div><div class="line"># Create the external graphical objects</div><div class="line"># called a &quot;grop&quot; in Grid terminology</div><div class="line">xbp_grob &lt;- ggplotGrob(xbp)</div><div class="line">ybp_grob &lt;- ggplotGrob(ybp)</div><div class="line">#place box plots inside the scatter plot</div><div class="line">xmin &lt;- min(iris$Sepal.Length)</div><div class="line">xmax &lt;- max(iris$Sepal.Length)</div><div class="line">ymin &lt;- min(iris$Sepal.Width)</div><div class="line">ymax &lt;- max(iris$Sepal.Width)</div><div class="line">yoffset &lt;- (1/15)*ymax</div><div class="line">xoffset &lt;- (1/15)*xmax</div><div class="line"># Insert xbp_grob inside the scatter plots</div><div class="line">p+annotation_custom(grob = xbp_grob, xmin = xmin, xmax = xmax, </div><div class="line">ymin = ymin-yoffset, ymax = ymin+yoffset)+</div><div class="line"># Insert ybp_grob inside the scatter plot</div><div class="line">annotation_custom(grob = ybp_grob, xmin = xmin-xoffset, </div><div class="line">xmax=xmin+xoffset, ymin=ymin, ymax=ymax)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-d94210f5f4783fbd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="ggplot图形添加背景"><a href="#ggplot图形添加背景" class="headerlink" title="ggplot图形添加背景"></a>ggplot图形添加背景</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#import the imageimg.file &lt;- system.file(file.path(&quot;images&quot;, &quot;background-image.png&quot;), package = &quot;ggpubr&quot;)</div><div class="line">img &lt;- png::readPNG(img.file)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>利用ggpubr::background_image()为ggplot图形添加背景图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">library(ggpubr)</div><div class="line">ggplot(iris, aes(Species,Sepal.Length))+</div><div class="line">background_image(img)+</div><div class="line">geom_boxplot(aes(fill=Species), color=&quot;white&quot;)+ fill_palette(&quot;jco&quot;)</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-5f7514c22e7add04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="修改透明度"><a href="#修改透明度" class="headerlink" title="修改透明度"></a>修改透明度</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ggplot(iris, aes(Species,Sepal.Length))+</div><div class="line">background_image(img)+geom_boxplot(aes(fill=Species), color=&quot;white&quot;, alpha=0.5)+ </div><div class="line">fill_palette(&quot;jco&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-cd305569d612b588.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="多页排列"><a href="#多页排列" class="headerlink" title="多页排列"></a>多页排列</h2><blockquote>
-<p>日常工作中我们有时要绘制许多图，假如我们有16幅图，每页排列4张的话就需要4页才能排完，而ggpubr::ggarrange()可以通过制定行列数自动在多页之间进行图形排列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">multi.page &lt;-ggarrange(bxp, dp, bp, sp, nrow = 1, ncol = 2)</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>上述代码返回两页每页两图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">multi.page[[1]]</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-033d7bb70f07ee91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">multi.page[[2]]</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-a92858066ced1ad0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="利用ggarrange-嵌套布局"><a href="#利用ggarrange-嵌套布局" class="headerlink" title="利用ggarrange()嵌套布局"></a>利用ggarrange()嵌套布局</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">p1 &lt;- ggarrange(sp, bp+font(&quot;x.text&quot;, size = 9), ncol = 1, nrow = 2)</div><div class="line">p2 &lt;- ggarrange(density.p, stable.p, text.p, ncol = 1, nrow = 3, </div><div class="line">heights = c(1, 0.5, 0.3))</div><div class="line">ggarrange(p1, p2, ncol = 2, nrow = 1)</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/2084719-e6bf2901af3d315e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.1 (2017-06-30)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 10 x64 (build 15063)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936 </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C</div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936 </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] grid stats graphics grDevices utils datasets methods </div><div class="line">## [8] base </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] survminer_0.4.0 survival_2.41-3 ggpubr_0.1.5 magrittr_1.5 </div><div class="line">## [5] cowplot_0.8.0 ggplot2_2.2.1 gridExtra_2.2.1</div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">## [1] zoo_1.8-0 purrr_0.2.3 reshape2_1.4.2 </div><div class="line">## [4] splines_3.4.1 lattice_0.20-35 colorspace_1.3-2 </div><div class="line">## [7] htmltools_0.3.6 yaml_2.1.14 survMisc_0.5.4</div><div class="line">## [10] rlang_0.1.2 foreign_0.8-69 glue_1.1.1 </div><div class="line">## [13] bindrcpp_0.2 bindr_0.1 plyr_1.8.4 </div><div class="line">## [16] stringr_1.2.0 munsell_0.4.3 gtable_0.2.0 </div><div class="line">## [19] ggsci_2.7 psych_1.7.5 evaluate_0.10.1 </div><div class="line">## [22] labeling_0.3 knitr_1.17 parallel_3.4.1 </div><div class="line">## [25] broom_0.4.2 Rcpp_0.12.12 xtable_1.8-2 </div><div class="line">## [28] scales_0.4.1 backports_1.1.0 cmprsk_2.2-7 </div><div class="line">## [31] km.ci_0.5-2 mnormt_1.5-5 png_0.1-7 </div><div class="line">## [34] digest_0.6.12 stringi_1.1.5 dplyr_0.7.2 </div><div class="line">## [37] KMsurv_0.1-5 rprojroot_1.2 tools_3.4.1 </div><div class="line">## [40] lazyeval_0.2.0 tibble_1.3.3 tidyr_0.7.0 </div><div class="line">## [43] pkgconfig_2.0.1 Matrix_1.2-11 data.table_1.10.4</div><div class="line">## [46] assertthat_0.2.0 rmarkdown_1.6 R6_2.2.2 </div><div class="line">## [49] nlme_3.1-131 compiler_3.4.1</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><ul>
-<li>wechat: yt056410</li>
-<li>Email: tyan@zju.edu.cn</li>
-<li>QQ: 1051927088</li>
-<li>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a></li>
-<li>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a></li>
-<li>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></li>
-</ul>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛</p>
-<ul>
-<li>浙江大学作物遗传育种在读研究生（生物信息学方向）</li>
-<li>伪码农，R语言爱好者，爱开源</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2084719-e6bf2901af3d315e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;R语言基本绘图函数中可以利用par()以及layout()来进行图形排列，但是这两个函数对于ggplot图则不太适用，本文主要讲解如何对多ggplot图形多页面进行排列。主要讲解如何利用包gridExtra、cowplot以及ggpubr中的函数进行图形排列。&lt;br&gt;
     
     </summary>
     
