@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-12-04T11:18:47.437Z</updated>
+  <updated>2017-12-04T11:23:45.031Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -20,14 +20,15 @@
     <link href="https://ytlogos.github.io/2017/12/04/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>https://ytlogos.github.io/2017/12/04/生物信息学学习笔记（三）/</id>
     <published>2017-12-04T13:19:05.000Z</published>
-    <updated>2017-12-04T11:18:47.437Z</updated>
+    <updated>2017-12-04T11:23:45.031Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171203/eeCi4f49Ag.png?imageslim" alt="mark"></p>
 <ul>
-<li>CpG位点(CpG sites，CG位点)：指DNA的某个区域，其上的碱基序列以胞嘧啶接着鸟嘌呤出现。CpG是“—C—磷酸—G—”的缩写，指磷酸二脂键连接了胞嘧啶和鸟嘌呤，其中C位于5’端而G位于3’端。在CpG位点中的胞嘧啶可以被甲基化为5-甲基胞嘧啶，基因内CpG位点的甲基化会改变基因的表达</li>
-<li><h2 id="顺式调控元件"><a href="#顺式调控元件" class="headerlink" title="顺式调控元件"></a>顺式调控元件</h2></li>
-<li><p>启动子(promoter)：指导RNA聚合酶并起始DNA转录的一段DNA序列，该序列往往位于编码基因的上游，可以调控目标基因表达的程度、时间和组织等。通常核心启动子都具有一些特征序列，这些特征序列称为基序(motif),常见的基序有TATA盒(TATA box)等。</p>
+<li>CpG位点(CpG sites，CG位点)：指DNA的某个区域，其上的碱基序列以胞嘧啶接着鸟嘌呤出现。CpG是“—C—磷酸—G—”的缩写，指磷酸二脂键连接了胞嘧啶和鸟嘌呤，其中C位于5’端而G位于3’端。在CpG位点中的胞嘧啶可以被甲基化为5-甲基胞嘧啶，基因内CpG位点的甲基化会改变基因的表达<a id="more"></a>
 </li>
+</ul>
+<h2 id="顺式调控元件"><a href="#顺式调控元件" class="headerlink" title="顺式调控元件"></a>顺式调控元件</h2><ul>
+<li>启动子(promoter)：指导RNA聚合酶并起始DNA转录的一段DNA序列，该序列往往位于编码基因的上游，可以调控目标基因表达的程度、时间和组织等。通常核心启动子都具有一些特征序列，这些特征序列称为基序(motif),常见的基序有TATA盒(TATA box)等。</li>
 <li>增强子和沉默子：指DNA分子上可以与特定蛋白相结合从而正向或负向调控基因表达的顺式作用元件。其中增强子与蛋白结合之后，基因的转录水平会增强，其位置可以位于启动子上游、基因内、基因下游或基因区间，甚至于被调控基因不在同一条染色体上，这是由于增强子主要依靠空间作用来调控基因表达。</li>
 <li><p>绝缘子：绝缘子是一种长程调控元件，主要有两类。第一类主要功能是阻遏邻近的调控元件如增强子。绝缘子发挥功能时具有方向性，其可以阻断增强子与启动子的作用，从而导致增强子的目标基因表达下调。第二类是异染色质的边界原件。由于异染色质包装折叠较常染色体显得更加紧密，异染色质中的基因很少表达，而第二类绝缘子可以在异染色质的边界阻断异染色质结构的延伸，保证边界另一侧的基因表达不受影响。<br><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171130/j7HbHF03CH.png?imageslim" alt="顺式作用元件"></p>
 </li>
@@ -55,16 +56,16 @@
     
       &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171203/eeCi4f49Ag.png?imageslim&quot; alt=&quot;mark&quot;&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;CpG位点(CpG sites，CG位点)：指DNA的某
+&lt;li&gt;CpG位点(CpG sites，CG位点)：指DNA的某个区域，其上的碱基序列以胞嘧啶接着鸟嘌呤出现。CpG是“—C—磷酸—G—”的缩写，指磷酸二脂键连接了胞嘧啶和鸟嘌呤，其中C位于5’端而G位于3’端。在CpG位点中的胞嘧啶可以被甲基化为5-甲基胞嘧啶，基因内CpG位点的甲基化会改变基因的表达
     
     </summary>
     
       <category term="bioinformatics" scheme="https://ytlogos.github.io/categories/bioinformatics/"/>
     
     
-      <category term="DHSs" scheme="https://ytlogos.github.io/tags/DHSs/"/>
-    
       <category term="Hi-C" scheme="https://ytlogos.github.io/tags/Hi-C/"/>
+    
+      <category term="DHSs" scheme="https://ytlogos.github.io/tags/DHSs/"/>
     
   </entry>
   
@@ -129,9 +130,9 @@
       <category term="bioinformatics" scheme="https://ytlogos.github.io/categories/bioinformatics/"/>
     
     
-      <category term="Hi-C" scheme="https://ytlogos.github.io/tags/Hi-C/"/>
-    
       <category term="evolution" scheme="https://ytlogos.github.io/tags/evolution/"/>
+    
+      <category term="Hi-C" scheme="https://ytlogos.github.io/tags/Hi-C/"/>
     
   </entry>
   
