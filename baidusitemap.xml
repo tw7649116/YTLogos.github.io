@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://ytlogos.github.io/2017/12/04/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</loc>
+    <lastmod>2017-12-04T11:18:47.437Z</lastmod>
+    <data>
+        <display>
+        <title>生物信息学学习笔记（三）</title>
+        <pubTime>2017-12-04T13:19:05.000Z</pubTime>
+        
+        <tag>DHSs</tag>
+         
+        <tag>Hi-C</tag>
+         
+         
+           
+             
+              <breadCrumb title="bioinformatics" url="https://ytlogos.github.io/categories/bioinformatics/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://ytlogos.github.io/2017/11/29/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
     <lastmod>2017-11-29T12:05:48.985Z</lastmod>
     <data>
@@ -11,9 +33,9 @@
         <title>生物信息学学习笔记（二）</title>
         <pubTime>2017-11-29T13:19:05.000Z</pubTime>
         
-        <tag>evolution</tag>
-         
         <tag>Hi-C</tag>
+         
+        <tag>evolution</tag>
          
          
            
@@ -295,9 +317,9 @@
         
         <tag>R</tag>
          
-        <tag>visualization</tag>
-         
         <tag>scatter plot</tag>
+         
+        <tag>visualization</tag>
          
          
            
@@ -773,9 +795,9 @@
         
         <tag>R</tag>
          
-        <tag>ggrepel</tag>
-         
         <tag>visualization</tag>
+         
+        <tag>ggrepel</tag>
          
          
            
@@ -797,9 +819,9 @@
         
         <tag>R</tag>
          
-        <tag>ggrepel</tag>
-         
         <tag>visualization</tag>
+         
+        <tag>ggrepel</tag>
          
          
            

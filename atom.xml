@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-11-29T12:05:48.985Z</updated>
+  <updated>2017-12-04T11:18:47.437Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>生物信息学学习笔记（三）</title>
+    <link href="https://ytlogos.github.io/2017/12/04/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>https://ytlogos.github.io/2017/12/04/生物信息学学习笔记（三）/</id>
+    <published>2017-12-04T13:19:05.000Z</published>
+    <updated>2017-12-04T11:18:47.437Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171203/eeCi4f49Ag.png?imageslim" alt="mark"></p>
+<ul>
+<li>CpG位点(CpG sites，CG位点)：指DNA的某个区域，其上的碱基序列以胞嘧啶接着鸟嘌呤出现。CpG是“—C—磷酸—G—”的缩写，指磷酸二脂键连接了胞嘧啶和鸟嘌呤，其中C位于5’端而G位于3’端。在CpG位点中的胞嘧啶可以被甲基化为5-甲基胞嘧啶，基因内CpG位点的甲基化会改变基因的表达</li>
+<li><h2 id="顺式调控元件"><a href="#顺式调控元件" class="headerlink" title="顺式调控元件"></a>顺式调控元件</h2></li>
+<li><p>启动子(promoter)：指导RNA聚合酶并起始DNA转录的一段DNA序列，该序列往往位于编码基因的上游，可以调控目标基因表达的程度、时间和组织等。通常核心启动子都具有一些特征序列，这些特征序列称为基序(motif),常见的基序有TATA盒(TATA box)等。</p>
+</li>
+<li>增强子和沉默子：指DNA分子上可以与特定蛋白相结合从而正向或负向调控基因表达的顺式作用元件。其中增强子与蛋白结合之后，基因的转录水平会增强，其位置可以位于启动子上游、基因内、基因下游或基因区间，甚至于被调控基因不在同一条染色体上，这是由于增强子主要依靠空间作用来调控基因表达。</li>
+<li><p>绝缘子：绝缘子是一种长程调控元件，主要有两类。第一类主要功能是阻遏邻近的调控元件如增强子。绝缘子发挥功能时具有方向性，其可以阻断增强子与启动子的作用，从而导致增强子的目标基因表达下调。第二类是异染色质的边界原件。由于异染色质包装折叠较常染色体显得更加紧密，异染色质中的基因很少表达，而第二类绝缘子可以在异染色质的边界阻断异染色质结构的延伸，保证边界另一侧的基因表达不受影响。<br><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171130/j7HbHF03CH.png?imageslim" alt="顺式作用元件"></p>
+</li>
+<li><p>转录水平的调控是真核基因表达调控的关键环节，染色质对DNase Ⅰ的敏感性与基因转录有关。基因活化使其染色质一呈开放的疏松型构象，更易被DNase Ⅰ降解，形成DNase Ⅰ超敏感位点(DNase Ⅰ hypersensitive site，DHSs).DHSs不仅与染色质的开放度相关，还与启动子、增强子、绝缘子以及沉默子等元件相偶联，并且染色质上具有调控功能的DNA序列、调控蛋白结合位点也与DHSs重叠</p>
+</li>
+<li>DHSs是一段跨度为数百碱基对，甲基化程度较低，对DNase Ⅰ具有高度敏感性的染色质区域，可富集转录因子和重要酶类，具有转录调控功能</li>
+<li>染色质由一系列盘绕着DNA的核小体组成，转录因子在与基因结合时，取代了核小体的位置，baoluchuDNA，使其对DNase Ⅰ的切割更为敏感，在此基础上，利用染色质对DNase Ⅰ的敏感性鉴定活化的调控序列</li>
+<li>DNase-seq方案包括用DNase Ⅰ优先切割核小体被取代的DNA序列，对生成的短片段进行测序并将其定位到基因组上以鉴定对敏感酶的“染色质开放”区域。一些转录因子的结合位点显示出高度特异性的DNase Ⅰ剪切模式。这种“Dnase 足迹”常被用来检测特定转录因子的结合</li>
+<li>ATAC-seq(assay for transposase-accesiible chromatin using sequencing)：通过Tn5转座酶优先标记和测序核小体之间的DNA。类似于DNase-seq，但是步骤更为简单，所需细胞也更少</li>
+<li>对DNase-seq片段进行双端测序，发现短片段主要源自于核小体之间的区域，而长片段跨越了核小体。研究指出短片段对鉴定转录因子的结合更有用，长片段可以提供核小体的间隔信息</li>
+<li>研究人员发现由于DNase Ⅰ和Tn5的切割偏好性，之前许多Dnase印记分析反映的更多是切割偏好而不是转录因子的真实结合情况。</li>
+</ul>
+<h2 id="3D基因组"><a href="#3D基因组" class="headerlink" title="3D基因组"></a>3D基因组</h2><ul>
+<li>不同染色质在细胞核内的分布不是杂乱无章的，而是被限定在特定的“疆域”内，基因相对密集的染色质通常分布在远离核膜的位置，而基因稀疏的染色质则分布在靠近核膜的位置。在基因组上分离的染色质区段在空间上可能被拉到一起共同被转录，形成“转录工厂”</li>
+<li>基因组区室是指存在于染色质上的相互间隔的连续区域，通常这些区域大小为1~10Mb，每个区域内的点具有相似的全基因组交互模式，根据交互模式的差异，这些区域可以分为两类：A类区室和B类区室。相同类型的区室具有相似的全基因组交互模式，其交互频率要显著高于不同类型区室之间的交互。A类区室往往代表基因富集的常染色质区域，B类区室则对应着基因稀疏的异染色质区域</li>
+<li>拓扑相关结构域(TAD)则是位于高等动物染色质的更精细的结构单元，TAD被定义为这样一块块连续的染色质区域，区域内部互作强度要显著强于区域之间的互作。每个TAD通常只有200Kb~1Mb。</li>
+<li>染色质位点的相互作用存在某种固有的模式，而这些模式与特定生物学过程/功能是无关的</li>
+</ul>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>JianShu: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>Blog: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171203/eeCi4f49Ag.png?imageslim&quot; alt=&quot;mark&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CpG位点(CpG sites，CG位点)：指DNA的某
+    
+    </summary>
+    
+      <category term="bioinformatics" scheme="https://ytlogos.github.io/categories/bioinformatics/"/>
+    
+    
+      <category term="DHSs" scheme="https://ytlogos.github.io/tags/DHSs/"/>
+    
+      <category term="Hi-C" scheme="https://ytlogos.github.io/tags/Hi-C/"/>
+    
+  </entry>
   
   <entry>
     <title>生物信息学学习笔记（二）</title>
@@ -76,9 +129,9 @@
       <category term="bioinformatics" scheme="https://ytlogos.github.io/categories/bioinformatics/"/>
     
     
-      <category term="evolution" scheme="https://ytlogos.github.io/tags/evolution/"/>
-    
       <category term="Hi-C" scheme="https://ytlogos.github.io/tags/Hi-C/"/>
+    
+      <category term="evolution" scheme="https://ytlogos.github.io/tags/evolution/"/>
     
   </entry>
   
@@ -2193,114 +2246,6 @@
     
     
       <category term="RNA-seq" scheme="https://ytlogos.github.io/tags/RNA-seq/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图像处理R包magick学习笔记</title>
-    <link href="https://ytlogos.github.io/2017/09/03/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86R%E5%8C%85magick%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://ytlogos.github.io/2017/09/03/图像处理R包magick学习笔记/</id>
-    <published>2017-09-03T10:29:46.000Z</published>
-    <updated>2017-09-19T00:39:01.433Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/a2jGAc87jB.gif" alt=""></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文主要简单介绍一下magick包，主要用于图像处理</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#安装的话就直接从CRAN安装进行</div><div class="line">install.packages(&quot;magick&quot;)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#Load the package</div><div class="line">library(magick)</div><div class="line">#查看支持哪些格式</div><div class="line">str(magick_config())</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">## List of 21</div><div class="line">##  $ version           :Class &apos;numeric_version&apos;  hidden list of 1</div><div class="line">##   ..$ : int [1:4] 6 9 9 9</div><div class="line">##  $ modules           : logi FALSE</div><div class="line">##  $ cairo             : logi TRUE</div><div class="line">##  $ fontconfig        : logi FALSE</div><div class="line">##  $ freetype          : logi TRUE</div><div class="line">##  $ fftw              : logi TRUE</div><div class="line">##  $ ghostscript       : logi TRUE</div><div class="line">##  $ jpeg              : logi TRUE</div><div class="line">##  $ lcms              : logi TRUE</div><div class="line">##  $ libopenjp2        : logi FALSE</div><div class="line">##  $ lzma              : logi TRUE</div><div class="line">##  $ pangocairo        : logi TRUE</div><div class="line">##  $ pango             : logi TRUE</div><div class="line">##  $ png               : logi TRUE</div><div class="line">##  $ rsvg              : logi TRUE</div><div class="line">##  $ tiff              : logi TRUE</div><div class="line">##  $ webp              : logi TRUE</div><div class="line">##  $ wmf               : logi FALSE</div><div class="line">##  $ x11               : logi FALSE</div><div class="line">##  $ xml               : logi TRUE</div><div class="line">##  $ zero-configuration: logi FALSE</div></pre></td></tr></table></figure>
-<p>可以看出大部分格式都是支持的</p>
-<h2 id="读取图像"><a href="#读取图像" class="headerlink" title="读取图像"></a>读取图像</h2><p>读取的话可以直接从本地读取，也可以读取URL格式的图片，主要通过image_read()来读取，image_info()则可以显示图像的一些属性数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#读取网上随便选的图片</div><div class="line">night_king &lt;- image_read(&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/ha6Cchfk38.jpg?imageslim&quot;)</div><div class="line">image_info(night_king)</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">##   format width height colorspace filesize</div><div class="line">## 1   JPEG   189    267       sRGB     6449</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#通过image_write()可以讲图片以任何格式输出，比如将刚读取的图片以png格式输出。</div><div class="line">image_write(night_king, path = &quot;night_king.png&quot;, format = &quot;png&quot;)</div></pre></td></tr></table></figure>
-<h2 id="转换格式"><a href="#转换格式" class="headerlink" title="转换格式"></a>转换格式</h2><p>通过image_convert()可以将图片转换为我们需要的格式，比如这里我们可以将night_king的格式转换为png格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">night_king.png &lt;- image_convert(night_king, &quot;png&quot;)</div><div class="line">image_info(night_king.png)</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">##   format width height colorspace filesize</div><div class="line">## 1    PNG   189    267       sRGB        0</div></pre></td></tr></table></figure>
-<p>可以看到这里的filesize为0，直到被渲染（这里涉及到ImageMagick方面，我不是很懂）。</p>
-<h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p>在RStudio中可以查看我们读取的图片</p>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/1kEj0h191l.png?imageslim" alt=""></p>
-<h2 id="转换-transformations"><a href="#转换-transformations" class="headerlink" title="转换(transformations)"></a>转换(transformations)</h2><p>magick提供一系列函数对图片进行裁剪以及编辑，主要有以下函数：</p>
-<ul>
-<li>image_crop(image, “100x150+50”):裁剪</li>
-<li>image_scale(image, “200”):按宽比例进行放大缩小</li>
-<li>image_scale(image, “x200”):按高比例进行放大缩小</li>
-<li>image_fill(image, “blue”, “+100+200”):对特定部位着色</li>
-<li>image_border(image, “red”, “20x10”):添加边框</li>
-</ul>
-<p>下面我们来试试这些函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#Example image</div><div class="line">wolf &lt;- image_read(&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/4h96Df21AI.png?imageslim&quot;)</div><div class="line">print(wolf)</div></pre></td></tr></table></figure></p>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/4h96Df21AI.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Add 20px left/right and 10px top/bottom</div><div class="line">image_border(image_background(wolf, &quot;hotpink&quot;), &quot;#000080&quot;, &quot;20x10&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/6LE8j4jECf.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#trim margins</div><div class="line">image_trim(wolf)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/HB0lELbmhE.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#裁剪</div><div class="line">image_crop(wolf, &quot;500x300+50&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/f05HDcIG4d.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Resize</div><div class="line">image_scale(wolf, &quot;300&quot;)#width:300px</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/KjfE0bhl7H.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Resize</div><div class="line">image_scale(wolf, &quot;x300&quot;)#heigth:300px</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/0me686bm2e.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Rotate or mirror</div><div class="line">image_rotate(wolf, 45)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/1H6D4bjKbm.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Flip</div><div class="line">image_flip(wolf)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/4CGL43f8AK.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Flop</div><div class="line">image_flop(wolf)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/Cg4hL5Hi72.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Paint </div><div class="line">image_fill(wolf, &quot;red&quot;, point = &quot;+190+100&quot;, fuzz = 4000)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/fd7IfD0m2a.png?imageslim" alt=""></p>
-<p>这个函数最难掌握，我本来是想将wolf的眼睛渲染成红色，但是不断调整point以及fuzz都没弄成，感兴趣的可以自己捣鼓捣鼓。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Add randomness</div><div class="line">image_blur(wolf, 10, 5)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/k5EF1DA9Lk.png?imageslim" alt=""></p>
-<p>可以通过调整参数来设置模糊度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image_noise(wolf)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/D92FH0I3G1.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Silly filters</div><div class="line">image_charcoal(wolf)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/KAEA3gIIF0.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image_oilpaint(wolf)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/ACD0Fg5675.png?imageslim" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image_negate(wolf)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/kILkaEe9kl.png?imageslim" alt=""></p>
-<h2 id="文字注释"><a href="#文字注释" class="headerlink" title="文字注释"></a>文字注释</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Add some text on the image</div><div class="line">image_annotate(wolf, &quot;I am the King of wolf&quot;, size=25, gravity = &quot;southeast&quot;, color=&quot;gold&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/dfc3iB0E3D.png?imageslim" alt=""></p>
-<p>当然也可以自定义text</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#customize the text</div><div class="line">image_annotate(wolf, &quot;I am the King&quot;, size=30, color=&quot;red&quot;, boxcolor = &quot;pink&quot;, degrees = 45, location = &quot;+30+30&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/59CEEa0gm0.png?imageslim" alt=""></p>
-<p>还可以设置字体</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#Set the font times-new-roman</div><div class="line">image_annotate(wolf, &quot;I am the King&quot;, size=30, color=&quot;red&quot;, boxcolor = &quot;pink&quot;, degrees = 45, location = &quot;+30+30&quot;, font = &apos;times-new-roman&apos;)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/BIbiF712bE.png?imageslim" alt=""></p>
-<h2 id="管道操作"><a href="#管道操作" class="headerlink" title="管道操作"></a>管道操作</h2><p>你没看错，magick支持管道操作，下面试试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">library(magrittr)</div><div class="line">wolf%&gt;%</div><div class="line">  image_rotate(270)%&gt;%</div><div class="line">  image_background(&quot;white&quot;, flatten = TRUE)%&gt;%</div><div class="line">  image_border(&quot;red&quot;, &quot;10x10&quot;)%&gt;%</div><div class="line">  image_annotate(&quot;I am the King&quot;, color=&apos;red&apos;, size = 25, location = &quot;+100+300&quot;)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/mEG1lL005b.png?imageslim" alt=""></p>
-<h2 id="图片向量"><a href="#图片向量" class="headerlink" title="图片向量"></a>图片向量</h2><p>magick除了支持管道操作外，还支持图层叠加、拼图以及动图处理，来个经典的动态地球<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">earth &lt;- image_read(&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/a9CjAEGiC5.gif&quot;)</div><div class="line">length(earth)</div><div class="line">print(earth)</div></pre></td></tr></table></figure></p>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/a9CjAEGiC5.gif" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rev(earth) %&gt;% </div><div class="line">  image_flip() %&gt;% </div><div class="line">  image_annotate(&quot;This is the Earth&quot;, size = 20, color = &quot;white&quot;)</div></pre></td></tr></table></figure>
-<p>不知什么鬼，图片竟然显示出来乱的，电脑渣的话还是别搞动画</p>
-<h2 id="图层"><a href="#图层" class="headerlink" title="图层"></a>图层</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">bigdata &lt;- image_read(&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/JclK3efbB3.jpg?imageslim&quot;)</div><div class="line">logo &lt;- image_read(&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/JdjdB88CLm.png?imageslim&quot;)</div><div class="line">frink &lt;- image_read(&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/E5fbmb1FIb.png?imageslim&quot;)</div><div class="line">img &lt;- c(bigdata, logo, frink)</div><div class="line">img &lt;- image_scale(img, &quot;300x300&quot;)</div><div class="line">image_mosaic(img)</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/EE0CEL1K57.jpeg?imageslim" alt=""></p>
-<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image_animate(image_scale(img, &quot;200x200&quot;), fps = 1, dispose = &quot;previous&quot;)#fps控制放映速度</div></pre></td></tr></table></figure>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/0Bi5fCJBE5.gif" alt=""></p>
-<h2 id="静图-动图"><a href="#静图-动图" class="headerlink" title="静图+动图"></a>静图+动图</h2><p>静图就用我以前绘制过的，具体可看<a href="https://ytlogos.github.io/2017/08/24/ggplot2%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%9B%BE%E5%BD%A2%E6%8E%92%E5%88%97/">博客</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">image1 &lt;- image_read(&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/kLeL888DbI.png?imageslim&quot;)</div><div class="line">dance_man &lt;- image_read(&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/86iEDe36lf.gif&quot;)</div><div class="line">dance_man &lt;- image_scale(dance_man, &quot;200&quot;)</div><div class="line">#Background image</div><div class="line">background &lt;- image_background(image_scale(image1, &quot;800&quot;), &quot;white&quot;, flatten = TRUE)</div><div class="line">#Combine and flatten frames</div><div class="line">frames &lt;- image_apply(dance_man, function(frame)&#123;</div><div class="line">  image_composite(background, frame, offset = &quot;+500+270&quot;)</div><div class="line">&#125;)</div><div class="line">#Turn frames into animation</div><div class="line">animation &lt;- image_animate(frames, fps = 10)</div><div class="line">print(animation)</div></pre></td></tr></table></figure></p>
-<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/a2jGAc87jB.gif" alt=""></p>
-<p>还有一些有趣的功能这里我就不讲了，有兴趣的可以试试，还是很好玩的。</p>
-<h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line"></div><div class="line">## R version 3.4.1 (2017-06-30)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 10 x64 (build 15063)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936   </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C                              </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936    </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats     graphics  grDevices utils     datasets  methods   base     </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">## [1] magrittr_1.5 magick_1.2  </div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">##  [1] compiler_3.4.1  backports_1.1.0 rprojroot_1.2   tools_3.4.1    </div><div class="line">##  [5] htmltools_0.3.6 curl_2.8.1      yaml_2.1.14     Rcpp_0.12.12   </div><div class="line">##  [9] stringi_1.1.5   rmarkdown_1.6   knitr_1.17      stringr_1.2.0  </div><div class="line">## [13] digest_0.6.12   evaluate_0.10.1</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/170903/a2jGAc87jB.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;本文主要简单介绍一下magick包，主要用于图像处理&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="可视化" scheme="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-    
-      <category term="R" scheme="https://ytlogos.github.io/tags/R/"/>
-    
-      <category term="visualization" scheme="https://ytlogos.github.io/tags/visualization/"/>
-    
-      <category term="magick" scheme="https://ytlogos.github.io/tags/magick/"/>
     
   </entry>
   
