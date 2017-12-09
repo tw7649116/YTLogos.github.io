@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-12-09T13:53:09.025Z</updated>
+  <updated>2017-12-09T13:56:42.173Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://ytlogos.github.io/2017/12/09/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/"/>
     <id>https://ytlogos.github.io/2017/12/09/生物信息学学习笔记（五）/</id>
     <published>2017-12-09T13:19:05.000Z</published>
-    <updated>2017-12-09T13:53:09.025Z</updated>
+    <updated>2017-12-09T13:56:42.173Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171208/mLaH1fIKh6.png?imageslim" alt="mark"></p>
 <h2 id="全基因组水平的连锁不平衡-LD-和遗传结构分析"><a href="#全基因组水平的连锁不平衡-LD-和遗传结构分析" class="headerlink" title="全基因组水平的连锁不平衡(LD)和遗传结构分析"></a>全基因组水平的连锁不平衡(LD)和遗传结构分析</h2><p>当r<sup>2</sup>=0.1时，A亚基因组的衰退距离为0.35-0.4Mb，而C亚基因组的衰退距离为3.5-4Mb，说明甘蓝型油菜A亚基因组发生了更多的重组，使得衰退距离显著小于C亚基因组。重组的发生会打破LD，将那些容易发生重组，LD相对较低的区域称为LD热点，反之称为LD冷点。通过全基因水平的LD热点和冷点研究发现，78.16%的LD热点分布在A亚基因组而72.59%的LD冷点分布在C亚基因组。另外LD热点区间的基因密度是冷点区间的2倍多，GC含量也多于冷点区间，但是冷点区间内含有更多的转座子，这和LD反映的结果一致，说明了甘蓝型油菜A亚基因组的遗传变异更加丰富。</p>
@@ -85,9 +85,6 @@
 <tr>
 <td>等位基因频率</td>
 <td>最小等位基因频率增加，增加LD</td>
-</tr>
-<tr>
-<td></td>
 </tr>
 </tbody>
 </table>
