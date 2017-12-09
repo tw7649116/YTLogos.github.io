@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-12-06T14:06:51.094Z</updated>
+  <updated>2017-12-09T13:53:09.025Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -14,6 +14,101 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>生物信息学学习笔记（五）</title>
+    <link href="https://ytlogos.github.io/2017/12/09/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89/"/>
+    <id>https://ytlogos.github.io/2017/12/09/生物信息学学习笔记（五）/</id>
+    <published>2017-12-09T13:19:05.000Z</published>
+    <updated>2017-12-09T13:53:09.025Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171208/mLaH1fIKh6.png?imageslim" alt="mark"></p>
+<h2 id="全基因组水平的连锁不平衡-LD-和遗传结构分析"><a href="#全基因组水平的连锁不平衡-LD-和遗传结构分析" class="headerlink" title="全基因组水平的连锁不平衡(LD)和遗传结构分析"></a>全基因组水平的连锁不平衡(LD)和遗传结构分析</h2><p>当r<sup>2</sup>=0.1时，A亚基因组的衰退距离为0.35-0.4Mb，而C亚基因组的衰退距离为3.5-4Mb，说明甘蓝型油菜A亚基因组发生了更多的重组，使得衰退距离显著小于C亚基因组。重组的发生会打破LD，将那些容易发生重组，LD相对较低的区域称为LD热点，反之称为LD冷点。通过全基因水平的LD热点和冷点研究发现，78.16%的LD热点分布在A亚基因组而72.59%的LD冷点分布在C亚基因组。另外LD热点区间的基因密度是冷点区间的2倍多，GC含量也多于冷点区间，但是冷点区间内含有更多的转座子，这和LD反映的结果一致，说明了甘蓝型油菜A亚基因组的遗传变异更加丰富。</p>
+<h2 id="关联分析的基础——连锁不平衡"><a href="#关联分析的基础——连锁不平衡" class="headerlink" title="关联分析的基础——连锁不平衡"></a>关联分析的基础——连锁不平衡</h2><p>生物在进化过程中，对于某一特定基因座，在自然和人工选择、重组与突变、遗传漂变、群体扩张和瓶颈效应等因素的影响下，某一“有利”变异（或等位基因）在正向选择的过程中被保留下来，与该基因座紧密连锁的两侧一定范围内的序列也会随着该“有利”等位基因的固定而被大量保留下来，从而使其遗传多样性大大降低，遗传学上将这种个别基因的正向选择致使其侧翼遗传多样性降低的现象称为选择牵连效应或者选择性消除。由于基因座间的选择牵连效应，使群体内个体在不同位点、基因间发生非随机性关联，即连锁不平衡，又称等位基因关联。它包括染色体内和染色体间的连锁不平衡，前者是关联分析的基础，具体指当位于同一染色体的两对等位基因同时存在的概率大于群体内因随机分布而同时出现的概率时，就称这两个位点处于LD状态。<br>连锁不平衡并不等同于遗传连锁，它们之间相辅相成，连锁不平衡是指在两个或者多个位点上的非随机关联性，这些位点既可能在同一条染色体上，也可以在不同染色体上，只要两个位点同时出现的概率大于群体随机组合的概率就说明这两个位点处于连锁不平衡状态，而遗传连锁主要考虑的是重组率，连锁的基因在染色体上的位点相距越远，他们之间发生交换的几率就越大，重组率就越高，连锁就越弱。当然两个位点处于完全连锁状态其等位基因间也存在较强的连锁不平衡。</p>
+<h2 id="LD的原理及度量"><a href="#LD的原理及度量" class="headerlink" title="LD的原理及度量"></a>LD的原理及度量</h2><p>LD的统计是实际观测到的单倍型的频率与随机分离时期单倍型的频率之间的差异(D)。LD的度量一般是对D进行归一化后，用LD系数D’和r<sup>2</sup>进行检验，其中D’(AB)=D(AB)/(fA*fB),r<sup>2</sup>(AB)=D<sup>2</sup>(AB)/(fA*fa*fB*fb)，这里D’和r<sup>2</sup>的变化范围都是从0到1。LD反映样本的重组史，敏感度更高，适合小样本的研究，而r<sup>2</sup>除了能反映样本的重组史还能反映突变史，所以r<sup>2</sup>更能客观地反映不同基因间的连锁不平衡关系</p>
+<h2 id="LD的影响因素"><a href="#LD的影响因素" class="headerlink" title="LD的影响因素"></a>LD的影响因素</h2><p>LD是由突变或重组造成的，在染色体某一SNP附近有新的突变发生时则LD出现。LD强度与2个SNP间的距离有关，距离越小则发生重组的机会越小，LD就越强。所以LD重度与重组率和突变率均呈反比；另外遗传漂变(群体较小，导致群体中基因频率随机波动的现象)和奠基者效应(是一种剧烈的漂变，指一个小群体从一个大群体中分离出来并逐渐发展壮大的现象)都会增强LD，基因突变可导致野生等位基因之间LD水平的降低，也可导致突变等位基因之间LD水平的提高。<br>LD的衰减指位点之间由连锁不平衡到连锁平衡的演变过程，能够很好的反映LD程度。自花授粉植物的重组率要普遍低于异花授粉植物，所以异花授粉植物的LD衰减距离就要大些，常染色质组成的着丝粒区域的LD的衰减速度快于由异染色质组成的各个染色体臂，基因富集的区域的LD衰减比较快。</p>
+<ul>
+<li>植物中影响LD的因素</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>因素</th>
+<th>对LD的影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>授粉方式</td>
+<td>自交植物有效重组数少于异交植物，LD衰减慢</td>
+</tr>
+<tr>
+<td>染色体位置</td>
+<td>异染色质区交换少于常染色质区，LD衰减慢</td>
+</tr>
+<tr>
+<td>基因区</td>
+<td>基因富集区，LD衰减快</td>
+</tr>
+<tr>
+<td>瓶颈效应</td>
+<td>有效群体数目减少，增加LD</td>
+</tr>
+<tr>
+<td>遗传漂变</td>
+<td>增加LD</td>
+</tr>
+<tr>
+<td>奠基者效应</td>
+<td>增加LD</td>
+</tr>
+<tr>
+<td>群体分化</td>
+<td>增加LD</td>
+</tr>
+<tr>
+<td>群体大小</td>
+<td>小群体，增加LD</td>
+</tr>
+<tr>
+<td>选择</td>
+<td>增加受选择区段的LD</td>
+</tr>
+<tr>
+<td>突变</td>
+<td>造成LD总体水平的降低，但新产生突变的染色体位置LD水平升高</td>
+</tr>
+<tr>
+<td>基因转换</td>
+<td>降低LD</td>
+</tr>
+<tr>
+<td>等位基因频率</td>
+<td>最小等位基因频率增加，增加LD</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>JianShu: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>Blog: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
+<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171208/mLaH1fIKh6.png?imageslim&quot; alt=&quot;mark&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;全基因组水平的连锁不平衡-LD-和遗传结构分析&quot;&gt;&lt;a h
+    
+    </summary>
+    
+      <category term="bioinformatics" scheme="https://ytlogos.github.io/categories/bioinformatics/"/>
+    
+    
+      <category term="LD" scheme="https://ytlogos.github.io/tags/LD/"/>
+    
+  </entry>
   
   <entry>
     <title>生物信息学学习笔记（四）</title>
@@ -2206,55 +2301,6 @@
       <category term="ggflags" scheme="https://ytlogos.github.io/tags/ggflags/"/>
     
       <category term="爬虫rvest" scheme="https://ytlogos.github.io/tags/%E7%88%AC%E8%99%ABrvest/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用tximport进行RNA-seq分析</title>
-    <link href="https://ytlogos.github.io/2017/09/08/%E5%88%A9%E7%94%A8tximport%E8%BF%9B%E8%A1%8CRNA-seq%E5%88%86%E6%9E%90/"/>
-    <id>https://ytlogos.github.io/2017/09/08/利用tximport进行RNA-seq分析/</id>
-    <published>2017-09-08T10:31:07.000Z</published>
-    <updated>2017-09-19T00:39:01.441Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>RNA-seq后续分析可以利用R包edgeR、DESeq2以及limma-voom等，而tximport包则可以将RNA-seq上游定量分析软件产生的结果导入到R语言中，进而方便后续的分析。具体的情况可以参考这篇文献：</p>
-<blockquote>
-<p>Charlotte Soneson, Michael I. Love, Mark D. Robinson (2015): Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences. F1000Research <a href="http://sci-hub.cc/10.12688/f1000research.7563.1" target="_blank" rel="external">http://sci-hub.cc/10.12688/f1000research.7563.1</a></p>
-</blockquote>
-<a id="more"></a>
-<p>tximport具有以下优点：</p>
-<ul>
-<li>对于样本之间因基因长度不同导致的差异具有纠正功能</li>
-<li>一些上游分析软件(Salmon, Sailfish, kallisto)等的结果可以完美对接到R语言中，这些软件运行速度更快更稳定，且占用更少的内存</li>
-<li>更高的灵敏度，因为它可以避免那些比对到多基因的片段的丢失</li>
-</ul>
-<h2 id="导入转录组数据"><a href="#导入转录组数据" class="headerlink" title="导入转录组数据"></a>导入转录组数据</h2><p>下面我们将使用包tximportData中的数据进行演示，tximport可以处理多种类型的上游定量结果，只需要在参数type中设定就行。 先安装包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source(&quot;https://bioconductor.org/biocLite.R&quot;)</div><div class="line">options(BioC_mirror=&quot;http://mirrors.ustc.edu.cn/bioc/&quot;)#设置中科大镜像</div><div class="line">biocLite(&quot;tximportData&quot;)</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">library(tximportData)</div><div class="line">dir &lt;- system.file(&quot;extdata&quot;, package = &quot;tximportData&quot;)#set directory</div><div class="line">list.files(dir)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">##  [1] &quot;cufflinks&quot;            &quot;kallisto&quot;             &quot;kallisto_boot&quot;       </div><div class="line">##  [4] &quot;rsem&quot;                 &quot;sailfish&quot;             &quot;salmon&quot;              </div><div class="line">##  [7] &quot;salmon_gibbs&quot;         &quot;samples.txt&quot;          &quot;samples_extended.txt&quot;</div><div class="line">## [10] &quot;tx2gene.csv&quot;</div></pre></td></tr></table></figure>
-<p>可以看到dir中存在这些文件，接下来我们其中的samples.txt读进来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">samples &lt;- read.table(file.path(dir, &quot;samples.txt&quot;), header = TRUE)</div><div class="line">samples</div><div class="line">##   pop center                assay    sample experiment       run</div><div class="line">## 1 TSI  UNIGE NA20503.1.M_111124_5 ERS185497  ERX163094 ERR188297</div><div class="line">## 2 TSI  UNIGE NA20504.1.M_111124_7 ERS185242  ERX162972 ERR188088</div><div class="line">## 3 TSI  UNIGE NA20505.1.M_111124_6 ERS185048  ERX163009 ERR188329</div><div class="line">## 4 TSI  UNIGE NA20507.1.M_111124_7 ERS185412  ERX163158 ERR188288</div><div class="line">## 5 TSI  UNIGE NA20508.1.M_111124_2 ERS185362  ERX163159 ERR188021</div><div class="line">## 6 TSI  UNIGE NA20514.1.M_111124_4 ERS185217  ERX163062 ERR188356</div></pre></td></tr></table></figure></p>
-<p>再将salmon与samples以及quant.sf一起创建每个样本的文件地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">files &lt;- file.path(dir, &quot;salmon&quot;, samples$run, &quot;quant.sf&quot;)</div><div class="line">names(files) &lt;- paste0(&quot;sample&quot;, 1:6)</div><div class="line">all(file.exists(files))</div><div class="line">## [1] TRUE</div></pre></td></tr></table></figure></p>
-<p>结果显示TRUE说明运行成功，可以进行下一步，要进行基因表达差异分析，首先要将转录本与基因名关联起来，这就需要我们创建一个两列的名为tx2gene的数据框，最简单的就是通过TxDb创建,再通过AnnotationDbi包里的函数select()进行选取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">library(TxDb.Hsapiens.UCSC.hg19.knownGene)</div><div class="line">txdb &lt;- TxDb.Hsapiens.UCSC.hg19.knownGene</div><div class="line">k &lt;- keys(txdb, keytype = &quot;GENEID&quot;)</div><div class="line">df &lt;- select(txdb, keys = k, keytype = &quot;GENEID&quot;, columns = &quot;TXNAME&quot;)</div><div class="line">tx2gene &lt;- df[, 2:1]#tx ID在前，gene ID在后</div><div class="line">#这里我们演示就使用现有的tx2gene</div><div class="line">tx2gene &lt;- read.csv(file.path(dir, &quot;tx2gene.csv&quot;))</div><div class="line">head(tx2gene)</div><div class="line">##         TXNAME   GENEID</div><div class="line">## 1    NM_130786     A1BG</div><div class="line">## 2    NR_015380 A1BG-AS1</div><div class="line">## 3 NM_001198818     A1CF</div><div class="line">## 4 NM_001198819     A1CF</div><div class="line">## 5 NM_001198820     A1CF</div><div class="line">## 6    NM_014576     A1CF</div></pre></td></tr></table></figure></p>
-<p>最后就是将转录组水平的数据导入就行了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">library(tximport)</div><div class="line">library(readr)</div><div class="line">txi &lt;- tximport(files, type = &quot;salmon&quot;, tx2gene = tx2gene)</div><div class="line">names(txi)</div><div class="line">## [1] &quot;abundance&quot;           &quot;counts&quot;              &quot;length&quot;             </div><div class="line">## [4] &quot;countsFromAbundance&quot;</div><div class="line">head(txi$counts)</div><div class="line">##             sample1   sample2    sample3   sample4   sample5   sample6</div><div class="line">## A1BG     109.232000 316.22400 110.638000 116.00000  86.38430  76.91630</div><div class="line">## A1BG-AS1  83.969700 138.44900 119.274000 151.08300 123.98500 103.25100</div><div class="line">## A1CF       9.030691  10.01847   5.019242  13.01820  25.21914  25.07356</div><div class="line">## A2M       24.000000   2.00000  21.000000   6.00000  38.00000   8.00000</div><div class="line">## A2M-AS1    1.000000   1.00000   1.000000   1.00000   0.00000   0.00000</div><div class="line">## A2ML1      3.047950   1.02987   4.076160   1.04945   3.07761   5.12409</div></pre></td></tr></table></figure></p>
-<h2 id="差异分析"><a href="#差异分析" class="headerlink" title="差异分析"></a>差异分析</h2><p>下游分析主要使用Bioconductor包进行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">library(edgeR)</div><div class="line">cts &lt;- txi$counts</div><div class="line">normMat &lt;- txi$length</div><div class="line">normMat &lt;- normMat/exp(rowMeans(log(normMat)))</div><div class="line">o &lt;- log(calcNormFactors(cts/normMat))+log(colSums(cts/normMat))</div><div class="line">y &lt;- DGEList(cts)</div><div class="line">y$offset &lt;- t(t(log(normMat))+o)</div></pre></td></tr></table></figure></p>
-<p>接下来的y就可以用来后续的分析</p>
-<h2 id="SessionInfo"><a href="#SessionInfo" class="headerlink" title="SessionInfo"></a>SessionInfo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">sessionInfo()</div><div class="line">## R version 3.4.1 (2017-06-30)</div><div class="line">## Platform: x86_64-w64-mingw32/x64 (64-bit)</div><div class="line">## Running under: Windows 10 x64 (build 15063)</div><div class="line">## </div><div class="line">## Matrix products: default</div><div class="line">## </div><div class="line">## locale:</div><div class="line">## [1] LC_COLLATE=Chinese (Simplified)_China.936 </div><div class="line">## [2] LC_CTYPE=Chinese (Simplified)_China.936   </div><div class="line">## [3] LC_MONETARY=Chinese (Simplified)_China.936</div><div class="line">## [4] LC_NUMERIC=C                              </div><div class="line">## [5] LC_TIME=Chinese (Simplified)_China.936    </div><div class="line">## </div><div class="line">## attached base packages:</div><div class="line">## [1] stats4    parallel  stats     graphics  grDevices utils     datasets </div><div class="line">## [8] methods   base     </div><div class="line">## </div><div class="line">## other attached packages:</div><div class="line">##  [1] edgeR_3.18.1                           </div><div class="line">##  [2] limma_3.32.5                           </div><div class="line">##  [3] readr_1.1.1                            </div><div class="line">##  [4] tximport_1.4.0                         </div><div class="line">##  [5] TxDb.Hsapiens.UCSC.hg19.knownGene_3.2.2</div><div class="line">##  [6] GenomicFeatures_1.28.4                 </div><div class="line">##  [7] AnnotationDbi_1.38.2                   </div><div class="line">##  [8] Biobase_2.36.2                         </div><div class="line">##  [9] GenomicRanges_1.28.4                   </div><div class="line">## [10] GenomeInfoDb_1.12.2                    </div><div class="line">## [11] IRanges_2.10.3                         </div><div class="line">## [12] S4Vectors_0.14.3                       </div><div class="line">## [13] BiocGenerics_0.22.0                    </div><div class="line">## [14] tximportData_1.4.0                     </div><div class="line">## </div><div class="line">## loaded via a namespace (and not attached):</div><div class="line">##  [1] Rcpp_0.12.12               compiler_3.4.1            </div><div class="line">##  [3] XVector_0.16.0             bitops_1.0-6              </div><div class="line">##  [5] tools_3.4.1                zlibbioc_1.22.0           </div><div class="line">##  [7] biomaRt_2.32.1             digest_0.6.12             </div><div class="line">##  [9] bit_1.1-12                 lattice_0.20-35           </div><div class="line">## [11] evaluate_0.10.1            RSQLite_2.0               </div><div class="line">## [13] memoise_1.1.0              tibble_1.3.4              </div><div class="line">## [15] pkgconfig_2.0.1            rlang_0.1.2               </div><div class="line">## [17] Matrix_1.2-11              DelayedArray_0.3.12       </div><div class="line">## [19] DBI_0.7                    yaml_2.1.14               </div><div class="line">## [21] GenomeInfoDbData_0.99.0    rtracklayer_1.36.4        </div><div class="line">## [23] stringr_1.2.0              knitr_1.17                </div><div class="line">## [25] hms_0.3                    Biostrings_2.44.2         </div><div class="line">## [27] locfit_1.5-9.1             grid_3.4.1                </div><div class="line">## [29] rprojroot_1.2              bit64_0.9-7               </div><div class="line">## [31] R6_2.2.2                   XML_3.98-1.9              </div><div class="line">## [33] BiocParallel_1.10.1        rmarkdown_1.6             </div><div class="line">## [35] blob_1.1.0                 magrittr_1.5              </div><div class="line">## [37] matrixStats_0.52.2         GenomicAlignments_1.12.2  </div><div class="line">## [39] backports_1.1.0            Rsamtools_1.28.0          </div><div class="line">## [41] htmltools_0.3.6            SummarizedExperiment_1.6.3</div><div class="line">## [43] stringi_1.1.5              RCurl_1.95-4.8            </div><div class="line">## [45] rjson_0.2.15</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="联系方式："><a href="#联系方式：" class="headerlink" title="联系方式："></a>联系方式：</h2><p>wechat: yt056410<br>Email: tyan@zju.edu.cn<br>QQ: 1051927088<br>GitHub: <a href="https://github.com/YTLogos" target="_blank" rel="external">https://github.com/YTLogos</a><br>简书: <a href="http://www.jianshu.com/u/bd001545cf0b" target="_blank" rel="external">http://www.jianshu.com/u/bd001545cf0b</a><br>博客: <a href="https://ytlogos.github.io/">https://ytlogos.github.io/</a></p>
-<h2 id="个人简介："><a href="#个人简介：" class="headerlink" title="个人简介："></a>个人简介：</h2><p>严涛<br>浙江大学作物遗传育种在读研究生（生物信息学方向）<br>伪码农，R语言爱好者，爱开源</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;RNA-seq后续分析可以利用R包edgeR、DESeq2以及limma-voom等，而tximport包则可以将RNA-seq上游定量分析软件产生的结果导入到R语言中，进而方便后续的分析。具体的情况可以参考这篇文献：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Charlotte Soneson, Michael I. Love, Mark D. Robinson (2015): Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences. F1000Research &lt;a href=&quot;http://sci-hub.cc/10.12688/f1000research.7563.1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sci-hub.cc/10.12688/f1000research.7563.1&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="RNA-seq" scheme="https://ytlogos.github.io/categories/RNA-seq/"/>
-    
-    
-      <category term="RNA-seq" scheme="https://ytlogos.github.io/tags/RNA-seq/"/>
     
   </entry>
   
