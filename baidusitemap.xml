@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://ytlogos.github.io/2017/12/18/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E5%9B%BE%E5%BD%A2%E7%BB%84%E5%90%88R%E5%8C%85patchwork/</loc>
+    <lastmod>2017-12-18T10:38:11.678Z</lastmod>
+    <data>
+        <display>
+        <title>图形组合R包patchwork</title>
+        <pubTime>2017-12-18T08:47:05.000Z</pubTime>
+        
+        <tag>图形组合</tag>
+         
+        <tag>patchwork</tag>
+         
+         
+           
+             
+              <breadCrumb title="可视化" url="https://ytlogos.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://ytlogos.github.io/2017/06/25/%E7%94%A8circlize%E5%8C%85%E7%BB%98%E5%88%B6circos-plot/</loc>
     <lastmod>2017-12-10T05:10:20.754Z</lastmod>
     <data>
@@ -37,9 +59,9 @@
         
         <tag>R</tag>
          
-        <tag>visualization</tag>
-         
         <tag>ggrepel</tag>
+         
+        <tag>visualization</tag>
          
          
            
@@ -103,9 +125,9 @@
         <title>生物信息学学习笔记（四）</title>
         <pubTime>2017-12-06T13:19:05.000Z</pubTime>
         
-        <tag>Hi-C</tag>
-         
         <tag>DHSs</tag>
+         
+        <tag>Hi-C</tag>
          
          
            
@@ -125,9 +147,9 @@
         <title>生物信息学学习笔记（三）</title>
         <pubTime>2017-12-04T13:19:05.000Z</pubTime>
         
-        <tag>Hi-C</tag>
-         
         <tag>DHSs</tag>
+         
+        <tag>Hi-C</tag>
          
          
            
@@ -147,9 +169,9 @@
         <title>生物信息学学习笔记（二）</title>
         <pubTime>2017-11-29T13:19:05.000Z</pubTime>
         
-        <tag>evolution</tag>
-         
         <tag>Hi-C</tag>
+         
+        <tag>evolution</tag>
          
          
            
@@ -431,9 +453,9 @@
         
         <tag>R</tag>
          
-        <tag>scatter plot</tag>
-         
         <tag>visualization</tag>
+         
+        <tag>scatter plot</tag>
          
          
            
@@ -861,9 +883,9 @@
         
         <tag>R</tag>
          
-        <tag>visualization</tag>
-         
         <tag>ggrepel</tag>
+         
+        <tag>visualization</tag>
          
          
            
