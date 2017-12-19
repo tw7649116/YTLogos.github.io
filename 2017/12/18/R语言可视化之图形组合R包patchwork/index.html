@@ -113,13 +113,13 @@
 
 
 
-<meta name="description" content="平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是gridExtra，还有egge。今天介绍一个新包patchwork">
+<meta name="description" content="平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是gridExtra，还有egg。今天介绍一个新包patchwork">
 <meta name="keywords" content="图形组合,patchwork">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图形组合R包patchwork">
 <meta property="og:url" content="https://ytlogos.github.io/2017/12/18/R语言可视化之图形组合R包patchwork/index.html">
 <meta property="og:site_name" content="Logos">
-<meta property="og:description" content="平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是gridExtra，还有egge。今天介绍一个新包patchwork">
+<meta property="og:description" content="平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是gridExtra，还有egg。今天介绍一个新包patchwork">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/9dEjEbJ8kI.png?imageslim">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/7Dd5CG5fgB.png?imageslim">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/aa0KGc5l3f.png?imageslim">
@@ -129,10 +129,10 @@
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/7HL49dJ1EI.png?imageslim">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/KCjBgd0KHg.png?imageslim">
 <meta property="og:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/CFGBjB6GLK.png?imageslim">
-<meta property="og:updated_time" content="2017-12-18T10:38:11.678Z">
+<meta property="og:updated_time" content="2017-12-18T10:41:24.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图形组合R包patchwork">
-<meta name="twitter:description" content="平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是gridExtra，还有egge。今天介绍一个新包patchwork">
+<meta name="twitter:description" content="平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是gridExtra，还有egg。今天介绍一个新包patchwork">
 <meta name="twitter:image" content="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/9dEjEbJ8kI.png?imageslim">
 
 
@@ -439,7 +439,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-18T18:38:11+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-18T18:41:24+08:00">
                 2017-12-18
               </time>
             
@@ -547,7 +547,7 @@
 
       
         <p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/9dEjEbJ8kI.png?imageslim" alt="mark"></p>
-<p>平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是<strong>gridExtra</strong>，还有<strong>egge</strong>。今天介绍一个新包<a href="https://github.com/thomasp85/patchwork" target="_blank" rel="external"><strong>patchwork</strong></a><br><a id="more"></a></p>
+<p>平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是<strong>gridExtra</strong>，还有<strong>egg</strong>。今天介绍一个新包<a href="https://github.com/thomasp85/patchwork" target="_blank" rel="external"><strong>patchwork</strong></a><br><a id="more"></a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># install.packages(&quot;devtools&quot;)</div><div class="line">devtools::install_github(&quot;thomasp85/patchwork&quot;)</div></pre></td></tr></table></figure>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><strong>patchwork</strong>的使用非常简单，就是利用<strong>+</strong>将图形组合起来。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">library(patchwork)</div><div class="line">p1 &lt;- ggplot(mtcars)+geom_point(aes(mpg, disp))</div><div class="line">p2 &lt;- ggplot(mtcars)+geom_boxplot(aes(gear, disp, group=gear))</div><div class="line"># Combine these two plots together</div><div class="line">p1+p2</div></pre></td></tr></table></figure></p>
 <p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/7Dd5CG5fgB.png?imageslim" alt="mark"></p>

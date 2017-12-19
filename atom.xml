@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ytlogos.github.io/"/>
-  <updated>2017-12-18T10:38:11.678Z</updated>
+  <updated>2017-12-18T10:41:24.688Z</updated>
   <id>https://ytlogos.github.io/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="https://ytlogos.github.io/2017/12/18/R%E8%AF%AD%E8%A8%80%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E5%9B%BE%E5%BD%A2%E7%BB%84%E5%90%88R%E5%8C%85patchwork/"/>
     <id>https://ytlogos.github.io/2017/12/18/R语言可视化之图形组合R包patchwork/</id>
     <published>2017-12-18T08:47:05.000Z</published>
-    <updated>2017-12-18T10:38:11.678Z</updated>
+    <updated>2017-12-18T10:41:24.688Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/9dEjEbJ8kI.png?imageslim" alt="mark"></p>
-<p>平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是<strong>gridExtra</strong>，还有<strong>egge</strong>。今天介绍一个新包<a href="https://github.com/thomasp85/patchwork" target="_blank" rel="external"><strong>patchwork</strong></a><br><a id="more"></a></p>
+<p>平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是<strong>gridExtra</strong>，还有<strong>egg</strong>。今天介绍一个新包<a href="https://github.com/thomasp85/patchwork" target="_blank" rel="external"><strong>patchwork</strong></a><br><a id="more"></a></p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># install.packages(&quot;devtools&quot;)</div><div class="line">devtools::install_github(&quot;thomasp85/patchwork&quot;)</div></pre></td></tr></table></figure>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><strong>patchwork</strong>的使用非常简单，就是利用<strong>+</strong>将图形组合起来。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">library(ggplot2)</div><div class="line">library(patchwork)</div><div class="line">p1 &lt;- ggplot(mtcars)+geom_point(aes(mpg, disp))</div><div class="line">p2 &lt;- ggplot(mtcars)+geom_boxplot(aes(gear, disp, group=gear))</div><div class="line"># Combine these two plots together</div><div class="line">p1+p2</div></pre></td></tr></table></figure></p>
 <p><img src="http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/7Dd5CG5fgB.png?imageslim" alt="mark"></p>
@@ -55,7 +55,7 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;http://ov520p4qw.bkt.clouddn.com/ytlogos/171218/9dEjEbJ8kI.png?imageslim&quot; alt=&quot;mark&quot;&gt;&lt;/p&gt;
-&lt;p&gt;平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是&lt;strong&gt;gridExtra&lt;/strong&gt;，还有&lt;strong&gt;egge&lt;/strong&gt;。今天介绍一个新包&lt;a href=&quot;https://github.com/thomasp85/patchwork&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;patchwork&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
+&lt;p&gt;平常我们绘制图形的时候常常要将几幅图形组合在一起，有很多R包可以用于图形组合，经典的是&lt;strong&gt;gridExtra&lt;/strong&gt;，还有&lt;strong&gt;egg&lt;/strong&gt;。今天介绍一个新包&lt;a href=&quot;https://github.com/thomasp85/patchwork&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;strong&gt;patchwork&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
     
     </summary>
     
